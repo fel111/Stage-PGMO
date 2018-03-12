@@ -36,7 +36,7 @@ float G_ik(int i, int k, int eta, vector< vector<float> > g_ki,int & u0, bool up
 	}
 }*/
 
-void lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector<vector <int> > P_ki,vector< vector<float> > p_ki,vector< vector<float> > f_ki,vector< vector<float> > g_ki,int q_max,vector<int> q0){
+vector<float> lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector<vector <int> > P_ki,vector< vector<float> > p_ki,vector< vector<float> > f_ki,vector< vector<float> > g_ki,int q_max){//vector<int> q0){
 	//debut timer
 	//auto start = chrono::high_resolution_clock::now();
 
@@ -70,9 +70,11 @@ void lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector<vector <int> > 
 	xt[0] = x_ks[0][0];
 	for (int z=0; z<cardT-1; ++z){		
 		stock[z]=(xt[z]-dt[z]);
+		cout << "stock" << z << " : " << stock[z] << endl;
 		xt[z+1] = (x_ks[z+1][stock[z]]);
 	}
 	stock[cardT-1] = (xt[cardT-1]-dt[cardT-1]);
+	return xt;
 }
 
 
@@ -81,6 +83,37 @@ void lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector<vector <int> > 
 
 
 int main(){
-	cout << "test" << endl;
+	//creation donnees test
+	int cardT = 10; 
+	int q_max = 100;
+	vector<int> bp = {0,20,40,60,80};
+	vector<float> p={1.0,0.6,0.8,0.7,0.6};
+	vector<int> dt = {5,10,15,20,25,30,35,40,45,50};
+	vector<vector<int> > P_ki;
+	vector<int> nb_bp;
+	vector<vector<float> > p_ki;
+	vector<vector<float> > f_ki;
+	vector<vector<float> > g_ki;
+	vector<float> f = {0.0};
+	
+	for(int i=0; i<cardT; ++i){ 
+		P_ki.push_back(bp);
+		p_ki.push_back(p);
+		nb_bp.push_back(P_ki[i].size());
+	}
+	for(int i=0; i<nb_bp[i]-1; ++i){
+		float temp = p[i]*bp[i+1]+f[i]-p[i+1]*bp[i+1];
+		f.push_back(temp);
+	}
+	for(int i=0; i<cardT; ++i){
+		f_ki.push_back(f);
+		//f_ki[i].push_back(infini);
+	}
+	g_ki = f_ki;
+	
+	vector<float> xt = lotsizing(cardT,dt,nb_bp,P_ki,p_ki,f_ki,g_ki,q_max);
+	for(int i=0; i<xt.size(); ++i){
+		cout << xt[i] << endl;
+	}
 	return 0;	
 }
