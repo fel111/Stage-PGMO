@@ -66,9 +66,58 @@ vector<int> lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector< vector<
 		cout <<"F["<<cardT-1<<"]["<<s<<"] = "<<F_ks[cardT-1][s] <<endl;
 	}
 	
-	int k = cardT-2;
+	int k = cardT;
 	while (k>=0){
-		//vector<float> G_ik (nb_bp[k],0.0);
+		--k;
+		vector< vector<float> >Gk_i;
+		vector< vector<float> >x_kis;
+		for(int i=0; i<nb_bp[k]; ++i){
+			vector<float> Gki (nb_bp[k],0.0);
+			vector<float> xkis (nb_bp[k],0.0);
+			int s=0;
+			while(s<=qmax){
+				float lb = max(bpt[k][i]+1+s-dt[k],0);
+				float ub = min(bpt[k][i+1]+s-dt[k],q_max);
+				if(lb>ub){
+					Gki[i] = infini_float;
+					xkis[i] = infini_float;
+					++s;					
+					//xks[i] = infini;
+				}
+				else{
+					deque<int> u = {ub};
+					--ub;
+					while(lb<=ub){
+						if(g_ik(i,k,F_ks,pente,ub,qmax)<g_ik(i,k,F_ks,pente,u[0],q_max)){
+							u.push_front(ub);
+							--ub;
+						}
+						else{
+							--ub;
+						}
+					}
+					Gki[i] = g_ik(i,k,F_ks,pente,u[0],q_max);
+					xkis[i] = dt[k]-s+u[0];
+					++s;
+					while(s<=q_max){
+						if((u.size()!=0)&&((bpt[k][i]+s-dt[k])==u[0])){
+							u.pop_front();	
+						}
+						if((bpt[k][i+1]+s-dt[k])<=q_max){
+							while((u.size()!=0)&&(g_ik(i,k,F_ks,pente,u[u.size()-1],q_max)>=g_ik(i,k,F_ks,pente,bpt[k][i+1]+s-dt[k],q_max))){
+								u.pop_back();
+							}
+							u.push_front(bpt[k][i+1]+s-dt[k]);
+						}
+						if(u.size()!=0){
+							Gki.push_back
+						}
+						
+					}
+					Gk_i.push_back(Gki);
+					x_kis.push_back();
+				}
+		//	
 		/*for(int s=0; s<bk[cardT-2]; ++s){
 			int u0;
 			float minval = valbpt[k][0] + bpt[k][0]*(dt[k]-s) + G_ik(0,k,(s-dt[k]),g_ki,u0,true,dt,s,valbpt,q_max);
@@ -84,7 +133,7 @@ vector<int> lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector< vector<
 			//vector<float> xks (nb_bp[k],infini);
 			int u_min = 0;
 			float valmin = infini_float;
-			for(int i=0; i<nb_bp[k]; ++i){
+			
 				float lb = max(bpt[k][i]+1+s-dt[k],0);
 				float ub = min(bpt[k][i+1]+s-dt[k],q_max);
 				if(lb>ub){
