@@ -67,20 +67,22 @@ vector<int> lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector< vector<
 	}
 	
 	int k = cardT;
+	deque<vector< vector<float> > > G_ki;
+	deque<vector<vector<float> > > x_kis;
 	while (k>=0){
 		--k;
 		vector< vector<float> >Gk_i;
-		vector< vector<float> >x_kis;
+		vector< vector<float> >xk_is;
 		for(int i=0; i<nb_bp[k]; ++i){
-			vector<float> Gki (nb_bp[k],0.0);
-			vector<float> xkis (nb_bp[k],0.0);
+			vector<float> Gki ;
+			vector<float> xki_s ;
 			int s=0;
 			while(s<=qmax){
 				float lb = max(bpt[k][i]+1+s-dt[k],0);
 				float ub = min(bpt[k][i+1]+s-dt[k],q_max);
 				if(lb>ub){
-					Gki[i] = infini_float;
-					xkis[i] = infini_float;
+					Gki.push_back(infini_float);
+					xkis.push_back(-infini_float);
 					++s;					
 					//xks[i] = infini;
 				}
@@ -96,27 +98,63 @@ vector<int> lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector< vector<
 							--ub;
 						}
 					}
-					Gki[i] = g_ik(i,k,F_ks,pente,u[0],q_max);
-					xkis[i] = dt[k]-s+u[0];
+					Gki.push_back(g_ik(i,k,F_ks,pente,u[0],q_max));
+					xkis.push_back(dt[k]-s+u[0]);
 					++s;
 					while(s<=q_max){
 						if((u.size()!=0)&&((bpt[k][i]+s-dt[k])==u[0])){
 							u.pop_front();	
 						}
 						if((bpt[k][i+1]+s-dt[k])<=q_max){
-							while((u.size()!=0)&&(g_ik(i,k,F_ks,pente,u[u.size()-1],q_max)>=g_ik(i,k,F_ks,pente,bpt[k][i+1]+s-dt[k],q_max))){
+							while((u.size()!=0)&&(g_ik(i,k,F_ks,pente,u.back(),q_max)>=g_ik(i,k,F_ks,pente,bpt[k][i+1]+s-dt[k],q_max))){
 								u.pop_back();
 							}
-							u.push_front(bpt[k][i+1]+s-dt[k]);
+							u.push_back(bpt[k][i+1]+s-dt[k]);
 						}
 						if(u.size()!=0){
-							Gki.push_back
+							Gki.push_back(g_ik(i,k,F_ks,pente,u[0],q_max));
+							xki_s.push_back(dt[k]-s+u[0]);
 						}
-						
+						else{
+							Gki.push_back(infini_float);
+							xki_s.push_back(-infini_float);
+						}
+						++s;
 					}
-					Gk_i.push_back(Gki);
-					x_kis.push_back();
 				}
+			}
+			
+			Gk_i.push_back(Gki);
+			xk_is.push_back(xki_s);
+		}
+		G_ki.push_front(Gk_i);
+		x_kis.push_front(xk_is);
+		for(int s=0;s<=q_max;++s){
+			deque<float> list2;
+			list2.push_back(func_fks(F_ks,k+1,s-dt[k],q_max));
+			float min1 = list2[0];			
+			for(int i=0;i<nb_bp[k];++i){
+				if(valbpt[k][i]+pente[k][i]*(dt[k]-s)+Gk_i[i][s]>=0)
+					list2.push_back(valbpt[k][i]+pente[k][i]*(dt[k]-s)+Gk_i[i][s]);
+				else list2.push_back(infini_float);
+				if(list2[i+1]<min1) min1=list2[i+1];				
+			}
+			F_ks[k].push_back(min1);
+			if(min1==func_fks(F_ks,k+1,s-dt[k],q_max)) x_ks[k].push_back(0.0);
+			else{
+				deque<float> listi = list2;
+				listi.pop_front();
+				auto it = find(listi.begin(), listi.end(), old_name_);
+				if (it == Names.end())
+{
+  // name not in vector
+} else
+{
+  auto index = std::distance(Names.begin(), it);
+}
+			}
+
+		}
 		//	
 		/*for(int s=0; s<bk[cardT-2]; ++s){
 			int u0;

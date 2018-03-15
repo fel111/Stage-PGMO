@@ -47,7 +47,7 @@ COMPILO=g++
 #    -ansi : Assure que le code C++ suit la norme ANSI, et est donc portable.
 #    -O2   : Lorsque votre programme est au point, l'option -O2 permet d'optimiser votre programme (le rendre plus rapide) 
 #FLAGS= -O3 -ansi
-FLAGS= -W -Wall -DIL_STD -std=c++11
+FLAGS= -W -Wall -DIL_STD -std=c++11 -g
 #-m64 
 #-DNDEBUG deactivate assertions
 #FLAGS= -g -W -Wall -DIL_STD 
