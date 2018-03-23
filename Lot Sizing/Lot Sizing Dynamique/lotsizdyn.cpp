@@ -28,6 +28,7 @@ float p_t(int t,vector<int> nb_bp,vector<vector <int> > bpt,vector< vector<float
 }
 
 float g_ki(int i,int k,vector< vector<float> > f_ks,vector<vector <float> > pente, int tau,int bk){
+	//return pente[k][i]*tau+func_fks(f_ks,k+1,tau,bk);
 	return pente[k][i]*tau+func_fks(f_ks,k+1,tau,bk);
 	
 }
@@ -61,9 +62,15 @@ vector<int> lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector< vector<
 
 	//calcul F_Ts
 	for (int s=0; s<bk[cardT-1]; ++s){
-		if(s<=dt[cardT-1]) F_ks[cardT-1][s] = p_t(cardT-1,nb_bp,bpt,valbpt,pente,dt[cardT-1]-s);
-		else F_ks[cardT-1][s] = infini_float;
+		if(s<=dt[cardT-1]){
+			F_ks[cardT-1][s] = p_t(cardT-1,nb_bp,bpt,valbpt,pente,dt[cardT-1]-s);
+			x_ks[cardT-1][s] = dt[cardT-1] - s; 
+		}		
+		else{
+			F_ks[cardT-1][s] = infini_float;
+		}
 		cout <<"F["<<cardT-1<<"]["<<s<<"] = "<<F_ks[cardT-1][s] <<endl;
+		//cout <<"x["<<cardT-1<<"]["<<s<<"] = "<<x_ks[cardT-1][s] <<endl;
 	}
 	
 	int k = cardT-2;
@@ -79,35 +86,34 @@ vector<int> lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector< vector<
 			x_ks[k][s] = dt[k]-s+u0;
 		}*/
 		
-		for(int s=0; s<bk[cardT-2]; ++s){
+		for(int s=0; s<bk[cardT-1]; ++s){
 			vector<float> Gki (nb_bp[k],infini_float);
 			//vector<float> xks (nb_bp[k],infini);
-			int u_min = 0;
+			int u_min = -1;
 			float valmin = infini_float;
 			for(int i=0; i<nb_bp[k]; ++i){
 				float lb = max(bpt[k][i]+1+s-dt[k],0);
 				float ub = min(bpt[k][i+1]+s-dt[k],q_max);
-				if(lb>ub){
-					Gki[i] = infini_float;
-					//xks[i] = infini;
-				}
-				else{
-					Gki[i] = g_ki(i,k,F_ks,pente,lb,bk[k]);
-					if(Gki[i] < valmin){
-						u_min = i;
-					}
+				//cout << k << ", "<<s<<", "<<i<< "valmin :"<<valmin<< " lb :"<<lb<<endl;					
+				if(lb>ub) Gki[i] = infini_float;
+				else Gki[i] = g_ki(i,k,F_ks,pente,lb,bk[k]);
+				if((valbpt[k][i]+pente[k][i]*(dt[k]-s)+Gki[i])<valmin){
+					valmin = valbpt[k][i]+pente[k][i]*(dt[k]-s)+Gki[i];
+					//cout << k << ", "<<s<<", "<<i<< "valmin :"<<valmin<< " lb :"<<lb<<" valbpt : "<<valbpt[k][i]<<" pente : " <<pente[k][i]<<"x : "<<dt[k]-s<<" Gki : "<<Gki[i]<<endl;					
+					u_min = lb;
 				}
 				//cout <<"G["<<k<<"]["<<i<<"] = "<<Gki[i] <<endl;
 			}
 			//cout << "k : "<<k<<"   s : "<<s<<"    u_min : "<<u_min<<endl;
-			x_ks[k][s] = dt[k]-s+u_min;
-			F_ks[k][s] = min(func_fks(F_ks,k+1,s-dt[k],bk[k]),valbpt[k][u_min]+pente[k][u_min]*(dt[k]-s)+Gki[u_min]);
+			if (s<=dt[k]) x_ks[k][s] = dt[k]-s+u_min;
+			F_ks[k][s] = min(func_fks(F_ks,k+1,s-dt[k],bk[k]),valmin);
 			cout <<"F["<<k<<"]["<<s<<"] = "<<F_ks[k][s] <<endl;
-			cout <<"x["<<k<<"]["<<s<<"] = "<<x_ks[k][s] <<endl;
+			//cout <<"x["<<k<<"]["<<s<<"] = "<<x_ks[k][s] <<endl;		
 		}
 		--k;
 	}
 	//'''determination de xt'''    CALCUL DES XT ET DU STOCK BATTERIE
+	cout << "cout total : " << F_ks[0][0] << endl;
 	vector<int> stock (cardT,0);// = q0;
 	vector<int> xt (cardT,0);
 	xt[0] = x_ks[0][0];
@@ -159,7 +165,7 @@ int main(){
 		//f_ki[i].push_back(infini);
 	}
 	g_ki = f_ki;*/
-	int cardT = 5; 
+	/*int cardT = 5; 
 	int qmax = 20;
 	vector<int> dt = {5,10,15,20,25};
 	vector<vector<int> > bpt;
@@ -167,14 +173,29 @@ int main(){
 	vector<vector<float> > pente;
 	vector<int> nb_bp = {3,3,3,3,3};
 	for(int i=0;i<cardT;++i){
-		vector<float> temp_pente = {1.0,2.0,1.0};
+		vector<float> temp_pente = {3.0,2.0,1.0};
 		vector<int> temp_bpt = {0,10,20,infini_int};
-		vector<float> temp_valbpt = {0.0,10.0,30.0};
+		vector<float> temp_valbpt = {0.0,30.0,50.0};
 		pente.push_back(temp_pente);
 		bpt.push_back(temp_bpt);
 		valbpt.push_back(temp_valbpt);
 	}
-	
+	*/
+	int cardT = 3; 
+	int qmax = 5;
+	vector<int> dt = {5,15,10};
+	vector<vector<int> > bpt;
+	vector<vector<float> > valbpt;
+	vector<vector<float> > pente;
+	vector<int> nb_bp = {3,3,3};
+	for(int i=0;i<cardT;++i){
+		vector<float> temp_pente = {2.0,1.5,1.0};
+		vector<int> temp_bpt = {0,10,20,infini_int};
+		vector<float> temp_valbpt = {0.0,20.0,35.0};
+		pente.push_back(temp_pente);
+		bpt.push_back(temp_bpt);
+		valbpt.push_back(temp_valbpt);
+	}
 	vector<int> xt = lotsizing(cardT,dt,nb_bp,valbpt,bpt,pente,qmax);
 	for(int i=0; i<xt.size(); ++i){
 		cout << "xt"<<i<<" : "<<xt[i] << endl;

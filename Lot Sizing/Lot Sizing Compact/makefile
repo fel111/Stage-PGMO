@@ -53,13 +53,14 @@ FLAGS= -W -Wall -DIL_STD -std=c++11 -g
 #FLAGS= -g -W -Wall -DIL_STD 
 
 
-OBJ=	lotsizingcom.o
-
+OBJ=	lotsizingcom.o 
+#OBJ=	helenetoussaintexample.o
 
 
 # Liste des objets que l'on va obtenir, et qu'il faudra linker.
 # pour exe
 EXEC_NAME1 = lotsizingcom.exe
+#EXEC_NAME1 = example
 OBJ1= $(OBJ)
 
 # pour exe
