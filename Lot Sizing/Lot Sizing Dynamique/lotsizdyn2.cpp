@@ -278,14 +278,14 @@ void lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector< vector<float> 
 	//return ;
 }
 
-
+/*
 
 
 
 
 int main(){
 	//creation donnees test
-	/*int cardT = 10; 
+	int cardT = 10; 
 	int qmax = 20;
 	vector<int> dt = {5,10,15,20,25,12,45,24,12,65};
 	vector<vector<int> > bpt;
@@ -315,7 +315,7 @@ int main(){
 		bpt.push_back(temp_bpt);
 		valbpt.push_back(temp_valbpt);
 	}
-	*/
+	
 	int cardT = 100;
 	int qmax = 50;
 	vector<int> nb_bp (cardT, 10);
@@ -338,22 +338,22 @@ int main(){
 	for(int k=0; k<cardT;++k){
 		bpt[k].push_back(infini_int);
 	}
-	/*for(int k=0; k<cardT;++k){
+	for(int k=0; k<cardT;++k){
 		for(int i=0; i<nb_bp[k]; ++i){
 			bpt[][]
 			cout << "bpt["<<k<<"]["<<i<<"] = "<<bpt[k][i]<<endl;
 			cout << "valbpt["<<k<<"]["<<i<<"] = "<<valbpt[k][i]<<endl;
 			cout << "pente["<<k<<"]["<<i<<"] = "<<pente[k][i]<<endl;
 		}
-	}*/
+	}
 
 	chrono::steady_clock::time_point begin = chrono::steady_clock::now();
 	lotsizing(cardT,dt,nb_bp,valbpt,bpt,pente,qmax);
 	chrono::steady_clock::time_point end= chrono::steady_clock::now();
 	cout << "Temps = " << chrono::duration_cast<chrono::microseconds>(end - begin).count() <<endl;
 	cout << "Temps = " << chrono::duration_cast<chrono::microseconds>(end - begin).count() /1000000.0 <<endl;
-	/*for(int i=0; i<xt.size(); ++i){
+	for(int i=0; i<xt.size(); ++i){
 		cout << "xt"<<i<<" : "<<xt[i] << endl;
-	}*/
+	}
 	return 0;	
-}
+}*/
