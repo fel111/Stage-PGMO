@@ -21,5 +21,7 @@ struct data{
 	vector<vector<int> > di;
 };
 
+void modifPWL(data& d, vector<int> rt);
+
 
 #endif

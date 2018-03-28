@@ -12,11 +12,13 @@
 #include "scip/scipdefplugins.h"
 #include "data_struct.h"
 #include "Ordo_compact/ordo_comp.h"
-#include "Lot Sizing/Lot Sizing Dynamique/lotsizdyn2.h"
+#include "Lot_Sizing/Lot_Sizing_Dynamique/lotsizdyn2.h"
+#include "Lot_Sizing/Lot_Sizing_Compact/lotsizingcom.h"
+#include "Modele_compact/compact.h"
 //#include <ilcplex/cplex.h>
 //#define SCIP_DEBUG
 using namespace std;
-int infini_int = numeric_limits<int>::max();
+int infini = numeric_limits<int>::max();
 
 
 int main(){
@@ -26,12 +28,12 @@ int main(){
 	d.cardJ = 4;
 	d.cardM = 2;
 	d.cardR = 2;
-	d.s0 = 10;
+	d.s0 = 0;
 	d.cardT = 10; 
 	d.Q = 20;
 	for(int i=0;i<d.cardT;++i){
 		vector<float> temp_pente = {3.0,2.0,1.0};
-		vector<int> temp_bpt = {0,10,20,infini_int};
+		vector<int> temp_bpt = {0,10,20,infini};
 		vector<float> temp_valbpt = {0.0,30.0,50.0};
 		d.pente.push_back(temp_pente);
 		d.bpt.push_back(temp_bpt);
@@ -45,10 +47,41 @@ int main(){
 	d.Dk = {10.0,15.0};
 	d.Djk = {{10.0,20.3},{12.1,30.2},{12.4,5.2},{17.1,54.6}};
 
-	d.dt = ordo(d);
-	cout << "ORDO REALISE" << endl;
-	for(int i=0; i<d.cardT; ++i) cout << d.dt[i] << "," << endl;
+
+	cout << "MODELE COMPACT SOL :"<<endl;
+	modele_entier_compact(d);
+
+	cout << "DECOMPOSITION"<< endl<<endl;
+
+	int i=0;
+
+	while(i<15){
+
+
+		d.dt = ordo(d);
+		cout << "ORDO REALISE" << endl;
+		for(int i=0; i<d.cardT; ++i) cout << d.dt[i] <<" ";
+		cout << endl;
+		
+		
+
+
+		cout << "LOTSIZING DYN"<<endl;
+		vector<int> rt = lotsizdyn(d);
+
+		cout << "MODIFICATION PWL" << endl;
+		modifPWL(d, rt);
+		++i;
+	}
+
+
+
+
+
 	
+
+	//cout << "LOTSIZING COMP"<<endl;
+	//lotsizcomp(d);
 
 
 	return 0;

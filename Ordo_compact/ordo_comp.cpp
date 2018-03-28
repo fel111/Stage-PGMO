@@ -5,19 +5,21 @@
 #include <string>
 #include <limits>
 #include <math.h>
+#include "ordo_comp.h"
 #include "scip/scip.h"
 #include "scip/scipdefplugins.h"
 #include "data_struct.h"
 //#include <ilcplex/cplex.h>
 //#define SCIP_DEBUG
 using namespace std;
-int infini_int = numeric_limits<int>::max();
+//int infini_int = numeric_limits<int>::max();
 
 
 vector<int> ordo(data d){
 	SCIP * scip;
 	SCIPcreate(&scip);
 	SCIPincludeDefaultPlugins(scip);
+	SCIPsetMessagehdlr(scip,NULL);
 	SCIPcreateProb(scip, "Ordo_Compact", NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 
@@ -61,7 +63,7 @@ vector<int> ordo(data d){
 	for(int i=0; i<d.cardT; ++i){
 		vector<SCIP_VAR *> v;
 		pwd.push_back(v);
-		for(int j=0; j<nb_bp[i]; ++j){
+		for(int j=0; j<d.nb_bp[i]; ++j){
 			SCIP_VAR * var;
 			pwd[i].push_back(var);
 			SCIPcreateVarBasic(scip, &pwd[i][j], ("pwd"+to_string(i)+to_string(j)).c_str(), 0, 1, 0.0, SCIP_VARTYPE_BINARY);
@@ -121,7 +123,7 @@ vector<int> ordo(data d){
 		for(int j=0; j<d.nb_bp[i]; ++j){
 			//SCIPaddCoefLinear(scip, cons_ct[i], xt[i][j],-pente[i][j]);
 			SCIPaddCoefLinear(scip, cons_ct[i], xtij[i][j],-d.pente[i][j]);
-			SCIPaddCoefLinear(scip, cons_ct[i], pwd[i][j],-d.valbpt[i][j]+d.pente[i][j]*bpt[i][j]);
+			SCIPaddCoefLinear(scip, cons_ct[i], pwd[i][j],-d.valbpt[i][j]+d.pente[i][j]*d.bpt[i][j]);
 		}
 		SCIPaddCons(scip, cons_ct[i]);
 	}
@@ -202,7 +204,7 @@ vector<int> ordo(data d){
 	for(int j=0; j<d.cardJ; ++j){
 		SCIP_CONS * c;
 		cons_y_jkt2.push_back(c);
-		SCIPcreateConsLinear(scip, &cons_y_jkt2[j], ("cons_y_jkt2"+to_string(j)).c_str(), 0, 0, 0, pj[j], pj[j], TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
+		SCIPcreateConsLinear(scip, &cons_y_jkt2[j], ("cons_y_jkt2"+to_string(j)).c_str(), 0, 0, 0, d.pj[j], d.pj[j], TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
 		for(int k=0; k<d.cardM; ++k){
 			for(int t=0; t<d.cardT; ++t){
 				SCIPaddCoefLinear(scip, cons_y_jkt2[j], y_jkt[j][k][t],1);
@@ -222,9 +224,9 @@ vector<int> ordo(data d){
 			for(int t=0; t<d.cardT; ++t){
 				SCIP_CONS * co;
 				cons_ckr[k][r].push_back(co);
-				SCIPcreateConsLinear(scip, &cons_ckr[k][r][t], ("cons_ckr"+to_string(k)+to_string(r)+to_string(t)).c_str(), 0, 0, 0, -SCIPinfinity(scip), Ckr[k][r], TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
+				SCIPcreateConsLinear(scip, &cons_ckr[k][r][t], ("cons_ckr"+to_string(k)+to_string(r)+to_string(t)).c_str(), 0, 0, 0, -SCIPinfinity(scip), d.Ckr[k][r], TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
 				for(int j=0; j<d.cardJ; ++j){
-					SCIPaddCoefLinear(scip, cons_ckr[k][r][t], y_jkt[j][k][t],cjr[j][r]);
+					SCIPaddCoefLinear(scip, cons_ckr[k][r][t], y_jkt[j][k][t],d.cjr[j][r]);
 				}
 				SCIPaddCons(scip, cons_ckr[k][r][t]);			
 			}
@@ -259,11 +261,11 @@ vector<int> ordo(data d){
 		SCIPaddCoefLinear(scip, cons_equil[t], xt[t],1);		
 		for(int j=0; j<d.cardJ; ++j){
 			for(int k=0; k<d.cardM; ++k){
-				SCIPaddCoefLinear(scip, cons_equil[t], y_jkt[j][k][t],-D[j][k]);
+				SCIPaddCoefLinear(scip, cons_equil[t], y_jkt[j][k][t],-d.Djk[j][k]);
 			}
 		}
 		for(int k=0; k<d.cardM; ++k){
-			SCIPaddCoefLinear(scip, cons_equil[t], z_kt[k][t],-Dk[k]);
+			SCIPaddCoefLinear(scip, cons_equil[t], z_kt[k][t],-d.Dk[k]);
 		}			
 		SCIPaddCons(scip, cons_equil[t]);
 	}
@@ -276,14 +278,16 @@ vector<int> ordo(data d){
 
 	SCIPsolve(scip);
 	SCIP_SOL * sol = SCIPgetBestSol(scip);
+	//cout << "obj ordo = " << SCIPgetSolOrigObj(scip,sol) << endl << endl;
 	//SCIPprintBestSol(scip,filed,true); 	
 	//fclose(filed);
 	vector<int> prod;
 	//cout << "production :" << endl;	
 	for(int i=0; i<d.cardT; ++i){
+		//cout << SCIPgetSolVal(scip,sol,xt[i]) << ", ";
 		prod.push_back(static_cast<int>(ceil(SCIPgetSolVal(scip,sol,xt[i]))));
 	}
-	
+	//cout << endl;
 
 	return prod;
 

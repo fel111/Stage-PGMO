@@ -10,7 +10,7 @@ INCLUDES_PATH= \
 	-I/home/fgoupil/Téléchargements/scipoptsuite-5.0.1/scip/src \
 	-I/home/fgoupil/CPLEX_Studio1271/cplex/include/ilcplex \
 	-I/home/fgoupil/CPLEX_Studio1271/concert/include/ilconcert \
-	-I/home/fgoupil/Documents/Stage\ PGMO	
+	-I/home/fgoupil/Documents/Stage_PGMO	
 
 # Les librairies que l'on va utiliser
 LIBS= \
@@ -49,13 +49,18 @@ COMPILO=g++
 #    -ansi : Assure que le code C++ suit la norme ANSI, et est donc portable.
 #    -O2   : Lorsque votre programme est au point, l'option -O2 permet d'optimiser votre programme (le rendre plus rapide) 
 #FLAGS= -O3 -ansi
-FLAGS= -W -Wall -DIL_STD -std=c++11 -g
+FLAGS= -W -Wall -DIL_STD -std=c++11 -g -O3
 #-m64 
 #-DNDEBUG deactivate assertions
 #FLAGS= -g -W -Wall -DIL_STD 
 
 
-OBJ=	modele_entier.o 
+OBJ=	modele_entier.o \
+		../Ordo_compact/ordo_comp.o \
+		../Lot_Sizing/Lot_Sizing_Dynamique/lotsizdyn2.o \
+		../Lot_Sizing/Lot_Sizing_Compact/lotsizingcom.o \
+		../data_struct.o \
+		../Modele_compact/compact.o
 
 
 
