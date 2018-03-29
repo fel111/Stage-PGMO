@@ -282,10 +282,14 @@ void lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector< vector<float> 
 
 
 
-vector<int> lotsizdyn(data d){//vector< vector<float> > f_ki,vector< vector<float> > g_ki){//vector<int> q0){
+vector<int> lotsizdyn(data d, int choix){//vector< vector<float> > f_ki,vector< vector<float> > g_ki){//vector<int> q0){
 	//debut timer
 	//auto start = chrono::high_resolution_clock::now();
 		
+
+
+	//dtToInt(d);
+	vector<int> dt = dtToInt(d,choix);
 	vector< vector<float> > f_ki (d.cardT, vector<float> (d.nb_bp[0],0.0));
 	for(int k=0; k<d.cardT; ++k){
 		for(int i=0; i<d.nb_bp[k]; ++i){
@@ -301,7 +305,7 @@ vector<int> lotsizdyn(data d){//vector< vector<float> > f_ki,vector< vector<floa
 	//calcul F_Ts
 	//cout <<"F["<<d.cardT-1<<"] = [";
 	for (int s=0; s<=d.Q; ++s){
-		if(s<=d.dt[d.cardT-1]) F_ks[d.cardT-1][s] = p_t(d.cardT-1,d.nb_bp,d.bpt,d.valbpt,d.pente,d.dt[d.cardT-1]-s);
+		if(s<=dt[d.cardT-1]) F_ks[d.cardT-1][s] = p_t(d.cardT-1,d.nb_bp,d.bpt,d.valbpt,d.pente,dt[d.cardT-1]-s);
 		else F_ks[d.cardT-1][s] = infini_float;
 		//cout << F_ks[d.cardT-1][s] <<" ";
 	}
@@ -323,10 +327,10 @@ vector<int> lotsizdyn(data d){//vector< vector<float> > f_ki,vector< vector<floa
 			bool seq = false;
 			while((s<=d.Q)&&(seq!=true)){
 				//cout <<"while s : " << s << endl;
-				int lb = max(d.bpt[k][i]+1+s-d.dt[k],0);
-				//int lb = max(d.bpt[k][i]+s-d.dt[k],0);
-				//int ub = min(d.bpt[k][i+1]-1+s-d.dt[k],d.Q);
-				int ub = min(d.bpt[k][i+1]+s-d.dt[k],d.Q);
+				int lb = max(d.bpt[k][i]+1+s-dt[k],0);
+				//int lb = max(d.bpt[k][i]+s-dt[k],0);
+				//int ub = min(d.bpt[k][i+1]-1+s-dt[k],d.Q);
+				int ub = min(d.bpt[k][i+1]+s-dt[k],d.Q);
 				//cout << "lb, ub : "<<lb <<" "<<ub<<endl;
 				if(lb>ub){
 					//cout << "SEQUENCE IMPOSSIBLE NUMERO "<<s<<endl;
@@ -355,27 +359,27 @@ vector<int> lotsizdyn(data d){//vector< vector<float> > f_ki,vector< vector<floa
 					} // ici, les u sont triés selon g(u1) < g(u2) < ...
 											
 					Gki.push_back(g_ki(i,k,F_ks,d.pente,u[0],d.Q));
-					if(d.dt[k]-s+u[0]>=0) xki_s.push_back(d.dt[k]-s+u[0]);
+					if(dt[k]-s+u[0]>=0) xki_s.push_back(dt[k]-s+u[0]);
 					else xki_s.push_back(infini_int);
 					++s;
 					while(s<=d.Q){ // on parcours les s et on met à jour la sequence u
 							
-						//if((u.size()!=0)&&((d.bpt[k][i]+1+s-d.dt[k])==u[0])){
-						if((u.size()!=0)&&((d.bpt[k][i]+s-d.dt[k])==u[0])){
+						//if((u.size()!=0)&&((d.bpt[k][i]+1+s-dt[k])==u[0])){
+						if((u.size()!=0)&&((d.bpt[k][i]+s-dt[k])==u[0])){
 							u.pop_front();
 						}
-						if((d.bpt[k][i+1]+s-d.dt[k])<=d.Q){
-							while((u.size()!=0)&&(g_ki(i,k,F_ks,d.pente,u.back(),d.Q)>=g_ki(i,k,F_ks,d.pente,d.bpt[k][i+1]+s-d.dt[k],d.Q))){
+						if((d.bpt[k][i+1]+s-dt[k])<=d.Q){
+							while((u.size()!=0)&&(g_ki(i,k,F_ks,d.pente,u.back(),d.Q)>=g_ki(i,k,F_ks,d.pente,d.bpt[k][i+1]+s-dt[k],d.Q))){
 								u.pop_back();
 							}
-							u.push_back(d.bpt[k][i+1]+s-d.dt[k]);
+							u.push_back(d.bpt[k][i+1]+s-dt[k]);
 						}
 						//cout << "SEQUENCE U MAJ NUMERO "<<s<<endl;
 						//for(int j=0;j<u.size();++j){ cout << u[j] << " ";}
 						//cout << endl;
 						if(u.size()!=0){
 							Gki.push_back(g_ki(i,k,F_ks,d.pente,u[0],d.Q));
-							if(d.dt[k]-s+u[0]>=0) xki_s.push_back(d.dt[k]-s+u[0]);
+							if(dt[k]-s+u[0]>=0) xki_s.push_back(dt[k]-s+u[0]);
 							else xki_s.push_back(infini_int);
 						}
 						else{
@@ -398,12 +402,12 @@ vector<int> lotsizdyn(data d){//vector< vector<float> > f_ki,vector< vector<floa
 		//cout <<"x["<<k<<"] = [";
 		for(int s=0;s<=d.Q;++s){
 			float fGauche;
-			fGauche = func_fks(F_ks,k+1,s-d.dt[k],d.Q);
-			float minFdroite = f_ki[k][0]+d.pente[k][0]*(d.dt[k]-s)+Gk_i[0][s];
+			fGauche = func_fks(F_ks,k+1,s-dt[k],d.Q);
+			float minFdroite = f_ki[k][0]+d.pente[k][0]*(dt[k]-s)+Gk_i[0][s];
 			int imin = 0;			
 			for(int i=1;i<d.nb_bp[k];++i){
-				if((f_ki[k][i]+d.pente[k][i]*(d.dt[k]-s)+Gk_i[i][s]>=0)&&(f_ki[k][i]+d.pente[k][i]*(d.dt[k]-s)+Gk_i[i][s]<minFdroite)){
-					minFdroite = f_ki[k][i]+d.pente[k][i]*(d.dt[k]-s)+Gk_i[i][s];
+				if((f_ki[k][i]+d.pente[k][i]*(dt[k]-s)+Gk_i[i][s]>=0)&&(f_ki[k][i]+d.pente[k][i]*(dt[k]-s)+Gk_i[i][s]<minFdroite)){
+					minFdroite = f_ki[k][i]+d.pente[k][i]*(dt[k]-s)+Gk_i[i][s];
 					imin = i;
 				}			
 			}
@@ -441,19 +445,19 @@ vector<int> lotsizdyn(data d){//vector< vector<float> > f_ki,vector< vector<floa
 	vector<int> stock (d.cardT,0);// = q0;
 	vector<int> xt (d.cardT,0);
 	xt[0] = x_ks[0][0];
-	stock[0] = xt[0] - d.dt[0];
+	stock[0] = xt[0] - dt[0];
 	//cout << "stock" << stock[0] << endl;
 	xt[1] = x_ks[1][stock[0]];
 	for (int z=1; z<d.cardT-2; ++z){		
-		stock[z]=(stock[z-1]+xt[z]-d.dt[z]);
+		stock[z]=(stock[z-1]+xt[z]-dt[z]);
 		xt[z+1] = (x_ks[z+1][stock[z]]);
 		//cout << "stock" << z << " : " << stock[z] << endl;
 		//cout << "xt" << z << " : " << xt[z+1] << endl;
 		
 	}
-	stock[d.cardT-2] = (stock[d.cardT-3]+xt[d.cardT-2]-d.dt[d.cardT-2]);
-	xt[d.cardT-1] = d.dt[d.cardT-1] - stock[d.cardT-2];
-	stock[d.cardT-1] = (stock[d.cardT-2]+xt[d.cardT-1]-d.dt[d.cardT-1]);
+	stock[d.cardT-2] = (stock[d.cardT-3]+xt[d.cardT-2]-dt[d.cardT-2]);
+	xt[d.cardT-1] = dt[d.cardT-1] - stock[d.cardT-2];
+	stock[d.cardT-1] = (stock[d.cardT-2]+xt[d.cardT-1]-dt[d.cardT-1]);
 
 	rt[0] = stock[0] - d.s0;
 	/*cout << "rt" << endl;
@@ -474,7 +478,7 @@ vector<int> lotsizdyn(data d){//vector< vector<float> > f_ki,vector< vector<floa
 		cout_tot += cout_reel(i,d.nb_bp,d.bpt,d.vald.bpt,d.pente,xt[i]);
 	}*/
 	//cout << "cout total : "<<cout_tot<<endl;
-	cout << "cout total : "<<F_ks[0][0]<<endl;
+	cout << "obj lotsizdyn : "<<F_ks[0][0]<<endl;
 	return rt;
 }
 
@@ -483,7 +487,7 @@ int main(){
 	//creation donnees test
 	int cardT = 10; 
 	int qmax = 20;
-	vector<int> d.dt = {5,10,15,20,25,12,45,24,12,65};
+	vector<int> dt = {5,10,15,20,25,12,45,24,12,65};
 	vector<vector<int> > d.bpt;
 	vector<vector<float> > d.vald.bpt;
 	vector<vector<float> > d.pente;

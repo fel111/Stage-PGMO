@@ -9,7 +9,7 @@ struct data{
 	vector<vector <int> > bpt;
 	vector< vector<float> > valbpt;
 	vector<vector<float> > pente;
-	vector<int> dt;
+	vector<float> dt;
 	// Data Ordo
 	int cardT, cardJ, cardM, cardR, s0, Q;
 	vector<int> pj;
@@ -22,6 +22,8 @@ struct data{
 };
 
 void modifPWL(data& d, vector<int> rt);
+void modifPWL(data& d, vector<float> rt);
+vector<int> dtToInt(data d, int choix);
 
 
 #endif

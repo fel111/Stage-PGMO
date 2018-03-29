@@ -59,6 +59,7 @@ OBJ=	modele_entier.o \
 		../Ordo_compact/ordo_comp.o \
 		../Lot_Sizing/Lot_Sizing_Dynamique/lotsizdyn2.o \
 		../Lot_Sizing/Lot_Sizing_Compact/lotsizingcom.o \
+		../Lot_Sizing/Lot_Sizing_Compact/lotsizcontcom.o \
 		../data_struct.o \
 		../Modele_compact/compact.o
 

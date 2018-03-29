@@ -1,11 +1,11 @@
 #ifndef ORDO_COMP_H
 #define ORDO_COMP_H
 
-#include<vector>
+#include <vector>
 #include "data_struct.h"
+//using namespace std;
 
-vector<int> ordo(data d);
-
+vector<float> ordo(data d);
 
 
 #endif

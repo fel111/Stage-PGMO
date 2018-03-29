@@ -14,6 +14,7 @@
 #include "Ordo_compact/ordo_comp.h"
 #include "Lot_Sizing/Lot_Sizing_Dynamique/lotsizdyn2.h"
 #include "Lot_Sizing/Lot_Sizing_Compact/lotsizingcom.h"
+#include "Lot_Sizing/Lot_Sizing_Compact/lotsizcontcom.h"
 #include "Modele_compact/compact.h"
 //#include <ilcplex/cplex.h>
 //#define SCIP_DEBUG
@@ -51,25 +52,34 @@ int main(){
 	cout << "MODELE COMPACT SOL :"<<endl;
 	modele_entier_compact(d);
 
-	cout << "DECOMPOSITION"<< endl<<endl;
+	cout << "DECOMPOSITION"<< endl;
+	d.dt = ordo(d);
+	data d2 = d;
+	vector<float> rt = lotsizcontcom(d);
+	modifPWL(d, rt);
 
 	int i=0;
 
 	while(i<15){
 
 
-		d.dt = ordo(d);
-		cout << "ORDO REALISE" << endl;
-		for(int i=0; i<d.cardT; ++i) cout << d.dt[i] <<" ";
+		d2.dt = ordo(d);
+		//cout << "ORDO REALISE" << endl;
+		//for(int i=0; i<d.cardT; ++i) cout << d.dt[i] <<" ";
+		//cout << endl;
+		
+		
+		//cout << "LOTSIZING CONT COMP"<<endl;
+		rt = lotsizcontcom(d2);
+
+		//cout << "LOTSIZING DYN"<<endl;
+		//vector<int> rt = lotsizdyn(d,1);
+		
 		cout << endl;
+		//lotsizdyn(d,2);
+
 		
-		
-
-
-		cout << "LOTSIZING DYN"<<endl;
-		vector<int> rt = lotsizdyn(d);
-
-		cout << "MODIFICATION PWL" << endl;
+		//cout << "MODIFICATION PWL" << endl;
 		modifPWL(d, rt);
 		++i;
 	}

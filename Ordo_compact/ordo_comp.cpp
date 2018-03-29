@@ -15,7 +15,7 @@ using namespace std;
 //int infini_int = numeric_limits<int>::max();
 
 
-vector<int> ordo(data d){
+vector<float> ordo(data d){
 	SCIP * scip;
 	SCIPcreate(&scip);
 	SCIPincludeDefaultPlugins(scip);
@@ -278,14 +278,15 @@ vector<int> ordo(data d){
 
 	SCIPsolve(scip);
 	SCIP_SOL * sol = SCIPgetBestSol(scip);
-	//cout << "obj ordo = " << SCIPgetSolOrigObj(scip,sol) << endl << endl;
+	cout << "obj ordo = " << SCIPgetSolOrigObj(scip,sol) << endl;
 	//SCIPprintBestSol(scip,filed,true); 	
 	//fclose(filed);
-	vector<int> prod;
+	vector<float> prod;
 	//cout << "production :" << endl;	
 	for(int i=0; i<d.cardT; ++i){
 		//cout << SCIPgetSolVal(scip,sol,xt[i]) << ", ";
-		prod.push_back(static_cast<int>(ceil(SCIPgetSolVal(scip,sol,xt[i]))));
+		//prod.push_back(static_cast<int>(ceil(SCIPgetSolVal(scip,sol,xt[i]))));
+		prod.push_back(SCIPgetSolVal(scip,sol,xt[i]));
 	}
 	//cout << endl;
 
