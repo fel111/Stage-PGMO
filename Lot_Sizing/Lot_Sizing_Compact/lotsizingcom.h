@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void lotsizcomp(data d);
+void lotsizcomp(data d, int choix);
 
 
 #endif

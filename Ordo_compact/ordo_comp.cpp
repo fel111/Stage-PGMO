@@ -15,7 +15,7 @@ using namespace std;
 //int infini_int = numeric_limits<int>::max();
 
 
-vector<float> ordo(data d){
+float ordo(data &d){
 	SCIP * scip;
 	SCIPcreate(&scip);
 	SCIPincludeDefaultPlugins(scip);
@@ -270,26 +270,30 @@ vector<float> ordo(data d){
 		SCIPaddCons(scip, cons_equil[t]);
 	}
 
-
-	//FILE * filed;
-	//filed = fopen("sol_ordo_comp", "w");
-	//SCIPprintOrigProblem(scip, filed, "lp", false);
+	/*FILE * filed;
+	filed = fopen("ordo_comp.lp", "a+");
+	SCIPprintOrigProblem(scip, filed, "lp", false);
+	fclose(filed);*/
 	
 
 	SCIPsolve(scip);
 	SCIP_SOL * sol = SCIPgetBestSol(scip);
 	cout << "obj ordo = " << SCIPgetSolOrigObj(scip,sol) << endl;
 	//SCIPprintBestSol(scip,filed,true); 	
-	//fclose(filed);
 	vector<float> prod;
-	//cout << "production :" << endl;	
+	cout << "demande : ";	
 	for(int i=0; i<d.cardT; ++i){
 		//cout << SCIPgetSolVal(scip,sol,xt[i]) << ", ";
 		//prod.push_back(static_cast<int>(ceil(SCIPgetSolVal(scip,sol,xt[i]))));
-		prod.push_back(SCIPgetSolVal(scip,sol,xt[i]));
+		prod.push_back(roundd(SCIPgetSolVal(scip,sol,xt[i])));
+		cout << prod[i] << " ";
 	}
-	//cout << endl;
+	cout << endl;
 
-	return prod;
+	d.dt = prod;
+
+	return SCIPgetSolOrigObj(scip,sol);
+
+	SCIPfree(&scip);
 
 }

@@ -70,7 +70,7 @@ void lecture_demande(string file, vector<int> & d.dt){
 }*/
 
 
-vector<float> lotsizcontcom(data d){
+float lotsizcontcom(data d, vector<float> &varia){
 	SCIP * scip;
 	SCIPcreate(&scip);
 	SCIPincludeDefaultPlugins(scip);
@@ -102,7 +102,7 @@ vector<float> lotsizcontcom(data d){
 	}
 
 	//ajout variables xt temp
-	vector<vector<SCIP_VAR *> > xtemp;
+	/*vector<vector<SCIP_VAR *> > xtemp;
 	for(int i=0; i<d.cardT; ++i){
 		vector<SCIP_VAR *> v;
 		xtemp.push_back(v);
@@ -112,7 +112,7 @@ vector<float> lotsizcontcom(data d){
 			SCIPcreateVarBasic(scip, &(xtemp[i][j]), ("xtemp"+to_string(i)+to_string(j)).c_str(), 0, SCIP_REAL_MAX, 0.0, SCIP_VARTYPE_CONTINUOUS);
 			SCIPaddVar(scip,xtemp[i][j]);		
 		}	
-	}
+	}*/
 
 	
 	//ajout variables st de stock
@@ -158,9 +158,10 @@ vector<float> lotsizcontcom(data d){
 		SCIPcreateConsLinear(scip, &cons_ct[i], ("cons_ct"+to_string(i)).c_str(), 0, 0, 0, 0, 0, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
 		SCIPaddCoefLinear(scip, cons_ct[i], ct[i],1);		
 		for(int j=0; j<d.nb_bp[i]; ++j){
-			//SCIPaddCoefLinear(scip, cons_ct[i], xt[i][j],-d.pente[i][j]);
-			SCIPaddCoefLinear(scip, cons_ct[i], xtemp[i][j],-d.pente[i][j]);
-			SCIPaddCoefLinear(scip, cons_ct[i], ztj[i][j],-d.valbpt[i][j]);
+			SCIPaddCoefLinear(scip, cons_ct[i], xt[i][j],-d.pente[i][j]);
+			//SCIPaddCoefLinear(scip, cons_ct[i], xtemp[i][j],-d.pente[i][j]);
+			//SCIPaddCoefLinear(scip, cons_ct[i], ztj[i][j],-d.valbpt[i][j]);
+			SCIPaddCoefLinear(scip, cons_ct[i], ztj[i][j],-d.valbpt[i][j]+d.pente[i][j]*d.bpt[i][j]);
 		}
 		SCIPaddCons(scip, cons_ct[i]);
 	}
@@ -221,7 +222,7 @@ vector<float> lotsizcontcom(data d){
 	}
 
 	// contrainte xtemp_ij = x_ij - d.bpt_ij
-	vector<vector<SCIP_CONS *> > cons_xtemp;
+	/*vector<vector<SCIP_CONS *> > cons_xtemp;
 	for(int i=0; i<d.cardT; ++i){
 		vector<SCIP_CONS *> c;
 		cons_xtemp.push_back(c);
@@ -234,7 +235,7 @@ vector<float> lotsizcontcom(data d){
 			SCIPaddCoefLinear(scip, cons_xtemp[i][j], ztj[i][j],d.bpt[i][j]);
 			SCIPaddCons(scip, cons_xtemp[i][j]);
 		}
-	}
+	}*/
 
 	
 	//contraintes bilan energetique
@@ -269,18 +270,18 @@ vector<float> lotsizcontcom(data d){
 	SCIPaddCoefLinear(scip, cons_st0, st[0], 1);
 	SCIPaddCons(scip, cons_st0);
 	
-	FILE * filed;
-	filed = fopen("SolLotSizComp", "a+");
-	SCIPprintOrigProblem(scip, filed, "lp", false);
-	fclose(filed);
+	
 
 	//RESOLUTION
 	SCIPsolve(scip);
 	//RECUPERATION
 	SCIP_SOL * sol = SCIPgetBestSol(scip);
-	cout << "obj = " << SCIPgetSolOrigObj(scip,sol) << endl << endl;
+	cout << "obj lotsizcontcomp = " << SCIPgetSolOrigObj(scip,sol) << endl;
 
-
+	/*FILE * filed;
+	filed = fopen("SolLotSizContComp", "a+");
+	SCIPprintBestSol(scip, filed, 0);
+	fclose(filed);*/
 
 	vector<float> variat (d.cardT,0.0);
 	vector<float> stock (d.cardT,0.0);
@@ -295,7 +296,7 @@ vector<float> lotsizcontcom(data d){
 	}*/
 	//cout << "stock :" << endl;	
 	for(int i=0; i<d.cardT; ++i){
-		stock[i] = SCIPgetSolVal(scip,sol,st[i]);
+		stock[i] = roundd(SCIPgetSolVal(scip,sol,st[i]),5);
 		//cout << "s"<<i<<" = "<<SCIPgetSolVal(scip,sol,st[i]) << endl;
 	}
 	variat[0] = stock[0] - d.s0;
@@ -304,6 +305,11 @@ vector<float> lotsizcontcom(data d){
 		//cout << rt[t] << endl;
 	}
 	//cout << endl;
+	/*cout << "variations : ";
+	for(int i=0; i<d.cardT; ++i){
+		cout << variat[i] << " ";
+	}
+	cout << endl;*/
 
 	/*for(int i=0;i<d.cardT;++i){
 		for(int j=0; j<d.nb_bp[i]; ++j){
@@ -316,7 +322,10 @@ vector<float> lotsizcontcom(data d){
 	}*/
 	//SCIPreleaseVar(&xt);
 	//SCIPfree(&scip);
-	return variat;
+	varia = variat;
+	return SCIPgetSolOrigObj(scip,sol);
+
+	SCIPfree(&scip);
 
 }
 

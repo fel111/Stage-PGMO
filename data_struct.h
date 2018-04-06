@@ -2,7 +2,10 @@
 #define DATA_STRUCT_H
 
 #include <vector>
+
 using namespace std;
+
+
 struct data{
 	// PWD
 	vector<int> nb_bp;
@@ -24,6 +27,7 @@ struct data{
 void modifPWL(data& d, vector<int> rt);
 void modifPWL(data& d, vector<float> rt);
 vector<int> dtToInt(data d, int choix);
+float roundd(double var, int nbdec);
 
 
 #endif

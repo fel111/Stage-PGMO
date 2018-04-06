@@ -5,7 +5,7 @@
 #include "data_struct.h"
 //using namespace std;
 
-vector<float> ordo(data d);
+float ordo(data &d);
 
 
 #endif

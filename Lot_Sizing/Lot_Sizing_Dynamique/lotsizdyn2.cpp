@@ -39,7 +39,7 @@ float g_ki(int i,int k,vector< vector<float> > f_ks,vector<vector <float> > pent
 	return pente[k][i]*tau+func_fks(f_ks,k+1,tau,bk);
 	
 }
-
+/*
 //a inclure dans un header ensuite
 void lecture_pwd(string file, vector<vector<int> >& bpt, vector<vector<float> >& valbpt, vector<vector<float> >& pente){
 
@@ -93,7 +93,7 @@ void lecture_demande(string file, vector<int> & dt){
 		cout << "erreur lecture fichier" << endl;
 	}
 }
-/*
+
 void lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector< vector<float> > valbpt,vector< vector<int> > bpt,vector<vector <float> > pente,int q_max){//vector< vector<float> > f_ki,vector< vector<float> > g_ki){//vector<int> q0){
 	//debut timer
 	//auto start = chrono::high_resolution_clock::now();
@@ -287,7 +287,6 @@ vector<int> lotsizdyn(data d, int choix){//vector< vector<float> > f_ki,vector< 
 	//auto start = chrono::high_resolution_clock::now();
 		
 
-
 	//dtToInt(d);
 	vector<int> dt = dtToInt(d,choix);
 	vector< vector<float> > f_ki (d.cardT, vector<float> (d.nb_bp[0],0.0));
@@ -300,7 +299,7 @@ vector<int> lotsizdyn(data d, int choix){//vector< vector<float> > f_ki,vector< 
 
 	//vector<int> bk (d.cardT, d.Q);
 	vector< vector<float> > F_ks (d.cardT, vector<float> (d.Q+1,0.0));
-	vector< vector<int> > x_ks (d.cardT, vector<int> (d.Q+1,0.0));
+	vector< vector<int> > x_ks (d.cardT, vector<int> (d.Q+1,0));
 
 	//calcul F_Ts
 	//cout <<"F["<<d.cardT-1<<"] = [";
@@ -433,6 +432,7 @@ vector<int> lotsizdyn(data d, int choix){//vector< vector<float> > f_ki,vector< 
 		//cout << "]"<<endl;
 		
 	}
+	
 	/*for(int k=0; k<d.cardT; ++k){
 		for(int s=0; s<=d.Q; ++s){
 			cout <<"x["<<k<<"]["<<s<<"] = "<<x_ks[k][s] <<endl;
@@ -445,10 +445,12 @@ vector<int> lotsizdyn(data d, int choix){//vector< vector<float> > f_ki,vector< 
 	vector<int> stock (d.cardT,0);// = q0;
 	vector<int> xt (d.cardT,0);
 	xt[0] = x_ks[0][0];
+	//cout << "xt0 : " << xt[0] << endl;
 	stock[0] = xt[0] - dt[0];
 	//cout << "stock" << stock[0] << endl;
 	xt[1] = x_ks[1][stock[0]];
-	for (int z=1; z<d.cardT-2; ++z){		
+	//cout << "test" << endl;
+	for (int z=1; z<d.cardT-2; ++z){	
 		stock[z]=(stock[z-1]+xt[z]-dt[z]);
 		xt[z+1] = (x_ks[z+1][stock[z]]);
 		//cout << "stock" << z << " : " << stock[z] << endl;
@@ -468,8 +470,8 @@ vector<int> lotsizdyn(data d, int choix){//vector< vector<float> > f_ki,vector< 
 	}
 
 	/*for(int i=0;i<d.cardT;++i){
-		cout << "stock" << i << " : " << stock[i] << endl;
-	}	
+		cout << "demande, production, stock" << i << " : " << dt[i] << " " << xt[i] << " "<<stock[i] << endl;
+	}
 	for(int i=0;i<d.cardT;++i){
 		cout << "xt" << i << " : " << xt[i] << endl;	
 	}*/
@@ -478,7 +480,7 @@ vector<int> lotsizdyn(data d, int choix){//vector< vector<float> > f_ki,vector< 
 		cout_tot += cout_reel(i,d.nb_bp,d.bpt,d.vald.bpt,d.pente,xt[i]);
 	}*/
 	//cout << "cout total : "<<cout_tot<<endl;
-	cout << "obj lotsizdyn : "<<F_ks[0][0]<<endl;
+	//cout << "obj lotsizdyn : "<<F_ks[0][0]<<endl;
 	return rt;
 }
 

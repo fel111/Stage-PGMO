@@ -49,28 +49,35 @@ int main(){
 	d.Djk = {{10.0,20.3},{12.1,30.2},{12.4,5.2},{17.1,54.6}};
 
 
+	data dinit = d;
+	float solOrdo, solLotSiz;
+	vector<float> rt;
+
 	cout << "MODELE COMPACT SOL :"<<endl;
 	modele_entier_compact(d);
 
 	cout << "DECOMPOSITION"<< endl;
-	d.dt = ordo(d);
-	data d2 = d;
-	vector<float> rt = lotsizcontcom(d);
+	solOrdo = ordo(d);
+	
+	solLotSiz = lotsizcontcom(d, rt);
 	modifPWL(d, rt);
 
 	int i=0;
 
-	while(i<15){
 
 
-		d2.dt = ordo(d);
+	while(i<20){
+	//while(solOrdo != solLotSiz){
+
+
+		solOrdo = ordo(d);
 		//cout << "ORDO REALISE" << endl;
 		//for(int i=0; i<d.cardT; ++i) cout << d.dt[i] <<" ";
 		//cout << endl;
 		
 		
 		//cout << "LOTSIZING CONT COMP"<<endl;
-		rt = lotsizcontcom(d2);
+		solLotSiz = lotsizcontcom(d, rt);
 
 		//cout << "LOTSIZING DYN"<<endl;
 		//vector<int> rt = lotsizdyn(d,1);
@@ -78,12 +85,12 @@ int main(){
 		cout << endl;
 		//lotsizdyn(d,2);
 
-		
+		d = dinit;
 		//cout << "MODIFICATION PWL" << endl;
 		modifPWL(d, rt);
+		
 		++i;
 	}
-
 
 
 

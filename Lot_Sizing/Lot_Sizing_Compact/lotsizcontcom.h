@@ -6,7 +6,7 @@
 
 using namespace std;
 
-vector<float> lotsizcontcom(data d);
+float lotsizcontcom(data d, vector<float> &varia);
 
 
 #endif

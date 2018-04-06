@@ -38,7 +38,9 @@
                 "/home/fgoupil/Téléchargements/scipoptsuite-5.0.1/scip/src",
                 "/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed",
                 "/usr/include/x86_64-linux-gnu",
-                "/usr/include"
+                "/usr/include",
+                "/home/fgoupil/CPLEX_Studio1271/cplex/include",
+                "home/fgoupil/CPLEX_Studio1271/concert/include"
             ],
             "defines": [],
             "intelliSenseMode": "clang-x64",

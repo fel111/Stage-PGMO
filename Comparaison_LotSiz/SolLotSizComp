@@ -1,0 +1,1931 @@
+no solution available
+\ SCIP STATISTICS
+\   Problem name     : LotSizingComp
+\   Variables        : 220 (80 binary, 120 integer, 0 implicit integer, 20 continuous)
+\   Constraints      : 241
+\   Obj. scale       : 1
+\   Obj. offset      : 0
+Minimize
+ Obj: +1 ct0 +1 ct1 +1 ct2 +1 ct3 +1 ct4 +1 ct5 +1 ct6 +1 ct7 +1 ct8 +1 ct9 +1 ct10 +1 ct11 +1 ct12 +1 ct13
+      +1 ct14 +1 ct15 +1 ct16 +1 ct17 +1 ct18 +1 ct19
+Subject to
+ cons_ct0: +1 ct0 -2.20000004768372 xt00 -4.90000009536743 xt01 +67.5 ztj01 -1.10000002384186 xt02 -122.5 ztj02
+  -1.89999997615814 xt03 -62.5 ztj03 = +0
+ cons_ct1: +1 ct1 -2.20000004768372 xt10 -4.90000009536743 xt11 +67.5 ztj11 -1.10000002384186 xt12 -122.5 ztj12
+  -1.89999997615814 xt13 -62.5 ztj13 = +0
+ cons_ct2: +1 ct2 -2.20000004768372 xt20 -4.90000009536743 xt21 +67.5 ztj21 -1.10000002384186 xt22 -122.5 ztj22
+  -1.89999997615814 xt23 -62.5 ztj23 = +0
+ cons_ct3: +1 ct3 -2.20000004768372 xt30 -4.90000009536743 xt31 +67.5 ztj31 -1.10000002384186 xt32 -122.5 ztj32
+  -1.89999997615814 xt33 -62.5 ztj33 = +0
+ cons_ct4: +1 ct4 -2.20000004768372 xt40 -4.90000009536743 xt41 +67.5 ztj41 -1.10000002384186 xt42 -122.5 ztj42
+  -1.89999997615814 xt43 -62.5 ztj43 = +0
+ cons_ct5: +1 ct5 -2.20000004768372 xt50 -4.90000009536743 xt51 +67.5 ztj51 -1.10000002384186 xt52 -122.5 ztj52
+  -1.89999997615814 xt53 -62.5 ztj53 = +0
+ cons_ct6: +1 ct6 -2.20000004768372 xt60 -4.90000009536743 xt61 +67.5 ztj61 -1.10000002384186 xt62 -122.5 ztj62
+  -1.89999997615814 xt63 -62.5 ztj63 = +0
+ cons_ct7: +1 ct7 -2.20000004768372 xt70 -4.90000009536743 xt71 +67.5 ztj71 -1.10000002384186 xt72 -122.5 ztj72
+  -1.89999997615814 xt73 -62.5 ztj73 = +0
+ cons_ct8: +1 ct8 -2.20000004768372 xt80 -4.90000009536743 xt81 +67.5 ztj81 -1.10000002384186 xt82 -122.5 ztj82
+  -1.89999997615814 xt83 -62.5 ztj83 = +0
+ cons_ct9: +1 ct9 -2.20000004768372 xt90 -4.90000009536743 xt91 +67.5 ztj91 -1.10000002384186 xt92 -122.5 ztj92
+  -1.89999997615814 xt93 -62.5 ztj93 = +0
+ cons_ct10: +1 ct10 -2.20000004768372 xt100 -4.90000009536743 xt101 +67.5 ztj101 -1.10000002384186 xt102
+  -122.5 ztj102 -1.89999997615814 xt103 -62.5 ztj103 = +0
+ cons_ct11: +1 ct11 -2.20000004768372 xt110 -4.90000009536743 xt111 +67.5 ztj111 -1.10000002384186 xt112
+  -122.5 ztj112 -1.89999997615814 xt113 -62.5 ztj113 = +0
+ cons_ct12: +1 ct12 -2.20000004768372 xt120 -4.90000009536743 xt121 +67.5 ztj121 -1.10000002384186 xt122
+  -122.5 ztj122 -1.89999997615814 xt123 -62.5 ztj123 = +0
+ cons_ct13: +1 ct13 -2.20000004768372 xt130 -4.90000009536743 xt131 +67.5 ztj131 -1.10000002384186 xt132
+  -122.5 ztj132 -1.89999997615814 xt133 -62.5 ztj133 = +0
+ cons_ct14: +1 ct14 -2.20000004768372 xt140 -4.90000009536743 xt141 +67.5 ztj141 -1.10000002384186 xt142
+  -122.5 ztj142 -1.89999997615814 xt143 -62.5 ztj143 = +0
+ cons_ct15: +1 ct15 -2.20000004768372 xt150 -4.90000009536743 xt151 +67.5 ztj151 -1.10000002384186 xt152
+  -122.5 ztj152 -1.89999997615814 xt153 -62.5 ztj153 = +0
+ cons_ct16: +1 ct16 -2.20000004768372 xt160 -4.90000009536743 xt161 +67.5 ztj161 -1.10000002384186 xt162
+  -122.5 ztj162 -1.89999997615814 xt163 -62.5 ztj163 = +0
+ cons_ct17: +1 ct17 -2.20000004768372 xt170 -4.90000009536743 xt171 +67.5 ztj171 -1.10000002384186 xt172
+  -122.5 ztj172 -1.89999997615814 xt173 -62.5 ztj173 = +0
+ cons_ct18: +1 ct18 -2.20000004768372 xt180 -4.90000009536743 xt181 +67.5 ztj181 -1.10000002384186 xt182
+  -122.5 ztj182 -1.89999997615814 xt183 -62.5 ztj183 = +0
+ cons_ct19: +1 ct19 -2.20000004768372 xt190 -4.90000009536743 xt191 +67.5 ztj191 -1.10000002384186 xt192
+  -122.5 ztj192 -1.89999997615814 xt193 -62.5 ztj193 = +0
+ cons_z_binf00: +1 xt00 >= +0
+ cons_z_binf01: +1 xt01 -25 ztj01 >= +0
+ cons_z_binf02: +1 xt02 -50 ztj02 >= +0
+ cons_z_binf03: +1 xt03 -75 ztj03 >= +0
+ cons_z_binf10: +1 xt10 >= +0
+ cons_z_binf11: +1 xt11 -25 ztj11 >= +0
+ cons_z_binf12: +1 xt12 -50 ztj12 >= +0
+ cons_z_binf13: +1 xt13 -75 ztj13 >= +0
+ cons_z_binf20: +1 xt20 >= +0
+ cons_z_binf21: +1 xt21 -25 ztj21 >= +0
+ cons_z_binf22: +1 xt22 -50 ztj22 >= +0
+ cons_z_binf23: +1 xt23 -75 ztj23 >= +0
+ cons_z_binf30: +1 xt30 >= +0
+ cons_z_binf31: +1 xt31 -25 ztj31 >= +0
+ cons_z_binf32: +1 xt32 -50 ztj32 >= +0
+ cons_z_binf33: +1 xt33 -75 ztj33 >= +0
+ cons_z_binf40: +1 xt40 >= +0
+ cons_z_binf41: +1 xt41 -25 ztj41 >= +0
+ cons_z_binf42: +1 xt42 -50 ztj42 >= +0
+ cons_z_binf43: +1 xt43 -75 ztj43 >= +0
+ cons_z_binf50: +1 xt50 >= +0
+ cons_z_binf51: +1 xt51 -25 ztj51 >= +0
+ cons_z_binf52: +1 xt52 -50 ztj52 >= +0
+ cons_z_binf53: +1 xt53 -75 ztj53 >= +0
+ cons_z_binf60: +1 xt60 >= +0
+ cons_z_binf61: +1 xt61 -25 ztj61 >= +0
+ cons_z_binf62: +1 xt62 -50 ztj62 >= +0
+ cons_z_binf63: +1 xt63 -75 ztj63 >= +0
+ cons_z_binf70: +1 xt70 >= +0
+ cons_z_binf71: +1 xt71 -25 ztj71 >= +0
+ cons_z_binf72: +1 xt72 -50 ztj72 >= +0
+ cons_z_binf73: +1 xt73 -75 ztj73 >= +0
+ cons_z_binf80: +1 xt80 >= +0
+ cons_z_binf81: +1 xt81 -25 ztj81 >= +0
+ cons_z_binf82: +1 xt82 -50 ztj82 >= +0
+ cons_z_binf83: +1 xt83 -75 ztj83 >= +0
+ cons_z_binf90: +1 xt90 >= +0
+ cons_z_binf91: +1 xt91 -25 ztj91 >= +0
+ cons_z_binf92: +1 xt92 -50 ztj92 >= +0
+ cons_z_binf93: +1 xt93 -75 ztj93 >= +0
+ cons_z_binf100: +1 xt100 >= +0
+ cons_z_binf101: +1 xt101 -25 ztj101 >= +0
+ cons_z_binf102: +1 xt102 -50 ztj102 >= +0
+ cons_z_binf103: +1 xt103 -75 ztj103 >= +0
+ cons_z_binf110: +1 xt110 >= +0
+ cons_z_binf111: +1 xt111 -25 ztj111 >= +0
+ cons_z_binf112: +1 xt112 -50 ztj112 >= +0
+ cons_z_binf113: +1 xt113 -75 ztj113 >= +0
+ cons_z_binf120: +1 xt120 >= +0
+ cons_z_binf121: +1 xt121 -25 ztj121 >= +0
+ cons_z_binf122: +1 xt122 -50 ztj122 >= +0
+ cons_z_binf123: +1 xt123 -75 ztj123 >= +0
+ cons_z_binf130: +1 xt130 >= +0
+ cons_z_binf131: +1 xt131 -25 ztj131 >= +0
+ cons_z_binf132: +1 xt132 -50 ztj132 >= +0
+ cons_z_binf133: +1 xt133 -75 ztj133 >= +0
+ cons_z_binf140: +1 xt140 >= +0
+ cons_z_binf141: +1 xt141 -25 ztj141 >= +0
+ cons_z_binf142: +1 xt142 -50 ztj142 >= +0
+ cons_z_binf143: +1 xt143 -75 ztj143 >= +0
+ cons_z_binf150: +1 xt150 >= +0
+ cons_z_binf151: +1 xt151 -25 ztj151 >= +0
+ cons_z_binf152: +1 xt152 -50 ztj152 >= +0
+ cons_z_binf153: +1 xt153 -75 ztj153 >= +0
+ cons_z_binf160: +1 xt160 >= +0
+ cons_z_binf161: +1 xt161 -25 ztj161 >= +0
+ cons_z_binf162: +1 xt162 -50 ztj162 >= +0
+ cons_z_binf163: +1 xt163 -75 ztj163 >= +0
+ cons_z_binf170: +1 xt170 >= +0
+ cons_z_binf171: +1 xt171 -25 ztj171 >= +0
+ cons_z_binf172: +1 xt172 -50 ztj172 >= +0
+ cons_z_binf173: +1 xt173 -75 ztj173 >= +0
+ cons_z_binf180: +1 xt180 >= +0
+ cons_z_binf181: +1 xt181 -25 ztj181 >= +0
+ cons_z_binf182: +1 xt182 -50 ztj182 >= +0
+ cons_z_binf183: +1 xt183 -75 ztj183 >= +0
+ cons_z_binf190: +1 xt190 >= +0
+ cons_z_binf191: +1 xt191 -25 ztj191 >= +0
+ cons_z_binf192: +1 xt192 -50 ztj192 >= +0
+ cons_z_binf193: +1 xt193 -75 ztj193 >= +0
+ cons_z_bsup00: +1 xt00 -24 ztj00 <= +0
+ cons_z_bsup01: +1 xt01 -49 ztj01 <= +0
+ cons_z_bsup02: +1 xt02 -74 ztj02 <= +0
+ cons_z_bsup03: +1 xt03 +1 ztj03 <= +0
+ cons_z_bsup10: +1 xt10 -24 ztj10 <= +0
+ cons_z_bsup11: +1 xt11 -49 ztj11 <= +0
+ cons_z_bsup12: +1 xt12 -74 ztj12 <= +0
+ cons_z_bsup13: +1 xt13 +1 ztj13 <= +0
+ cons_z_bsup20: +1 xt20 -24 ztj20 <= +0
+ cons_z_bsup21: +1 xt21 -49 ztj21 <= +0
+ cons_z_bsup22: +1 xt22 -74 ztj22 <= +0
+ cons_z_bsup23: +1 xt23 +1 ztj23 <= +0
+ cons_z_bsup30: +1 xt30 -24 ztj30 <= +0
+ cons_z_bsup31: +1 xt31 -49 ztj31 <= +0
+ cons_z_bsup32: +1 xt32 -74 ztj32 <= +0
+ cons_z_bsup33: +1 xt33 +1 ztj33 <= +0
+ cons_z_bsup40: +1 xt40 -24 ztj40 <= +0
+ cons_z_bsup41: +1 xt41 -49 ztj41 <= +0
+ cons_z_bsup42: +1 xt42 -74 ztj42 <= +0
+ cons_z_bsup43: +1 xt43 +1 ztj43 <= +0
+ cons_z_bsup50: +1 xt50 -24 ztj50 <= +0
+ cons_z_bsup51: +1 xt51 -49 ztj51 <= +0
+ cons_z_bsup52: +1 xt52 -74 ztj52 <= +0
+ cons_z_bsup53: +1 xt53 +1 ztj53 <= +0
+ cons_z_bsup60: +1 xt60 -24 ztj60 <= +0
+ cons_z_bsup61: +1 xt61 -49 ztj61 <= +0
+ cons_z_bsup62: +1 xt62 -74 ztj62 <= +0
+ cons_z_bsup63: +1 xt63 +1 ztj63 <= +0
+ cons_z_bsup70: +1 xt70 -24 ztj70 <= +0
+ cons_z_bsup71: +1 xt71 -49 ztj71 <= +0
+ cons_z_bsup72: +1 xt72 -74 ztj72 <= +0
+ cons_z_bsup73: +1 xt73 +1 ztj73 <= +0
+ cons_z_bsup80: +1 xt80 -24 ztj80 <= +0
+ cons_z_bsup81: +1 xt81 -49 ztj81 <= +0
+ cons_z_bsup82: +1 xt82 -74 ztj82 <= +0
+ cons_z_bsup83: +1 xt83 +1 ztj83 <= +0
+ cons_z_bsup90: +1 xt90 -24 ztj90 <= +0
+ cons_z_bsup91: +1 xt91 -49 ztj91 <= +0
+ cons_z_bsup92: +1 xt92 -74 ztj92 <= +0
+ cons_z_bsup93: +1 xt93 +1 ztj93 <= +0
+ cons_z_bsup100: +1 xt100 -24 ztj100 <= +0
+ cons_z_bsup101: +1 xt101 -49 ztj101 <= +0
+ cons_z_bsup102: +1 xt102 -74 ztj102 <= +0
+ cons_z_bsup103: +1 xt103 +1 ztj103 <= +0
+ cons_z_bsup110: +1 xt110 -24 ztj110 <= +0
+ cons_z_bsup111: +1 xt111 -49 ztj111 <= +0
+ cons_z_bsup112: +1 xt112 -74 ztj112 <= +0
+ cons_z_bsup113: +1 xt113 +1 ztj113 <= +0
+ cons_z_bsup120: +1 xt120 -24 ztj120 <= +0
+ cons_z_bsup121: +1 xt121 -49 ztj121 <= +0
+ cons_z_bsup122: +1 xt122 -74 ztj122 <= +0
+ cons_z_bsup123: +1 xt123 +1 ztj123 <= +0
+ cons_z_bsup130: +1 xt130 -24 ztj130 <= +0
+ cons_z_bsup131: +1 xt131 -49 ztj131 <= +0
+ cons_z_bsup132: +1 xt132 -74 ztj132 <= +0
+ cons_z_bsup133: +1 xt133 +1 ztj133 <= +0
+ cons_z_bsup140: +1 xt140 -24 ztj140 <= +0
+ cons_z_bsup141: +1 xt141 -49 ztj141 <= +0
+ cons_z_bsup142: +1 xt142 -74 ztj142 <= +0
+ cons_z_bsup143: +1 xt143 +1 ztj143 <= +0
+ cons_z_bsup150: +1 xt150 -24 ztj150 <= +0
+ cons_z_bsup151: +1 xt151 -49 ztj151 <= +0
+ cons_z_bsup152: +1 xt152 -74 ztj152 <= +0
+ cons_z_bsup153: +1 xt153 +1 ztj153 <= +0
+ cons_z_bsup160: +1 xt160 -24 ztj160 <= +0
+ cons_z_bsup161: +1 xt161 -49 ztj161 <= +0
+ cons_z_bsup162: +1 xt162 -74 ztj162 <= +0
+ cons_z_bsup163: +1 xt163 +1 ztj163 <= +0
+ cons_z_bsup170: +1 xt170 -24 ztj170 <= +0
+ cons_z_bsup171: +1 xt171 -49 ztj171 <= +0
+ cons_z_bsup172: +1 xt172 -74 ztj172 <= +0
+ cons_z_bsup173: +1 xt173 +1 ztj173 <= +0
+ cons_z_bsup180: +1 xt180 -24 ztj180 <= +0
+ cons_z_bsup181: +1 xt181 -49 ztj181 <= +0
+ cons_z_bsup182: +1 xt182 -74 ztj182 <= +0
+ cons_z_bsup183: +1 xt183 +1 ztj183 <= +0
+ cons_z_bsup190: +1 xt190 -24 ztj190 <= +0
+ cons_z_bsup191: +1 xt191 -49 ztj191 <= +0
+ cons_z_bsup192: +1 xt192 -74 ztj192 <= +0
+ cons_z_bsup193: +1 xt193 +1 ztj193 <= +0
+ cons_zsum0: +1 ztj00 +1 ztj01 +1 ztj02 +1 ztj03 = +1
+ cons_zsum1: +1 ztj10 +1 ztj11 +1 ztj12 +1 ztj13 = +1
+ cons_zsum2: +1 ztj20 +1 ztj21 +1 ztj22 +1 ztj23 = +1
+ cons_zsum3: +1 ztj30 +1 ztj31 +1 ztj32 +1 ztj33 = +1
+ cons_zsum4: +1 ztj40 +1 ztj41 +1 ztj42 +1 ztj43 = +1
+ cons_zsum5: +1 ztj50 +1 ztj51 +1 ztj52 +1 ztj53 = +1
+ cons_zsum6: +1 ztj60 +1 ztj61 +1 ztj62 +1 ztj63 = +1
+ cons_zsum7: +1 ztj70 +1 ztj71 +1 ztj72 +1 ztj73 = +1
+ cons_zsum8: +1 ztj80 +1 ztj81 +1 ztj82 +1 ztj83 = +1
+ cons_zsum9: +1 ztj90 +1 ztj91 +1 ztj92 +1 ztj93 = +1
+ cons_zsum10: +1 ztj100 +1 ztj101 +1 ztj102 +1 ztj103 = +1
+ cons_zsum11: +1 ztj110 +1 ztj111 +1 ztj112 +1 ztj113 = +1
+ cons_zsum12: +1 ztj120 +1 ztj121 +1 ztj122 +1 ztj123 = +1
+ cons_zsum13: +1 ztj130 +1 ztj131 +1 ztj132 +1 ztj133 = +1
+ cons_zsum14: +1 ztj140 +1 ztj141 +1 ztj142 +1 ztj143 = +1
+ cons_zsum15: +1 ztj150 +1 ztj151 +1 ztj152 +1 ztj153 = +1
+ cons_zsum16: +1 ztj160 +1 ztj161 +1 ztj162 +1 ztj163 = +1
+ cons_zsum17: +1 ztj170 +1 ztj171 +1 ztj172 +1 ztj173 = +1
+ cons_zsum18: +1 ztj180 +1 ztj181 +1 ztj182 +1 ztj183 = +1
+ cons_zsum19: +1 ztj190 +1 ztj191 +1 ztj192 +1 ztj193 = +1
+ cons_rt0: +1 rt0 -1 xt00 -1 xt01 -1 xt02 -1 xt03 = +0
+ cons_rt1: +1 rt1 -1 xt10 -1 xt11 -1 xt12 -1 xt13 = +0
+ cons_rt2: +1 rt2 -1 xt20 -1 xt21 -1 xt22 -1 xt23 = +0
+ cons_rt3: +1 rt3 -1 xt30 -1 xt31 -1 xt32 -1 xt33 = +0
+ cons_rt4: +1 rt4 -1 xt40 -1 xt41 -1 xt42 -1 xt43 = +0
+ cons_rt5: +1 rt5 -1 xt50 -1 xt51 -1 xt52 -1 xt53 = +0
+ cons_rt6: +1 rt6 -1 xt60 -1 xt61 -1 xt62 -1 xt63 = +0
+ cons_rt7: +1 rt7 -1 xt70 -1 xt71 -1 xt72 -1 xt73 = +0
+ cons_rt8: +1 rt8 -1 xt80 -1 xt81 -1 xt82 -1 xt83 = +0
+ cons_rt9: +1 rt9 -1 xt90 -1 xt91 -1 xt92 -1 xt93 = +0
+ cons_rt10: +1 rt10 -1 xt100 -1 xt101 -1 xt102 -1 xt103 = +0
+ cons_rt11: +1 rt11 -1 xt110 -1 xt111 -1 xt112 -1 xt113 = +0
+ cons_rt12: +1 rt12 -1 xt120 -1 xt121 -1 xt122 -1 xt123 = +0
+ cons_rt13: +1 rt13 -1 xt130 -1 xt131 -1 xt132 -1 xt133 = +0
+ cons_rt14: +1 rt14 -1 xt140 -1 xt141 -1 xt142 -1 xt143 = +0
+ cons_rt15: +1 rt15 -1 xt150 -1 xt151 -1 xt152 -1 xt153 = +0
+ cons_rt16: +1 rt16 -1 xt160 -1 xt161 -1 xt162 -1 xt163 = +0
+ cons_rt17: +1 rt17 -1 xt170 -1 xt171 -1 xt172 -1 xt173 = +0
+ cons_rt18: +1 rt18 -1 xt180 -1 xt181 -1 xt182 -1 xt183 = +0
+ cons_rt19: +1 rt19 -1 xt190 -1 xt191 -1 xt192 -1 xt193 = +0
+ cons_dt0: -1 st0 +1 rt0 = +18
+ cons_dt1: -1 st1 +1 st0 +1 rt1 = +4
+ cons_dt2: -1 st2 +1 st1 +1 rt2 = +31
+ cons_dt3: -1 st3 +1 st2 +1 rt3 = +48
+ cons_dt4: -1 st4 +1 st3 +1 rt4 = +6
+ cons_dt5: -1 st5 +1 st4 +1 rt5 = +88
+ cons_dt6: -1 st6 +1 st5 +1 rt6 = +33
+ cons_dt7: -1 st7 +1 st6 +1 rt7 = +71
+ cons_dt8: -1 st8 +1 st7 +1 rt8 = +87
+ cons_dt9: -1 st9 +1 st8 +1 rt9 = +55
+ cons_dt10: -1 st10 +1 st9 +1 rt10 = +44
+ cons_dt11: -1 st11 +1 st10 +1 rt11 = +65
+ cons_dt12: -1 st12 +1 st11 +1 rt12 = +81
+ cons_dt13: -1 st13 +1 st12 +1 rt13 = +49
+ cons_dt14: -1 st14 +1 st13 +1 rt14 = +2
+ cons_dt15: -1 st15 +1 st14 +1 rt15 = +6
+ cons_dt16: -1 st16 +1 st15 +1 rt16 = +72
+ cons_dt17: -1 st17 +1 st16 +1 rt17 = +51
+ cons_dt18: -1 st18 +1 st17 +1 rt18 = +30
+ cons_dt19: -1 st19 +1 st18 +1 rt19 = +80
+ cons_stmax: +1 st19 = +0
+Bounds
+ 0 <= ztj00 <= 1
+ 0 <= ztj01 <= 1
+ 0 <= ztj02 <= 1
+ 0 <= ztj03 <= 1
+ 0 <= ztj10 <= 1
+ 0 <= ztj11 <= 1
+ 0 <= ztj12 <= 1
+ 0 <= ztj13 <= 1
+ 0 <= ztj20 <= 1
+ 0 <= ztj21 <= 1
+ 0 <= ztj22 <= 1
+ 0 <= ztj23 <= 1
+ 0 <= ztj30 <= 1
+ 0 <= ztj31 <= 1
+ 0 <= ztj32 <= 1
+ 0 <= ztj33 <= 1
+ 0 <= ztj40 <= 1
+ 0 <= ztj41 <= 1
+ 0 <= ztj42 <= 1
+ 0 <= ztj43 <= 1
+ 0 <= ztj50 <= 1
+ 0 <= ztj51 <= 1
+ 0 <= ztj52 <= 1
+ 0 <= ztj53 <= 1
+ 0 <= ztj60 <= 1
+ 0 <= ztj61 <= 1
+ 0 <= ztj62 <= 1
+ 0 <= ztj63 <= 1
+ 0 <= ztj70 <= 1
+ 0 <= ztj71 <= 1
+ 0 <= ztj72 <= 1
+ 0 <= ztj73 <= 1
+ 0 <= ztj80 <= 1
+ 0 <= ztj81 <= 1
+ 0 <= ztj82 <= 1
+ 0 <= ztj83 <= 1
+ 0 <= ztj90 <= 1
+ 0 <= ztj91 <= 1
+ 0 <= ztj92 <= 1
+ 0 <= ztj93 <= 1
+ 0 <= ztj100 <= 1
+ 0 <= ztj101 <= 1
+ 0 <= ztj102 <= 1
+ 0 <= ztj103 <= 1
+ 0 <= ztj110 <= 1
+ 0 <= ztj111 <= 1
+ 0 <= ztj112 <= 1
+ 0 <= ztj113 <= 1
+ 0 <= ztj120 <= 1
+ 0 <= ztj121 <= 1
+ 0 <= ztj122 <= 1
+ 0 <= ztj123 <= 1
+ 0 <= ztj130 <= 1
+ 0 <= ztj131 <= 1
+ 0 <= ztj132 <= 1
+ 0 <= ztj133 <= 1
+ 0 <= ztj140 <= 1
+ 0 <= ztj141 <= 1
+ 0 <= ztj142 <= 1
+ 0 <= ztj143 <= 1
+ 0 <= ztj150 <= 1
+ 0 <= ztj151 <= 1
+ 0 <= ztj152 <= 1
+ 0 <= ztj153 <= 1
+ 0 <= ztj160 <= 1
+ 0 <= ztj161 <= 1
+ 0 <= ztj162 <= 1
+ 0 <= ztj163 <= 1
+ 0 <= ztj170 <= 1
+ 0 <= ztj171 <= 1
+ 0 <= ztj172 <= 1
+ 0 <= ztj173 <= 1
+ 0 <= ztj180 <= 1
+ 0 <= ztj181 <= 1
+ 0 <= ztj182 <= 1
+ 0 <= ztj183 <= 1
+ 0 <= ztj190 <= 1
+ 0 <= ztj191 <= 1
+ 0 <= ztj192 <= 1
+ 0 <= ztj193 <= 1
+ 0 <= st0 <= 100
+ 0 <= st1 <= 100
+ 0 <= st2 <= 100
+ 0 <= st3 <= 100
+ 0 <= st4 <= 100
+ 0 <= st5 <= 100
+ 0 <= st6 <= 100
+ 0 <= st7 <= 100
+ 0 <= st8 <= 100
+ 0 <= st9 <= 100
+ 0 <= st10 <= 100
+ 0 <= st11 <= 100
+ 0 <= st12 <= 100
+ 0 <= st13 <= 100
+ 0 <= st14 <= 100
+ 0 <= st15 <= 100
+ 0 <= st16 <= 100
+ 0 <= st17 <= 100
+ 0 <= st18 <= 100
+ 0 <= st19 <= 100
+Binaries
+ ztj00 ztj01 ztj02 ztj03 ztj10 ztj11 ztj12 ztj13 ztj20 ztj21 ztj22 ztj23 ztj30 ztj31 ztj32 ztj33 ztj40
+ ztj41 ztj42 ztj43 ztj50 ztj51 ztj52 ztj53 ztj60 ztj61 ztj62 ztj63 ztj70 ztj71 ztj72 ztj73 ztj80 ztj81
+ ztj82 ztj83 ztj90 ztj91 ztj92 ztj93 ztj100 ztj101 ztj102 ztj103 ztj110 ztj111 ztj112 ztj113 ztj120 ztj121
+ ztj122 ztj123 ztj130 ztj131 ztj132 ztj133 ztj140 ztj141 ztj142 ztj143 ztj150 ztj151 ztj152 ztj153 ztj160
+ ztj161 ztj162 ztj163 ztj170 ztj171 ztj172 ztj173 ztj180 ztj181 ztj182 ztj183 ztj190 ztj191 ztj192 ztj193
+Generals
+ st0 st1 st2 st3 st4 st5 st6 st7 st8 st9 st10 st11 st12 st13 st14 st15 st16 st17 st18 st19 xt00 xt01 xt02
+ xt03 xt10 xt11 xt12 xt13 xt20 xt21 xt22 xt23 xt30 xt31 xt32 xt33 xt40 xt41 xt42 xt43 xt50 xt51 xt52 xt53
+ xt60 xt61 xt62 xt63 xt70 xt71 xt72 xt73 xt80 xt81 xt82 xt83 xt90 xt91 xt92 xt93 xt100 xt101 xt102 xt103
+ xt110 xt111 xt112 xt113 xt120 xt121 xt122 xt123 xt130 xt131 xt132 xt133 xt140 xt141 xt142 xt143 xt150
+ xt151 xt152 xt153 xt160 xt161 xt162 xt163 xt170 xt171 xt172 xt173 xt180 xt181 xt182 xt183 xt190 xt191
+ xt192 xt193 rt0 rt1 rt2 rt3 rt4 rt5 rt6 rt7 rt8 rt9 rt10 rt11 rt12 rt13 rt14 rt15 rt16 rt17 rt18 rt19
+End
+\ SCIP STATISTICS
+\   Problem name     : LotSizingComp
+\   Variables        : 220 (80 binary, 120 integer, 0 implicit integer, 20 continuous)
+\   Constraints      : 241
+\   Obj. scale       : 1
+\   Obj. offset      : 0
+Minimize
+ Obj: +1 ct0 +1 ct1 +1 ct2 +1 ct3 +1 ct4 +1 ct5 +1 ct6 +1 ct7 +1 ct8 +1 ct9 +1 ct10 +1 ct11 +1 ct12 +1 ct13
+      +1 ct14 +1 ct15 +1 ct16 +1 ct17 +1 ct18 +1 ct19
+Subject to
+ cons_ct0: +1 ct0 -3.59999990463257 xt00 -2.5 xt01 -27.5 ztj01 -3.20000004768372 xt02 +7.5 ztj02 -0.5 xt03
+  -195 ztj03 = +0
+ cons_ct1: +1 ct1 -3.59999990463257 xt10 -2.5 xt11 -27.5 ztj11 -3.20000004768372 xt12 +7.5 ztj12 -0.5 xt13
+  -195 ztj13 = +0
+ cons_ct2: +1 ct2 -3.59999990463257 xt20 -2.5 xt21 -27.5 ztj21 -3.20000004768372 xt22 +7.5 ztj22 -0.5 xt23
+  -195 ztj23 = +0
+ cons_ct3: +1 ct3 -3.59999990463257 xt30 -2.5 xt31 -27.5 ztj31 -3.20000004768372 xt32 +7.5 ztj32 -0.5 xt33
+  -195 ztj33 = +0
+ cons_ct4: +1 ct4 -3.59999990463257 xt40 -2.5 xt41 -27.5 ztj41 -3.20000004768372 xt42 +7.5 ztj42 -0.5 xt43
+  -195 ztj43 = +0
+ cons_ct5: +1 ct5 -3.59999990463257 xt50 -2.5 xt51 -27.5 ztj51 -3.20000004768372 xt52 +7.5 ztj52 -0.5 xt53
+  -195 ztj53 = +0
+ cons_ct6: +1 ct6 -3.59999990463257 xt60 -2.5 xt61 -27.5 ztj61 -3.20000004768372 xt62 +7.5 ztj62 -0.5 xt63
+  -195 ztj63 = +0
+ cons_ct7: +1 ct7 -3.59999990463257 xt70 -2.5 xt71 -27.5 ztj71 -3.20000004768372 xt72 +7.5 ztj72 -0.5 xt73
+  -195 ztj73 = +0
+ cons_ct8: +1 ct8 -3.59999990463257 xt80 -2.5 xt81 -27.5 ztj81 -3.20000004768372 xt82 +7.5 ztj82 -0.5 xt83
+  -195 ztj83 = +0
+ cons_ct9: +1 ct9 -3.59999990463257 xt90 -2.5 xt91 -27.5 ztj91 -3.20000004768372 xt92 +7.5 ztj92 -0.5 xt93
+  -195 ztj93 = +0
+ cons_ct10: +1 ct10 -3.59999990463257 xt100 -2.5 xt101 -27.5 ztj101 -3.20000004768372 xt102 +7.5 ztj102
+  -0.5 xt103 -195 ztj103 = +0
+ cons_ct11: +1 ct11 -3.59999990463257 xt110 -2.5 xt111 -27.5 ztj111 -3.20000004768372 xt112 +7.5 ztj112
+  -0.5 xt113 -195 ztj113 = +0
+ cons_ct12: +1 ct12 -3.59999990463257 xt120 -2.5 xt121 -27.5 ztj121 -3.20000004768372 xt122 +7.5 ztj122
+  -0.5 xt123 -195 ztj123 = +0
+ cons_ct13: +1 ct13 -3.59999990463257 xt130 -2.5 xt131 -27.5 ztj131 -3.20000004768372 xt132 +7.5 ztj132
+  -0.5 xt133 -195 ztj133 = +0
+ cons_ct14: +1 ct14 -3.59999990463257 xt140 -2.5 xt141 -27.5 ztj141 -3.20000004768372 xt142 +7.5 ztj142
+  -0.5 xt143 -195 ztj143 = +0
+ cons_ct15: +1 ct15 -3.59999990463257 xt150 -2.5 xt151 -27.5 ztj151 -3.20000004768372 xt152 +7.5 ztj152
+  -0.5 xt153 -195 ztj153 = +0
+ cons_ct16: +1 ct16 -3.59999990463257 xt160 -2.5 xt161 -27.5 ztj161 -3.20000004768372 xt162 +7.5 ztj162
+  -0.5 xt163 -195 ztj163 = +0
+ cons_ct17: +1 ct17 -3.59999990463257 xt170 -2.5 xt171 -27.5 ztj171 -3.20000004768372 xt172 +7.5 ztj172
+  -0.5 xt173 -195 ztj173 = +0
+ cons_ct18: +1 ct18 -3.59999990463257 xt180 -2.5 xt181 -27.5 ztj181 -3.20000004768372 xt182 +7.5 ztj182
+  -0.5 xt183 -195 ztj183 = +0
+ cons_ct19: +1 ct19 -3.59999990463257 xt190 -2.5 xt191 -27.5 ztj191 -3.20000004768372 xt192 +7.5 ztj192
+  -0.5 xt193 -195 ztj193 = +0
+ cons_z_binf00: +1 xt00 >= +0
+ cons_z_binf01: +1 xt01 -25 ztj01 >= +0
+ cons_z_binf02: +1 xt02 -50 ztj02 >= +0
+ cons_z_binf03: +1 xt03 -75 ztj03 >= +0
+ cons_z_binf10: +1 xt10 >= +0
+ cons_z_binf11: +1 xt11 -25 ztj11 >= +0
+ cons_z_binf12: +1 xt12 -50 ztj12 >= +0
+ cons_z_binf13: +1 xt13 -75 ztj13 >= +0
+ cons_z_binf20: +1 xt20 >= +0
+ cons_z_binf21: +1 xt21 -25 ztj21 >= +0
+ cons_z_binf22: +1 xt22 -50 ztj22 >= +0
+ cons_z_binf23: +1 xt23 -75 ztj23 >= +0
+ cons_z_binf30: +1 xt30 >= +0
+ cons_z_binf31: +1 xt31 -25 ztj31 >= +0
+ cons_z_binf32: +1 xt32 -50 ztj32 >= +0
+ cons_z_binf33: +1 xt33 -75 ztj33 >= +0
+ cons_z_binf40: +1 xt40 >= +0
+ cons_z_binf41: +1 xt41 -25 ztj41 >= +0
+ cons_z_binf42: +1 xt42 -50 ztj42 >= +0
+ cons_z_binf43: +1 xt43 -75 ztj43 >= +0
+ cons_z_binf50: +1 xt50 >= +0
+ cons_z_binf51: +1 xt51 -25 ztj51 >= +0
+ cons_z_binf52: +1 xt52 -50 ztj52 >= +0
+ cons_z_binf53: +1 xt53 -75 ztj53 >= +0
+ cons_z_binf60: +1 xt60 >= +0
+ cons_z_binf61: +1 xt61 -25 ztj61 >= +0
+ cons_z_binf62: +1 xt62 -50 ztj62 >= +0
+ cons_z_binf63: +1 xt63 -75 ztj63 >= +0
+ cons_z_binf70: +1 xt70 >= +0
+ cons_z_binf71: +1 xt71 -25 ztj71 >= +0
+ cons_z_binf72: +1 xt72 -50 ztj72 >= +0
+ cons_z_binf73: +1 xt73 -75 ztj73 >= +0
+ cons_z_binf80: +1 xt80 >= +0
+ cons_z_binf81: +1 xt81 -25 ztj81 >= +0
+ cons_z_binf82: +1 xt82 -50 ztj82 >= +0
+ cons_z_binf83: +1 xt83 -75 ztj83 >= +0
+ cons_z_binf90: +1 xt90 >= +0
+ cons_z_binf91: +1 xt91 -25 ztj91 >= +0
+ cons_z_binf92: +1 xt92 -50 ztj92 >= +0
+ cons_z_binf93: +1 xt93 -75 ztj93 >= +0
+ cons_z_binf100: +1 xt100 >= +0
+ cons_z_binf101: +1 xt101 -25 ztj101 >= +0
+ cons_z_binf102: +1 xt102 -50 ztj102 >= +0
+ cons_z_binf103: +1 xt103 -75 ztj103 >= +0
+ cons_z_binf110: +1 xt110 >= +0
+ cons_z_binf111: +1 xt111 -25 ztj111 >= +0
+ cons_z_binf112: +1 xt112 -50 ztj112 >= +0
+ cons_z_binf113: +1 xt113 -75 ztj113 >= +0
+ cons_z_binf120: +1 xt120 >= +0
+ cons_z_binf121: +1 xt121 -25 ztj121 >= +0
+ cons_z_binf122: +1 xt122 -50 ztj122 >= +0
+ cons_z_binf123: +1 xt123 -75 ztj123 >= +0
+ cons_z_binf130: +1 xt130 >= +0
+ cons_z_binf131: +1 xt131 -25 ztj131 >= +0
+ cons_z_binf132: +1 xt132 -50 ztj132 >= +0
+ cons_z_binf133: +1 xt133 -75 ztj133 >= +0
+ cons_z_binf140: +1 xt140 >= +0
+ cons_z_binf141: +1 xt141 -25 ztj141 >= +0
+ cons_z_binf142: +1 xt142 -50 ztj142 >= +0
+ cons_z_binf143: +1 xt143 -75 ztj143 >= +0
+ cons_z_binf150: +1 xt150 >= +0
+ cons_z_binf151: +1 xt151 -25 ztj151 >= +0
+ cons_z_binf152: +1 xt152 -50 ztj152 >= +0
+ cons_z_binf153: +1 xt153 -75 ztj153 >= +0
+ cons_z_binf160: +1 xt160 >= +0
+ cons_z_binf161: +1 xt161 -25 ztj161 >= +0
+ cons_z_binf162: +1 xt162 -50 ztj162 >= +0
+ cons_z_binf163: +1 xt163 -75 ztj163 >= +0
+ cons_z_binf170: +1 xt170 >= +0
+ cons_z_binf171: +1 xt171 -25 ztj171 >= +0
+ cons_z_binf172: +1 xt172 -50 ztj172 >= +0
+ cons_z_binf173: +1 xt173 -75 ztj173 >= +0
+ cons_z_binf180: +1 xt180 >= +0
+ cons_z_binf181: +1 xt181 -25 ztj181 >= +0
+ cons_z_binf182: +1 xt182 -50 ztj182 >= +0
+ cons_z_binf183: +1 xt183 -75 ztj183 >= +0
+ cons_z_binf190: +1 xt190 >= +0
+ cons_z_binf191: +1 xt191 -25 ztj191 >= +0
+ cons_z_binf192: +1 xt192 -50 ztj192 >= +0
+ cons_z_binf193: +1 xt193 -75 ztj193 >= +0
+ cons_z_bsup00: +1 xt00 -24 ztj00 <= +0
+ cons_z_bsup01: +1 xt01 -49 ztj01 <= +0
+ cons_z_bsup02: +1 xt02 -74 ztj02 <= +0
+ cons_z_bsup03: +1 xt03 +1 ztj03 <= +0
+ cons_z_bsup10: +1 xt10 -24 ztj10 <= +0
+ cons_z_bsup11: +1 xt11 -49 ztj11 <= +0
+ cons_z_bsup12: +1 xt12 -74 ztj12 <= +0
+ cons_z_bsup13: +1 xt13 +1 ztj13 <= +0
+ cons_z_bsup20: +1 xt20 -24 ztj20 <= +0
+ cons_z_bsup21: +1 xt21 -49 ztj21 <= +0
+ cons_z_bsup22: +1 xt22 -74 ztj22 <= +0
+ cons_z_bsup23: +1 xt23 +1 ztj23 <= +0
+ cons_z_bsup30: +1 xt30 -24 ztj30 <= +0
+ cons_z_bsup31: +1 xt31 -49 ztj31 <= +0
+ cons_z_bsup32: +1 xt32 -74 ztj32 <= +0
+ cons_z_bsup33: +1 xt33 +1 ztj33 <= +0
+ cons_z_bsup40: +1 xt40 -24 ztj40 <= +0
+ cons_z_bsup41: +1 xt41 -49 ztj41 <= +0
+ cons_z_bsup42: +1 xt42 -74 ztj42 <= +0
+ cons_z_bsup43: +1 xt43 +1 ztj43 <= +0
+ cons_z_bsup50: +1 xt50 -24 ztj50 <= +0
+ cons_z_bsup51: +1 xt51 -49 ztj51 <= +0
+ cons_z_bsup52: +1 xt52 -74 ztj52 <= +0
+ cons_z_bsup53: +1 xt53 +1 ztj53 <= +0
+ cons_z_bsup60: +1 xt60 -24 ztj60 <= +0
+ cons_z_bsup61: +1 xt61 -49 ztj61 <= +0
+ cons_z_bsup62: +1 xt62 -74 ztj62 <= +0
+ cons_z_bsup63: +1 xt63 +1 ztj63 <= +0
+ cons_z_bsup70: +1 xt70 -24 ztj70 <= +0
+ cons_z_bsup71: +1 xt71 -49 ztj71 <= +0
+ cons_z_bsup72: +1 xt72 -74 ztj72 <= +0
+ cons_z_bsup73: +1 xt73 +1 ztj73 <= +0
+ cons_z_bsup80: +1 xt80 -24 ztj80 <= +0
+ cons_z_bsup81: +1 xt81 -49 ztj81 <= +0
+ cons_z_bsup82: +1 xt82 -74 ztj82 <= +0
+ cons_z_bsup83: +1 xt83 +1 ztj83 <= +0
+ cons_z_bsup90: +1 xt90 -24 ztj90 <= +0
+ cons_z_bsup91: +1 xt91 -49 ztj91 <= +0
+ cons_z_bsup92: +1 xt92 -74 ztj92 <= +0
+ cons_z_bsup93: +1 xt93 +1 ztj93 <= +0
+ cons_z_bsup100: +1 xt100 -24 ztj100 <= +0
+ cons_z_bsup101: +1 xt101 -49 ztj101 <= +0
+ cons_z_bsup102: +1 xt102 -74 ztj102 <= +0
+ cons_z_bsup103: +1 xt103 +1 ztj103 <= +0
+ cons_z_bsup110: +1 xt110 -24 ztj110 <= +0
+ cons_z_bsup111: +1 xt111 -49 ztj111 <= +0
+ cons_z_bsup112: +1 xt112 -74 ztj112 <= +0
+ cons_z_bsup113: +1 xt113 +1 ztj113 <= +0
+ cons_z_bsup120: +1 xt120 -24 ztj120 <= +0
+ cons_z_bsup121: +1 xt121 -49 ztj121 <= +0
+ cons_z_bsup122: +1 xt122 -74 ztj122 <= +0
+ cons_z_bsup123: +1 xt123 +1 ztj123 <= +0
+ cons_z_bsup130: +1 xt130 -24 ztj130 <= +0
+ cons_z_bsup131: +1 xt131 -49 ztj131 <= +0
+ cons_z_bsup132: +1 xt132 -74 ztj132 <= +0
+ cons_z_bsup133: +1 xt133 +1 ztj133 <= +0
+ cons_z_bsup140: +1 xt140 -24 ztj140 <= +0
+ cons_z_bsup141: +1 xt141 -49 ztj141 <= +0
+ cons_z_bsup142: +1 xt142 -74 ztj142 <= +0
+ cons_z_bsup143: +1 xt143 +1 ztj143 <= +0
+ cons_z_bsup150: +1 xt150 -24 ztj150 <= +0
+ cons_z_bsup151: +1 xt151 -49 ztj151 <= +0
+ cons_z_bsup152: +1 xt152 -74 ztj152 <= +0
+ cons_z_bsup153: +1 xt153 +1 ztj153 <= +0
+ cons_z_bsup160: +1 xt160 -24 ztj160 <= +0
+ cons_z_bsup161: +1 xt161 -49 ztj161 <= +0
+ cons_z_bsup162: +1 xt162 -74 ztj162 <= +0
+ cons_z_bsup163: +1 xt163 +1 ztj163 <= +0
+ cons_z_bsup170: +1 xt170 -24 ztj170 <= +0
+ cons_z_bsup171: +1 xt171 -49 ztj171 <= +0
+ cons_z_bsup172: +1 xt172 -74 ztj172 <= +0
+ cons_z_bsup173: +1 xt173 +1 ztj173 <= +0
+ cons_z_bsup180: +1 xt180 -24 ztj180 <= +0
+ cons_z_bsup181: +1 xt181 -49 ztj181 <= +0
+ cons_z_bsup182: +1 xt182 -74 ztj182 <= +0
+ cons_z_bsup183: +1 xt183 +1 ztj183 <= +0
+ cons_z_bsup190: +1 xt190 -24 ztj190 <= +0
+ cons_z_bsup191: +1 xt191 -49 ztj191 <= +0
+ cons_z_bsup192: +1 xt192 -74 ztj192 <= +0
+ cons_z_bsup193: +1 xt193 +1 ztj193 <= +0
+ cons_zsum0: +1 ztj00 +1 ztj01 +1 ztj02 +1 ztj03 = +1
+ cons_zsum1: +1 ztj10 +1 ztj11 +1 ztj12 +1 ztj13 = +1
+ cons_zsum2: +1 ztj20 +1 ztj21 +1 ztj22 +1 ztj23 = +1
+ cons_zsum3: +1 ztj30 +1 ztj31 +1 ztj32 +1 ztj33 = +1
+ cons_zsum4: +1 ztj40 +1 ztj41 +1 ztj42 +1 ztj43 = +1
+ cons_zsum5: +1 ztj50 +1 ztj51 +1 ztj52 +1 ztj53 = +1
+ cons_zsum6: +1 ztj60 +1 ztj61 +1 ztj62 +1 ztj63 = +1
+ cons_zsum7: +1 ztj70 +1 ztj71 +1 ztj72 +1 ztj73 = +1
+ cons_zsum8: +1 ztj80 +1 ztj81 +1 ztj82 +1 ztj83 = +1
+ cons_zsum9: +1 ztj90 +1 ztj91 +1 ztj92 +1 ztj93 = +1
+ cons_zsum10: +1 ztj100 +1 ztj101 +1 ztj102 +1 ztj103 = +1
+ cons_zsum11: +1 ztj110 +1 ztj111 +1 ztj112 +1 ztj113 = +1
+ cons_zsum12: +1 ztj120 +1 ztj121 +1 ztj122 +1 ztj123 = +1
+ cons_zsum13: +1 ztj130 +1 ztj131 +1 ztj132 +1 ztj133 = +1
+ cons_zsum14: +1 ztj140 +1 ztj141 +1 ztj142 +1 ztj143 = +1
+ cons_zsum15: +1 ztj150 +1 ztj151 +1 ztj152 +1 ztj153 = +1
+ cons_zsum16: +1 ztj160 +1 ztj161 +1 ztj162 +1 ztj163 = +1
+ cons_zsum17: +1 ztj170 +1 ztj171 +1 ztj172 +1 ztj173 = +1
+ cons_zsum18: +1 ztj180 +1 ztj181 +1 ztj182 +1 ztj183 = +1
+ cons_zsum19: +1 ztj190 +1 ztj191 +1 ztj192 +1 ztj193 = +1
+ cons_rt0: +1 rt0 -1 xt00 -1 xt01 -1 xt02 -1 xt03 = +0
+ cons_rt1: +1 rt1 -1 xt10 -1 xt11 -1 xt12 -1 xt13 = +0
+ cons_rt2: +1 rt2 -1 xt20 -1 xt21 -1 xt22 -1 xt23 = +0
+ cons_rt3: +1 rt3 -1 xt30 -1 xt31 -1 xt32 -1 xt33 = +0
+ cons_rt4: +1 rt4 -1 xt40 -1 xt41 -1 xt42 -1 xt43 = +0
+ cons_rt5: +1 rt5 -1 xt50 -1 xt51 -1 xt52 -1 xt53 = +0
+ cons_rt6: +1 rt6 -1 xt60 -1 xt61 -1 xt62 -1 xt63 = +0
+ cons_rt7: +1 rt7 -1 xt70 -1 xt71 -1 xt72 -1 xt73 = +0
+ cons_rt8: +1 rt8 -1 xt80 -1 xt81 -1 xt82 -1 xt83 = +0
+ cons_rt9: +1 rt9 -1 xt90 -1 xt91 -1 xt92 -1 xt93 = +0
+ cons_rt10: +1 rt10 -1 xt100 -1 xt101 -1 xt102 -1 xt103 = +0
+ cons_rt11: +1 rt11 -1 xt110 -1 xt111 -1 xt112 -1 xt113 = +0
+ cons_rt12: +1 rt12 -1 xt120 -1 xt121 -1 xt122 -1 xt123 = +0
+ cons_rt13: +1 rt13 -1 xt130 -1 xt131 -1 xt132 -1 xt133 = +0
+ cons_rt14: +1 rt14 -1 xt140 -1 xt141 -1 xt142 -1 xt143 = +0
+ cons_rt15: +1 rt15 -1 xt150 -1 xt151 -1 xt152 -1 xt153 = +0
+ cons_rt16: +1 rt16 -1 xt160 -1 xt161 -1 xt162 -1 xt163 = +0
+ cons_rt17: +1 rt17 -1 xt170 -1 xt171 -1 xt172 -1 xt173 = +0
+ cons_rt18: +1 rt18 -1 xt180 -1 xt181 -1 xt182 -1 xt183 = +0
+ cons_rt19: +1 rt19 -1 xt190 -1 xt191 -1 xt192 -1 xt193 = +0
+ cons_dt0: -1 st0 +1 rt0 = +56
+ cons_dt1: -1 st1 +1 st0 +1 rt1 = +82
+ cons_dt2: -1 st2 +1 st1 +1 rt2 = +57
+ cons_dt3: -1 st3 +1 st2 +1 rt3 = +74
+ cons_dt4: -1 st4 +1 st3 +1 rt4 = +3
+ cons_dt5: -1 st5 +1 st4 +1 rt5 = +100
+ cons_dt6: -1 st6 +1 st5 +1 rt6 = +74
+ cons_dt7: -1 st7 +1 st6 +1 rt7 = +96
+ cons_dt8: -1 st8 +1 st7 +1 rt8 = +41
+ cons_dt9: -1 st9 +1 st8 +1 rt9 = +63
+ cons_dt10: -1 st10 +1 st9 +1 rt10 = +79
+ cons_dt11: -1 st11 +1 st10 +1 rt11 = +57
+ cons_dt12: -1 st12 +1 st11 +1 rt12 = +66
+ cons_dt13: -1 st13 +1 st12 +1 rt13 = +85
+ cons_dt14: -1 st14 +1 st13 +1 rt14 = +79
+ cons_dt15: -1 st15 +1 st14 +1 rt15 = +53
+ cons_dt16: -1 st16 +1 st15 +1 rt16 = +92
+ cons_dt17: -1 st17 +1 st16 +1 rt17 = +21
+ cons_dt18: -1 st18 +1 st17 +1 rt18 = +44
+ cons_dt19: -1 st19 +1 st18 +1 rt19 = +10
+ cons_stmax: +1 st19 = +0
+Bounds
+ 0 <= ztj00 <= 1
+ 0 <= ztj01 <= 1
+ 0 <= ztj02 <= 1
+ 0 <= ztj03 <= 1
+ 0 <= ztj10 <= 1
+ 0 <= ztj11 <= 1
+ 0 <= ztj12 <= 1
+ 0 <= ztj13 <= 1
+ 0 <= ztj20 <= 1
+ 0 <= ztj21 <= 1
+ 0 <= ztj22 <= 1
+ 0 <= ztj23 <= 1
+ 0 <= ztj30 <= 1
+ 0 <= ztj31 <= 1
+ 0 <= ztj32 <= 1
+ 0 <= ztj33 <= 1
+ 0 <= ztj40 <= 1
+ 0 <= ztj41 <= 1
+ 0 <= ztj42 <= 1
+ 0 <= ztj43 <= 1
+ 0 <= ztj50 <= 1
+ 0 <= ztj51 <= 1
+ 0 <= ztj52 <= 1
+ 0 <= ztj53 <= 1
+ 0 <= ztj60 <= 1
+ 0 <= ztj61 <= 1
+ 0 <= ztj62 <= 1
+ 0 <= ztj63 <= 1
+ 0 <= ztj70 <= 1
+ 0 <= ztj71 <= 1
+ 0 <= ztj72 <= 1
+ 0 <= ztj73 <= 1
+ 0 <= ztj80 <= 1
+ 0 <= ztj81 <= 1
+ 0 <= ztj82 <= 1
+ 0 <= ztj83 <= 1
+ 0 <= ztj90 <= 1
+ 0 <= ztj91 <= 1
+ 0 <= ztj92 <= 1
+ 0 <= ztj93 <= 1
+ 0 <= ztj100 <= 1
+ 0 <= ztj101 <= 1
+ 0 <= ztj102 <= 1
+ 0 <= ztj103 <= 1
+ 0 <= ztj110 <= 1
+ 0 <= ztj111 <= 1
+ 0 <= ztj112 <= 1
+ 0 <= ztj113 <= 1
+ 0 <= ztj120 <= 1
+ 0 <= ztj121 <= 1
+ 0 <= ztj122 <= 1
+ 0 <= ztj123 <= 1
+ 0 <= ztj130 <= 1
+ 0 <= ztj131 <= 1
+ 0 <= ztj132 <= 1
+ 0 <= ztj133 <= 1
+ 0 <= ztj140 <= 1
+ 0 <= ztj141 <= 1
+ 0 <= ztj142 <= 1
+ 0 <= ztj143 <= 1
+ 0 <= ztj150 <= 1
+ 0 <= ztj151 <= 1
+ 0 <= ztj152 <= 1
+ 0 <= ztj153 <= 1
+ 0 <= ztj160 <= 1
+ 0 <= ztj161 <= 1
+ 0 <= ztj162 <= 1
+ 0 <= ztj163 <= 1
+ 0 <= ztj170 <= 1
+ 0 <= ztj171 <= 1
+ 0 <= ztj172 <= 1
+ 0 <= ztj173 <= 1
+ 0 <= ztj180 <= 1
+ 0 <= ztj181 <= 1
+ 0 <= ztj182 <= 1
+ 0 <= ztj183 <= 1
+ 0 <= ztj190 <= 1
+ 0 <= ztj191 <= 1
+ 0 <= ztj192 <= 1
+ 0 <= ztj193 <= 1
+ 0 <= st0 <= 100
+ 0 <= st1 <= 100
+ 0 <= st2 <= 100
+ 0 <= st3 <= 100
+ 0 <= st4 <= 100
+ 0 <= st5 <= 100
+ 0 <= st6 <= 100
+ 0 <= st7 <= 100
+ 0 <= st8 <= 100
+ 0 <= st9 <= 100
+ 0 <= st10 <= 100
+ 0 <= st11 <= 100
+ 0 <= st12 <= 100
+ 0 <= st13 <= 100
+ 0 <= st14 <= 100
+ 0 <= st15 <= 100
+ 0 <= st16 <= 100
+ 0 <= st17 <= 100
+ 0 <= st18 <= 100
+ 0 <= st19 <= 100
+Binaries
+ ztj00 ztj01 ztj02 ztj03 ztj10 ztj11 ztj12 ztj13 ztj20 ztj21 ztj22 ztj23 ztj30 ztj31 ztj32 ztj33 ztj40
+ ztj41 ztj42 ztj43 ztj50 ztj51 ztj52 ztj53 ztj60 ztj61 ztj62 ztj63 ztj70 ztj71 ztj72 ztj73 ztj80 ztj81
+ ztj82 ztj83 ztj90 ztj91 ztj92 ztj93 ztj100 ztj101 ztj102 ztj103 ztj110 ztj111 ztj112 ztj113 ztj120 ztj121
+ ztj122 ztj123 ztj130 ztj131 ztj132 ztj133 ztj140 ztj141 ztj142 ztj143 ztj150 ztj151 ztj152 ztj153 ztj160
+ ztj161 ztj162 ztj163 ztj170 ztj171 ztj172 ztj173 ztj180 ztj181 ztj182 ztj183 ztj190 ztj191 ztj192 ztj193
+Generals
+ st0 st1 st2 st3 st4 st5 st6 st7 st8 st9 st10 st11 st12 st13 st14 st15 st16 st17 st18 st19 xt00 xt01 xt02
+ xt03 xt10 xt11 xt12 xt13 xt20 xt21 xt22 xt23 xt30 xt31 xt32 xt33 xt40 xt41 xt42 xt43 xt50 xt51 xt52 xt53
+ xt60 xt61 xt62 xt63 xt70 xt71 xt72 xt73 xt80 xt81 xt82 xt83 xt90 xt91 xt92 xt93 xt100 xt101 xt102 xt103
+ xt110 xt111 xt112 xt113 xt120 xt121 xt122 xt123 xt130 xt131 xt132 xt133 xt140 xt141 xt142 xt143 xt150
+ xt151 xt152 xt153 xt160 xt161 xt162 xt163 xt170 xt171 xt172 xt173 xt180 xt181 xt182 xt183 xt190 xt191
+ xt192 xt193 rt0 rt1 rt2 rt3 rt4 rt5 rt6 rt7 rt8 rt9 rt10 rt11 rt12 rt13 rt14 rt15 rt16 rt17 rt18 rt19
+End
+\ SCIP STATISTICS
+\   Problem name     : LotSizingComp
+\   Variables        : 220 (80 binary, 120 integer, 0 implicit integer, 20 continuous)
+\   Constraints      : 241
+\   Obj. scale       : 1
+\   Obj. offset      : 0
+Minimize
+ Obj: +1 ct0 +1 ct1 +1 ct2 +1 ct3 +1 ct4 +1 ct5 +1 ct6 +1 ct7 +1 ct8 +1 ct9 +1 ct10 +1 ct11 +1 ct12 +1 ct13
+      +1 ct14 +1 ct15 +1 ct16 +1 ct17 +1 ct18 +1 ct19
+Subject to
+ cons_ct0: +1 ct0 -3 xt00 -1.79999995231628 xt01 -30 ztj01 -1.29999995231628 xt02 -55 ztj02 -4.59999990463257 xt03
+  +192.5 ztj03 = +0
+ cons_ct1: +1 ct1 -3 xt10 -1.79999995231628 xt11 -30 ztj11 -1.29999995231628 xt12 -55 ztj12 -4.59999990463257 xt13
+  +192.5 ztj13 = +0
+ cons_ct2: +1 ct2 -3 xt20 -1.79999995231628 xt21 -30 ztj21 -1.29999995231628 xt22 -55 ztj22 -4.59999990463257 xt23
+  +192.5 ztj23 = +0
+ cons_ct3: +1 ct3 -3 xt30 -1.79999995231628 xt31 -30 ztj31 -1.29999995231628 xt32 -55 ztj32 -4.59999990463257 xt33
+  +192.5 ztj33 = +0
+ cons_ct4: +1 ct4 -3 xt40 -1.79999995231628 xt41 -30 ztj41 -1.29999995231628 xt42 -55 ztj42 -4.59999990463257 xt43
+  +192.5 ztj43 = +0
+ cons_ct5: +1 ct5 -3 xt50 -1.79999995231628 xt51 -30 ztj51 -1.29999995231628 xt52 -55 ztj52 -4.59999990463257 xt53
+  +192.5 ztj53 = +0
+ cons_ct6: +1 ct6 -3 xt60 -1.79999995231628 xt61 -30 ztj61 -1.29999995231628 xt62 -55 ztj62 -4.59999990463257 xt63
+  +192.5 ztj63 = +0
+ cons_ct7: +1 ct7 -3 xt70 -1.79999995231628 xt71 -30 ztj71 -1.29999995231628 xt72 -55 ztj72 -4.59999990463257 xt73
+  +192.5 ztj73 = +0
+ cons_ct8: +1 ct8 -3 xt80 -1.79999995231628 xt81 -30 ztj81 -1.29999995231628 xt82 -55 ztj82 -4.59999990463257 xt83
+  +192.5 ztj83 = +0
+ cons_ct9: +1 ct9 -3 xt90 -1.79999995231628 xt91 -30 ztj91 -1.29999995231628 xt92 -55 ztj92 -4.59999990463257 xt93
+  +192.5 ztj93 = +0
+ cons_ct10: +1 ct10 -3 xt100 -1.79999995231628 xt101 -30 ztj101 -1.29999995231628 xt102 -55 ztj102 -4.59999990463257 xt103
+  +192.5 ztj103 = +0
+ cons_ct11: +1 ct11 -3 xt110 -1.79999995231628 xt111 -30 ztj111 -1.29999995231628 xt112 -55 ztj112 -4.59999990463257 xt113
+  +192.5 ztj113 = +0
+ cons_ct12: +1 ct12 -3 xt120 -1.79999995231628 xt121 -30 ztj121 -1.29999995231628 xt122 -55 ztj122 -4.59999990463257 xt123
+  +192.5 ztj123 = +0
+ cons_ct13: +1 ct13 -3 xt130 -1.79999995231628 xt131 -30 ztj131 -1.29999995231628 xt132 -55 ztj132 -4.59999990463257 xt133
+  +192.5 ztj133 = +0
+ cons_ct14: +1 ct14 -3 xt140 -1.79999995231628 xt141 -30 ztj141 -1.29999995231628 xt142 -55 ztj142 -4.59999990463257 xt143
+  +192.5 ztj143 = +0
+ cons_ct15: +1 ct15 -3 xt150 -1.79999995231628 xt151 -30 ztj151 -1.29999995231628 xt152 -55 ztj152 -4.59999990463257 xt153
+  +192.5 ztj153 = +0
+ cons_ct16: +1 ct16 -3 xt160 -1.79999995231628 xt161 -30 ztj161 -1.29999995231628 xt162 -55 ztj162 -4.59999990463257 xt163
+  +192.5 ztj163 = +0
+ cons_ct17: +1 ct17 -3 xt170 -1.79999995231628 xt171 -30 ztj171 -1.29999995231628 xt172 -55 ztj172 -4.59999990463257 xt173
+  +192.5 ztj173 = +0
+ cons_ct18: +1 ct18 -3 xt180 -1.79999995231628 xt181 -30 ztj181 -1.29999995231628 xt182 -55 ztj182 -4.59999990463257 xt183
+  +192.5 ztj183 = +0
+ cons_ct19: +1 ct19 -3 xt190 -1.79999995231628 xt191 -30 ztj191 -1.29999995231628 xt192 -55 ztj192 -4.59999990463257 xt193
+  +192.5 ztj193 = +0
+ cons_z_binf00: +1 xt00 >= +0
+ cons_z_binf01: +1 xt01 -25 ztj01 >= +0
+ cons_z_binf02: +1 xt02 -50 ztj02 >= +0
+ cons_z_binf03: +1 xt03 -75 ztj03 >= +0
+ cons_z_binf10: +1 xt10 >= +0
+ cons_z_binf11: +1 xt11 -25 ztj11 >= +0
+ cons_z_binf12: +1 xt12 -50 ztj12 >= +0
+ cons_z_binf13: +1 xt13 -75 ztj13 >= +0
+ cons_z_binf20: +1 xt20 >= +0
+ cons_z_binf21: +1 xt21 -25 ztj21 >= +0
+ cons_z_binf22: +1 xt22 -50 ztj22 >= +0
+ cons_z_binf23: +1 xt23 -75 ztj23 >= +0
+ cons_z_binf30: +1 xt30 >= +0
+ cons_z_binf31: +1 xt31 -25 ztj31 >= +0
+ cons_z_binf32: +1 xt32 -50 ztj32 >= +0
+ cons_z_binf33: +1 xt33 -75 ztj33 >= +0
+ cons_z_binf40: +1 xt40 >= +0
+ cons_z_binf41: +1 xt41 -25 ztj41 >= +0
+ cons_z_binf42: +1 xt42 -50 ztj42 >= +0
+ cons_z_binf43: +1 xt43 -75 ztj43 >= +0
+ cons_z_binf50: +1 xt50 >= +0
+ cons_z_binf51: +1 xt51 -25 ztj51 >= +0
+ cons_z_binf52: +1 xt52 -50 ztj52 >= +0
+ cons_z_binf53: +1 xt53 -75 ztj53 >= +0
+ cons_z_binf60: +1 xt60 >= +0
+ cons_z_binf61: +1 xt61 -25 ztj61 >= +0
+ cons_z_binf62: +1 xt62 -50 ztj62 >= +0
+ cons_z_binf63: +1 xt63 -75 ztj63 >= +0
+ cons_z_binf70: +1 xt70 >= +0
+ cons_z_binf71: +1 xt71 -25 ztj71 >= +0
+ cons_z_binf72: +1 xt72 -50 ztj72 >= +0
+ cons_z_binf73: +1 xt73 -75 ztj73 >= +0
+ cons_z_binf80: +1 xt80 >= +0
+ cons_z_binf81: +1 xt81 -25 ztj81 >= +0
+ cons_z_binf82: +1 xt82 -50 ztj82 >= +0
+ cons_z_binf83: +1 xt83 -75 ztj83 >= +0
+ cons_z_binf90: +1 xt90 >= +0
+ cons_z_binf91: +1 xt91 -25 ztj91 >= +0
+ cons_z_binf92: +1 xt92 -50 ztj92 >= +0
+ cons_z_binf93: +1 xt93 -75 ztj93 >= +0
+ cons_z_binf100: +1 xt100 >= +0
+ cons_z_binf101: +1 xt101 -25 ztj101 >= +0
+ cons_z_binf102: +1 xt102 -50 ztj102 >= +0
+ cons_z_binf103: +1 xt103 -75 ztj103 >= +0
+ cons_z_binf110: +1 xt110 >= +0
+ cons_z_binf111: +1 xt111 -25 ztj111 >= +0
+ cons_z_binf112: +1 xt112 -50 ztj112 >= +0
+ cons_z_binf113: +1 xt113 -75 ztj113 >= +0
+ cons_z_binf120: +1 xt120 >= +0
+ cons_z_binf121: +1 xt121 -25 ztj121 >= +0
+ cons_z_binf122: +1 xt122 -50 ztj122 >= +0
+ cons_z_binf123: +1 xt123 -75 ztj123 >= +0
+ cons_z_binf130: +1 xt130 >= +0
+ cons_z_binf131: +1 xt131 -25 ztj131 >= +0
+ cons_z_binf132: +1 xt132 -50 ztj132 >= +0
+ cons_z_binf133: +1 xt133 -75 ztj133 >= +0
+ cons_z_binf140: +1 xt140 >= +0
+ cons_z_binf141: +1 xt141 -25 ztj141 >= +0
+ cons_z_binf142: +1 xt142 -50 ztj142 >= +0
+ cons_z_binf143: +1 xt143 -75 ztj143 >= +0
+ cons_z_binf150: +1 xt150 >= +0
+ cons_z_binf151: +1 xt151 -25 ztj151 >= +0
+ cons_z_binf152: +1 xt152 -50 ztj152 >= +0
+ cons_z_binf153: +1 xt153 -75 ztj153 >= +0
+ cons_z_binf160: +1 xt160 >= +0
+ cons_z_binf161: +1 xt161 -25 ztj161 >= +0
+ cons_z_binf162: +1 xt162 -50 ztj162 >= +0
+ cons_z_binf163: +1 xt163 -75 ztj163 >= +0
+ cons_z_binf170: +1 xt170 >= +0
+ cons_z_binf171: +1 xt171 -25 ztj171 >= +0
+ cons_z_binf172: +1 xt172 -50 ztj172 >= +0
+ cons_z_binf173: +1 xt173 -75 ztj173 >= +0
+ cons_z_binf180: +1 xt180 >= +0
+ cons_z_binf181: +1 xt181 -25 ztj181 >= +0
+ cons_z_binf182: +1 xt182 -50 ztj182 >= +0
+ cons_z_binf183: +1 xt183 -75 ztj183 >= +0
+ cons_z_binf190: +1 xt190 >= +0
+ cons_z_binf191: +1 xt191 -25 ztj191 >= +0
+ cons_z_binf192: +1 xt192 -50 ztj192 >= +0
+ cons_z_binf193: +1 xt193 -75 ztj193 >= +0
+ cons_z_bsup00: +1 xt00 -24 ztj00 <= +0
+ cons_z_bsup01: +1 xt01 -49 ztj01 <= +0
+ cons_z_bsup02: +1 xt02 -74 ztj02 <= +0
+ cons_z_bsup03: +1 xt03 +1 ztj03 <= +0
+ cons_z_bsup10: +1 xt10 -24 ztj10 <= +0
+ cons_z_bsup11: +1 xt11 -49 ztj11 <= +0
+ cons_z_bsup12: +1 xt12 -74 ztj12 <= +0
+ cons_z_bsup13: +1 xt13 +1 ztj13 <= +0
+ cons_z_bsup20: +1 xt20 -24 ztj20 <= +0
+ cons_z_bsup21: +1 xt21 -49 ztj21 <= +0
+ cons_z_bsup22: +1 xt22 -74 ztj22 <= +0
+ cons_z_bsup23: +1 xt23 +1 ztj23 <= +0
+ cons_z_bsup30: +1 xt30 -24 ztj30 <= +0
+ cons_z_bsup31: +1 xt31 -49 ztj31 <= +0
+ cons_z_bsup32: +1 xt32 -74 ztj32 <= +0
+ cons_z_bsup33: +1 xt33 +1 ztj33 <= +0
+ cons_z_bsup40: +1 xt40 -24 ztj40 <= +0
+ cons_z_bsup41: +1 xt41 -49 ztj41 <= +0
+ cons_z_bsup42: +1 xt42 -74 ztj42 <= +0
+ cons_z_bsup43: +1 xt43 +1 ztj43 <= +0
+ cons_z_bsup50: +1 xt50 -24 ztj50 <= +0
+ cons_z_bsup51: +1 xt51 -49 ztj51 <= +0
+ cons_z_bsup52: +1 xt52 -74 ztj52 <= +0
+ cons_z_bsup53: +1 xt53 +1 ztj53 <= +0
+ cons_z_bsup60: +1 xt60 -24 ztj60 <= +0
+ cons_z_bsup61: +1 xt61 -49 ztj61 <= +0
+ cons_z_bsup62: +1 xt62 -74 ztj62 <= +0
+ cons_z_bsup63: +1 xt63 +1 ztj63 <= +0
+ cons_z_bsup70: +1 xt70 -24 ztj70 <= +0
+ cons_z_bsup71: +1 xt71 -49 ztj71 <= +0
+ cons_z_bsup72: +1 xt72 -74 ztj72 <= +0
+ cons_z_bsup73: +1 xt73 +1 ztj73 <= +0
+ cons_z_bsup80: +1 xt80 -24 ztj80 <= +0
+ cons_z_bsup81: +1 xt81 -49 ztj81 <= +0
+ cons_z_bsup82: +1 xt82 -74 ztj82 <= +0
+ cons_z_bsup83: +1 xt83 +1 ztj83 <= +0
+ cons_z_bsup90: +1 xt90 -24 ztj90 <= +0
+ cons_z_bsup91: +1 xt91 -49 ztj91 <= +0
+ cons_z_bsup92: +1 xt92 -74 ztj92 <= +0
+ cons_z_bsup93: +1 xt93 +1 ztj93 <= +0
+ cons_z_bsup100: +1 xt100 -24 ztj100 <= +0
+ cons_z_bsup101: +1 xt101 -49 ztj101 <= +0
+ cons_z_bsup102: +1 xt102 -74 ztj102 <= +0
+ cons_z_bsup103: +1 xt103 +1 ztj103 <= +0
+ cons_z_bsup110: +1 xt110 -24 ztj110 <= +0
+ cons_z_bsup111: +1 xt111 -49 ztj111 <= +0
+ cons_z_bsup112: +1 xt112 -74 ztj112 <= +0
+ cons_z_bsup113: +1 xt113 +1 ztj113 <= +0
+ cons_z_bsup120: +1 xt120 -24 ztj120 <= +0
+ cons_z_bsup121: +1 xt121 -49 ztj121 <= +0
+ cons_z_bsup122: +1 xt122 -74 ztj122 <= +0
+ cons_z_bsup123: +1 xt123 +1 ztj123 <= +0
+ cons_z_bsup130: +1 xt130 -24 ztj130 <= +0
+ cons_z_bsup131: +1 xt131 -49 ztj131 <= +0
+ cons_z_bsup132: +1 xt132 -74 ztj132 <= +0
+ cons_z_bsup133: +1 xt133 +1 ztj133 <= +0
+ cons_z_bsup140: +1 xt140 -24 ztj140 <= +0
+ cons_z_bsup141: +1 xt141 -49 ztj141 <= +0
+ cons_z_bsup142: +1 xt142 -74 ztj142 <= +0
+ cons_z_bsup143: +1 xt143 +1 ztj143 <= +0
+ cons_z_bsup150: +1 xt150 -24 ztj150 <= +0
+ cons_z_bsup151: +1 xt151 -49 ztj151 <= +0
+ cons_z_bsup152: +1 xt152 -74 ztj152 <= +0
+ cons_z_bsup153: +1 xt153 +1 ztj153 <= +0
+ cons_z_bsup160: +1 xt160 -24 ztj160 <= +0
+ cons_z_bsup161: +1 xt161 -49 ztj161 <= +0
+ cons_z_bsup162: +1 xt162 -74 ztj162 <= +0
+ cons_z_bsup163: +1 xt163 +1 ztj163 <= +0
+ cons_z_bsup170: +1 xt170 -24 ztj170 <= +0
+ cons_z_bsup171: +1 xt171 -49 ztj171 <= +0
+ cons_z_bsup172: +1 xt172 -74 ztj172 <= +0
+ cons_z_bsup173: +1 xt173 +1 ztj173 <= +0
+ cons_z_bsup180: +1 xt180 -24 ztj180 <= +0
+ cons_z_bsup181: +1 xt181 -49 ztj181 <= +0
+ cons_z_bsup182: +1 xt182 -74 ztj182 <= +0
+ cons_z_bsup183: +1 xt183 +1 ztj183 <= +0
+ cons_z_bsup190: +1 xt190 -24 ztj190 <= +0
+ cons_z_bsup191: +1 xt191 -49 ztj191 <= +0
+ cons_z_bsup192: +1 xt192 -74 ztj192 <= +0
+ cons_z_bsup193: +1 xt193 +1 ztj193 <= +0
+ cons_zsum0: +1 ztj00 +1 ztj01 +1 ztj02 +1 ztj03 = +1
+ cons_zsum1: +1 ztj10 +1 ztj11 +1 ztj12 +1 ztj13 = +1
+ cons_zsum2: +1 ztj20 +1 ztj21 +1 ztj22 +1 ztj23 = +1
+ cons_zsum3: +1 ztj30 +1 ztj31 +1 ztj32 +1 ztj33 = +1
+ cons_zsum4: +1 ztj40 +1 ztj41 +1 ztj42 +1 ztj43 = +1
+ cons_zsum5: +1 ztj50 +1 ztj51 +1 ztj52 +1 ztj53 = +1
+ cons_zsum6: +1 ztj60 +1 ztj61 +1 ztj62 +1 ztj63 = +1
+ cons_zsum7: +1 ztj70 +1 ztj71 +1 ztj72 +1 ztj73 = +1
+ cons_zsum8: +1 ztj80 +1 ztj81 +1 ztj82 +1 ztj83 = +1
+ cons_zsum9: +1 ztj90 +1 ztj91 +1 ztj92 +1 ztj93 = +1
+ cons_zsum10: +1 ztj100 +1 ztj101 +1 ztj102 +1 ztj103 = +1
+ cons_zsum11: +1 ztj110 +1 ztj111 +1 ztj112 +1 ztj113 = +1
+ cons_zsum12: +1 ztj120 +1 ztj121 +1 ztj122 +1 ztj123 = +1
+ cons_zsum13: +1 ztj130 +1 ztj131 +1 ztj132 +1 ztj133 = +1
+ cons_zsum14: +1 ztj140 +1 ztj141 +1 ztj142 +1 ztj143 = +1
+ cons_zsum15: +1 ztj150 +1 ztj151 +1 ztj152 +1 ztj153 = +1
+ cons_zsum16: +1 ztj160 +1 ztj161 +1 ztj162 +1 ztj163 = +1
+ cons_zsum17: +1 ztj170 +1 ztj171 +1 ztj172 +1 ztj173 = +1
+ cons_zsum18: +1 ztj180 +1 ztj181 +1 ztj182 +1 ztj183 = +1
+ cons_zsum19: +1 ztj190 +1 ztj191 +1 ztj192 +1 ztj193 = +1
+ cons_rt0: +1 rt0 -1 xt00 -1 xt01 -1 xt02 -1 xt03 = +0
+ cons_rt1: +1 rt1 -1 xt10 -1 xt11 -1 xt12 -1 xt13 = +0
+ cons_rt2: +1 rt2 -1 xt20 -1 xt21 -1 xt22 -1 xt23 = +0
+ cons_rt3: +1 rt3 -1 xt30 -1 xt31 -1 xt32 -1 xt33 = +0
+ cons_rt4: +1 rt4 -1 xt40 -1 xt41 -1 xt42 -1 xt43 = +0
+ cons_rt5: +1 rt5 -1 xt50 -1 xt51 -1 xt52 -1 xt53 = +0
+ cons_rt6: +1 rt6 -1 xt60 -1 xt61 -1 xt62 -1 xt63 = +0
+ cons_rt7: +1 rt7 -1 xt70 -1 xt71 -1 xt72 -1 xt73 = +0
+ cons_rt8: +1 rt8 -1 xt80 -1 xt81 -1 xt82 -1 xt83 = +0
+ cons_rt9: +1 rt9 -1 xt90 -1 xt91 -1 xt92 -1 xt93 = +0
+ cons_rt10: +1 rt10 -1 xt100 -1 xt101 -1 xt102 -1 xt103 = +0
+ cons_rt11: +1 rt11 -1 xt110 -1 xt111 -1 xt112 -1 xt113 = +0
+ cons_rt12: +1 rt12 -1 xt120 -1 xt121 -1 xt122 -1 xt123 = +0
+ cons_rt13: +1 rt13 -1 xt130 -1 xt131 -1 xt132 -1 xt133 = +0
+ cons_rt14: +1 rt14 -1 xt140 -1 xt141 -1 xt142 -1 xt143 = +0
+ cons_rt15: +1 rt15 -1 xt150 -1 xt151 -1 xt152 -1 xt153 = +0
+ cons_rt16: +1 rt16 -1 xt160 -1 xt161 -1 xt162 -1 xt163 = +0
+ cons_rt17: +1 rt17 -1 xt170 -1 xt171 -1 xt172 -1 xt173 = +0
+ cons_rt18: +1 rt18 -1 xt180 -1 xt181 -1 xt182 -1 xt183 = +0
+ cons_rt19: +1 rt19 -1 xt190 -1 xt191 -1 xt192 -1 xt193 = +0
+ cons_dt0: -1 st0 +1 rt0 = +57
+ cons_dt1: -1 st1 +1 st0 +1 rt1 = +42
+ cons_dt2: -1 st2 +1 st1 +1 rt2 = +19
+ cons_dt3: -1 st3 +1 st2 +1 rt3 = +52
+ cons_dt4: -1 st4 +1 st3 +1 rt4 = +80
+ cons_dt5: -1 st5 +1 st4 +1 rt5 = +41
+ cons_dt6: -1 st6 +1 st5 +1 rt6 = +57
+ cons_dt7: -1 st7 +1 st6 +1 rt7 = +16
+ cons_dt8: -1 st8 +1 st7 +1 rt8 = +31
+ cons_dt9: -1 st9 +1 st8 +1 rt9 = +34
+ cons_dt10: -1 st10 +1 st9 +1 rt10 = +66
+ cons_dt11: -1 st11 +1 st10 +1 rt11 = +11
+ cons_dt12: -1 st12 +1 st11 +1 rt12 = +62
+ cons_dt13: -1 st13 +1 st12 +1 rt13 = +3
+ cons_dt14: -1 st14 +1 st13 +1 rt14 = +91
+ cons_dt15: -1 st15 +1 st14 +1 rt15 = +23
+ cons_dt16: -1 st16 +1 st15 +1 rt16 = +84
+ cons_dt17: -1 st17 +1 st16 +1 rt17 = +52
+ cons_dt18: -1 st18 +1 st17 +1 rt18 = +22
+ cons_dt19: -1 st19 +1 st18 +1 rt19 = +45
+ cons_stmax: +1 st19 = +0
+Bounds
+ 0 <= ztj00 <= 1
+ 0 <= ztj01 <= 1
+ 0 <= ztj02 <= 1
+ 0 <= ztj03 <= 1
+ 0 <= ztj10 <= 1
+ 0 <= ztj11 <= 1
+ 0 <= ztj12 <= 1
+ 0 <= ztj13 <= 1
+ 0 <= ztj20 <= 1
+ 0 <= ztj21 <= 1
+ 0 <= ztj22 <= 1
+ 0 <= ztj23 <= 1
+ 0 <= ztj30 <= 1
+ 0 <= ztj31 <= 1
+ 0 <= ztj32 <= 1
+ 0 <= ztj33 <= 1
+ 0 <= ztj40 <= 1
+ 0 <= ztj41 <= 1
+ 0 <= ztj42 <= 1
+ 0 <= ztj43 <= 1
+ 0 <= ztj50 <= 1
+ 0 <= ztj51 <= 1
+ 0 <= ztj52 <= 1
+ 0 <= ztj53 <= 1
+ 0 <= ztj60 <= 1
+ 0 <= ztj61 <= 1
+ 0 <= ztj62 <= 1
+ 0 <= ztj63 <= 1
+ 0 <= ztj70 <= 1
+ 0 <= ztj71 <= 1
+ 0 <= ztj72 <= 1
+ 0 <= ztj73 <= 1
+ 0 <= ztj80 <= 1
+ 0 <= ztj81 <= 1
+ 0 <= ztj82 <= 1
+ 0 <= ztj83 <= 1
+ 0 <= ztj90 <= 1
+ 0 <= ztj91 <= 1
+ 0 <= ztj92 <= 1
+ 0 <= ztj93 <= 1
+ 0 <= ztj100 <= 1
+ 0 <= ztj101 <= 1
+ 0 <= ztj102 <= 1
+ 0 <= ztj103 <= 1
+ 0 <= ztj110 <= 1
+ 0 <= ztj111 <= 1
+ 0 <= ztj112 <= 1
+ 0 <= ztj113 <= 1
+ 0 <= ztj120 <= 1
+ 0 <= ztj121 <= 1
+ 0 <= ztj122 <= 1
+ 0 <= ztj123 <= 1
+ 0 <= ztj130 <= 1
+ 0 <= ztj131 <= 1
+ 0 <= ztj132 <= 1
+ 0 <= ztj133 <= 1
+ 0 <= ztj140 <= 1
+ 0 <= ztj141 <= 1
+ 0 <= ztj142 <= 1
+ 0 <= ztj143 <= 1
+ 0 <= ztj150 <= 1
+ 0 <= ztj151 <= 1
+ 0 <= ztj152 <= 1
+ 0 <= ztj153 <= 1
+ 0 <= ztj160 <= 1
+ 0 <= ztj161 <= 1
+ 0 <= ztj162 <= 1
+ 0 <= ztj163 <= 1
+ 0 <= ztj170 <= 1
+ 0 <= ztj171 <= 1
+ 0 <= ztj172 <= 1
+ 0 <= ztj173 <= 1
+ 0 <= ztj180 <= 1
+ 0 <= ztj181 <= 1
+ 0 <= ztj182 <= 1
+ 0 <= ztj183 <= 1
+ 0 <= ztj190 <= 1
+ 0 <= ztj191 <= 1
+ 0 <= ztj192 <= 1
+ 0 <= ztj193 <= 1
+ 0 <= st0 <= 100
+ 0 <= st1 <= 100
+ 0 <= st2 <= 100
+ 0 <= st3 <= 100
+ 0 <= st4 <= 100
+ 0 <= st5 <= 100
+ 0 <= st6 <= 100
+ 0 <= st7 <= 100
+ 0 <= st8 <= 100
+ 0 <= st9 <= 100
+ 0 <= st10 <= 100
+ 0 <= st11 <= 100
+ 0 <= st12 <= 100
+ 0 <= st13 <= 100
+ 0 <= st14 <= 100
+ 0 <= st15 <= 100
+ 0 <= st16 <= 100
+ 0 <= st17 <= 100
+ 0 <= st18 <= 100
+ 0 <= st19 <= 100
+Binaries
+ ztj00 ztj01 ztj02 ztj03 ztj10 ztj11 ztj12 ztj13 ztj20 ztj21 ztj22 ztj23 ztj30 ztj31 ztj32 ztj33 ztj40
+ ztj41 ztj42 ztj43 ztj50 ztj51 ztj52 ztj53 ztj60 ztj61 ztj62 ztj63 ztj70 ztj71 ztj72 ztj73 ztj80 ztj81
+ ztj82 ztj83 ztj90 ztj91 ztj92 ztj93 ztj100 ztj101 ztj102 ztj103 ztj110 ztj111 ztj112 ztj113 ztj120 ztj121
+ ztj122 ztj123 ztj130 ztj131 ztj132 ztj133 ztj140 ztj141 ztj142 ztj143 ztj150 ztj151 ztj152 ztj153 ztj160
+ ztj161 ztj162 ztj163 ztj170 ztj171 ztj172 ztj173 ztj180 ztj181 ztj182 ztj183 ztj190 ztj191 ztj192 ztj193
+Generals
+ st0 st1 st2 st3 st4 st5 st6 st7 st8 st9 st10 st11 st12 st13 st14 st15 st16 st17 st18 st19 xt00 xt01 xt02
+ xt03 xt10 xt11 xt12 xt13 xt20 xt21 xt22 xt23 xt30 xt31 xt32 xt33 xt40 xt41 xt42 xt43 xt50 xt51 xt52 xt53
+ xt60 xt61 xt62 xt63 xt70 xt71 xt72 xt73 xt80 xt81 xt82 xt83 xt90 xt91 xt92 xt93 xt100 xt101 xt102 xt103
+ xt110 xt111 xt112 xt113 xt120 xt121 xt122 xt123 xt130 xt131 xt132 xt133 xt140 xt141 xt142 xt143 xt150
+ xt151 xt152 xt153 xt160 xt161 xt162 xt163 xt170 xt171 xt172 xt173 xt180 xt181 xt182 xt183 xt190 xt191
+ xt192 xt193 rt0 rt1 rt2 rt3 rt4 rt5 rt6 rt7 rt8 rt9 rt10 rt11 rt12 rt13 rt14 rt15 rt16 rt17 rt18 rt19
+End
+\ SCIP STATISTICS
+\   Problem name     : LotSizingComp
+\   Variables        : 220 (80 binary, 120 integer, 0 implicit integer, 20 continuous)
+\   Constraints      : 241
+\   Obj. scale       : 1
+\   Obj. offset      : 0
+Minimize
+ Obj: +1 ct0 +1 ct1 +1 ct2 +1 ct3 +1 ct4 +1 ct5 +1 ct6 +1 ct7 +1 ct8 +1 ct9 +1 ct10 +1 ct11 +1 ct12 +1 ct13
+      +1 ct14 +1 ct15 +1 ct16 +1 ct17 +1 ct18 +1 ct19
+Subject to
+ cons_ct0: +1 ct0 -4.09999990463257 xt00 -1.10000002384186 xt01 -75 ztj01 -0.899999976158142 xt02 -85 ztj02
+  -4 xt03 +147.5 ztj03 = +0
+ cons_ct1: +1 ct1 -4.09999990463257 xt10 -1.10000002384186 xt11 -75 ztj11 -0.899999976158142 xt12 -85 ztj12
+  -4 xt13 +147.5 ztj13 = +0
+ cons_ct2: +1 ct2 -4.09999990463257 xt20 -1.10000002384186 xt21 -75 ztj21 -0.899999976158142 xt22 -85 ztj22
+  -4 xt23 +147.5 ztj23 = +0
+ cons_ct3: +1 ct3 -4.09999990463257 xt30 -1.10000002384186 xt31 -75 ztj31 -0.899999976158142 xt32 -85 ztj32
+  -4 xt33 +147.5 ztj33 = +0
+ cons_ct4: +1 ct4 -4.09999990463257 xt40 -1.10000002384186 xt41 -75 ztj41 -0.899999976158142 xt42 -85 ztj42
+  -4 xt43 +147.5 ztj43 = +0
+ cons_ct5: +1 ct5 -4.09999990463257 xt50 -1.10000002384186 xt51 -75 ztj51 -0.899999976158142 xt52 -85 ztj52
+  -4 xt53 +147.5 ztj53 = +0
+ cons_ct6: +1 ct6 -4.09999990463257 xt60 -1.10000002384186 xt61 -75 ztj61 -0.899999976158142 xt62 -85 ztj62
+  -4 xt63 +147.5 ztj63 = +0
+ cons_ct7: +1 ct7 -4.09999990463257 xt70 -1.10000002384186 xt71 -75 ztj71 -0.899999976158142 xt72 -85 ztj72
+  -4 xt73 +147.5 ztj73 = +0
+ cons_ct8: +1 ct8 -4.09999990463257 xt80 -1.10000002384186 xt81 -75 ztj81 -0.899999976158142 xt82 -85 ztj82
+  -4 xt83 +147.5 ztj83 = +0
+ cons_ct9: +1 ct9 -4.09999990463257 xt90 -1.10000002384186 xt91 -75 ztj91 -0.899999976158142 xt92 -85 ztj92
+  -4 xt93 +147.5 ztj93 = +0
+ cons_ct10: +1 ct10 -4.09999990463257 xt100 -1.10000002384186 xt101 -75 ztj101 -0.899999976158142 xt102
+  -85 ztj102 -4 xt103 +147.5 ztj103 = +0
+ cons_ct11: +1 ct11 -4.09999990463257 xt110 -1.10000002384186 xt111 -75 ztj111 -0.899999976158142 xt112
+  -85 ztj112 -4 xt113 +147.5 ztj113 = +0
+ cons_ct12: +1 ct12 -4.09999990463257 xt120 -1.10000002384186 xt121 -75 ztj121 -0.899999976158142 xt122
+  -85 ztj122 -4 xt123 +147.5 ztj123 = +0
+ cons_ct13: +1 ct13 -4.09999990463257 xt130 -1.10000002384186 xt131 -75 ztj131 -0.899999976158142 xt132
+  -85 ztj132 -4 xt133 +147.5 ztj133 = +0
+ cons_ct14: +1 ct14 -4.09999990463257 xt140 -1.10000002384186 xt141 -75 ztj141 -0.899999976158142 xt142
+  -85 ztj142 -4 xt143 +147.5 ztj143 = +0
+ cons_ct15: +1 ct15 -4.09999990463257 xt150 -1.10000002384186 xt151 -75 ztj151 -0.899999976158142 xt152
+  -85 ztj152 -4 xt153 +147.5 ztj153 = +0
+ cons_ct16: +1 ct16 -4.09999990463257 xt160 -1.10000002384186 xt161 -75 ztj161 -0.899999976158142 xt162
+  -85 ztj162 -4 xt163 +147.5 ztj163 = +0
+ cons_ct17: +1 ct17 -4.09999990463257 xt170 -1.10000002384186 xt171 -75 ztj171 -0.899999976158142 xt172
+  -85 ztj172 -4 xt173 +147.5 ztj173 = +0
+ cons_ct18: +1 ct18 -4.09999990463257 xt180 -1.10000002384186 xt181 -75 ztj181 -0.899999976158142 xt182
+  -85 ztj182 -4 xt183 +147.5 ztj183 = +0
+ cons_ct19: +1 ct19 -4.09999990463257 xt190 -1.10000002384186 xt191 -75 ztj191 -0.899999976158142 xt192
+  -85 ztj192 -4 xt193 +147.5 ztj193 = +0
+ cons_z_binf00: +1 xt00 >= +0
+ cons_z_binf01: +1 xt01 -25 ztj01 >= +0
+ cons_z_binf02: +1 xt02 -50 ztj02 >= +0
+ cons_z_binf03: +1 xt03 -75 ztj03 >= +0
+ cons_z_binf10: +1 xt10 >= +0
+ cons_z_binf11: +1 xt11 -25 ztj11 >= +0
+ cons_z_binf12: +1 xt12 -50 ztj12 >= +0
+ cons_z_binf13: +1 xt13 -75 ztj13 >= +0
+ cons_z_binf20: +1 xt20 >= +0
+ cons_z_binf21: +1 xt21 -25 ztj21 >= +0
+ cons_z_binf22: +1 xt22 -50 ztj22 >= +0
+ cons_z_binf23: +1 xt23 -75 ztj23 >= +0
+ cons_z_binf30: +1 xt30 >= +0
+ cons_z_binf31: +1 xt31 -25 ztj31 >= +0
+ cons_z_binf32: +1 xt32 -50 ztj32 >= +0
+ cons_z_binf33: +1 xt33 -75 ztj33 >= +0
+ cons_z_binf40: +1 xt40 >= +0
+ cons_z_binf41: +1 xt41 -25 ztj41 >= +0
+ cons_z_binf42: +1 xt42 -50 ztj42 >= +0
+ cons_z_binf43: +1 xt43 -75 ztj43 >= +0
+ cons_z_binf50: +1 xt50 >= +0
+ cons_z_binf51: +1 xt51 -25 ztj51 >= +0
+ cons_z_binf52: +1 xt52 -50 ztj52 >= +0
+ cons_z_binf53: +1 xt53 -75 ztj53 >= +0
+ cons_z_binf60: +1 xt60 >= +0
+ cons_z_binf61: +1 xt61 -25 ztj61 >= +0
+ cons_z_binf62: +1 xt62 -50 ztj62 >= +0
+ cons_z_binf63: +1 xt63 -75 ztj63 >= +0
+ cons_z_binf70: +1 xt70 >= +0
+ cons_z_binf71: +1 xt71 -25 ztj71 >= +0
+ cons_z_binf72: +1 xt72 -50 ztj72 >= +0
+ cons_z_binf73: +1 xt73 -75 ztj73 >= +0
+ cons_z_binf80: +1 xt80 >= +0
+ cons_z_binf81: +1 xt81 -25 ztj81 >= +0
+ cons_z_binf82: +1 xt82 -50 ztj82 >= +0
+ cons_z_binf83: +1 xt83 -75 ztj83 >= +0
+ cons_z_binf90: +1 xt90 >= +0
+ cons_z_binf91: +1 xt91 -25 ztj91 >= +0
+ cons_z_binf92: +1 xt92 -50 ztj92 >= +0
+ cons_z_binf93: +1 xt93 -75 ztj93 >= +0
+ cons_z_binf100: +1 xt100 >= +0
+ cons_z_binf101: +1 xt101 -25 ztj101 >= +0
+ cons_z_binf102: +1 xt102 -50 ztj102 >= +0
+ cons_z_binf103: +1 xt103 -75 ztj103 >= +0
+ cons_z_binf110: +1 xt110 >= +0
+ cons_z_binf111: +1 xt111 -25 ztj111 >= +0
+ cons_z_binf112: +1 xt112 -50 ztj112 >= +0
+ cons_z_binf113: +1 xt113 -75 ztj113 >= +0
+ cons_z_binf120: +1 xt120 >= +0
+ cons_z_binf121: +1 xt121 -25 ztj121 >= +0
+ cons_z_binf122: +1 xt122 -50 ztj122 >= +0
+ cons_z_binf123: +1 xt123 -75 ztj123 >= +0
+ cons_z_binf130: +1 xt130 >= +0
+ cons_z_binf131: +1 xt131 -25 ztj131 >= +0
+ cons_z_binf132: +1 xt132 -50 ztj132 >= +0
+ cons_z_binf133: +1 xt133 -75 ztj133 >= +0
+ cons_z_binf140: +1 xt140 >= +0
+ cons_z_binf141: +1 xt141 -25 ztj141 >= +0
+ cons_z_binf142: +1 xt142 -50 ztj142 >= +0
+ cons_z_binf143: +1 xt143 -75 ztj143 >= +0
+ cons_z_binf150: +1 xt150 >= +0
+ cons_z_binf151: +1 xt151 -25 ztj151 >= +0
+ cons_z_binf152: +1 xt152 -50 ztj152 >= +0
+ cons_z_binf153: +1 xt153 -75 ztj153 >= +0
+ cons_z_binf160: +1 xt160 >= +0
+ cons_z_binf161: +1 xt161 -25 ztj161 >= +0
+ cons_z_binf162: +1 xt162 -50 ztj162 >= +0
+ cons_z_binf163: +1 xt163 -75 ztj163 >= +0
+ cons_z_binf170: +1 xt170 >= +0
+ cons_z_binf171: +1 xt171 -25 ztj171 >= +0
+ cons_z_binf172: +1 xt172 -50 ztj172 >= +0
+ cons_z_binf173: +1 xt173 -75 ztj173 >= +0
+ cons_z_binf180: +1 xt180 >= +0
+ cons_z_binf181: +1 xt181 -25 ztj181 >= +0
+ cons_z_binf182: +1 xt182 -50 ztj182 >= +0
+ cons_z_binf183: +1 xt183 -75 ztj183 >= +0
+ cons_z_binf190: +1 xt190 >= +0
+ cons_z_binf191: +1 xt191 -25 ztj191 >= +0
+ cons_z_binf192: +1 xt192 -50 ztj192 >= +0
+ cons_z_binf193: +1 xt193 -75 ztj193 >= +0
+ cons_z_bsup00: +1 xt00 -24 ztj00 <= +0
+ cons_z_bsup01: +1 xt01 -49 ztj01 <= +0
+ cons_z_bsup02: +1 xt02 -74 ztj02 <= +0
+ cons_z_bsup03: +1 xt03 +1 ztj03 <= +0
+ cons_z_bsup10: +1 xt10 -24 ztj10 <= +0
+ cons_z_bsup11: +1 xt11 -49 ztj11 <= +0
+ cons_z_bsup12: +1 xt12 -74 ztj12 <= +0
+ cons_z_bsup13: +1 xt13 +1 ztj13 <= +0
+ cons_z_bsup20: +1 xt20 -24 ztj20 <= +0
+ cons_z_bsup21: +1 xt21 -49 ztj21 <= +0
+ cons_z_bsup22: +1 xt22 -74 ztj22 <= +0
+ cons_z_bsup23: +1 xt23 +1 ztj23 <= +0
+ cons_z_bsup30: +1 xt30 -24 ztj30 <= +0
+ cons_z_bsup31: +1 xt31 -49 ztj31 <= +0
+ cons_z_bsup32: +1 xt32 -74 ztj32 <= +0
+ cons_z_bsup33: +1 xt33 +1 ztj33 <= +0
+ cons_z_bsup40: +1 xt40 -24 ztj40 <= +0
+ cons_z_bsup41: +1 xt41 -49 ztj41 <= +0
+ cons_z_bsup42: +1 xt42 -74 ztj42 <= +0
+ cons_z_bsup43: +1 xt43 +1 ztj43 <= +0
+ cons_z_bsup50: +1 xt50 -24 ztj50 <= +0
+ cons_z_bsup51: +1 xt51 -49 ztj51 <= +0
+ cons_z_bsup52: +1 xt52 -74 ztj52 <= +0
+ cons_z_bsup53: +1 xt53 +1 ztj53 <= +0
+ cons_z_bsup60: +1 xt60 -24 ztj60 <= +0
+ cons_z_bsup61: +1 xt61 -49 ztj61 <= +0
+ cons_z_bsup62: +1 xt62 -74 ztj62 <= +0
+ cons_z_bsup63: +1 xt63 +1 ztj63 <= +0
+ cons_z_bsup70: +1 xt70 -24 ztj70 <= +0
+ cons_z_bsup71: +1 xt71 -49 ztj71 <= +0
+ cons_z_bsup72: +1 xt72 -74 ztj72 <= +0
+ cons_z_bsup73: +1 xt73 +1 ztj73 <= +0
+ cons_z_bsup80: +1 xt80 -24 ztj80 <= +0
+ cons_z_bsup81: +1 xt81 -49 ztj81 <= +0
+ cons_z_bsup82: +1 xt82 -74 ztj82 <= +0
+ cons_z_bsup83: +1 xt83 +1 ztj83 <= +0
+ cons_z_bsup90: +1 xt90 -24 ztj90 <= +0
+ cons_z_bsup91: +1 xt91 -49 ztj91 <= +0
+ cons_z_bsup92: +1 xt92 -74 ztj92 <= +0
+ cons_z_bsup93: +1 xt93 +1 ztj93 <= +0
+ cons_z_bsup100: +1 xt100 -24 ztj100 <= +0
+ cons_z_bsup101: +1 xt101 -49 ztj101 <= +0
+ cons_z_bsup102: +1 xt102 -74 ztj102 <= +0
+ cons_z_bsup103: +1 xt103 +1 ztj103 <= +0
+ cons_z_bsup110: +1 xt110 -24 ztj110 <= +0
+ cons_z_bsup111: +1 xt111 -49 ztj111 <= +0
+ cons_z_bsup112: +1 xt112 -74 ztj112 <= +0
+ cons_z_bsup113: +1 xt113 +1 ztj113 <= +0
+ cons_z_bsup120: +1 xt120 -24 ztj120 <= +0
+ cons_z_bsup121: +1 xt121 -49 ztj121 <= +0
+ cons_z_bsup122: +1 xt122 -74 ztj122 <= +0
+ cons_z_bsup123: +1 xt123 +1 ztj123 <= +0
+ cons_z_bsup130: +1 xt130 -24 ztj130 <= +0
+ cons_z_bsup131: +1 xt131 -49 ztj131 <= +0
+ cons_z_bsup132: +1 xt132 -74 ztj132 <= +0
+ cons_z_bsup133: +1 xt133 +1 ztj133 <= +0
+ cons_z_bsup140: +1 xt140 -24 ztj140 <= +0
+ cons_z_bsup141: +1 xt141 -49 ztj141 <= +0
+ cons_z_bsup142: +1 xt142 -74 ztj142 <= +0
+ cons_z_bsup143: +1 xt143 +1 ztj143 <= +0
+ cons_z_bsup150: +1 xt150 -24 ztj150 <= +0
+ cons_z_bsup151: +1 xt151 -49 ztj151 <= +0
+ cons_z_bsup152: +1 xt152 -74 ztj152 <= +0
+ cons_z_bsup153: +1 xt153 +1 ztj153 <= +0
+ cons_z_bsup160: +1 xt160 -24 ztj160 <= +0
+ cons_z_bsup161: +1 xt161 -49 ztj161 <= +0
+ cons_z_bsup162: +1 xt162 -74 ztj162 <= +0
+ cons_z_bsup163: +1 xt163 +1 ztj163 <= +0
+ cons_z_bsup170: +1 xt170 -24 ztj170 <= +0
+ cons_z_bsup171: +1 xt171 -49 ztj171 <= +0
+ cons_z_bsup172: +1 xt172 -74 ztj172 <= +0
+ cons_z_bsup173: +1 xt173 +1 ztj173 <= +0
+ cons_z_bsup180: +1 xt180 -24 ztj180 <= +0
+ cons_z_bsup181: +1 xt181 -49 ztj181 <= +0
+ cons_z_bsup182: +1 xt182 -74 ztj182 <= +0
+ cons_z_bsup183: +1 xt183 +1 ztj183 <= +0
+ cons_z_bsup190: +1 xt190 -24 ztj190 <= +0
+ cons_z_bsup191: +1 xt191 -49 ztj191 <= +0
+ cons_z_bsup192: +1 xt192 -74 ztj192 <= +0
+ cons_z_bsup193: +1 xt193 +1 ztj193 <= +0
+ cons_zsum0: +1 ztj00 +1 ztj01 +1 ztj02 +1 ztj03 = +1
+ cons_zsum1: +1 ztj10 +1 ztj11 +1 ztj12 +1 ztj13 = +1
+ cons_zsum2: +1 ztj20 +1 ztj21 +1 ztj22 +1 ztj23 = +1
+ cons_zsum3: +1 ztj30 +1 ztj31 +1 ztj32 +1 ztj33 = +1
+ cons_zsum4: +1 ztj40 +1 ztj41 +1 ztj42 +1 ztj43 = +1
+ cons_zsum5: +1 ztj50 +1 ztj51 +1 ztj52 +1 ztj53 = +1
+ cons_zsum6: +1 ztj60 +1 ztj61 +1 ztj62 +1 ztj63 = +1
+ cons_zsum7: +1 ztj70 +1 ztj71 +1 ztj72 +1 ztj73 = +1
+ cons_zsum8: +1 ztj80 +1 ztj81 +1 ztj82 +1 ztj83 = +1
+ cons_zsum9: +1 ztj90 +1 ztj91 +1 ztj92 +1 ztj93 = +1
+ cons_zsum10: +1 ztj100 +1 ztj101 +1 ztj102 +1 ztj103 = +1
+ cons_zsum11: +1 ztj110 +1 ztj111 +1 ztj112 +1 ztj113 = +1
+ cons_zsum12: +1 ztj120 +1 ztj121 +1 ztj122 +1 ztj123 = +1
+ cons_zsum13: +1 ztj130 +1 ztj131 +1 ztj132 +1 ztj133 = +1
+ cons_zsum14: +1 ztj140 +1 ztj141 +1 ztj142 +1 ztj143 = +1
+ cons_zsum15: +1 ztj150 +1 ztj151 +1 ztj152 +1 ztj153 = +1
+ cons_zsum16: +1 ztj160 +1 ztj161 +1 ztj162 +1 ztj163 = +1
+ cons_zsum17: +1 ztj170 +1 ztj171 +1 ztj172 +1 ztj173 = +1
+ cons_zsum18: +1 ztj180 +1 ztj181 +1 ztj182 +1 ztj183 = +1
+ cons_zsum19: +1 ztj190 +1 ztj191 +1 ztj192 +1 ztj193 = +1
+ cons_rt0: +1 rt0 -1 xt00 -1 xt01 -1 xt02 -1 xt03 = +0
+ cons_rt1: +1 rt1 -1 xt10 -1 xt11 -1 xt12 -1 xt13 = +0
+ cons_rt2: +1 rt2 -1 xt20 -1 xt21 -1 xt22 -1 xt23 = +0
+ cons_rt3: +1 rt3 -1 xt30 -1 xt31 -1 xt32 -1 xt33 = +0
+ cons_rt4: +1 rt4 -1 xt40 -1 xt41 -1 xt42 -1 xt43 = +0
+ cons_rt5: +1 rt5 -1 xt50 -1 xt51 -1 xt52 -1 xt53 = +0
+ cons_rt6: +1 rt6 -1 xt60 -1 xt61 -1 xt62 -1 xt63 = +0
+ cons_rt7: +1 rt7 -1 xt70 -1 xt71 -1 xt72 -1 xt73 = +0
+ cons_rt8: +1 rt8 -1 xt80 -1 xt81 -1 xt82 -1 xt83 = +0
+ cons_rt9: +1 rt9 -1 xt90 -1 xt91 -1 xt92 -1 xt93 = +0
+ cons_rt10: +1 rt10 -1 xt100 -1 xt101 -1 xt102 -1 xt103 = +0
+ cons_rt11: +1 rt11 -1 xt110 -1 xt111 -1 xt112 -1 xt113 = +0
+ cons_rt12: +1 rt12 -1 xt120 -1 xt121 -1 xt122 -1 xt123 = +0
+ cons_rt13: +1 rt13 -1 xt130 -1 xt131 -1 xt132 -1 xt133 = +0
+ cons_rt14: +1 rt14 -1 xt140 -1 xt141 -1 xt142 -1 xt143 = +0
+ cons_rt15: +1 rt15 -1 xt150 -1 xt151 -1 xt152 -1 xt153 = +0
+ cons_rt16: +1 rt16 -1 xt160 -1 xt161 -1 xt162 -1 xt163 = +0
+ cons_rt17: +1 rt17 -1 xt170 -1 xt171 -1 xt172 -1 xt173 = +0
+ cons_rt18: +1 rt18 -1 xt180 -1 xt181 -1 xt182 -1 xt183 = +0
+ cons_rt19: +1 rt19 -1 xt190 -1 xt191 -1 xt192 -1 xt193 = +0
+ cons_dt0: -1 st0 +1 rt0 = +64
+ cons_dt1: -1 st1 +1 st0 +1 rt1 = +86
+ cons_dt2: -1 st2 +1 st1 +1 rt2 = +98
+ cons_dt3: -1 st3 +1 st2 +1 rt3 = +40
+ cons_dt4: -1 st4 +1 st3 +1 rt4 = +56
+ cons_dt5: -1 st5 +1 st4 +1 rt5 = +27
+ cons_dt6: -1 st6 +1 st5 +1 rt6 = +17
+ cons_dt7: -1 st7 +1 st6 +1 rt7 = +41
+ cons_dt8: -1 st8 +1 st7 +1 rt8 = +65
+ cons_dt9: -1 st9 +1 st8 +1 rt9 = +6
+ cons_dt10: -1 st10 +1 st9 +1 rt10 = +69
+ cons_dt11: -1 st11 +1 st10 +1 rt11 = +28
+ cons_dt12: -1 st12 +1 st11 +1 rt12 = +80
+ cons_dt13: -1 st13 +1 st12 +1 rt13 = +71
+ cons_dt14: -1 st14 +1 st13 +1 rt14 = +63
+ cons_dt15: -1 st15 +1 st14 +1 rt15 = +91
+ cons_dt16: -1 st16 +1 st15 +1 rt16 = +42
+ cons_dt17: -1 st17 +1 st16 +1 rt17 = +98
+ cons_dt18: -1 st18 +1 st17 +1 rt18 = +80
+ cons_dt19: -1 st19 +1 st18 +1 rt19 = +77
+ cons_stmax: +1 st19 = +0
+Bounds
+ 0 <= ztj00 <= 1
+ 0 <= ztj01 <= 1
+ 0 <= ztj02 <= 1
+ 0 <= ztj03 <= 1
+ 0 <= ztj10 <= 1
+ 0 <= ztj11 <= 1
+ 0 <= ztj12 <= 1
+ 0 <= ztj13 <= 1
+ 0 <= ztj20 <= 1
+ 0 <= ztj21 <= 1
+ 0 <= ztj22 <= 1
+ 0 <= ztj23 <= 1
+ 0 <= ztj30 <= 1
+ 0 <= ztj31 <= 1
+ 0 <= ztj32 <= 1
+ 0 <= ztj33 <= 1
+ 0 <= ztj40 <= 1
+ 0 <= ztj41 <= 1
+ 0 <= ztj42 <= 1
+ 0 <= ztj43 <= 1
+ 0 <= ztj50 <= 1
+ 0 <= ztj51 <= 1
+ 0 <= ztj52 <= 1
+ 0 <= ztj53 <= 1
+ 0 <= ztj60 <= 1
+ 0 <= ztj61 <= 1
+ 0 <= ztj62 <= 1
+ 0 <= ztj63 <= 1
+ 0 <= ztj70 <= 1
+ 0 <= ztj71 <= 1
+ 0 <= ztj72 <= 1
+ 0 <= ztj73 <= 1
+ 0 <= ztj80 <= 1
+ 0 <= ztj81 <= 1
+ 0 <= ztj82 <= 1
+ 0 <= ztj83 <= 1
+ 0 <= ztj90 <= 1
+ 0 <= ztj91 <= 1
+ 0 <= ztj92 <= 1
+ 0 <= ztj93 <= 1
+ 0 <= ztj100 <= 1
+ 0 <= ztj101 <= 1
+ 0 <= ztj102 <= 1
+ 0 <= ztj103 <= 1
+ 0 <= ztj110 <= 1
+ 0 <= ztj111 <= 1
+ 0 <= ztj112 <= 1
+ 0 <= ztj113 <= 1
+ 0 <= ztj120 <= 1
+ 0 <= ztj121 <= 1
+ 0 <= ztj122 <= 1
+ 0 <= ztj123 <= 1
+ 0 <= ztj130 <= 1
+ 0 <= ztj131 <= 1
+ 0 <= ztj132 <= 1
+ 0 <= ztj133 <= 1
+ 0 <= ztj140 <= 1
+ 0 <= ztj141 <= 1
+ 0 <= ztj142 <= 1
+ 0 <= ztj143 <= 1
+ 0 <= ztj150 <= 1
+ 0 <= ztj151 <= 1
+ 0 <= ztj152 <= 1
+ 0 <= ztj153 <= 1
+ 0 <= ztj160 <= 1
+ 0 <= ztj161 <= 1
+ 0 <= ztj162 <= 1
+ 0 <= ztj163 <= 1
+ 0 <= ztj170 <= 1
+ 0 <= ztj171 <= 1
+ 0 <= ztj172 <= 1
+ 0 <= ztj173 <= 1
+ 0 <= ztj180 <= 1
+ 0 <= ztj181 <= 1
+ 0 <= ztj182 <= 1
+ 0 <= ztj183 <= 1
+ 0 <= ztj190 <= 1
+ 0 <= ztj191 <= 1
+ 0 <= ztj192 <= 1
+ 0 <= ztj193 <= 1
+ 0 <= st0 <= 100
+ 0 <= st1 <= 100
+ 0 <= st2 <= 100
+ 0 <= st3 <= 100
+ 0 <= st4 <= 100
+ 0 <= st5 <= 100
+ 0 <= st6 <= 100
+ 0 <= st7 <= 100
+ 0 <= st8 <= 100
+ 0 <= st9 <= 100
+ 0 <= st10 <= 100
+ 0 <= st11 <= 100
+ 0 <= st12 <= 100
+ 0 <= st13 <= 100
+ 0 <= st14 <= 100
+ 0 <= st15 <= 100
+ 0 <= st16 <= 100
+ 0 <= st17 <= 100
+ 0 <= st18 <= 100
+ 0 <= st19 <= 100
+Binaries
+ ztj00 ztj01 ztj02 ztj03 ztj10 ztj11 ztj12 ztj13 ztj20 ztj21 ztj22 ztj23 ztj30 ztj31 ztj32 ztj33 ztj40
+ ztj41 ztj42 ztj43 ztj50 ztj51 ztj52 ztj53 ztj60 ztj61 ztj62 ztj63 ztj70 ztj71 ztj72 ztj73 ztj80 ztj81
+ ztj82 ztj83 ztj90 ztj91 ztj92 ztj93 ztj100 ztj101 ztj102 ztj103 ztj110 ztj111 ztj112 ztj113 ztj120 ztj121
+ ztj122 ztj123 ztj130 ztj131 ztj132 ztj133 ztj140 ztj141 ztj142 ztj143 ztj150 ztj151 ztj152 ztj153 ztj160
+ ztj161 ztj162 ztj163 ztj170 ztj171 ztj172 ztj173 ztj180 ztj181 ztj182 ztj183 ztj190 ztj191 ztj192 ztj193
+Generals
+ st0 st1 st2 st3 st4 st5 st6 st7 st8 st9 st10 st11 st12 st13 st14 st15 st16 st17 st18 st19 xt00 xt01 xt02
+ xt03 xt10 xt11 xt12 xt13 xt20 xt21 xt22 xt23 xt30 xt31 xt32 xt33 xt40 xt41 xt42 xt43 xt50 xt51 xt52 xt53
+ xt60 xt61 xt62 xt63 xt70 xt71 xt72 xt73 xt80 xt81 xt82 xt83 xt90 xt91 xt92 xt93 xt100 xt101 xt102 xt103
+ xt110 xt111 xt112 xt113 xt120 xt121 xt122 xt123 xt130 xt131 xt132 xt133 xt140 xt141 xt142 xt143 xt150
+ xt151 xt152 xt153 xt160 xt161 xt162 xt163 xt170 xt171 xt172 xt173 xt180 xt181 xt182 xt183 xt190 xt191
+ xt192 xt193 rt0 rt1 rt2 rt3 rt4 rt5 rt6 rt7 rt8 rt9 rt10 rt11 rt12 rt13 rt14 rt15 rt16 rt17 rt18 rt19
+End
+\ SCIP STATISTICS
+\   Problem name     : LotSizingComp
+\   Variables        : 220 (80 binary, 120 integer, 0 implicit integer, 20 continuous)
+\   Constraints      : 241
+\   Obj. scale       : 1
+\   Obj. offset      : 0
+Minimize
+ Obj: +1 ct0 +1 ct1 +1 ct2 +1 ct3 +1 ct4 +1 ct5 +1 ct6 +1 ct7 +1 ct8 +1 ct9 +1 ct10 +1 ct11 +1 ct12 +1 ct13
+      +1 ct14 +1 ct15 +1 ct16 +1 ct17 +1 ct18 +1 ct19
+Subject to
+ cons_ct0: +1 ct0 -0.600000023841858 xt00 -2.70000004768372 xt01 +52.5 ztj01 -3.20000004768372 xt02 +77.5 ztj02
+  -1.5 xt03 -50 ztj03 = +0
+ cons_ct1: +1 ct1 -0.600000023841858 xt10 -2.70000004768372 xt11 +52.5 ztj11 -3.20000004768372 xt12 +77.5 ztj12
+  -1.5 xt13 -50 ztj13 = +0
+ cons_ct2: +1 ct2 -0.600000023841858 xt20 -2.70000004768372 xt21 +52.5 ztj21 -3.20000004768372 xt22 +77.5 ztj22
+  -1.5 xt23 -50 ztj23 = +0
+ cons_ct3: +1 ct3 -0.600000023841858 xt30 -2.70000004768372 xt31 +52.5 ztj31 -3.20000004768372 xt32 +77.5 ztj32
+  -1.5 xt33 -50 ztj33 = +0
+ cons_ct4: +1 ct4 -0.600000023841858 xt40 -2.70000004768372 xt41 +52.5 ztj41 -3.20000004768372 xt42 +77.5 ztj42
+  -1.5 xt43 -50 ztj43 = +0
+ cons_ct5: +1 ct5 -0.600000023841858 xt50 -2.70000004768372 xt51 +52.5 ztj51 -3.20000004768372 xt52 +77.5 ztj52
+  -1.5 xt53 -50 ztj53 = +0
+ cons_ct6: +1 ct6 -0.600000023841858 xt60 -2.70000004768372 xt61 +52.5 ztj61 -3.20000004768372 xt62 +77.5 ztj62
+  -1.5 xt63 -50 ztj63 = +0
+ cons_ct7: +1 ct7 -0.600000023841858 xt70 -2.70000004768372 xt71 +52.5 ztj71 -3.20000004768372 xt72 +77.5 ztj72
+  -1.5 xt73 -50 ztj73 = +0
+ cons_ct8: +1 ct8 -0.600000023841858 xt80 -2.70000004768372 xt81 +52.5 ztj81 -3.20000004768372 xt82 +77.5 ztj82
+  -1.5 xt83 -50 ztj83 = +0
+ cons_ct9: +1 ct9 -0.600000023841858 xt90 -2.70000004768372 xt91 +52.5 ztj91 -3.20000004768372 xt92 +77.5 ztj92
+  -1.5 xt93 -50 ztj93 = +0
+ cons_ct10: +1 ct10 -0.600000023841858 xt100 -2.70000004768372 xt101 +52.5 ztj101 -3.20000004768372 xt102
+  +77.5 ztj102 -1.5 xt103 -50 ztj103 = +0
+ cons_ct11: +1 ct11 -0.600000023841858 xt110 -2.70000004768372 xt111 +52.5 ztj111 -3.20000004768372 xt112
+  +77.5 ztj112 -1.5 xt113 -50 ztj113 = +0
+ cons_ct12: +1 ct12 -0.600000023841858 xt120 -2.70000004768372 xt121 +52.5 ztj121 -3.20000004768372 xt122
+  +77.5 ztj122 -1.5 xt123 -50 ztj123 = +0
+ cons_ct13: +1 ct13 -0.600000023841858 xt130 -2.70000004768372 xt131 +52.5 ztj131 -3.20000004768372 xt132
+  +77.5 ztj132 -1.5 xt133 -50 ztj133 = +0
+ cons_ct14: +1 ct14 -0.600000023841858 xt140 -2.70000004768372 xt141 +52.5 ztj141 -3.20000004768372 xt142
+  +77.5 ztj142 -1.5 xt143 -50 ztj143 = +0
+ cons_ct15: +1 ct15 -0.600000023841858 xt150 -2.70000004768372 xt151 +52.5 ztj151 -3.20000004768372 xt152
+  +77.5 ztj152 -1.5 xt153 -50 ztj153 = +0
+ cons_ct16: +1 ct16 -0.600000023841858 xt160 -2.70000004768372 xt161 +52.5 ztj161 -3.20000004768372 xt162
+  +77.5 ztj162 -1.5 xt163 -50 ztj163 = +0
+ cons_ct17: +1 ct17 -0.600000023841858 xt170 -2.70000004768372 xt171 +52.5 ztj171 -3.20000004768372 xt172
+  +77.5 ztj172 -1.5 xt173 -50 ztj173 = +0
+ cons_ct18: +1 ct18 -0.600000023841858 xt180 -2.70000004768372 xt181 +52.5 ztj181 -3.20000004768372 xt182
+  +77.5 ztj182 -1.5 xt183 -50 ztj183 = +0
+ cons_ct19: +1 ct19 -0.600000023841858 xt190 -2.70000004768372 xt191 +52.5 ztj191 -3.20000004768372 xt192
+  +77.5 ztj192 -1.5 xt193 -50 ztj193 = +0
+ cons_z_binf00: +1 xt00 >= +0
+ cons_z_binf01: +1 xt01 -25 ztj01 >= +0
+ cons_z_binf02: +1 xt02 -50 ztj02 >= +0
+ cons_z_binf03: +1 xt03 -75 ztj03 >= +0
+ cons_z_binf10: +1 xt10 >= +0
+ cons_z_binf11: +1 xt11 -25 ztj11 >= +0
+ cons_z_binf12: +1 xt12 -50 ztj12 >= +0
+ cons_z_binf13: +1 xt13 -75 ztj13 >= +0
+ cons_z_binf20: +1 xt20 >= +0
+ cons_z_binf21: +1 xt21 -25 ztj21 >= +0
+ cons_z_binf22: +1 xt22 -50 ztj22 >= +0
+ cons_z_binf23: +1 xt23 -75 ztj23 >= +0
+ cons_z_binf30: +1 xt30 >= +0
+ cons_z_binf31: +1 xt31 -25 ztj31 >= +0
+ cons_z_binf32: +1 xt32 -50 ztj32 >= +0
+ cons_z_binf33: +1 xt33 -75 ztj33 >= +0
+ cons_z_binf40: +1 xt40 >= +0
+ cons_z_binf41: +1 xt41 -25 ztj41 >= +0
+ cons_z_binf42: +1 xt42 -50 ztj42 >= +0
+ cons_z_binf43: +1 xt43 -75 ztj43 >= +0
+ cons_z_binf50: +1 xt50 >= +0
+ cons_z_binf51: +1 xt51 -25 ztj51 >= +0
+ cons_z_binf52: +1 xt52 -50 ztj52 >= +0
+ cons_z_binf53: +1 xt53 -75 ztj53 >= +0
+ cons_z_binf60: +1 xt60 >= +0
+ cons_z_binf61: +1 xt61 -25 ztj61 >= +0
+ cons_z_binf62: +1 xt62 -50 ztj62 >= +0
+ cons_z_binf63: +1 xt63 -75 ztj63 >= +0
+ cons_z_binf70: +1 xt70 >= +0
+ cons_z_binf71: +1 xt71 -25 ztj71 >= +0
+ cons_z_binf72: +1 xt72 -50 ztj72 >= +0
+ cons_z_binf73: +1 xt73 -75 ztj73 >= +0
+ cons_z_binf80: +1 xt80 >= +0
+ cons_z_binf81: +1 xt81 -25 ztj81 >= +0
+ cons_z_binf82: +1 xt82 -50 ztj82 >= +0
+ cons_z_binf83: +1 xt83 -75 ztj83 >= +0
+ cons_z_binf90: +1 xt90 >= +0
+ cons_z_binf91: +1 xt91 -25 ztj91 >= +0
+ cons_z_binf92: +1 xt92 -50 ztj92 >= +0
+ cons_z_binf93: +1 xt93 -75 ztj93 >= +0
+ cons_z_binf100: +1 xt100 >= +0
+ cons_z_binf101: +1 xt101 -25 ztj101 >= +0
+ cons_z_binf102: +1 xt102 -50 ztj102 >= +0
+ cons_z_binf103: +1 xt103 -75 ztj103 >= +0
+ cons_z_binf110: +1 xt110 >= +0
+ cons_z_binf111: +1 xt111 -25 ztj111 >= +0
+ cons_z_binf112: +1 xt112 -50 ztj112 >= +0
+ cons_z_binf113: +1 xt113 -75 ztj113 >= +0
+ cons_z_binf120: +1 xt120 >= +0
+ cons_z_binf121: +1 xt121 -25 ztj121 >= +0
+ cons_z_binf122: +1 xt122 -50 ztj122 >= +0
+ cons_z_binf123: +1 xt123 -75 ztj123 >= +0
+ cons_z_binf130: +1 xt130 >= +0
+ cons_z_binf131: +1 xt131 -25 ztj131 >= +0
+ cons_z_binf132: +1 xt132 -50 ztj132 >= +0
+ cons_z_binf133: +1 xt133 -75 ztj133 >= +0
+ cons_z_binf140: +1 xt140 >= +0
+ cons_z_binf141: +1 xt141 -25 ztj141 >= +0
+ cons_z_binf142: +1 xt142 -50 ztj142 >= +0
+ cons_z_binf143: +1 xt143 -75 ztj143 >= +0
+ cons_z_binf150: +1 xt150 >= +0
+ cons_z_binf151: +1 xt151 -25 ztj151 >= +0
+ cons_z_binf152: +1 xt152 -50 ztj152 >= +0
+ cons_z_binf153: +1 xt153 -75 ztj153 >= +0
+ cons_z_binf160: +1 xt160 >= +0
+ cons_z_binf161: +1 xt161 -25 ztj161 >= +0
+ cons_z_binf162: +1 xt162 -50 ztj162 >= +0
+ cons_z_binf163: +1 xt163 -75 ztj163 >= +0
+ cons_z_binf170: +1 xt170 >= +0
+ cons_z_binf171: +1 xt171 -25 ztj171 >= +0
+ cons_z_binf172: +1 xt172 -50 ztj172 >= +0
+ cons_z_binf173: +1 xt173 -75 ztj173 >= +0
+ cons_z_binf180: +1 xt180 >= +0
+ cons_z_binf181: +1 xt181 -25 ztj181 >= +0
+ cons_z_binf182: +1 xt182 -50 ztj182 >= +0
+ cons_z_binf183: +1 xt183 -75 ztj183 >= +0
+ cons_z_binf190: +1 xt190 >= +0
+ cons_z_binf191: +1 xt191 -25 ztj191 >= +0
+ cons_z_binf192: +1 xt192 -50 ztj192 >= +0
+ cons_z_binf193: +1 xt193 -75 ztj193 >= +0
+ cons_z_bsup00: +1 xt00 -24 ztj00 <= +0
+ cons_z_bsup01: +1 xt01 -49 ztj01 <= +0
+ cons_z_bsup02: +1 xt02 -74 ztj02 <= +0
+ cons_z_bsup03: +1 xt03 -2147483646 ztj03 <= +0
+ cons_z_bsup10: +1 xt10 -24 ztj10 <= +0
+ cons_z_bsup11: +1 xt11 -49 ztj11 <= +0
+ cons_z_bsup12: +1 xt12 -74 ztj12 <= +0
+ cons_z_bsup13: +1 xt13 -2147483646 ztj13 <= +0
+ cons_z_bsup20: +1 xt20 -24 ztj20 <= +0
+ cons_z_bsup21: +1 xt21 -49 ztj21 <= +0
+ cons_z_bsup22: +1 xt22 -74 ztj22 <= +0
+ cons_z_bsup23: +1 xt23 -2147483646 ztj23 <= +0
+ cons_z_bsup30: +1 xt30 -24 ztj30 <= +0
+ cons_z_bsup31: +1 xt31 -49 ztj31 <= +0
+ cons_z_bsup32: +1 xt32 -74 ztj32 <= +0
+ cons_z_bsup33: +1 xt33 -2147483646 ztj33 <= +0
+ cons_z_bsup40: +1 xt40 -24 ztj40 <= +0
+ cons_z_bsup41: +1 xt41 -49 ztj41 <= +0
+ cons_z_bsup42: +1 xt42 -74 ztj42 <= +0
+ cons_z_bsup43: +1 xt43 -2147483646 ztj43 <= +0
+ cons_z_bsup50: +1 xt50 -24 ztj50 <= +0
+ cons_z_bsup51: +1 xt51 -49 ztj51 <= +0
+ cons_z_bsup52: +1 xt52 -74 ztj52 <= +0
+ cons_z_bsup53: +1 xt53 -2147483646 ztj53 <= +0
+ cons_z_bsup60: +1 xt60 -24 ztj60 <= +0
+ cons_z_bsup61: +1 xt61 -49 ztj61 <= +0
+ cons_z_bsup62: +1 xt62 -74 ztj62 <= +0
+ cons_z_bsup63: +1 xt63 -2147483646 ztj63 <= +0
+ cons_z_bsup70: +1 xt70 -24 ztj70 <= +0
+ cons_z_bsup71: +1 xt71 -49 ztj71 <= +0
+ cons_z_bsup72: +1 xt72 -74 ztj72 <= +0
+ cons_z_bsup73: +1 xt73 -2147483646 ztj73 <= +0
+ cons_z_bsup80: +1 xt80 -24 ztj80 <= +0
+ cons_z_bsup81: +1 xt81 -49 ztj81 <= +0
+ cons_z_bsup82: +1 xt82 -74 ztj82 <= +0
+ cons_z_bsup83: +1 xt83 -2147483646 ztj83 <= +0
+ cons_z_bsup90: +1 xt90 -24 ztj90 <= +0
+ cons_z_bsup91: +1 xt91 -49 ztj91 <= +0
+ cons_z_bsup92: +1 xt92 -74 ztj92 <= +0
+ cons_z_bsup93: +1 xt93 -2147483646 ztj93 <= +0
+ cons_z_bsup100: +1 xt100 -24 ztj100 <= +0
+ cons_z_bsup101: +1 xt101 -49 ztj101 <= +0
+ cons_z_bsup102: +1 xt102 -74 ztj102 <= +0
+ cons_z_bsup103: +1 xt103 -2147483646 ztj103 <= +0
+ cons_z_bsup110: +1 xt110 -24 ztj110 <= +0
+ cons_z_bsup111: +1 xt111 -49 ztj111 <= +0
+ cons_z_bsup112: +1 xt112 -74 ztj112 <= +0
+ cons_z_bsup113: +1 xt113 -2147483646 ztj113 <= +0
+ cons_z_bsup120: +1 xt120 -24 ztj120 <= +0
+ cons_z_bsup121: +1 xt121 -49 ztj121 <= +0
+ cons_z_bsup122: +1 xt122 -74 ztj122 <= +0
+ cons_z_bsup123: +1 xt123 -2147483646 ztj123 <= +0
+ cons_z_bsup130: +1 xt130 -24 ztj130 <= +0
+ cons_z_bsup131: +1 xt131 -49 ztj131 <= +0
+ cons_z_bsup132: +1 xt132 -74 ztj132 <= +0
+ cons_z_bsup133: +1 xt133 -2147483646 ztj133 <= +0
+ cons_z_bsup140: +1 xt140 -24 ztj140 <= +0
+ cons_z_bsup141: +1 xt141 -49 ztj141 <= +0
+ cons_z_bsup142: +1 xt142 -74 ztj142 <= +0
+ cons_z_bsup143: +1 xt143 -2147483646 ztj143 <= +0
+ cons_z_bsup150: +1 xt150 -24 ztj150 <= +0
+ cons_z_bsup151: +1 xt151 -49 ztj151 <= +0
+ cons_z_bsup152: +1 xt152 -74 ztj152 <= +0
+ cons_z_bsup153: +1 xt153 -2147483646 ztj153 <= +0
+ cons_z_bsup160: +1 xt160 -24 ztj160 <= +0
+ cons_z_bsup161: +1 xt161 -49 ztj161 <= +0
+ cons_z_bsup162: +1 xt162 -74 ztj162 <= +0
+ cons_z_bsup163: +1 xt163 -2147483646 ztj163 <= +0
+ cons_z_bsup170: +1 xt170 -24 ztj170 <= +0
+ cons_z_bsup171: +1 xt171 -49 ztj171 <= +0
+ cons_z_bsup172: +1 xt172 -74 ztj172 <= +0
+ cons_z_bsup173: +1 xt173 -2147483646 ztj173 <= +0
+ cons_z_bsup180: +1 xt180 -24 ztj180 <= +0
+ cons_z_bsup181: +1 xt181 -49 ztj181 <= +0
+ cons_z_bsup182: +1 xt182 -74 ztj182 <= +0
+ cons_z_bsup183: +1 xt183 -2147483646 ztj183 <= +0
+ cons_z_bsup190: +1 xt190 -24 ztj190 <= +0
+ cons_z_bsup191: +1 xt191 -49 ztj191 <= +0
+ cons_z_bsup192: +1 xt192 -74 ztj192 <= +0
+ cons_z_bsup193: +1 xt193 -2147483646 ztj193 <= +0
+ cons_zsum0: +1 ztj00 +1 ztj01 +1 ztj02 +1 ztj03 = +1
+ cons_zsum1: +1 ztj10 +1 ztj11 +1 ztj12 +1 ztj13 = +1
+ cons_zsum2: +1 ztj20 +1 ztj21 +1 ztj22 +1 ztj23 = +1
+ cons_zsum3: +1 ztj30 +1 ztj31 +1 ztj32 +1 ztj33 = +1
+ cons_zsum4: +1 ztj40 +1 ztj41 +1 ztj42 +1 ztj43 = +1
+ cons_zsum5: +1 ztj50 +1 ztj51 +1 ztj52 +1 ztj53 = +1
+ cons_zsum6: +1 ztj60 +1 ztj61 +1 ztj62 +1 ztj63 = +1
+ cons_zsum7: +1 ztj70 +1 ztj71 +1 ztj72 +1 ztj73 = +1
+ cons_zsum8: +1 ztj80 +1 ztj81 +1 ztj82 +1 ztj83 = +1
+ cons_zsum9: +1 ztj90 +1 ztj91 +1 ztj92 +1 ztj93 = +1
+ cons_zsum10: +1 ztj100 +1 ztj101 +1 ztj102 +1 ztj103 = +1
+ cons_zsum11: +1 ztj110 +1 ztj111 +1 ztj112 +1 ztj113 = +1
+ cons_zsum12: +1 ztj120 +1 ztj121 +1 ztj122 +1 ztj123 = +1
+ cons_zsum13: +1 ztj130 +1 ztj131 +1 ztj132 +1 ztj133 = +1
+ cons_zsum14: +1 ztj140 +1 ztj141 +1 ztj142 +1 ztj143 = +1
+ cons_zsum15: +1 ztj150 +1 ztj151 +1 ztj152 +1 ztj153 = +1
+ cons_zsum16: +1 ztj160 +1 ztj161 +1 ztj162 +1 ztj163 = +1
+ cons_zsum17: +1 ztj170 +1 ztj171 +1 ztj172 +1 ztj173 = +1
+ cons_zsum18: +1 ztj180 +1 ztj181 +1 ztj182 +1 ztj183 = +1
+ cons_zsum19: +1 ztj190 +1 ztj191 +1 ztj192 +1 ztj193 = +1
+ cons_rt0: +1 rt0 -1 xt00 -1 xt01 -1 xt02 -1 xt03 = +0
+ cons_rt1: +1 rt1 -1 xt10 -1 xt11 -1 xt12 -1 xt13 = +0
+ cons_rt2: +1 rt2 -1 xt20 -1 xt21 -1 xt22 -1 xt23 = +0
+ cons_rt3: +1 rt3 -1 xt30 -1 xt31 -1 xt32 -1 xt33 = +0
+ cons_rt4: +1 rt4 -1 xt40 -1 xt41 -1 xt42 -1 xt43 = +0
+ cons_rt5: +1 rt5 -1 xt50 -1 xt51 -1 xt52 -1 xt53 = +0
+ cons_rt6: +1 rt6 -1 xt60 -1 xt61 -1 xt62 -1 xt63 = +0
+ cons_rt7: +1 rt7 -1 xt70 -1 xt71 -1 xt72 -1 xt73 = +0
+ cons_rt8: +1 rt8 -1 xt80 -1 xt81 -1 xt82 -1 xt83 = +0
+ cons_rt9: +1 rt9 -1 xt90 -1 xt91 -1 xt92 -1 xt93 = +0
+ cons_rt10: +1 rt10 -1 xt100 -1 xt101 -1 xt102 -1 xt103 = +0
+ cons_rt11: +1 rt11 -1 xt110 -1 xt111 -1 xt112 -1 xt113 = +0
+ cons_rt12: +1 rt12 -1 xt120 -1 xt121 -1 xt122 -1 xt123 = +0
+ cons_rt13: +1 rt13 -1 xt130 -1 xt131 -1 xt132 -1 xt133 = +0
+ cons_rt14: +1 rt14 -1 xt140 -1 xt141 -1 xt142 -1 xt143 = +0
+ cons_rt15: +1 rt15 -1 xt150 -1 xt151 -1 xt152 -1 xt153 = +0
+ cons_rt16: +1 rt16 -1 xt160 -1 xt161 -1 xt162 -1 xt163 = +0
+ cons_rt17: +1 rt17 -1 xt170 -1 xt171 -1 xt172 -1 xt173 = +0
+ cons_rt18: +1 rt18 -1 xt180 -1 xt181 -1 xt182 -1 xt183 = +0
+ cons_rt19: +1 rt19 -1 xt190 -1 xt191 -1 xt192 -1 xt193 = +0
+ cons_dt0: -1 st0 +1 rt0 = +97
+ cons_dt1: -1 st1 +1 st0 +1 rt1 = +97
+ cons_dt2: -1 st2 +1 st1 +1 rt2 = +6
+ cons_dt3: -1 st3 +1 st2 +1 rt3 = +62
+ cons_dt4: -1 st4 +1 st3 +1 rt4 = +56
+ cons_dt5: -1 st5 +1 st4 +1 rt5 = +71
+ cons_dt6: -1 st6 +1 st5 +1 rt6 = +89
+ cons_dt7: -1 st7 +1 st6 +1 rt7 = +14
+ cons_dt8: -1 st8 +1 st7 +1 rt8 = +44
+ cons_dt9: -1 st9 +1 st8 +1 rt9 = +78
+ cons_dt10: -1 st10 +1 st9 +1 rt10 = +99
+ cons_dt11: -1 st11 +1 st10 +1 rt11 = +78
+ cons_dt12: -1 st12 +1 st11 +1 rt12 = +30
+ cons_dt13: -1 st13 +1 st12 +1 rt13 = +69
+ cons_dt14: -1 st14 +1 st13 +1 rt14 = +72
+ cons_dt15: -1 st15 +1 st14 +1 rt15 = +51
+ cons_dt16: -1 st16 +1 st15 +1 rt16 = +87
+ cons_dt17: -1 st17 +1 st16 +1 rt17 = +37
+ cons_dt18: -1 st18 +1 st17 +1 rt18 = +45
+ cons_dt19: -1 st19 +1 st18 +1 rt19 = +86
+ cons_stmax: +1 st19 = +0
+Bounds
+ 0 <= ztj00 <= 1
+ 0 <= ztj01 <= 1
+ 0 <= ztj02 <= 1
+ 0 <= ztj03 <= 1
+ 0 <= ztj10 <= 1
+ 0 <= ztj11 <= 1
+ 0 <= ztj12 <= 1
+ 0 <= ztj13 <= 1
+ 0 <= ztj20 <= 1
+ 0 <= ztj21 <= 1
+ 0 <= ztj22 <= 1
+ 0 <= ztj23 <= 1
+ 0 <= ztj30 <= 1
+ 0 <= ztj31 <= 1
+ 0 <= ztj32 <= 1
+ 0 <= ztj33 <= 1
+ 0 <= ztj40 <= 1
+ 0 <= ztj41 <= 1
+ 0 <= ztj42 <= 1
+ 0 <= ztj43 <= 1
+ 0 <= ztj50 <= 1
+ 0 <= ztj51 <= 1
+ 0 <= ztj52 <= 1
+ 0 <= ztj53 <= 1
+ 0 <= ztj60 <= 1
+ 0 <= ztj61 <= 1
+ 0 <= ztj62 <= 1
+ 0 <= ztj63 <= 1
+ 0 <= ztj70 <= 1
+ 0 <= ztj71 <= 1
+ 0 <= ztj72 <= 1
+ 0 <= ztj73 <= 1
+ 0 <= ztj80 <= 1
+ 0 <= ztj81 <= 1
+ 0 <= ztj82 <= 1
+ 0 <= ztj83 <= 1
+ 0 <= ztj90 <= 1
+ 0 <= ztj91 <= 1
+ 0 <= ztj92 <= 1
+ 0 <= ztj93 <= 1
+ 0 <= ztj100 <= 1
+ 0 <= ztj101 <= 1
+ 0 <= ztj102 <= 1
+ 0 <= ztj103 <= 1
+ 0 <= ztj110 <= 1
+ 0 <= ztj111 <= 1
+ 0 <= ztj112 <= 1
+ 0 <= ztj113 <= 1
+ 0 <= ztj120 <= 1
+ 0 <= ztj121 <= 1
+ 0 <= ztj122 <= 1
+ 0 <= ztj123 <= 1
+ 0 <= ztj130 <= 1
+ 0 <= ztj131 <= 1
+ 0 <= ztj132 <= 1
+ 0 <= ztj133 <= 1
+ 0 <= ztj140 <= 1
+ 0 <= ztj141 <= 1
+ 0 <= ztj142 <= 1
+ 0 <= ztj143 <= 1
+ 0 <= ztj150 <= 1
+ 0 <= ztj151 <= 1
+ 0 <= ztj152 <= 1
+ 0 <= ztj153 <= 1
+ 0 <= ztj160 <= 1
+ 0 <= ztj161 <= 1
+ 0 <= ztj162 <= 1
+ 0 <= ztj163 <= 1
+ 0 <= ztj170 <= 1
+ 0 <= ztj171 <= 1
+ 0 <= ztj172 <= 1
+ 0 <= ztj173 <= 1
+ 0 <= ztj180 <= 1
+ 0 <= ztj181 <= 1
+ 0 <= ztj182 <= 1
+ 0 <= ztj183 <= 1
+ 0 <= ztj190 <= 1
+ 0 <= ztj191 <= 1
+ 0 <= ztj192 <= 1
+ 0 <= ztj193 <= 1
+ 0 <= st0 <= 100
+ 0 <= st1 <= 100
+ 0 <= st2 <= 100
+ 0 <= st3 <= 100
+ 0 <= st4 <= 100
+ 0 <= st5 <= 100
+ 0 <= st6 <= 100
+ 0 <= st7 <= 100
+ 0 <= st8 <= 100
+ 0 <= st9 <= 100
+ 0 <= st10 <= 100
+ 0 <= st11 <= 100
+ 0 <= st12 <= 100
+ 0 <= st13 <= 100
+ 0 <= st14 <= 100
+ 0 <= st15 <= 100
+ 0 <= st16 <= 100
+ 0 <= st17 <= 100
+ 0 <= st18 <= 100
+ 0 <= st19 <= 100
+Binaries
+ ztj00 ztj01 ztj02 ztj03 ztj10 ztj11 ztj12 ztj13 ztj20 ztj21 ztj22 ztj23 ztj30 ztj31 ztj32 ztj33 ztj40
+ ztj41 ztj42 ztj43 ztj50 ztj51 ztj52 ztj53 ztj60 ztj61 ztj62 ztj63 ztj70 ztj71 ztj72 ztj73 ztj80 ztj81
+ ztj82 ztj83 ztj90 ztj91 ztj92 ztj93 ztj100 ztj101 ztj102 ztj103 ztj110 ztj111 ztj112 ztj113 ztj120 ztj121
+ ztj122 ztj123 ztj130 ztj131 ztj132 ztj133 ztj140 ztj141 ztj142 ztj143 ztj150 ztj151 ztj152 ztj153 ztj160
+ ztj161 ztj162 ztj163 ztj170 ztj171 ztj172 ztj173 ztj180 ztj181 ztj182 ztj183 ztj190 ztj191 ztj192 ztj193
+Generals
+ st0 st1 st2 st3 st4 st5 st6 st7 st8 st9 st10 st11 st12 st13 st14 st15 st16 st17 st18 st19 xt00 xt01 xt02
+ xt03 xt10 xt11 xt12 xt13 xt20 xt21 xt22 xt23 xt30 xt31 xt32 xt33 xt40 xt41 xt42 xt43 xt50 xt51 xt52 xt53
+ xt60 xt61 xt62 xt63 xt70 xt71 xt72 xt73 xt80 xt81 xt82 xt83 xt90 xt91 xt92 xt93 xt100 xt101 xt102 xt103
+ xt110 xt111 xt112 xt113 xt120 xt121 xt122 xt123 xt130 xt131 xt132 xt133 xt140 xt141 xt142 xt143 xt150
+ xt151 xt152 xt153 xt160 xt161 xt162 xt163 xt170 xt171 xt172 xt173 xt180 xt181 xt182 xt183 xt190 xt191
+ xt192 xt193 rt0 rt1 rt2 rt3 rt4 rt5 rt6 rt7 rt8 rt9 rt10 rt11 rt12 rt13 rt14 rt15 rt16 rt17 rt18 rt19
+End
