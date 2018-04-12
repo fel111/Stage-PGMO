@@ -1,0 +1,3 @@
+998 4716.3 //temps et sol LotSizDyn
+41259 300.529 41247.8  //temps, sol, binf et status PLNE CPLEX
+40892.1 300.449 40880.4  //temps, sol, binf et status MIP CPLEX

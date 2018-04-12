@@ -1,0 +1,3 @@
+441 300.41 //temps et sol LotSizDyn
+1.01929e+06 300.393 965826  //temps, sol, binf et status PLNE CPLEX
+1.03226e+06 300.552 965038  //temps, sol, binf et status MIP CPLEX

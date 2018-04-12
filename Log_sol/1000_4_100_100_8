@@ -1,0 +1,3 @@
+137543 167.979 //temps et sol LotSizDyn
+137765 300.241 137076  //temps, sol, binf et status PLNE CPLEX
+136091 300.254 135221  //temps, sol, binf et status MIP CPLEX

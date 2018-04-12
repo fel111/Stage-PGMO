@@ -1,0 +1,3 @@
+998 5608.45 //temps et sol LotSizDyn
+77347.5 300.128 77266.7  //temps, sol, binf et status PLNE CPLEX
+76664.5 300.13 76579.9  //temps, sol, binf et status MIP CPLEX

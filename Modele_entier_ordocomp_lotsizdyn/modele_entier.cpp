@@ -6,16 +6,18 @@
 #include <limits>
 #include <math.h>
 #include <algorithm>
-#include <chrono>
-#include <deque>
-#include "scip/scip.h"
-#include "scip/scipdefplugins.h"
+//#include <chrono>
+//#include <deque>
+//#include "scip/scip.h"
+//#include "scip/scipdefplugins.h"
 #include "data_struct.h"
 #include "Ordo_compact/ordo_comp.h"
+#include "Ordo_compact/ordo_cplex.h"
 #include "Lot_Sizing/Lot_Sizing_Dynamique/lotsizdyn2.h"
-#include "Lot_Sizing/Lot_Sizing_Compact/lotsizingcom.h"
-#include "Lot_Sizing/Lot_Sizing_Compact/lotsizcontcom.h"
+#include "Lot_Sizing/Lot_Sizing_Compact/lotsizentCPX.h"
+#include "Lot_Sizing/Lot_Sizing_Compact/lotsizcontCPX.h"
 #include "Modele_compact/compact.h"
+#include "Modele_compact/modele_entier_cplex.h"
 //#include <ilcplex/cplex.h>
 //#define SCIP_DEBUG
 using namespace std;
@@ -53,31 +55,43 @@ int main(){
 	float solOrdo, solLotSiz;
 	vector<float> rt;
 
-	cout << "MODELE COMPACT SOL :"<<endl;
-	modele_entier_compact(d);
+	cout << "MODELE COMPACT CPLEX :"<<endl;
+	modele_entier_cplex(d);
 
 	cout << "DECOMPOSITION"<< endl;
-	solOrdo = ordo(d);
+	solOrdo = ordo_cplex(d);
+	cout << "sol ordocplex : "<< solOrdo << endl;
 	
-	solLotSiz = lotsizcontcom(d, rt);
+	solLotSiz = lotsizcontCPX(d, rt);
+	cout << "sol lotsizcplex : "<< solLotSiz << endl << endl;
+
+	/*for(int t=0; t<d.cardT; ++t){
+		cout << "bpt et valbpt [0] avant modif: " << d.bpt[t][0] << " " << d.valbpt[t][0] << endl;
+	}*/
 	modifPWL(d, rt);
+	/*for(int t=0; t<d.cardT; ++t){
+		cout << "bpt et valbpt [0] après modif: " << d.bpt[t][0] << " " << d.valbpt[t][0] << endl;
+	}*/
+
 
 	int i=0;
 
 
 
-	while(i<20){
+	while(i<10){
 	//while(solOrdo != solLotSiz){
 
 
-		solOrdo = ordo(d);
+		solOrdo = ordo_cplex(d);
+		cout << "sol ordocplex : "<< solOrdo << endl;
 		//cout << "ORDO REALISE" << endl;
 		//for(int i=0; i<d.cardT; ++i) cout << d.dt[i] <<" ";
 		//cout << endl;
 		
 		
 		//cout << "LOTSIZING CONT COMP"<<endl;
-		solLotSiz = lotsizcontcom(d, rt);
+		solLotSiz = lotsizcontCPX(d, rt);
+		cout << "sol lotsizcplex : "<< solLotSiz << endl;
 
 		//cout << "LOTSIZING DYN"<<endl;
 		//vector<int> rt = lotsizdyn(d,1);

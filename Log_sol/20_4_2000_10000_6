@@ -1,0 +1,3 @@
+11 335.157 //temps et sol LotSizDyn
+49827.4 0.018458 49825.2  //temps, sol, binf et status PLNE CPLEX
+49801.4 0.025441 49801.3  //temps, sol, binf et status MIP CPLEX

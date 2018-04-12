@@ -5,7 +5,7 @@
 
 using namespace std;
 
-float lotsizentcplex(data d, int choix);
+float lotsizentCPX(data d, int choix,float& borninf, string &status);
 
 
 #endif

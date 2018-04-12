@@ -1,0 +1,3 @@
+1629.4 5.35724 //temps et sol LotSizDyn
+1629.4 0.002565 1629.4  //temps, sol, binf et status PLNE CPLEX
+1618.04 0.002081 1618.04  //temps, sol, binf et status MIP CPLEX

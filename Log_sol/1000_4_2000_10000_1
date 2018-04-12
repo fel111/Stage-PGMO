@@ -1,0 +1,3 @@
+998 4922.7 //temps et sol LotSizDyn
+2.25154e+06 8.63322 2.25134e+06  //temps, sol, binf et status PLNE CPLEX
+2.25061e+06 37.5248 2.25039e+06  //temps, sol, binf et status MIP CPLEX

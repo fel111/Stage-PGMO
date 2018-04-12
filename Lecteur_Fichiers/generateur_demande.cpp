@@ -18,7 +18,6 @@ using namespace std;
     return (float)value / pow(10,nbdec);
 }*/
 
-
 void generateur_demande(int cardT, int max){
 	/*if(argc != 3){ 
 		cout << " Paramètres demandés : nombre périodes, borne demande" <<endl;
@@ -26,29 +25,30 @@ void generateur_demande(int cardT, int max){
 	}
 	int cardT = atoi(argv[1]);
 	int max = atoi(argv[2]);*/
-
+	for(int j=1; j<11; ++j){
 	
-	string fichier = "demande_"+to_string(cardT)+"_"+to_string(max);
+		string fichier = "../Donnees/demande_"+to_string(cardT)+"_"+to_string(max)+"_"+to_string(j);
 
-        ofstream f(fichier, ios::out | ios::trunc);  //déclaration du flux et ouverture du fichier
+			ofstream f(fichier, ios::out | ios::trunc);  //déclaration du flux et ouverture du fichier
 
-        if(f){  // si l'ouverture a réussi
-		f << cardT << endl;
-		vector<float> dt;
-		random_device rd;
-    	mt19937 mt(rd());
-    	uniform_real_distribution<float> dist(1, max);
-		for(int i=0; i<cardT; ++i){
-			dt.push_back(dist(mt));
-			f << i << " " << roundd(dt[i],1) << endl;
-		}	
+			if(f){  // si l'ouverture a réussi
+			f << cardT << endl;
+			vector<float> dt;
+			random_device rd;
+			mt19937 mt(rd());
+			uniform_real_distribution<float> dist(1, max);
+			for(int i=0; i<cardT; ++i){
+				dt.push_back(dist(mt));
+				f << i << " " << roundd(dt[i],1) << endl;
+			}	
 
 
 
-        	f.close();  // on referme le fichier
+				f.close();  // on referme le fichier
+		}
+
+			else cerr << "Erreur à l'ouverture !" << endl;
 	}
 
-        else cerr << "Erreur à l'ouverture !" << endl;
-
-
 }
+

@@ -40,7 +40,7 @@
                 "/usr/include/x86_64-linux-gnu",
                 "/usr/include",
                 "/home/fgoupil/CPLEX_Studio1271/cplex/include",
-                "home/fgoupil/CPLEX_Studio1271/concert/include"
+                "/home/fgoupil/CPLEX_Studio1271/concert/include"
             ],
             "defines": [],
             "intelliSenseMode": "clang-x64",

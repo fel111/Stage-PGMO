@@ -1,0 +1,3 @@
+190849 0.607435 //temps et sol LotSizDyn
+190849 0.021371 190843  //temps, sol, binf et status PLNE CPLEX
+190754 0.014951 190754  //temps, sol, binf et status MIP CPLEX

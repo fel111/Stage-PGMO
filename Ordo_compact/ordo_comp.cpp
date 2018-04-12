@@ -285,7 +285,7 @@ float ordo(data &d){
 	for(int i=0; i<d.cardT; ++i){
 		//cout << SCIPgetSolVal(scip,sol,xt[i]) << ", ";
 		//prod.push_back(static_cast<int>(ceil(SCIPgetSolVal(scip,sol,xt[i]))));
-		prod.push_back(roundd(SCIPgetSolVal(scip,sol,xt[i])));
+		prod.push_back(roundd(SCIPgetSolVal(scip,sol,xt[i]),5));
 		cout << prod[i] << " ";
 	}
 	cout << endl;

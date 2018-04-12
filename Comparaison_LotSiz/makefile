@@ -67,7 +67,9 @@ OBJ=	comparaison_lotsiz.o \
 		../Lecteur_Fichiers/generateur_demande.o \
 		../Lecteur_Fichiers/generateur_pwd.o \
 		../Lot_Sizing/Lot_Sizing_Compact/lotsizcontCPX.o \
-		../Lot_Sizing/Lot_Sizing_Compact/lotsizentCPX.o
+		../Lot_Sizing/Lot_Sizing_Compact/lotsizentCPX.o \
+		../Lecteur_Fichiers/fichier_sol.o \
+		../Lecteur_Fichiers/lecteur_sol.o
 
 
 

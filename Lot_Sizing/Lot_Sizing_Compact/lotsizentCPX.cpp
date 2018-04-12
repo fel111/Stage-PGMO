@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <limits>
+#include <chrono>
 //#include "scip/scip.h"
 //#include "scip/scipdefplugins.h"
 #include "data_struct.h"
@@ -14,7 +15,7 @@
 //#define SCIP_DEBUG
 ILOSTLBEGIN
 
-float lotsizentcplex(data d, int choix){
+float lotsizentCPX(data d, int choix,float& borninf, string &status){
     vector<int> dt = dtToInt(d,choix);
 
     IloEnv env;
@@ -73,7 +74,16 @@ float lotsizentcplex(data d, int choix){
     //IloCplex cplex(env);
     //cplex.extract(model);
     //cplex.exportModel("cplex_lotsizent.lp");
+
+    //auto start_time = chrono::high_resolution_clock::now();
     cplex.solve();
+    //auto end_time = chrono::high_resolution_clock::now();
+    //cout << "temps com : " << chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0 << endl<<endl;
+
+    //cout << "nb noeuds explorés: "<< cplex.getNnodes()<<endl;
+    borninf = cplex.getBestObjValue();
+    status = cplex.getStatus();
+
     float sol = cplex.getObjValue();
     //env.out() << "Cost LotsizEnt = " << cplex.getObjValue() << endl;
 

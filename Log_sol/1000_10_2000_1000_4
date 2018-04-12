@@ -1,0 +1,3 @@
+991 318.975 //temps et sol LotSizDyn
+2.46283e+06 300.262 2.43676e+06  //temps, sol, binf et status PLNE CPLEX
+2.46322e+06 300.156 2.4357e+06  //temps, sol, binf et status MIP CPLEX

@@ -8,8 +8,8 @@
 INCLUDES_PATH= \
 	-I/usr/include \
 	-I/home/fgoupil/Téléchargements/scipoptsuite-5.0.1/scip/src \
-	-I/home/fgoupil/CPLEX_Studio1271/cplex/include/ilcplex \
-	-I/home/fgoupil/CPLEX_Studio1271/concert/include/ilconcert \
+	-I/home/fgoupil/CPLEX_Studio1271/cplex/include \
+	-I/home/fgoupil/CPLEX_Studio1271/concert/include \
 	-I/home/fgoupil/Documents/Stage_PGMO	
 
 # Les librairies que l'on va utiliser
@@ -22,6 +22,7 @@ LIBS= \
 	-lpthread \
 	-lm \
 	-lilocplex \
+	-lconcert \
 	-lcplex \
 	-lstdc++
 
@@ -33,7 +34,8 @@ LIBS_PATH= \
 	-L/Developer/usr/lib/gcc/i686-apple-darwin10/4.2.1 \
 	-L/home/fgoupil/Téléchargements/scipoptsuite-5.0.1/scip/lib/static \
 	-L/home/fgoupil/Téléchargements/scipoptsuite-5.0.1/soplex/lib \
-	-L/home/fgoupil/CPLEX_Studio1271/cplex/lib/x86-64_linux/static_pic
+	-L/home/fgoupil/CPLEX_Studio1271/cplex/lib/x86-64_linux/static_pic \
+	-L/home/fgoupil/CPLEX_Studio1271/concert/lib/x86-64_linux/static_pic
 
 # Le compilateur que nous utiliserons
 COMPILO=g++
@@ -57,11 +59,13 @@ FLAGS= -W -Wall -DIL_STD -std=c++11 -g -O3
 
 OBJ=	modele_entier.o \
 		../Ordo_compact/ordo_comp.o \
+		../Ordo_compact/ordo_cplex.o \
 		../Lot_Sizing/Lot_Sizing_Dynamique/lotsizdyn2.o \
-		../Lot_Sizing/Lot_Sizing_Compact/lotsizingcom.o \
-		../Lot_Sizing/Lot_Sizing_Compact/lotsizcontcom.o \
+		../Lot_Sizing/Lot_Sizing_Compact/lotsizentCPX.o \
+		../Lot_Sizing/Lot_Sizing_Compact/lotsizcontCPX.o \
 		../data_struct.o \
-		../Modele_compact/compact.o
+		../Modele_compact/compact.o \
+		../Modele_compact/modele_entier_cplex.o
 
 
 

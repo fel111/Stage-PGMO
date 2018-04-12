@@ -1,0 +1,3 @@
+284891 44.0063 //temps et sol LotSizDyn
+284891 300.714 284828  //temps, sol, binf et status PLNE CPLEX
+284724 152.58 284696  //temps, sol, binf et status MIP CPLEX

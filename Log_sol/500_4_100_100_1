@@ -1,0 +1,3 @@
+97989.4 75.6903 //temps et sol LotSizDyn
+98032 300.52 95486  //temps, sol, binf et status PLNE CPLEX
+98618.5 300.648 94691.9  //temps, sol, binf et status MIP CPLEX

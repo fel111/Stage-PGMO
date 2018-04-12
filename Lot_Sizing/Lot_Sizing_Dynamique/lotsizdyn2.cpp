@@ -39,106 +39,57 @@ float g_ki(int i,int k,vector< vector<float> > f_ks,vector<vector <float> > pent
 	return pente[k][i]*tau+func_fks(f_ks,k+1,tau,bk);
 	
 }
-/*
-//a inclure dans un header ensuite
-void lecture_pwd(string file, vector<vector<int> >& bpt, vector<vector<float> >& valbpt, vector<vector<float> >& pente){
 
-	//char temp;
-	//vector< vector<int> > conflitstemp;
+
+float lotsizdyn(data d, int choix){//vector< vector<float> > f_ki,vector< vector<float> > g_ki){//vector<int> q0){
 	
-	ifstream fichier(file, ios::in); //ouverture du fichier
-	if(fichier){  // si l'ouverture fonctionne
-		string ligne;
-		int t;
-		int bp;
-		float valbp;
-		float p;
-		while(getline(fichier,ligne)){ // tant que l'on peut lire une ligne
-			istringstream iss (ligne);
-			iss >> t >> bp >> valbp >> p;
-			bpt[t].push_back(bp);
-			valbpt[t].push_back(valbp);
-			pente[t].push_back(p);
-			//cout << "OK" << endl;
-		}
-		fichier.close();
-		//cout << " done "<<endl;
-	}
-	else{
-		cout << "erreur lecture fichier" << endl;
-	}
 
-}
+	//dtToInt(d);
+	vector<int> dt = dtToInt(d,choix);
 
-//a inclure dans un header ensuite
-void lecture_demande(string file, vector<int> & dt){
+	auto start = chrono::high_resolution_clock::now();
 
-	//char temp;
-	//vector< vector<int> > conflitstemp;
-	
-	ifstream fichier(file, ios::in); //ouverture du fichier
-	if(fichier){  // si l'ouverture fonctionne
-		string ligne;
-		int t;
-		int d;
-		while(getline(fichier,ligne)){ // tant que l'on peut lire une ligne
-			istringstream iss (ligne);
-			iss >> t >> d;
-			dt.push_back(d);
-			//cout << "dt["<<t<<"] : "<<dt[t]<<endl;
-		}
-		fichier.close();
-	}
-	else{
-		cout << "erreur lecture fichier" << endl;
-	}
-}
-
-void lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector< vector<float> > valbpt,vector< vector<int> > bpt,vector<vector <float> > pente,int q_max){//vector< vector<float> > f_ki,vector< vector<float> > g_ki){//vector<int> q0){
-	//debut timer
-	//auto start = chrono::high_resolution_clock::now();
-		
-	vector< vector<float> > f_ki (cardT, vector<float> (nb_bp[0],0.0));
-	for(int k=0; k<cardT; ++k){
-		for(int i=0; i<nb_bp[k]; ++i){
-			f_ki[k][i] = valbpt[k][i] - pente[k][i]*bpt[k][i];
-			cout << f_ki[k][i] <<endl;
+	vector< vector<float> > f_ki (d.cardT, vector<float> (d.nb_bp[0],0.0));
+	for(int k=0; k<d.cardT; ++k){
+		for(int i=0; i<d.nb_bp[k]; ++i){
+			f_ki[k][i] = d.valbpt[k][i] - d.pente[k][i]*d.bpt[k][i];
+			//cout << f_ki[k][i] <<endl;
 		}
 	}
 
-	//vector<int> bk (cardT, q_max);
-	vector< vector<float> > F_ks (cardT, vector<float> (q_max+1,0.0));
-	vector< vector<int> > x_ks (cardT, vector<int> (q_max+1,0.0));
+	//vector<int> bk (d.cardT, d.Q);
+	vector< vector<float> > F_ks (d.cardT, vector<float> (d.Q+1,0.0));
+	vector< vector<int> > x_ks (d.cardT, vector<int> (d.Q+1,0));
 
 	//calcul F_Ts
-	//cout <<"F["<<cardT-1<<"] = [";
-	for (int s=0; s<=q_max; ++s){
-		if(s<=dt[cardT-1]) F_ks[cardT-1][s] = p_t(cardT-1,nb_bp,bpt,valbpt,pente,dt[cardT-1]-s);
-		else F_ks[cardT-1][s] = infini_float;
-		//cout << F_ks[cardT-1][s] <<" ";
+	//cout <<"F["<<d.cardT-1<<"] = [";
+	for (int s=0; s<=d.Q; ++s){
+		if(s<=dt[d.cardT-1]) F_ks[d.cardT-1][s] = p_t(d.cardT-1,d.nb_bp,d.bpt,d.valbpt,d.pente,dt[d.cardT-1]-s);
+		else F_ks[d.cardT-1][s] = infini_float;
+		//cout << F_ks[d.cardT-1][s] <<" ";
 	}
 	//cout << "]"<<endl;
-	
-	int k = cardT-1;
+	int lastk=d.cardT-1;
+	int k = d.cardT-1;
 	//deque<vector< vector<float> > > G_ki;
 	//deque<vector<vector<int> > > x_kis;
-	while (k!=0){
+	while ((k!=0)&&(chrono::duration_cast<chrono::microseconds>(chrono::high_resolution_clock::now() - start).count()/1000000.0) < 300.0){
 		--k;
 		//cout << "k : "<<k<<endl;
 		vector< vector<float> >Gk_i;
 		vector< vector<int> >xk_is;
-		for(int i=0; i<nb_bp[k]; ++i){
+		for(int i=0; i<d.nb_bp[k]; ++i){
 			//cout << "i : "<<i<<endl;
 			vector<float> Gki ;
 			vector<int> xki_s ;
 			int s=0;
 			bool seq = false;
-			while((s<=q_max)&&(seq!=true)){
+			while((s<=d.Q)&&(seq!=true)){
 				//cout <<"while s : " << s << endl;
-				int lb = max(bpt[k][i]+1+s-dt[k],0);
-				//int lb = max(bpt[k][i]+s-dt[k],0);
-				//int ub = min(bpt[k][i+1]-1+s-dt[k],q_max);
-				int ub = min(bpt[k][i+1]+s-dt[k],q_max);
+				int lb = max(d.bpt[k][i]+1+s-dt[k],0);
+				//int lb = max(d.bpt[k][i]+s-dt[k],0);
+				//int ub = min(d.bpt[k][i+1]-1+s-dt[k],d.Q);
+				int ub = min(d.bpt[k][i+1]+s-dt[k],d.Q);
 				//cout << "lb, ub : "<<lb <<" "<<ub<<endl;
 				if(lb>ub){
 					//cout << "SEQUENCE IMPOSSIBLE NUMERO "<<s<<endl;
@@ -157,7 +108,7 @@ void lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector< vector<float> 
 					--ub;
 					while(lb<=ub){
 						//cout << "while(lb<=ub)"<< endl;
-						if(g_ki(i,k,F_ks,pente,ub,q_max)<g_ki(i,k,F_ks,pente,u[0],q_max)){
+						if(g_ki(i,k,F_ks,d.pente,ub,d.Q)<g_ki(i,k,F_ks,d.pente,u[0],d.Q)){
 							u.push_front(ub);
 							--ub;
 						}
@@ -166,27 +117,27 @@ void lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector< vector<float> 
 						}
 					} // ici, les u sont triés selon g(u1) < g(u2) < ...
 											
-					Gki.push_back(g_ki(i,k,F_ks,pente,u[0],q_max));
+					Gki.push_back(g_ki(i,k,F_ks,d.pente,u[0],d.Q));
 					if(dt[k]-s+u[0]>=0) xki_s.push_back(dt[k]-s+u[0]);
 					else xki_s.push_back(infini_int);
 					++s;
-					while(s<=q_max){ // on parcours les s et on met à jour la sequence u
+					while(s<=d.Q){ // on parcours les s et on met à jour la sequence u
 							
-						//if((u.size()!=0)&&((bpt[k][i]+1+s-dt[k])==u[0])){
-						if((u.size()!=0)&&((bpt[k][i]+s-dt[k])==u[0])){
+						//if((u.size()!=0)&&((d.bpt[k][i]+1+s-dt[k])==u[0])){
+						if((u.size()!=0)&&((d.bpt[k][i]+s-dt[k])==u[0])){
 							u.pop_front();
 						}
-						if((bpt[k][i+1]+s-dt[k])<=q_max){
-							while((u.size()!=0)&&(g_ki(i,k,F_ks,pente,u.back(),q_max)>=g_ki(i,k,F_ks,pente,bpt[k][i+1]+s-dt[k],q_max))){
+						if((d.bpt[k][i+1]+s-dt[k])<=d.Q){
+							while((u.size()!=0)&&(g_ki(i,k,F_ks,d.pente,u.back(),d.Q)>=g_ki(i,k,F_ks,d.pente,d.bpt[k][i+1]+s-dt[k],d.Q))){
 								u.pop_back();
 							}
-							u.push_back(bpt[k][i+1]+s-dt[k]);
+							u.push_back(d.bpt[k][i+1]+s-dt[k]);
 						}
 						//cout << "SEQUENCE U MAJ NUMERO "<<s<<endl;
 						//for(int j=0;j<u.size();++j){ cout << u[j] << " ";}
 						//cout << endl;
 						if(u.size()!=0){
-							Gki.push_back(g_ki(i,k,F_ks,pente,u[0],q_max));
+							Gki.push_back(g_ki(i,k,F_ks,d.pente,u[0],d.Q));
 							if(dt[k]-s+u[0]>=0) xki_s.push_back(dt[k]-s+u[0]);
 							else xki_s.push_back(infini_int);
 						}
@@ -208,14 +159,14 @@ void lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector< vector<float> 
 		//G_ki.push_front(Gk_i);
 		//x_kis.push_front(xk_is);
 		//cout <<"x["<<k<<"] = [";
-		for(int s=0;s<=q_max;++s){
+		for(int s=0;s<=d.Q;++s){
 			float fGauche;
-			fGauche = func_fks(F_ks,k+1,s-dt[k],q_max);
-			float minFdroite = f_ki[k][0]+pente[k][0]*(dt[k]-s)+Gk_i[0][s];
+			fGauche = func_fks(F_ks,k+1,s-dt[k],d.Q);
+			float minFdroite = f_ki[k][0]+d.pente[k][0]*(dt[k]-s)+Gk_i[0][s];
 			int imin = 0;			
-			for(int i=1;i<nb_bp[k];++i){
-				if((f_ki[k][i]+pente[k][i]*(dt[k]-s)+Gk_i[i][s]>=0)&&(f_ki[k][i]+pente[k][i]*(dt[k]-s)+Gk_i[i][s]<minFdroite)){
-					minFdroite = f_ki[k][i]+pente[k][i]*(dt[k]-s)+Gk_i[i][s];
+			for(int i=1;i<d.nb_bp[k];++i){
+				if((f_ki[k][i]+d.pente[k][i]*(dt[k]-s)+Gk_i[i][s]>=0)&&(f_ki[k][i]+d.pente[k][i]*(dt[k]-s)+Gk_i[i][s]<minFdroite)){
+					minFdroite = f_ki[k][i]+d.pente[k][i]*(dt[k]-s)+Gk_i[i][s];
 					imin = i;
 				}			
 			}
@@ -239,49 +190,64 @@ void lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector< vector<float> 
 
 		}
 		//cout << "]"<<endl;
+		lastk = k;
 		
 	}
-	for(int k=0; k<cardT; ++k){
-		for(int s=0; s<=q_max; ++s){
-			cout <<"x["<<k<<"]["<<s<<"] = "<<x_ks[k][s] <<endl;
+	if((chrono::duration_cast<chrono::microseconds>(chrono::high_resolution_clock::now() - start).count()/1000000.0) < 300.0){
+		/*for(int k=0; k<d.cardT; ++k){
+			for(int s=0; s<=d.Q; ++s){
+				cout <<"x["<<k<<"]["<<s<<"] = "<<x_ks[k][s] <<endl;
+			}
+		}*/
+		
+		//cout << "F[0][0] = " <<F_ks[0][0] <<endl;
+		//'''determination de xt'''    CALCUL DES XT ET DU STOCK BATTERIE
+		vector<int> rt (d.cardT,0);
+		vector<int> stock (d.cardT,0);// = q0;
+		vector<int> xt (d.cardT,0);
+		xt[0] = x_ks[0][0];
+		//cout << "xt0 : " << xt[0] << endl;
+		stock[0] = xt[0] - dt[0];
+		//cout << "stock" << stock[0] << endl;
+		xt[1] = x_ks[1][stock[0]];
+		//cout << "test" << endl;
+		for (int z=1; z<d.cardT-2; ++z){	
+			stock[z]=(stock[z-1]+xt[z]-dt[z]);
+			xt[z+1] = (x_ks[z+1][stock[z]]);
+			//cout << "stock" << z << " : " << stock[z] << endl;
+			//cout << "xt" << z << " : " << xt[z+1] << endl;
+			
 		}
-	}
-	
-	cout << "F[0][0] = " <<F_ks[0][0] <<endl;
-	//'''determination de xt'''    CALCUL DES XT ET DU STOCK BATTERIE
-	vector<int> stock (cardT,0);// = q0;
-	vector<int> xt (cardT,0);
-	xt[0] = x_ks[0][0];
-	stock[0] = xt[0] - dt[0];
-	xt[1] = x_ks[1][stock[0]];
-	for (int z=1; z<cardT-2; ++z){		
-		stock[z]=(stock[z-1]+xt[z]-dt[z]);
-		xt[z+1] = (x_ks[z+1][stock[z]]);
-		cout << "stock" << z << " : " << stock[z] << endl;
-		cout << "xt" << z << " : " << xt[z+1] << endl;
-		
-	}
-	stock[cardT-2] = (stock[cardT-3]+xt[cardT-2]-dt[cardT-2]);
-	xt[cardT-1] = dt[cardT-1] - stock[cardT-2];
-	stock[cardT-1] = (stock[cardT-2]+xt[cardT-1]-dt[cardT-1]);
+		stock[d.cardT-2] = (stock[d.cardT-3]+xt[d.cardT-2]-dt[d.cardT-2]);
+		xt[d.cardT-1] = dt[d.cardT-1] - stock[d.cardT-2];
+		stock[d.cardT-1] = (stock[d.cardT-2]+xt[d.cardT-1]-dt[d.cardT-1]);
 
-	for(int i=0;i<cardT;++i){
-		cout << "stock" << i << " : " << stock[i] << endl;
-	}	
-	for(int i=0;i<cardT;++i){
-		cout << "xt" << i << " : " << xt[i] << endl;	
-	}
-	float cout_tot = 0;
-	for(int i=0;i<cardT;++i){
-		cout_tot += cout_reel(i,nb_bp,bpt,valbpt,pente,xt[i]);
-	}
-	//cout << "cout total : "<<cout_tot<<endl;
-	cout << "cout total : "<<F_ks[0][0]<<endl;
-	//return ;
-}*/
+		rt[0] = stock[0] - d.s0;
+		/*cout << "rt" << endl;
+		cout << rt[0] << endl;*/
+		for(int t=1; t<d.cardT; ++t){
+			rt[t] = stock[t] - stock[t-1];
+			//cout << rt[t] << endl;
+		}
+
+		/*for(int i=0;i<d.cardT;++i){
+			cout << "demande, production, stock" << i << " : " << dt[i] << " " << xt[i] << " "<<stock[i] << endl;
+		}
+		for(int i=0;i<d.cardT;++i){
+			cout << "xt" << i << " : " << xt[i] << endl;	
+		}*/
+		/*float cout_tot = 0;
+		for(int i=0;i<d.cardT;++i){
+			cout_tot += cout_reel(i,d.nb_bp,d.bpt,d.vald.bpt,d.pente,xt[i]);
+		}*/
+		//cout << "cout total : "<<cout_tot<<endl;
+		//cout << "obj lotsizdyn : "<<F_ks[0][0]<<endl;
+		return F_ks[0][0];
+	} else return (float) lastk;
+}
 
 
-
+/*
 vector<int> lotsizdyn(data d, int choix){//vector< vector<float> > f_ki,vector< vector<float> > g_ki){//vector<int> q0){
 	//debut timer
 	//auto start = chrono::high_resolution_clock::now();
@@ -433,11 +399,7 @@ vector<int> lotsizdyn(data d, int choix){//vector< vector<float> > f_ki,vector< 
 		
 	}
 	
-	/*for(int k=0; k<d.cardT; ++k){
-		for(int s=0; s<=d.Q; ++s){
-			cout <<"x["<<k<<"]["<<s<<"] = "<<x_ks[k][s] <<endl;
-		}
-	}*/
+	
 	
 	//cout << "F[0][0] = " <<F_ks[0][0] <<endl;
 	//'''determination de xt'''    CALCUL DES XT ET DU STOCK BATTERIE
@@ -462,27 +424,16 @@ vector<int> lotsizdyn(data d, int choix){//vector< vector<float> > f_ki,vector< 
 	stock[d.cardT-1] = (stock[d.cardT-2]+xt[d.cardT-1]-dt[d.cardT-1]);
 
 	rt[0] = stock[0] - d.s0;
-	/*cout << "rt" << endl;
-	cout << rt[0] << endl;*/
+	
 	for(int t=1; t<d.cardT; ++t){
 		rt[t] = stock[t] - stock[t-1];
 		//cout << rt[t] << endl;
 	}
 
-	/*for(int i=0;i<d.cardT;++i){
-		cout << "demande, production, stock" << i << " : " << dt[i] << " " << xt[i] << " "<<stock[i] << endl;
-	}
-	for(int i=0;i<d.cardT;++i){
-		cout << "xt" << i << " : " << xt[i] << endl;	
-	}*/
-	/*float cout_tot = 0;
-	for(int i=0;i<d.cardT;++i){
-		cout_tot += cout_reel(i,d.nb_bp,d.bpt,d.vald.bpt,d.pente,xt[i]);
-	}*/
 	//cout << "cout total : "<<cout_tot<<endl;
 	//cout << "obj lotsizdyn : "<<F_ks[0][0]<<endl;
 	return rt;
-}
+}*/
 
 /*
 int main(){

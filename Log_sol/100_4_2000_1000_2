@@ -1,0 +1,3 @@
+303534 40.3715 //temps et sol LotSizDyn
+303534 301.819 299923  //temps, sol, binf et status PLNE CPLEX
+303413 302.736 299019  //temps, sol, binf et status MIP CPLEX

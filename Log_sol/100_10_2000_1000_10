@@ -1,0 +1,3 @@
+303186 99.1148 //temps et sol LotSizDyn
+303186 301.386 302380  //temps, sol, binf et status PLNE CPLEX
+303136 301.101 302055  //temps, sol, binf et status MIP CPLEX

@@ -305,7 +305,7 @@ void modele_entier_compact(data d){
 	vector<SCIP_CONS *> cons_equil;
 	SCIP_CONS * c;
 	cons_equil.push_back(c);
-	SCIPcreateConsLinear(scip, &cons_equil[0], "cons_equil0", 0, 0, 0, 0, 0, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
+	SCIPcreateConsLinear(scip, &cons_equil[0], "cons_equil0", 0, 0, 0, d.s0, d.s0, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
 	SCIPaddCoefLinear(scip, cons_equil[0], xt[0],1);
 	SCIPaddCoefLinear(scip, cons_equil[0], st[0],1);		
 	for(int j=0; j<d.cardJ; ++j){

@@ -17,7 +17,7 @@ void modifPWL(data &d, vector<int> rt){
 void modifPWL(data &d, vector<float> rt){
 	for(int t=0; t<d.cardT; ++t){
 		for(int i=0; i<d.nb_bp[t]; ++i){
-			//if (rt[t] > 0.1) d.bpt[t][i] += rt[t];
+			//if (rt[t] > 0.5) d.bpt[t][i] += rt[t];
 			d.bpt[t][i] += rt[t];
 			//if(rt[t] > 0) d.bpt[t][i] += rt[t];
 			//else if(rt[t]<0) d.bpt[t][i] -= rt[t]; 
@@ -43,6 +43,8 @@ float roundd(double var, int nbdec)
     // 3766.66 + .5 =3767.16    for rounding off value
     // then type cast to int so value is 3767
     // then divided by 100 so the value converted into 37.67
-    float value = (int)(var * pow(10,nbdec) + 0.5);
-    return (float)value / pow(10,nbdec);
+	float value;
+    if(var < 0.0) value = (int)(var * pow(10,nbdec) - 0.5);
+	else value = (int)(var * pow(10,nbdec) + 0.5);
+    return (float) value / pow(10,nbdec);
 }
