@@ -7,7 +7,7 @@ using namespace std;
 void modifPWL(data &d, vector<int> rt){
 	for(int t=0; t<d.cardT; ++t){
 		for(int i=0; i<d.nb_bp[t]; ++i){
-			d.bpt[t][i] += rt[t];
+			d.bpt[t][i] -= rt[t];
 			//if(rt[t] > 0.1) d.bpt[t][i] += rt[t];
 			//else if(rt[t]<0) d.bpt[t][i] -= rt[t]; 
 		}
@@ -18,7 +18,7 @@ void modifPWL(data &d, vector<float> rt){
 	for(int t=0; t<d.cardT; ++t){
 		for(int i=0; i<d.nb_bp[t]; ++i){
 			//if (rt[t] > 0.5) d.bpt[t][i] += rt[t];
-			d.bpt[t][i] += rt[t];
+			d.bpt[t][i] -= rt[t];
 			//if(rt[t] > 0) d.bpt[t][i] += rt[t];
 			//else if(rt[t]<0) d.bpt[t][i] -= rt[t]; 
 		}
@@ -47,4 +47,11 @@ float roundd(double var, int nbdec)
     if(var < 0.0) value = (int)(var * pow(10,nbdec) - 0.5);
 	else value = (int)(var * pow(10,nbdec) + 0.5);
     return (float) value / pow(10,nbdec);
+}
+
+void initPWD(data init, data &d){
+	d.bpt = init.bpt;
+	d.valbpt = init.valbpt;
+	d.pente = init.pente;
+	d.nb_bp = init.nb_bp;
 }

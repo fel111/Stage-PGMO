@@ -20,14 +20,15 @@ struct data{
 	vector<vector<float> > Ckr;
 	vector<float> Dk;
 	vector<vector<float> > Djk;
-	vector<vector<int> > ri;
-	vector<vector<int> > di;
+	vector<int> rj;
+	vector<int> dj;
 };
 
 void modifPWL(data& d, vector<int> rt);
 void modifPWL(data& d, vector<float> rt);
 vector<int> dtToInt(data d, int choix);
 float roundd(double var, int nbdec);
+void initPWD(data init, data &d);
 
 
 #endif

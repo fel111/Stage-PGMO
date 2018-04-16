@@ -19,7 +19,7 @@ float lotsizcontCPX(data d,vector<float> &varia){
     IloModel model(env);
     IloCplex cplex(model);
 	cplex.setOut(env.getNullStream());
-	cplex.setParam(IloCplex::Threads, 1);
+	//cplex.setParam(IloCplex::Threads, 1);
 	cplex.setParam(IloCplex::TiLim,300);
 
 	//VARIABLES
@@ -30,7 +30,7 @@ float lotsizcontCPX(data d,vector<float> &varia){
 	//ajout variables st de stock
     IloNumVarArray st (env,d.cardT,0.0,d.Q,ILOFLOAT);
 
-	//ajout variables rt de production, rt = sum_j xij
+	//ajout variables xt de production
 	IloNumVarArray xt (env,d.cardT,0.0,IloInfinity,ILOFLOAT);
 
 	

@@ -62,10 +62,13 @@ OBJ=	modele_entier.o \
 		../Ordo_compact/ordo_cplex.o \
 		../Lot_Sizing/Lot_Sizing_Dynamique/lotsizdyn2.o \
 		../Lot_Sizing/Lot_Sizing_Compact/lotsizentCPX.o \
+		../Lot_Sizing/Lot_Sizing_Compact/lotsizcontcom.o \
 		../Lot_Sizing/Lot_Sizing_Compact/lotsizcontCPX.o \
 		../data_struct.o \
 		../Modele_compact/compact.o \
-		../Modele_compact/modele_entier_cplex.o
+		../Modele_compact/modele_entier_cplex.o \
+		../Lecteur_Fichiers/lecteur_taches.o \
+		../Lecteur_Fichiers/lecteur_pwd.o
 
 
 

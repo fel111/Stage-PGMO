@@ -19,7 +19,7 @@ void modele_entier_cplex(data d){
     IloEnv env;
     IloModel model(env);
     IloCplex cplex(model);
-    cplex.setOut(env.getNullStream());
+    //cplex.setOut(env.getNullStream());
     cplex.setParam(IloCplex::Threads, 1);
     cplex.setParam(IloCplex::TiLim,300);
 
@@ -98,6 +98,21 @@ void modele_entier_cplex(data d){
 			}
 		}			
 		model.add(sumy2 == d.pj[j]);
+	}
+
+	// contrainte respect fenetre temps
+	for(int j=0; j<d.cardJ; ++j){
+        IloExpr s1(env);
+		IloExpr s2(env);
+        for(int k=0; k<d.cardM; ++k){
+			for(int t=0; t<d.rj[j]; ++t){
+				s1 += y_jkt[j][k][t];
+			}
+			for(int t=d.dj[j]; t<d.cardT; ++t){
+				s2 += y_jkt[j][k][t];
+			}
+		}			
+		model.add(s1 + s2 == 0);
 	}
 
 	// sum_j cjr*yjkt <= Ckr

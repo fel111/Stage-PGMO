@@ -19,7 +19,7 @@ float ordo_cplex(data &d){
     IloModel model(env);
     IloCplex cplex(model);
     cplex.setOut(env.getNullStream());
-    //cplex.setParam(IloCplex::Threads, 1);
+    cplex.setParam(IloCplex::Threads, 1);
     cplex.setParam(IloCplex::TiLim,300);
 
 
@@ -36,15 +36,15 @@ float ordo_cplex(data &d){
 	for(int j=0; j<d.cardJ; ++j){
 		vector<IloNumVarArray> v;
 		y_jkt.push_back(v);
-		for(int k=0; k<d.cardM; ++k){
-			IloNumVarArray var (env,d.cardT,0,1,ILOBOOL);
+		for(int k=0; k<d.cardM; ++k){//"yk"+to_string(j)+"_"+to_string(k)+"_"
+			IloNumVarArray var (env,d.cardT,0,1,ILOBOOL );
 			y_jkt[j].push_back(var);
 		}	
 	}
 
 	//ajout variables z_kt binaires
 	vector<IloNumVarArray> z_kt;
-	for(int k=0; k<d.cardM; ++k){
+	for(int k=0; k<d.cardM; ++k){// , "zkt"+to_string(k)+"_"
 		IloNumVarArray var (env,d.cardT,0,1,ILOBOOL);
 		z_kt.push_back(var);
 	}
@@ -53,6 +53,7 @@ float ordo_cplex(data &d){
 
 	//contraintes sur ct
 	for(int i=0; i<d.cardT; ++i){
+		cout << "dbpt 00 : " << d.bpt[i][0] << endl;
 		if(d.bpt[i][0] > 0){
 			IloNumArray pente(env, d.nb_bp[i]+1);
 			IloNumArray bpt(env, d.nb_bp[i]);
@@ -102,6 +103,21 @@ float ordo_cplex(data &d){
 		model.add(sumy2 == d.pj[j]);
 	}
 
+	// contrainte respect fenetre temps
+	for(int j=0; j<d.cardJ; ++j){
+        IloExpr s1(env);
+		IloExpr s2(env);
+        for(int k=0; k<d.cardM; ++k){
+			for(int t=0; t<d.rj[j]; ++t){
+				s1 += y_jkt[j][k][t];
+			}
+			for(int t=d.dj[j]; t<d.cardT; ++t){
+				s2 += y_jkt[j][k][t];
+			}
+		}			
+		model.add(s1 + s2 == 0);
+	}
+
 	// sum_j cjr*yjkt <= Ckr
 	for(int k=0; k<d.cardM; ++k){
 		for(int r=0; r<d.cardR; ++r){
@@ -137,6 +153,8 @@ float ordo_cplex(data &d){
 			sum2 += d.Dk[k]*z_kt[k][t];
 		}			
 		model.add(xt[t]-sum1-sum2 == 0);
+		cout << "sum1 : " << sum1 << endl;
+		cout << "xt[t]-sum1-sum2 : " << xt[t]-sum1-sum2 << endl;
 	}
 
     cplex.solve();
@@ -152,11 +170,26 @@ float ordo_cplex(data &d){
 	}
 	cout << endl;
 
+	for(int t=0; t<d.cardT; ++t){
+		cout << "xt" << t << ": " <<cplex.getValue(xt[t]) << endl;
+		cout << "ct" << t << ": " <<cplex.getValue(ct[t]) << endl;
+		for(int k=0; k<d.cardM; ++k){
+			cout << "zkt" << k << t << ": " <<cplex.getValue(z_kt[k][t]) << endl;
+			for(int j=0; j<d.cardJ; ++j){
+			
+			
+				cout << "yjkt" << j << k<<t << ": " <<cplex.getValue(y_jkt[j][k][t]) << endl;
+			}
+		}
+	
+	}
+
 	d.dt = prod;
 
     float sol = cplex.getObjValue();
     //env.out() << "Cost LotsizEnt = " << cplex.getObjValue() << endl;
-
+	//cplex.writeSolution("sol.txt");
+	//cplex.exportModel("ordo.lp");
     env.end();
     return sol;
 
