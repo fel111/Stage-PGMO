@@ -14,13 +14,13 @@
 //#define SCIP_DEBUG
 ILOSTLBEGIN
 
-float lotsizcontCPX(data d,vector<float> &varia){
+float lotsizcontCPX(data d,vector<float> &varia,param p){
     IloEnv env;
     IloModel model(env);
     IloCplex cplex(model);
-	cplex.setOut(env.getNullStream());
-	//cplex.setParam(IloCplex::Threads, 1);
-	cplex.setParam(IloCplex::TiLim,300);
+	if (p.aff_log_lotsizingcont_cplex==0) cplex.setOut(env.getNullStream());
+	cplex.setParam(IloCplex::Threads,p.nb_threads_cplex);
+	cplex.setParam(IloCplex::TiLim,p.time_limit_lotsizingcont);
 
 	//VARIABLES
 	//ajout variables ct
@@ -69,7 +69,7 @@ float lotsizcontCPX(data d,vector<float> &varia){
 
 	
 	//contraintes bilan energetique
-	model.add(xt[0] - st[0] == d.dt[0]);
+	model.add(xt[0] + d.s0 - st[0] == d.dt[0]);
 	for(int i=1; i<d.cardT; ++i){
          model.add(xt[i] + st[i-1] - st[i] == d.dt[i]);
 	}
@@ -85,15 +85,21 @@ float lotsizcontCPX(data d,vector<float> &varia){
 	vector<float> variat (d.cardT,0.0);
 	
 	variat[0] = roundd(cplex.getValue(st[0]),5) - d.s0;
-	cout << "variation : " << variat[0] << " ";
+	//cout << "variation : " << variat[0] << " ";
 	for(int t=1; t<d.cardT; ++t){
 		//cout << "st[t], st[t-1] : " << roundd(cplex.getValue(st[t]),5) << " - " << roundd(cplex.getValue(st[t-1]),5);
 		//variat[t] = roundd(roundd(cplex.getValue(st[t]),5) - roundd(cplex.getValue(st[t-1]),5),5);
 		variat[t] = roundd(cplex.getValue(st[t]) - cplex.getValue(st[t-1]),5);
-		cout << variat[t] <<" ";
+		//cout << variat[t] <<" ";
 	}
-	cout << endl;
+	//cout << endl;
 	varia = variat;
+
+	/*for(int t=0; t<d.cardT; ++t){
+		cout << "xt" << t << ": " <<cplex.getValue(xt[t]) << endl;
+		cout << "ct" << t << ": " <<cplex.getValue(ct[t]) << endl;
+		cout << "st" << t << ": " <<cplex.getValue(st[t]) << endl;	
+	}*/
 
 
     env.end();
@@ -123,13 +129,13 @@ float lotsizcontCPX(data d,vector<float> &varia){
 
 
 
-float lotsizcontCPX(data d, float& borninf, string &status){
+float lotsizcontCPX(data d, float& borninf, string &status,param p){
     IloEnv env;
     IloModel model(env);
     IloCplex cplex(model);
-	cplex.setOut(env.getNullStream());
-	cplex.setParam(IloCplex::Threads, 1);
-	cplex.setParam(IloCplex::TiLim,300);
+	if (p.aff_log_lotsizingcont_cplex==0) cplex.setOut(env.getNullStream());
+	cplex.setParam(IloCplex::Threads,p.nb_threads_cplex);
+	cplex.setParam(IloCplex::TiLim,p.time_limit_lotsizingcont);
 
 	//VARIABLES
 	//ajout variables ct

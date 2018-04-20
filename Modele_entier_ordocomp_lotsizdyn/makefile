@@ -68,6 +68,7 @@ OBJ=	modele_entier.o \
 		../Modele_compact/compact.o \
 		../Modele_compact/modele_entier_cplex.o \
 		../Lecteur_Fichiers/lecteur_taches.o \
+		../Lecteur_Fichiers/lecteur_param.o \
 		../Lecteur_Fichiers/lecteur_pwd.o
 
 
@@ -124,7 +125,7 @@ $(EXEC_NAME1) : $(OBJ1)
 # Taper 'make clean' provoque l'effacement de tous les .o, et des *~ laiss�s 
 # par emacs. Il n'y a pas de d�pendence pour cette cible.
 clean : 
-	rm -f *.o *~ 
+	find ../. -name \*.o -type f -delete 
  
 # Taper 'make clear' fait un 'make clean' puis efface en plus l'ex�cutable.
 clear : 

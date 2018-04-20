@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void lecteur_taches(string file, data &d);
+void lecteur_taches(string file, data &d,bool fenetre);
 void generateur_taches(string file, int cardJ, int cardT, int dureemax, float consomax);
 
 #endif

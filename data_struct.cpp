@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 #include <math.h>
 #include "data_struct.h"
 using namespace std;
@@ -18,6 +19,7 @@ void modifPWL(data &d, vector<float> rt){
 	for(int t=0; t<d.cardT; ++t){
 		for(int i=0; i<d.nb_bp[t]; ++i){
 			//if (rt[t] > 0.5) d.bpt[t][i] += rt[t];
+			//cout << "dbpt -= rt : "<< d.bpt[t][i] << " -= "<<  rt[t]<<endl;
 			d.bpt[t][i] -= rt[t];
 			//if(rt[t] > 0) d.bpt[t][i] += rt[t];
 			//else if(rt[t]<0) d.bpt[t][i] -= rt[t]; 

@@ -5,7 +5,7 @@
 #include "data_struct.h"
 //using namespace std;
 
-float ordo_cplex(data &d);
+float ordo_cplex(data &d,param p);
 
 
 #endif

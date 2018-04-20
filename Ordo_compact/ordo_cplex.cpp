@@ -14,13 +14,13 @@
 ILOSTLBEGIN
 
 
-float ordo_cplex(data &d){
+float ordo_cplex(data &d,param p){
 	IloEnv env;
     IloModel model(env);
     IloCplex cplex(model);
-    cplex.setOut(env.getNullStream());
-    cplex.setParam(IloCplex::Threads, 1);
-    cplex.setParam(IloCplex::TiLim,300);
+    if (p.aff_log_ordo_cplex==0) cplex.setOut(env.getNullStream());
+    cplex.setParam(IloCplex::Threads,p.nb_threads_cplex);
+    cplex.setParam(IloCplex::TiLim,p.time_limit_ordo);
 
 
 	//VARIABLES
@@ -28,7 +28,7 @@ float ordo_cplex(data &d){
 	IloNumVarArray ct (env,d.cardT,0.0,IloInfinity,ILOFLOAT);
 
 	//ajout variables xt
-	IloNumVarArray xt (env,d.cardT,0,IloInfinity,ILOFLOAT);
+	IloNumVarArray xt (env,d.cardT,0.0,IloInfinity,ILOFLOAT);
 
 
 	//ajout variables y_jkt binaires
@@ -53,7 +53,6 @@ float ordo_cplex(data &d){
 
 	//contraintes sur ct
 	for(int i=0; i<d.cardT; ++i){
-		cout << "dbpt 00 : " << d.bpt[i][0] << endl;
 		if(d.bpt[i][0] > 0){
 			IloNumArray pente(env, d.nb_bp[i]+1);
 			IloNumArray bpt(env, d.nb_bp[i]);
@@ -102,7 +101,7 @@ float ordo_cplex(data &d){
 		}			
 		model.add(sumy2 == d.pj[j]);
 	}
-
+if(p.taches_avec_fenetre_temps == 1){
 	// contrainte respect fenetre temps
 	for(int j=0; j<d.cardJ; ++j){
         IloExpr s1(env);
@@ -117,7 +116,7 @@ float ordo_cplex(data &d){
 		}			
 		model.add(s1 + s2 == 0);
 	}
-
+}
 	// sum_j cjr*yjkt <= Ckr
 	for(int k=0; k<d.cardM; ++k){
 		for(int r=0; r<d.cardR; ++r){
@@ -153,36 +152,33 @@ float ordo_cplex(data &d){
 			sum2 += d.Dk[k]*z_kt[k][t];
 		}			
 		model.add(xt[t]-sum1-sum2 == 0);
-		cout << "sum1 : " << sum1 << endl;
-		cout << "xt[t]-sum1-sum2 : " << xt[t]-sum1-sum2 << endl;
 	}
 
     cplex.solve();
 
 	vector<float> prod;
-	cout << "demande : ";	
+	//cout << "demande : ";	
 	for(int i=0; i<d.cardT; ++i){
 		//cout << SCIPgetSolVal(scip,sol,xt[i]) << ", ";
 		//prod.push_back(static_cast<int>(ceil(SCIPgetSolVal(scip,sol,xt[i]))));
 		//prod.push_back(roundd(SCIPgetSolVal(scip,sol,xt[i])));
-		prod.push_back(roundd(cplex.getValue(xt[i]),5));
-        cout << prod[i] << " ";
+		//prod.push_back(roundd(cplex.getValue(xt[i]),5));
+		prod.push_back(cplex.getValue(xt[i]));
+       	//cout << prod[i] << " ";
 	}
-	cout << endl;
+	//cout << endl;
 
-	for(int t=0; t<d.cardT; ++t){
+	/*for(int t=0; t<d.cardT; ++t){
 		cout << "xt" << t << ": " <<cplex.getValue(xt[t]) << endl;
 		cout << "ct" << t << ": " <<cplex.getValue(ct[t]) << endl;
 		for(int k=0; k<d.cardM; ++k){
-			cout << "zkt" << k << t << ": " <<cplex.getValue(z_kt[k][t]) << endl;
+			//cout << "zkt" << k << t << ": " <<cplex.getValue(z_kt[k][t]) << endl;
 			for(int j=0; j<d.cardJ; ++j){
-			
-			
 				cout << "yjkt" << j << k<<t << ": " <<cplex.getValue(y_jkt[j][k][t]) << endl;
 			}
 		}
 	
-	}
+	}*/
 
 	d.dt = prod;
 

@@ -12,7 +12,7 @@
 using namespace std;
 
 
-void lecteur_taches(string file, data &d){
+void lecteur_taches(string file, data &d, bool fenetre){ //bool precise si l'on souhaite fenetre de temps ou non
 
 	ifstream fichier(file, ios::in); //ouverture du fichier
 	if(fichier){  // si l'ouverture fonctionne
@@ -27,14 +27,20 @@ void lecteur_taches(string file, data &d){
 			istringstream iss (ligne);
 			iss >> duree >> releasedate >> duedate >> conso >> cpu >> ram;
             vector<float> ress;
-            ress.push_back(ram);
             ress.push_back(cpu);
+            ress.push_back(ram);
             cjr.push_back(ress);
 			vector<float> cons (d.cardM,conso);
             Djk.push_back(cons);
             pj.push_back(duree);
-            rj.push_back(releasedate);
-            dj.push_back(duedate);
+            if(fenetre){
+                rj.push_back(releasedate);
+                dj.push_back(duedate);
+            }
+            else{
+                rj.push_back(0);
+                dj.push_back(d.cardT-1);
+            }
             --cardJ;
 		}
 		d.Djk = Djk;
@@ -48,6 +54,7 @@ void lecteur_taches(string file, data &d){
 		cout << "erreur lecture fichier" << endl;
 	}
 }
+
 
 void generateur_taches(string file, int cardJ, int cardT, float consomax){
 

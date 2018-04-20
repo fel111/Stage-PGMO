@@ -25,7 +25,7 @@ void lecteur_pwd(string file, data &d){
 	if(fichier){  // si l'ouverture fonctionne
 		string ligne;
 		int t;
-		int bp;
+		float bp;
 		float valbp;
 		float pent;
 		int nb_bp;
@@ -35,7 +35,7 @@ void lecteur_pwd(string file, data &d){
 		vector<int> nbp (d.cardT, nb_bp);
 		vector<vector<float> > pente (d.cardT, vector<float> ());
 		vector<vector<float> > valbpt (d.cardT, vector<float> ());
-		vector<vector<int> > bpt (d.cardT, vector<int> ());
+		vector<vector<float> > bpt (d.cardT, vector<float> ());
 
 
 		while(getline(fichier,ligne)){ // tant que l'on peut lire une ligne
