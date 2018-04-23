@@ -37,6 +37,7 @@ struct param{
 	int time_limit_lotsizingent; // limite de temps lotsizingent plex en secondes 
 	int time_limit_lotsizingdyn; // limite de temps lotsizingdyn plex en secondes
 	int time_limit_compact;
+	int time_limit_relax;
 };
 
 void modifPWL(data& d, vector<int> rt);

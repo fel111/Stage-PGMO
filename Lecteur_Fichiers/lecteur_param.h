@@ -4,6 +4,6 @@
 
 using namespace std;
 
-void lecteur_param(string file, data &d, param &p);
+void lecteur_param(string file, param &p);
 
 #endif

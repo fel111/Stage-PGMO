@@ -1,4 +1,4 @@
-taches_avec_fenetre_temps 0 // 1 si les taches ont des fenetres de temps a respecter, 0 sinon
+taches_avec_fenetre_temps 1 // 1 si les taches ont des fenetres de temps a respecter, 0 sinon
 
 boucle_relaxation 1 // 1 si on utilise la relaxation pour premiere solution ordo, 0 sinon
 
@@ -19,4 +19,6 @@ time_limit_lotsizingent 50 // limite de temps lotsizingent plex en secondes
 time_limit_lotsizingdyn 50
 
 time_limit_compact 150
+
+time_limit_relax 20
 

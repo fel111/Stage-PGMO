@@ -12,7 +12,7 @@
 using namespace std;
 
 
-void lecteur_param(string file, data &d, param &p){
+void lecteur_param(string file, param &p){
 	
     ifstream fichier(file, ios::in); //ouverture du fichier
     if(fichier){  // si l'ouverture fonctionne
@@ -22,20 +22,19 @@ void lecteur_param(string file, data &d, param &p){
         while(getline(fichier,ligne)){ // tant que l'on peut lire une ligne
             istringstream iss (ligne);
             iss >> par >> t;
-            switch (stoi(par)){
-                case (stoi("taches_avec_fenetre_temps")) : p.taches_avec_fenetre_temps = t; break;
-                case ("boucle_relaxation") : p.boucle_relaxation = t; break;
-                case ("aff_log_ordo_cplex") : p.aff_log_ordo_cplex = t; break; 
-                case ("aff_log_lotsizingcont_cplex") : p.aff_log_lotsizingcont_cplex = t; break;
-                case ("aff_log_lotsizingent_cplex") : p.aff_log_lotsizingent_cplex = t; break;
-                case ("aff_log_compact_cplex") : p.aff_log_compact_cplex = t; break;
-                case ("nb_threads_cplex") : p.nb_threads_cplex = t; break;
-                case ("time_limit_ordo") : p.time_limit_ordo = t; break;
-                case ("time_limit_lotsizingcont") : p.time_limit_lotsizingcont = t; break;
-                case ("time_limit_lotsizingent") : p.time_limit_lotsizingent = t; break;
-                case ("time_limit_lotsizingdyn") : p.time_limit_lotsizingdyn = t; break;
-                case ("time_limit_compact") : p.time_limit_compact = t; break;
-            }
+            if (par == "taches_avec_fenetre_temps") { p.taches_avec_fenetre_temps = t; }
+            else if (par == "boucle_relaxation") { p.boucle_relaxation = t; }
+            else if (par == "aff_log_ordo_cplex") { p.aff_log_ordo_cplex = t; } 
+            else if (par == "aff_log_lotsizingcont_cplex") { p.aff_log_lotsizingcont_cplex = t; }
+            else if (par == "aff_log_lotsizingent_cplex") { p.aff_log_lotsizingent_cplex = t; }
+            else if (par == "aff_log_compact_cplex") { p.aff_log_compact_cplex = t; }
+            else if (par == "nb_threads_cplex") { p.nb_threads_cplex = t; }
+            else if (par == "time_limit_ordo") { p.time_limit_ordo = t; }
+            else if (par == "time_limit_lotsizingcont") { p.time_limit_lotsizingcont = t; }
+            else if (par == "time_limit_lotsizingent") { p.time_limit_lotsizingent = t; }
+            else if (par == "time_limit_lotsizingdyn") { p.time_limit_lotsizingdyn = t; }
+            else if (par == "time_limit_compact") { p.time_limit_compact = t; }
+            else if (par == "time_limit_relax") { p.time_limit_relax = t; }
         }
     }
     else{

@@ -66,7 +66,7 @@ int main(int argc, char* argv[]){
 
 	lecteur_taches("../Donnees/taches_20",d,true);
 	//lecteur_pwd("../Donnees/pwd_20_4_2000_4",d);
-	lecteur_param("../Param/param1.txt",d,p);
+	lecteur_param("../Param/param1.txt",p);
 	data dinit = d;
 	float solOrdo, solLotSizDyn, solLotSizMip, solLotSizPLNE, solComp, solMip, solPLNE, solDyn, tpsBoucleMip, tpsBouclePLNE, tpsBoucleDyn, tpsComp;
 	vector<float> rt;
@@ -75,20 +75,24 @@ int main(int argc, char* argv[]){
 
 
 	// MODELE COMPACT CPLEX
-	auto start_time = chrono::high_resolution_clock::now();
+	auto start_time = chrono::steady_clock::now();
 	solComp = modele_entier_cplex(d,p);
-	auto end_time = chrono::high_resolution_clock::now();
+	auto end_time = chrono::steady_clock::now();
 	tpsComp = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
 
 	cout << "COMPACT     : tps sol    " << tpsComp << " " << solComp << endl;
 
 	// BOUCLE ORDO + LOTSIZING PL (PWD)
-	start_time = chrono::high_resolution_clock::now();
-	float solrelax = relaxation_modele_entier_cplex(d,rt,p);
-	//cout << "solrelax : " << solrelax << endl;
-	modifPWL(d, rt);
-	solOrdo = ordo_cplex(d,p);
-	initPWD(dinit,d);
+	//cout << "relax : " << p.boucle_relaxation << endl;
+	start_time = chrono::steady_clock::now();
+	if(p.boucle_relaxation==1){
+		float solrelax = relaxation_modele_entier_cplex(d,rt,p);
+		//cout << "solrelax : " << solrelax << endl;
+		modifPWL(d, rt);
+		solOrdo = ordo_cplex(d,p);
+		initPWD(dinit,d);
+	} 
+	else solOrdo = ordo_cplex(d,p);
 	solLotSizMip = lotsizcontCPX(d, rt, p);
 	boucle = 2;
 	while((solOrdo != solLotSizMip)&&(boucle>0)){
@@ -103,7 +107,7 @@ int main(int argc, char* argv[]){
 		--boucle;
 		
 	}
-	end_time = chrono::high_resolution_clock::now();
+	end_time = chrono::steady_clock::now();
 	tpsBoucleMip = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
 	solMip = solLotSizMip;
 
@@ -113,7 +117,7 @@ int main(int argc, char* argv[]){
 	d = dinit;
 
 	// BOUCLE ORDO + LOTSIZING PLNE
-	start_time = chrono::high_resolution_clock::now();
+	start_time = chrono::steady_clock::now();
 	float solOrdoTemp = ordo_cplex(d,p);
 	bool conv = false;
 	solLotSizPLNE = lotsizentCPX(d,1,rt, p);
@@ -132,7 +136,7 @@ int main(int argc, char* argv[]){
 		}
 		--boucle;
 	}
-	end_time = chrono::high_resolution_clock::now();
+	end_time = chrono::steady_clock::now();
 	tpsBouclePLNE = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
 	solPLNE = solOrdo;
 
@@ -143,7 +147,7 @@ int main(int argc, char* argv[]){
 	d = dinit;
 
 	// BOUCLE ORDO + LOTSIZING DYNAMIQUE
-	start_time = chrono::high_resolution_clock::now();
+	start_time = chrono::steady_clock::now();
 	solOrdoTemp = ordo_cplex(d,p);
 	conv = false;
 	solLotSizDyn = lotsizdyn(d,1,rt);
@@ -162,7 +166,7 @@ int main(int argc, char* argv[]){
 		}
 		--boucle;
 	}
-	end_time = chrono::high_resolution_clock::now();
+	end_time = chrono::steady_clock::now();
 	tpsBoucleDyn = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
 	solDyn = solOrdo;
 
