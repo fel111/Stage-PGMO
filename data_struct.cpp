@@ -5,7 +5,7 @@
 using namespace std;
 
 
-void modifPWL(data &d, vector<int> rt){
+void modifPWL(data &d, vector<int> const& rt){
 	for(int t=0; t<d.cardT; ++t){
 		for(int i=0; i<d.nb_bp[t]; ++i){
 			d.bpt[t][i] -= rt[t];
@@ -15,7 +15,7 @@ void modifPWL(data &d, vector<int> rt){
 	}
 }
 
-void modifPWL(data &d, vector<float> rt){
+void modifPWL(data &d, vector<float> const& rt){
 	for(int t=0; t<d.cardT; ++t){
 		for(int i=0; i<d.nb_bp[t]; ++i){
 			//if (rt[t] > 0.5) d.bpt[t][i] += rt[t];
@@ -27,7 +27,7 @@ void modifPWL(data &d, vector<float> rt){
 	}
 }
 
-vector<int> dtToInt(data d, int choix){
+vector<int> dtToInt(data const& d, int choix){
 	vector<int> dt (d.cardT, 0);
 	for(int i=0; i<d.cardT; ++i){
 		//cout << SCIPgetSolVal(scip,sol,xt[i]) << ", ";
@@ -51,7 +51,7 @@ float roundd(double var, int nbdec)
     return (float) value / pow(10,nbdec);
 }
 
-void initPWD(data init, data &d){
+void initPWD(data const& init, data &d){
 	d.bpt = init.bpt;
 	d.valbpt = init.valbpt;
 	d.pente = init.pente;

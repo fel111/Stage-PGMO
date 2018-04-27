@@ -1,0 +1,3 @@
+263279 0.013314 //temps et sol LotSizDyn
+263279 300.154 257734  //temps, sol, binf et status PLNE CPLEX
+263322 300.104 257693  //temps, sol, binf et status MIP CPLEX

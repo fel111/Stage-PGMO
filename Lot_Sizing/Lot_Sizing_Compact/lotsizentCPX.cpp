@@ -15,7 +15,7 @@
 //#define SCIP_DEBUG
 ILOSTLBEGIN
 
-float lotsizentCPX(data d, int choix,float& borninf, string &status, param p){
+float lotsizentCPX(data const& d, param const& p, vector<float> &varia, float &tps, float &borneinf, string &status){
     vector<int> dt = dtToInt(d,choix);
 
     IloEnv env;
@@ -23,7 +23,7 @@ float lotsizentCPX(data d, int choix,float& borninf, string &status, param p){
     IloCplex cplex(model);
     cplex.setOut(env.getNullStream());
     cplex.setParam(IloCplex::Threads,p.nb_threads_cplex);
-    cplex.setParam(IloCplex::TiLim,50);
+    cplex.setParam(IloCplex::TiLim,p.time_limit_lotsizingent);
    
 	//VARIABLES
 	//ajout variables ct
@@ -61,7 +61,7 @@ float lotsizentCPX(data d, int choix,float& borninf, string &status, param p){
     obj.end();
 	
 	//contraintes bilan energetique
-	model.add(xt[0] +d.s0 - st[0] == dt[0]);
+	model.add(xt[0] + d.s0 - st[0] == dt[0]);
 	for(int i=1; i<d.cardT; ++i){
          model.add(xt[i] + st[i-1] - st[i] == dt[i]);
 	}
@@ -70,25 +70,45 @@ float lotsizentCPX(data d, int choix,float& borninf, string &status, param p){
 	//contrainte stmax  == 0
 	model.add(st[d.cardT-1] == d.s0);
 
-		
-    //IloCplex cplex(env);
-    //cplex.extract(model);
-    //cplex.exportModel("cplex_lotsizent.lp");
 
-    //auto start_time = chrono::high_resolution_clock::now();
+    auto start_time = chrono::steady_clock::now();
     cplex.solve();
-    //auto end_time = chrono::high_resolution_clock::now();
-    //cout << "temps com : " << chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0 << endl<<endl;
+	auto end_time = chrono::steady_clock::now();
+	tps = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
 
-    //cout << "nb noeuds explorés: "<< cplex.getNnodes()<<endl;
-    borninf = cplex.getBestObjValue();
-    status = cplex.getStatus();
 
-    float sol = cplex.getObjValue();
-    //env.out() << "Cost LotsizEnt = " << cplex.getObjValue() << endl;
+    float sol;
+	if(cplex.getStatus() == IloAlgorithm Feasible){
+		status = "Feasible";
+		borneinf = cplex.getBestObjValue();
+		sol = cplex.getObjValue();
+		vector<float> variat;
+		variat.push_back(roundd(cplex.getValue(st[0]),5) - d.s0);
+		for(int t=1; t<d.cardT; ++t){
+			variat.push_back(roundd(cplex.getValue(st[t]) - cplex.getValue(st[t-1]),5));
+		}
+		varia = variat;
+	}
+    else if(cplex.getStatus() == IloAlgorithm Optimal){
+		status = "Optimal";
+		borneinf = cplex.getBestObjValue();
+		sol = cplex.getObjValue();
+		vector<float> variat;
+		variat.push_back(roundd(cplex.getValue(st[0]),5) - d.s0);
+		for(int t=1; t<d.cardT; ++t){
+			variat.push_back(roundd(cplex.getValue(st[t]) - cplex.getValue(st[t-1]),5));
+		}
+		varia = variat;
+	}
+	else{
+		status = "Unknown";
+		borneinf = cplex.getBestObjValue();
+		sol = -1.0;
+	}
 
+	
     env.end();
-    return sol;
+	return sol;
 
 }
 
@@ -103,8 +123,8 @@ float lotsizentCPX(data d, int choix,float& borninf, string &status, param p){
 
 
 
-
-float lotsizentCPX(data d, int choix,vector<float> & var, param p){
+/*
+float lotsizentCPX(data const& d, int choix,vector<float> & var, param const& p){
     vector<int> dt = dtToInt(d,choix);
 
     IloEnv env;
@@ -164,9 +184,9 @@ float lotsizentCPX(data d, int choix,vector<float> & var, param p){
     //cplex.extract(model);
     //cplex.exportModel("cplex_lotsizent.lp");
 
-    //auto start_time = chrono::high_resolution_clock::now();
+    //auto start_time = chrono::steady_clock::now();
     cplex.solve();
-    //auto end_time = chrono::high_resolution_clock::now();
+    //auto end_time = chrono::steady_clock::now();
     //cout << "temps com : " << chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0 << endl<<endl;
 
     //cout << "nb noeuds explorés: "<< cplex.getNnodes()<<endl;
@@ -187,4 +207,4 @@ float lotsizentCPX(data d, int choix,vector<float> & var, param p){
     env.end();
     return sol;
 
-}
+}*/

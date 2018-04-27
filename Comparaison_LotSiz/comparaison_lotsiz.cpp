@@ -42,9 +42,9 @@ int main(int argc, char *argv[]){
 
 
 	vector<int> NBBP = {4,10};
-    vector<int> S = {100,1000,10000};
-    int bornesup = 2000;
-    int cardT = 1000;
+    vector<int> S = {100,1000};
+    vector<int> B = {100,2000};
+    int cardT = 500;
 
     
     //int bornesup = 100;
@@ -52,10 +52,10 @@ int main(int argc, char *argv[]){
     float tpsCPXent = 0.0;
     float tpslotdyn = 0.0;
     float ecart = 0.0;*/
+for(const auto& bornesup : B){
 for(const auto& s : S){
 for(const auto& nbbp : NBBP){
 
-//for(const auto& bornesup : B){
 for(int i=1; i<11; ++i){
     //generateur_pwd(stoi(cardT), stoi(nb_bp), 5, stoi(bornesup));
     //generateur_demande(stoi(cardT),stoi(bornesup));
@@ -79,38 +79,38 @@ for(int i=1; i<11; ++i){
 
 // cout << d.bpt[0][1] << " "<< d.valbpt[0][1] << endl;
     /*vector<float> varia;
-    auto start_time = chrono::high_resolution_clock::now();
+    auto start_time = chrono::steady_clock::now();
     lotsizcontcom(d,varia);
-    auto end_time = chrono::high_resolution_clock::now();
+    auto end_time = chrono::steady_clock::now();
     cout << "temps contcom : " << chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0 << endl<<endl;
     */
     float binfEnt = 0.0;
     float binfCont = 0.0;
     string statusEnt, statusCont;
+    float tpsCPXent, tpsCPXcont;
 
-
-    auto start_time = chrono::high_resolution_clock::now();
+    auto start_time = chrono::steady_clock::now();
     float solDyn = lotsizdyn(d, 1);
-    auto end_time = chrono::high_resolution_clock::now();
+    auto end_time = chrono::steady_clock::now();
     float tpslotdyn = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
     //cout << "temps dyn : " << chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0 << endl<<endl;
     
 
-   /* start_time = chrono::high_resolution_clock::now();
+   /* start_time = chrono::steady_clock::now();
     lotsizcomp(d, 1);
-    end_time = chrono::high_resolution_clock::now();
+    end_time = chrono::steady_clock::now();
     cout << "temps com : " << chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0 << endl<<endl;
 */
-    start_time = chrono::high_resolution_clock::now();
-    float solent = lotsizentCPX(d, 1,binfEnt,statusEnt);
-    end_time = chrono::high_resolution_clock::now();
-    float tpsCPXent = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
+    //start_time = chrono::steady_clock::now();
+    float solent = lotsizentCPX(d, 1,binfEnt,statusEnt, tpsCPXent);
+    //end_time = chrono::steady_clock::now();
+    //float tpsCPXent = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
     //cout << "temps com : " << chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0 << endl<<endl;
     
-    start_time = chrono::high_resolution_clock::now();
-    float solcont = lotsizcontCPX(d,binfCont,statusCont);
-    end_time = chrono::high_resolution_clock::now();
-    float tpsCPXcont = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
+    //start_time = chrono::steady_clock::now();
+    float solcont = lotsizcontCPX(d,binfCont,statusCont,tpsCPXcont);
+    //end_time = chrono::steady_clock::now();
+    //float tpsCPXcont = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
     
     //float ecart = (solent - solcont)*100/solcont;
 //}
@@ -125,7 +125,7 @@ for(int i=1; i<11; ++i){
 }
 }
 }
-//}
+}
     //lecteur_sol("../Log_sol/"+cardT+"_"+nb_bp+"_"+bornesup+"_"+stockmax);
     return 0;
 }

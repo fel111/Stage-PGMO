@@ -1,0 +1,3 @@
+9873.5 0.173556 //temps et sol LotSizDyn
+9873.5 300 9872.4  //temps, sol, binf et status PLNE CPLEX
+9744.8 300.001 9735.5  //temps, sol, binf et status MIP CPLEX

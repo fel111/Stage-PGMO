@@ -35,6 +35,7 @@ void lecteur_param(string file, param &p){
             else if (par == "time_limit_lotsizingdyn") { p.time_limit_lotsizingdyn = t; }
             else if (par == "time_limit_compact") { p.time_limit_compact = t; }
             else if (par == "time_limit_relax") { p.time_limit_relax = t; }
+            else if (par == "nb_iter_max_boucle") { p.nb_iter_max_boucle = t; }
         }
     }
     else{

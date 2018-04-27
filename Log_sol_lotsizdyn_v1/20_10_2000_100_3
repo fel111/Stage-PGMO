@@ -1,0 +1,3 @@
+53275.8 0.000357 //temps et sol LotSizDyn
+53275.8 0.004335 53275.8  //temps, sol, binf et status PLNE CPLEX
+53258.8 0.003592 53258.8  //temps, sol, binf et status MIP CPLEX

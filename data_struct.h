@@ -38,13 +38,14 @@ struct param{
 	int time_limit_lotsizingdyn; // limite de temps lotsizingdyn plex en secondes
 	int time_limit_compact;
 	int time_limit_relax;
+	int nb_iter_max_boucle;
 };
 
-void modifPWL(data& d, vector<int> rt);
-void modifPWL(data& d, vector<float> rt);
-vector<int> dtToInt(data d, int choix);
+void modifPWL(data& d, vector<int> const& rt);
+void modifPWL(data& d, vector<float> const& rt);
+vector<int> dtToInt(data const& d, int choix);
 float roundd(double var, int nbdec);
-void initPWD(data init, data &d);
+void initPWD(data const& init, data &d);
 
 
 #endif

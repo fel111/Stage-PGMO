@@ -1,0 +1,3 @@
+6518.8 0.001033 //temps et sol LotSizDyn
+6518.8 300.274 6217.67  //temps, sol, binf et status PLNE CPLEX
+6614.12 300.108 6131.61  //temps, sol, binf et status MIP CPLEX

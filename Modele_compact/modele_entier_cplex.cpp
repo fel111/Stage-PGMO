@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <limits>
+#include <chrono>
 //#include "scip/scip.h"
 //#include "scip/scipdefplugins.h"
 #include "data_struct.h"
@@ -14,14 +15,14 @@ using namespace std;
 //int infini_int = numeric_limits<int>::max();
 
 
-float modele_entier_cplex(data d, param p){
+float modele_entier_cplex(data const& d, param const& p, float &tps, float &borneinf, string &status){
 
     IloEnv env;
     IloModel model(env);
     IloCplex cplex(model);
     if (p.aff_log_compact_cplex==0) cplex.setOut(env.getNullStream());
     cplex.setParam(IloCplex::Threads,p.nb_threads_cplex);
-    cplex.setParam(IloCplex::TiLim,150);
+    cplex.setParam(IloCplex::TiLim,p.time_limit_compact);
 
 
 	//VARIABLES
@@ -158,9 +159,10 @@ if(p.taches_avec_fenetre_temps == 1){
     model.add(st[d.cardT-1]-d.s0 >= 0);
 
 
-
+	auto start_time = chrono::steady_clock::now();
     cplex.solve();
-
+	auto end_time = chrono::steady_clock::now();
+	tps = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
 
 	/*for(int t=0; t<d.cardT; ++t){
 		cout << "xt" << t << ": " <<cplex.getValue(xt[t]) << endl;
@@ -176,10 +178,22 @@ if(p.taches_avec_fenetre_temps == 1){
 		}
 	
 	}*/
-
-	//cplex.writeSolution("solcplex.txt");
-    float sol = cplex.getObjValue();
-    //env.out() << "Cost LotsizEnt = " << cplex.getObjValue() << endl;
+	float sol;
+	if(cplex.getStatus() == IloAlgorithm Feasible){
+		status = "Feasible";
+		borneinf = cplex.getBestObjValue();
+		sol = cplex.getObjValue();
+	}
+    else if(cplex.getStatus() == IloAlgorithm Optimal){
+		status = "Optimal";
+		borneinf = cplex.getBestObjValue();
+		sol = cplex.getObjValue();
+	}
+	else{
+		status = "Unknown";
+		borneinf = cplex.getBestObjValue();
+		sol = -1.0;
+	}
 
     env.end();
     return sol;
@@ -196,14 +210,14 @@ if(p.taches_avec_fenetre_temps == 1){
 
 
 
-float relaxation_modele_entier_cplex(data d,vector<float>& relax, param p){
+float relaxation_modele_entier_cplex(data const& d,vector<float>& relax, param const& p, float &tps, float &borneinf, string &status){
 
     IloEnv env;
     IloModel model(env);
     IloCplex cplex(model);
-    if (p.aff_log_compact_cplex==0) cplex.setOut(env.getNullStream());
+    cplex.setOut(env.getNullStream());
     cplex.setParam(IloCplex::Threads,p.nb_threads_cplex);
-    cplex.setParam(IloCplex::TiLim,p.time_limit_compact);
+    cplex.setParam(IloCplex::TiLim,p.time_limit_relax);
 
 
 	//VARIABLES
@@ -341,7 +355,11 @@ if(p.taches_avec_fenetre_temps == 1){
 
 
 
+    auto start_time = chrono::steady_clock::now();
     cplex.solve();
+	auto end_time = chrono::steady_clock::now();
+	tps = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
+
 
 
 	/*for(int t=0; t<d.cardT; ++t){
@@ -359,14 +377,36 @@ if(p.taches_avec_fenetre_temps == 1){
 	
 	}*/
 
-	vector<float> r;
-	for(int i=0;i<d.cardT;++i){
-		r.push_back(cplex.getValue(xt[i]));
+	
+    float sol;
+	if(cplex.getStatus() == IloAlgorithm Feasible){
+		status = "Feasible";
+		borneinf = cplex.getBestObjValue();
+		sol = cplex.getObjValue();
+		vector<float> variat;
+		variat.push_back(roundd(cplex.getValue(st[0]),5) - d.s0);
+		for(int t=1; t<d.cardT; ++t){
+			variat.push_back(roundd(cplex.getValue(st[t]) - cplex.getValue(st[t-1]),5));
+		}
+		relax = variat;
 	}
-	relax = r;
-	//cplex.writeSolution("solcplex.txt");
-    float sol = cplex.getObjValue();
-    //env.out() << "Cost LotsizEnt = " << cplex.getObjValue() << endl;
+    else if(cplex.getStatus() == IloAlgorithm Optimal){
+		status = "Optimal";
+		borneinf = cplex.getBestObjValue();
+		sol = cplex.getObjValue();
+		vector<float> variat;
+		variat.push_back(roundd(cplex.getValue(st[0]),5) - d.s0);
+		for(int t=1; t<d.cardT; ++t){
+			variat.push_back(roundd(cplex.getValue(st[t]) - cplex.getValue(st[t-1]),5));
+		}
+		relax = variat;
+	}
+	else{
+		status = "Unknown";
+		borneinf = cplex.getBestObjValue();
+		sol = -1.0;
+	}
+
     env.end();
     return sol;
 }

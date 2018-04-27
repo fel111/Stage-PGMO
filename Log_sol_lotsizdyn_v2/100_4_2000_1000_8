@@ -1,0 +1,3 @@
+311576 0.00573 //temps et sol LotSizDyn
+311576 300.156 306267  //temps, sol, binf et status PLNE CPLEX
+311724 300 305393  //temps, sol, binf et status MIP CPLEX

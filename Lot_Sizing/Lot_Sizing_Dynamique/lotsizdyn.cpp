@@ -54,7 +54,7 @@ float g_ki(int i,int k,vector< vector<float> > f_ks,vector<vector <float> > pent
 
 vector<int> lotsizing(int cardT,vector<int> dt,vector<int> nb_bp,vector< vector<float> > valbpt,vector< vector<int> > bpt,vector<vector <float> > pente,int q_max){//vector< vector<float> > f_ki,vector< vector<float> > g_ki){//vector<int> q0){
 	//debut timer
-	//auto start = chrono::high_resolution_clock::now();
+	//auto start = chrono::steady_clock::now();
 
 	vector<int> bk (cardT, q_max);
 	vector< vector<float> > F_ks (cardT, vector<float> (q_max,0.0));

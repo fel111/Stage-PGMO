@@ -1,0 +1,3 @@
+8022 0.001054 //temps et sol LotSizDyn
+8022 300 7793.27  //temps, sol, binf et status PLNE CPLEX
+7960.49 300.026 7699.99  //temps, sol, binf et status MIP CPLEX

@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <limits>
+#include <chrono>
 //#include "scip/scip.h"
 //#include "scip/scipdefplugins.h"
 #include "data_struct.h"
@@ -14,7 +15,7 @@
 //#define SCIP_DEBUG
 ILOSTLBEGIN
 
-float lotsizcontCPX(data d,vector<float> &varia,param p){
+float lotsizcontCPX(data const& d, param const& p, vector<float> &varia, float &tps, float &borneinf, string &status){
     IloEnv env;
     IloModel model(env);
     IloCplex cplex(model);
@@ -37,27 +38,21 @@ float lotsizcontCPX(data d,vector<float> &varia,param p){
 	//CONTRAINTES
 	//contraintes sur ct
     
+	IloNumArray bpt(env, d.nb_bp[0]-1);
+    for(int i=0; i<(d.nb_bp[0]-1);++i){
+        bpt[i] = d.bpt[0][i+1];
+    }
+
+    IloNumArray pente(env, d.nb_bp[0]);
+    for(int i=0; i<d.nb_bp[0];++i){
+        pente[i] = d.pente[0][i];
+    }
+
 	for(int i=0; i<d.cardT; ++i){
-		if(d.bpt[i][0] > 0){
-			IloNumArray pente(env, d.nb_bp[i]+1);
-			IloNumArray bpt(env, d.nb_bp[i]);
-			pente[0] = 0.0;
-			bpt[0] = d.bpt[i][0];
-			for(int j=1; j<d.nb_bp[i]+1;++j){
-        		pente[j] = d.pente[i][j-1];
-				if (j<d.nb_bp[i]) bpt[j] = d.bpt[i][j];
-    		}
-			model.add(ct[i] == IloPiecewiseLinear(xt[i],bpt,pente,0, 0));
-		}
-		else{
-			IloNumArray pente(env, d.nb_bp[i]);
-			IloNumArray bpt(env, d.nb_bp[i]-1);
-			for(int j=0; j<d.nb_bp[i];++j){
-       			pente[j] = d.pente[i][j];
-				if(j<d.nb_bp[i]-1) bpt[j] = d.bpt[i][j+1];
-    		}
-			model.add(ct[i] == IloPiecewiseLinear(xt[i],bpt,pente,d.bpt[i][0], d.valbpt[i][0]));
-		}
+        model.add(ct[i] == IloPiecewiseLinear(xt[i],
+                                       bpt,
+                                       pente,
+                                       0.0, 0.0));
 	}
 
     IloExpr obj(env);
@@ -78,30 +73,44 @@ float lotsizcontCPX(data d,vector<float> &varia,param p){
 	//contrainte stmax - st0 >= 0
 	model.add(st[d.cardT-1] >= d.s0);
 
+
+
+    auto start_time = chrono::steady_clock::now();
     cplex.solve();
+	auto end_time = chrono::steady_clock::now();
+	tps = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
 
-    float sol = cplex.getObjValue();
 
-	vector<float> variat (d.cardT,0.0);
-	
-	variat[0] = roundd(cplex.getValue(st[0]),5) - d.s0;
-	//cout << "variation : " << variat[0] << " ";
-	for(int t=1; t<d.cardT; ++t){
-		//cout << "st[t], st[t-1] : " << roundd(cplex.getValue(st[t]),5) << " - " << roundd(cplex.getValue(st[t-1]),5);
-		//variat[t] = roundd(roundd(cplex.getValue(st[t]),5) - roundd(cplex.getValue(st[t-1]),5),5);
-		variat[t] = roundd(cplex.getValue(st[t]) - cplex.getValue(st[t-1]),5);
-		//cout << variat[t] <<" ";
+    float sol;
+	if(cplex.getStatus() == IloAlgorithm Feasible){
+		status = "Feasible";
+		borneinf = cplex.getBestObjValue();
+		sol = cplex.getObjValue();
+		vector<float> variat;
+		variat.push_back(roundd(cplex.getValue(st[0]),5) - d.s0);
+		for(int t=1; t<d.cardT; ++t){
+			variat.push_back(roundd(cplex.getValue(st[t]) - cplex.getValue(st[t-1]),5));
+		}
+		varia = variat;
 	}
-	//cout << endl;
-	varia = variat;
+    else if(cplex.getStatus() == IloAlgorithm Optimal){
+		status = "Optimal";
+		borneinf = cplex.getBestObjValue();
+		sol = cplex.getObjValue();
+		vector<float> variat;
+		variat.push_back(roundd(cplex.getValue(st[0]),5) - d.s0);
+		for(int t=1; t<d.cardT; ++t){
+			variat.push_back(roundd(cplex.getValue(st[t]) - cplex.getValue(st[t-1]),5));
+		}
+		varia = variat;
+	}
+	else{
+		status = "Unknown";
+		borneinf = cplex.getBestObjValue();
+		sol = -1.0;
+	}
 
-	/*for(int t=0; t<d.cardT; ++t){
-		cout << "xt" << t << ": " <<cplex.getValue(xt[t]) << endl;
-		cout << "ct" << t << ": " <<cplex.getValue(ct[t]) << endl;
-		cout << "st" << t << ": " <<cplex.getValue(st[t]) << endl;	
-	}*/
-
-
+	
     env.end();
 	return sol;
 
@@ -127,15 +136,15 @@ float lotsizcontCPX(data d,vector<float> &varia,param p){
 
 
 
+/*
 
-
-float lotsizcontCPX(data d, float& borninf, string &status,param p){
+float lotsizcontCPX(data const& d, float& borninf, string &status, float &tps){
     IloEnv env;
     IloModel model(env);
     IloCplex cplex(model);
-	if (p.aff_log_lotsizingcont_cplex==0) cplex.setOut(env.getNullStream());
-	cplex.setParam(IloCplex::Threads,p.nb_threads_cplex);
-	cplex.setParam(IloCplex::TiLim,p.time_limit_lotsizingcont);
+	cplex.setOut(env.getNullStream());
+	cplex.setParam(IloCplex::Threads,1);
+	cplex.setParam(IloCplex::TiLim,300);
 
 	//VARIABLES
 	//ajout variables ct
@@ -144,20 +153,6 @@ float lotsizcontCPX(data d, float& borninf, string &status,param p){
 		
 	//ajout variables st de stock
     IloNumVarArray st (env,d.cardT,0.0,d.Q,ILOFLOAT);
-
-
-	//ajout variables zt binaires
-	/*vector<vector<SCIP_VAR *> > ztj;
-	for(int i=0; i<d.cardT; ++i){
-		vector<SCIP_VAR *> v;
-		ztj.push_back(v);
-		for(int j=0; j<d.nb_bp[i]; ++j){
-			SCIP_VAR * var;
-			ztj[i].push_back(var);
-			SCIPcreateVarBasic(scip, &ztj[i][j], ("ztj"+to_string(i)+to_string(j)).c_str(), 0, 1, 0.0, SCIP_VARTYPE_BINARY);
-			SCIPaddVar(scip,ztj[i][j]);		
-		}	
-	}*/
 
 	//ajout variables rt de production, rt = sum_j xij
 	IloNumVarArray xt (env,d.cardT,0.0,IloInfinity,ILOFLOAT);
@@ -204,9 +199,10 @@ float lotsizcontCPX(data d, float& borninf, string &status,param p){
     //IloCplex cplex(env);
     //cplex.extract(model);
     //cplex.exportModel("cplex_lotsizcont.lp");
+	auto start_time = chrono::steady_clock::now();
     cplex.solve();
-    //auto end_time = chrono::high_resolution_clock::now();
-    //cout << "temps com : " << chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0 << endl<<endl;
+    auto end_time = chrono::steady_clock::now();
+    tps = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
 
     //cout << "nb noeuds explorés: "<< cplex.getNnodes()<<endl;
     borninf = cplex.getBestObjValue();
@@ -218,4 +214,4 @@ float lotsizcontCPX(data d, float& borninf, string &status,param p){
     env.end();
     return sol;
 
-}
+}*/

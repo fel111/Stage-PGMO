@@ -1,0 +1,3 @@
+9917 0.003026 //temps et sol LotSizDyn
+9917 300.017 9902  //temps, sol, binf et status PLNE CPLEX
+9776.28 300 9761.16  //temps, sol, binf et status MIP CPLEX

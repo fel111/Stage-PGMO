@@ -5,9 +5,9 @@
 
 using namespace std;
 
-float lotsizentCPX(data d, int choix,float& borninf, string &status, param p);
+float lotsizentCPX(data const& d, param const& p, vector<float> &varia, float &tps, float &borneinf, string &status);
 
-float lotsizentCPX(data d, int choix,vector<float> & var, param p);
+//float lotsizentCPX(data const& d, int choix,vector<float> & var, param const& p);
 
 
 #endif

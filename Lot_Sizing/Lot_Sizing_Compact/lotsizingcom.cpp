@@ -73,7 +73,7 @@ void lecture_demande(string file, vector<int> & dt){
 
 void lotsizcomp(data d, int choix){
 	//debut timer
-	//auto start = chrono::high_resolution_clock::now();
+	//auto start = chrono::steady_clock::now();
 
 	SCIP * scip;
 	SCIPcreate(&scip);

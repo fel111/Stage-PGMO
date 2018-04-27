@@ -3,6 +3,7 @@
 //#include <sstream>
 #include <vector>
 #include <string>
+#include <chrono>
 //#include <limits>
 //#include "scip/scip.h"
 //#include "scip/scipdefplugins.h"
@@ -14,7 +15,7 @@
 ILOSTLBEGIN
 
 
-float ordo_cplex(data &d,param p){
+float ordo_cplex(data &d,param const& p, float &tps, string &status){
 	IloEnv env;
     IloModel model(env);
     IloCplex cplex(model);
@@ -154,41 +155,50 @@ if(p.taches_avec_fenetre_temps == 1){
 		model.add(xt[t]-sum1-sum2 == 0);
 	}
 
+
+	auto start_time = chrono::steady_clock::now();
     cplex.solve();
+	auto end_time = chrono::steady_clock::now();
+	tps = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
 
-	vector<float> prod;
-	//cout << "demande : ";	
-	for(int i=0; i<d.cardT; ++i){
-		//cout << SCIPgetSolVal(scip,sol,xt[i]) << ", ";
-		//prod.push_back(static_cast<int>(ceil(SCIPgetSolVal(scip,sol,xt[i]))));
-		//prod.push_back(roundd(SCIPgetSolVal(scip,sol,xt[i])));
-		//prod.push_back(roundd(cplex.getValue(xt[i]),5));
-		prod.push_back(cplex.getValue(xt[i]));
-       	//cout << prod[i] << " ";
-	}
-	//cout << endl;
-
-	/*for(int t=0; t<d.cardT; ++t){
-		cout << "xt" << t << ": " <<cplex.getValue(xt[t]) << endl;
-		cout << "ct" << t << ": " <<cplex.getValue(ct[t]) << endl;
-		for(int k=0; k<d.cardM; ++k){
-			//cout << "zkt" << k << t << ": " <<cplex.getValue(z_kt[k][t]) << endl;
-			for(int j=0; j<d.cardJ; ++j){
-				cout << "yjkt" << j << k<<t << ": " <<cplex.getValue(y_jkt[j][k][t]) << endl;
-			}
+	float sol;
+	if(cplex.getStatus() == IloAlgorithm::Feasible){
+		status = "Feasible";
+		vector<float> prod;
+		//cout << "demande : ";	
+		for(int i=0; i<d.cardT; ++i){
+			//cout << SCIPgetSolVal(scip,sol,xt[i]) << ", ";
+			//prod.push_back(static_cast<int>(ceil(SCIPgetSolVal(scip,sol,xt[i]))));
+			//prod.push_back(roundd(SCIPgetSolVal(scip,sol,xt[i])));
+			//prod.push_back(roundd(cplex.getValue(xt[i]),5));
+			prod.push_back(cplex.getValue(xt[i]));
+			//cout << prod[i] << " ";
 		}
+		d.dt = prod;
+		sol = cplex.getObjValue();
+	}
+	else if(cplex.getStatus() == IloAlgorithm::Optimal){
+		status = "Optimal";
+		vector<float> prod;
+		//cout << "demande : ";	
+		for(int i=0; i<d.cardT; ++i){
+			//cout << SCIPgetSolVal(scip,sol,xt[i]) << ", ";
+			//prod.push_back(static_cast<int>(ceil(SCIPgetSolVal(scip,sol,xt[i]))));
+			//prod.push_back(roundd(SCIPgetSolVal(scip,sol,xt[i])));
+			//prod.push_back(roundd(cplex.getValue(xt[i]),5));
+			prod.push_back(cplex.getValue(xt[i]));
+			//cout << prod[i] << " ";
+		}
+		d.dt = prod;
+		sol = cplex.getObjValue();
+	}
+	else{
+		status = "Unknown";
+		sol = -1.0;
+	}
+	env.end();
 	
-	}*/
+	return sol;
 
-	d.dt = prod;
-
-    float sol = cplex.getObjValue();
-    //env.out() << "Cost LotsizEnt = " << cplex.getObjValue() << endl;
-	//cplex.writeSolution("sol.txt");
-	//cplex.exportModel("ordo.lp");
-    env.end();
-    return sol;
-
-	
 
 }

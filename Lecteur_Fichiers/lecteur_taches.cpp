@@ -56,6 +56,46 @@ void lecteur_taches(string file, data &d, bool fenetre){ //bool precise si l'on 
 }
 
 
+void lecteur_taches_EnergSchedInst(string file, data &d){ //bool precise si l'on souhaite fenetre de temps ou non
+
+	ifstream fichier(file, ios::in); //ouverture du fichier
+	if(fichier){  // si l'ouverture fonctionne
+		string ligne;
+        float conso;
+        int duree, releasedate, duedate, cardJ;
+        int cardT = 0;     
+        vector<vector<float> > Djk;
+        vector<int> pj, rj, dj;
+        getline(fichier,ligne);
+        istringstream iss1 (ligne);
+        iss1 >> cardJ;
+        vector<vector<float> > cjr (cardJ, vector<float> (2,1.0));
+		while(getline(fichier,ligne)){ // tant que l'on peut lire une ligne
+			istringstream iss2 (ligne);
+			iss2 >> conso >> duree >> releasedate >> duedate;
+            if(duedate > cardT) cardT = duedate;
+			vector<float> cons (d.cardM,conso);
+            Djk.push_back(cons);
+            pj.push_back(duree);
+            rj.push_back(releasedate);
+            dj.push_back(duedate);
+		}
+		d.Djk = Djk;
+        d.cjr = cjr;
+        d.pj = pj;
+        d.rj = rj;
+        d.dj = dj;
+        d.cardJ = cardJ;
+        d.cardT = cardT+1;
+		fichier.close();
+	}
+	else{
+		cout << "erreur lecture fichier" << endl;
+	}
+}
+
+
+
 void generateur_taches(string file, int cardJ, int cardT, float consomax){
 
     ofstream f(file, ios::out | ios::trunc);  //déclaration du flux et ouverture du fichier

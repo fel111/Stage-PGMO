@@ -5,7 +5,7 @@
 
 
 
-float modele_entier_cplex(data d,param p);
-float relaxation_modele_entier_cplex(data d,vector<float>& relax,param p);
+float modele_entier_cplex(data const& d, param const& p, float &tps, float &borneinf, string &status);
+float relaxation_modele_entier_cplex(data const& d,vector<float>& relax, param const& p, float &tps, float &borneinf, string &status);
 
 #endif

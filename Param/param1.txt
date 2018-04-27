@@ -1,10 +1,12 @@
 taches_avec_fenetre_temps 1 // 1 si les taches ont des fenetres de temps a respecter, 0 sinon
 
-boucle_relaxation 1 // 1 si on utilise la relaxation pour premiere solution ordo, 0 sinon
+boucle_relaxation 0 // 1 si on utilise la relaxation pour premiere solution ordo, 0 sinon
 
 aff_log_ordo_cplex 0 // 1 si on souhaite afficher le deroulement cplex ordo, 0 sinon
 
 aff_log_lotsizingcont_cplex 0 // 1 si on souhaite afficher le deroulement cplex lotsizcont, 0 sinon
+
+aff_log_compact_cplex 0 // 1 si on souhaite afficher le deroulement cplex lotsizent, 0 sinon
 
 aff_log_lotsizingent_cplex 0 // 1 si on souhaite afficher le deroulement cplex lotsizent, 0 sinon
 
@@ -21,4 +23,6 @@ time_limit_lotsizingdyn 50
 time_limit_compact 150
 
 time_limit_relax 20
+
+nb_iter_max_boucle 3 // nombre d'iteration max boucle ordo + lotsizing
 
