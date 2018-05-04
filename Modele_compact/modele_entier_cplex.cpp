@@ -179,12 +179,12 @@ if(p.taches_avec_fenetre_temps == 1){
 	
 	}*/
 	float sol;
-	if(cplex.getStatus() == IloAlgorithm Feasible){
+	if(cplex.getStatus() == IloAlgorithm::Feasible){
 		status = "Feasible";
 		borneinf = cplex.getBestObjValue();
 		sol = cplex.getObjValue();
 	}
-    else if(cplex.getStatus() == IloAlgorithm Optimal){
+    else if(cplex.getStatus() == IloAlgorithm::Optimal){
 		status = "Optimal";
 		borneinf = cplex.getBestObjValue();
 		sol = cplex.getObjValue();
@@ -218,6 +218,8 @@ float relaxation_modele_entier_cplex(data const& d,vector<float>& relax, param c
     cplex.setOut(env.getNullStream());
     cplex.setParam(IloCplex::Threads,p.nb_threads_cplex);
     cplex.setParam(IloCplex::TiLim,p.time_limit_relax);
+	//cplex.setParam(IloCplex::NodeLim,1);
+	//cplex.setParam(IloCplex::IntSolLim,1);
 
 
 	//VARIABLES
@@ -225,11 +227,24 @@ float relaxation_modele_entier_cplex(data const& d,vector<float>& relax, param c
 	IloNumVarArray ct (env,d.cardT,0.0,IloInfinity,ILOFLOAT);
 
 	//ajout variables xt
-	IloNumVarArray xt (env,d.cardT,0,IloInfinity,ILOFLOAT);
+	IloNumVarArray xt (env,d.cardT,0.0,IloInfinity,ILOFLOAT);
+
+	//variable xtij pour les fcts par morceaux
+	vector<IloNumVarArray> xij;
+	for(int i=0; i<d.cardT; ++i){
+		IloNumVarArray var (env,d.nb_bp[i],0.0,IloInfinity,ILOFLOAT);
+		xij.push_back(var);
+	}
 
     //ajout variables st de stock
     IloNumVarArray st (env,d.cardT,0.0,d.Q,ILOFLOAT);
 
+	//ajout variables binaires pwd
+	vector<IloNumVarArray>  pwd;
+	for(int i=0; i<d.cardT; ++i){
+		IloNumVarArray var (env,d.nb_bp[i],0.0,1.0,ILOFLOAT);
+		pwd.push_back(var);
+	}
 
 	//ajout variables y_jkt binaires
 	vector<vector<IloNumVarArray> > y_jkt;
@@ -252,7 +267,7 @@ float relaxation_modele_entier_cplex(data const& d,vector<float>& relax, param c
 	// CONTRAINTES
 
 	//contraintes sur ct
-	IloNumArray bpt(env, d.nb_bp[0]-1);
+	/*IloNumArray bpt(env, d.nb_bp[0]-1);
     for(int i=0; i<(d.nb_bp[0]-1);++i){
         bpt[i] = d.bpt[0][i+1];
     }
@@ -267,6 +282,25 @@ float relaxation_modele_entier_cplex(data const& d,vector<float>& relax, param c
                                        bpt,
                                        pente,
                                        0.0, 0.0));
+	}*/
+	for(int i=0; i<d.cardT; ++i){
+		IloExpr pwct(env);
+		for(int j=0; j<d.nb_bp[i];++j){
+			pwct += d.pente[i][j]*xij[i][j]+(d.valbpt[i][j]-d.pente[i][j]*d.bpt[i][j])*pwd[i][j];
+		}
+		model.add(ct[i] == pwct);
+	}
+
+	// Pminj*pwdij <= xij
+	for(int i=0; i<d.cardT; ++i){
+		for(int j=0; j<d.nb_bp[i]; ++j){
+			model.add(pwd[i][j]*d.bpt[i][j] <= xij[i][j] <= pwd[i][j]*d.bpt[i][j+1]-1);
+		}
+	}
+
+	for(int i=0; i<d.cardT; ++i){
+		model.add(IloSum(pwd[i]) == 1);
+		model.add(IloSum(xij[i]) == xt[i]);
 	}
 
     IloExpr obj(env);
@@ -379,7 +413,7 @@ if(p.taches_avec_fenetre_temps == 1){
 
 	
     float sol;
-	if(cplex.getStatus() == IloAlgorithm Feasible){
+	if(cplex.getStatus() == IloAlgorithm::Feasible){
 		status = "Feasible";
 		borneinf = cplex.getBestObjValue();
 		sol = cplex.getObjValue();
@@ -390,7 +424,7 @@ if(p.taches_avec_fenetre_temps == 1){
 		}
 		relax = variat;
 	}
-    else if(cplex.getStatus() == IloAlgorithm Optimal){
+    else if(cplex.getStatus() == IloAlgorithm::Optimal){
 		status = "Optimal";
 		borneinf = cplex.getBestObjValue();
 		sol = cplex.getObjValue();
@@ -398,6 +432,7 @@ if(p.taches_avec_fenetre_temps == 1){
 		variat.push_back(roundd(cplex.getValue(st[0]),5) - d.s0);
 		for(int t=1; t<d.cardT; ++t){
 			variat.push_back(roundd(cplex.getValue(st[t]) - cplex.getValue(st[t-1]),5));
+			//cout << "var : "<<variat[t]<<endl;
 		}
 		relax = variat;
 	}

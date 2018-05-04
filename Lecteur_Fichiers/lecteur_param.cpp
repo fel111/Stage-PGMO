@@ -29,13 +29,14 @@ void lecteur_param(string file, param &p){
             else if (par == "aff_log_lotsizingent_cplex") { p.aff_log_lotsizingent_cplex = t; }
             else if (par == "aff_log_compact_cplex") { p.aff_log_compact_cplex = t; }
             else if (par == "nb_threads_cplex") { p.nb_threads_cplex = t; }
-            else if (par == "time_limit_ordo") { p.time_limit_ordo = t; }
-            else if (par == "time_limit_lotsizingcont") { p.time_limit_lotsizingcont = t; }
-            else if (par == "time_limit_lotsizingent") { p.time_limit_lotsizingent = t; }
-            else if (par == "time_limit_lotsizingdyn") { p.time_limit_lotsizingdyn = t; }
+            //else if (par == "time_limit_ordo") { p.time_limit_ordo = t; }
+            //else if (par == "time_limit_lotsizingcont") { p.time_limit_lotsizingcont = t; }
+            //else if (par == "time_limit_lotsizingent") { p.time_limit_lotsizingent = t; }
+            //else if (par == "time_limit_lotsizingdyn") { p.time_limit_lotsizingdyn = t; }
             else if (par == "time_limit_compact") { p.time_limit_compact = t; }
-            else if (par == "time_limit_relax") { p.time_limit_relax = t; }
+            //else if (par == "time_limit_relax") { p.time_limit_relax = t; }
             else if (par == "nb_iter_max_boucle") { p.nb_iter_max_boucle = t; }
+            else if (par == "choix_dt_ls") { p.choix_dt_ls = t; }
         }
     }
     else{

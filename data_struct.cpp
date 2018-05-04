@@ -33,7 +33,7 @@ vector<int> dtToInt(data const& d, int choix){
 		//cout << SCIPgetSolVal(scip,sol,xt[i]) << ", ";
 		//prod.push_back(static_cast<int>(ceil(SCIPgetSolVal(scip,sol,xt[i]))));
 		if(choix==1) dt[i] = static_cast<int>(ceil(d.dt[i]));
-		if(choix==2) dt[i] = static_cast<int>(floor(d.dt[i]));
+		if(choix==2) dt[i] = static_cast<int>(d.dt[i]*100);
 	}
 	return dt;
 

@@ -39,6 +39,7 @@ struct param{
 	int time_limit_compact;
 	int time_limit_relax;
 	int nb_iter_max_boucle;
+	int choix_dt_ls;
 };
 
 void modifPWL(data& d, vector<int> const& rt);

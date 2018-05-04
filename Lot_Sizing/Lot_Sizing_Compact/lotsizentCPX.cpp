@@ -16,7 +16,10 @@
 ILOSTLBEGIN
 
 float lotsizentCPX(data const& d, param const& p, vector<float> &varia, float &tps, float &borneinf, string &status){
-    vector<int> dt = dtToInt(d,choix);
+    vector<int> dt = dtToInt(d,p.choix_dt_ls);
+    int batMax;
+    if(p.choix_dt_ls == 2) batMax = d.Q*100;
+    else batMax = d.Q;
 
     IloEnv env;
     IloModel model(env);
@@ -30,7 +33,7 @@ float lotsizentCPX(data const& d, param const& p, vector<float> &varia, float &t
 	IloNumVarArray ct (env,d.cardT,0.0,IloInfinity,ILOFLOAT);
 	
 	//ajout variables st de stock
-    IloNumVarArray st (env,d.cardT,0,d.Q,ILOINT);
+    IloNumVarArray st (env,d.cardT,0,batMax,ILOINT);
 
 	//ajout variables xt de production
 	IloNumVarArray xt (env,d.cardT,0,IloInfinity,ILOINT);
@@ -78,27 +81,45 @@ float lotsizentCPX(data const& d, param const& p, vector<float> &varia, float &t
 
 
     float sol;
-	if(cplex.getStatus() == IloAlgorithm Feasible){
+	if(cplex.getStatus() == IloAlgorithm::Feasible){
 		status = "Feasible";
 		borneinf = cplex.getBestObjValue();
 		sol = cplex.getObjValue();
 		vector<float> variat;
-		variat.push_back(roundd(cplex.getValue(st[0]),5) - d.s0);
-		for(int t=1; t<d.cardT; ++t){
-			variat.push_back(roundd(cplex.getValue(st[t]) - cplex.getValue(st[t-1]),5));
-		}
-		varia = variat;
+        if(p.choix_dt_ls != 2){
+            variat.push_back(roundd(cplex.getValue(st[0]),5) - d.s0);
+            for(int t=1; t<d.cardT; ++t){
+                variat.push_back(roundd(cplex.getValue(st[t]) - cplex.getValue(st[t-1]),5));
+            }
+            varia = variat;
+        }
+        else{
+            variat.push_back((roundd(cplex.getValue(st[0]),5) - d.s0)/100);
+            for(int t=1; t<d.cardT; ++t){
+                variat.push_back(roundd(cplex.getValue(st[t]) - cplex.getValue(st[t-1]),5)/100);
+            }
+            varia = variat;
+        }
 	}
-    else if(cplex.getStatus() == IloAlgorithm Optimal){
+    else if(cplex.getStatus() == IloAlgorithm::Optimal){
 		status = "Optimal";
 		borneinf = cplex.getBestObjValue();
 		sol = cplex.getObjValue();
 		vector<float> variat;
-		variat.push_back(roundd(cplex.getValue(st[0]),5) - d.s0);
-		for(int t=1; t<d.cardT; ++t){
-			variat.push_back(roundd(cplex.getValue(st[t]) - cplex.getValue(st[t-1]),5));
-		}
-		varia = variat;
+        if(p.choix_dt_ls != 2){
+            variat.push_back(roundd(cplex.getValue(st[0]),5) - d.s0);
+            for(int t=1; t<d.cardT; ++t){
+                variat.push_back(roundd(cplex.getValue(st[t]) - cplex.getValue(st[t-1]),5));
+            }
+            varia = variat;
+        }
+        else{
+            variat.push_back((roundd(cplex.getValue(st[0]),5) - d.s0)/100);
+            for(int t=1; t<d.cardT; ++t){
+                variat.push_back(roundd(cplex.getValue(st[t]) - cplex.getValue(st[t-1]),5)/100);
+            }
+            varia = variat;
+        }
 	}
 	else{
 		status = "Unknown";

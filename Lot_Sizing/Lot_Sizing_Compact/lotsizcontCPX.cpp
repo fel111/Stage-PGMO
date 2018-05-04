@@ -82,7 +82,7 @@ float lotsizcontCPX(data const& d, param const& p, vector<float> &varia, float &
 
 
     float sol;
-	if(cplex.getStatus() == IloAlgorithm Feasible){
+	if(cplex.getStatus() == IloAlgorithm::Feasible){
 		status = "Feasible";
 		borneinf = cplex.getBestObjValue();
 		sol = cplex.getObjValue();
@@ -93,7 +93,7 @@ float lotsizcontCPX(data const& d, param const& p, vector<float> &varia, float &
 		}
 		varia = variat;
 	}
-    else if(cplex.getStatus() == IloAlgorithm Optimal){
+    else if(cplex.getStatus() == IloAlgorithm::Optimal){
 		status = "Optimal";
 		borneinf = cplex.getBestObjValue();
 		sol = cplex.getObjValue();

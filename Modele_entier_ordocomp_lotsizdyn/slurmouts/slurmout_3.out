@@ -1,0 +1,6 @@
+instance=inst_3 parametre=param2.txt nbPeriodes=28 nbTaches=30 nbMachines=1 borneBatterie=100 limiteNbBoucles=3 limiteTps=150 limiteThreads=1
+COMPACT tps=0.060249 statut=Optimal bornesup=236 borneinf=0
+RELAX tps= 0.042689 statut=Optimal bornesup=68 borneinf=68
+BOUCLE PL (PWD)  tpsBoucle=26.7109 tpsOrdo=26.6864 tpsLS=0.017184 bornesup=237.5 nbBoucle=2 arret=CONV
+BOUCLE PLNE  tpsBoucle=26.256 tpsOrdo=26.2307 tpsLS=0.019 bornesup=237.5 nbBoucle=2 arret=CONV
+BOUCLE Dyn  tpsBoucle=26.155 tpsOrdo=26.1491 tpsLS=0.00079 bornesup=237.5 nbBoucle=2 arret=CONV
