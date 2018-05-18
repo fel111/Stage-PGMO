@@ -7,7 +7,7 @@
 #include <limits>
 #include <deque>
 #include "lotsizdyn2.h"
-#include "data_struct.h"
+#include "struct.h"
 
 using namespace std;
 

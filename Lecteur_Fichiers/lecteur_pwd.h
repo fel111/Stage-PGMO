@@ -1,6 +1,6 @@
 #ifndef LECTEUR_PWD_H
 #define LECTEUR_PWD_H
-#include "data_struct.h"
+#include "struct.h"
 
 using namespace std;
 

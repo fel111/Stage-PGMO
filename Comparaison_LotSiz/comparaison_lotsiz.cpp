@@ -10,7 +10,7 @@
 #include <deque>
 #include "scip/scip.h"
 #include "scip/scipdefplugins.h"
-#include "data_struct.h"
+#include "struct.h"
 //#include "Ordo_compact/ordo_comp.h"
 #include "Lot_Sizing/Lot_Sizing_Dynamique/lotsizdyn2.h"
 #include "Lot_Sizing/Lot_Sizing_Compact/lotsizingcom.h"

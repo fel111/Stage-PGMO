@@ -1,9 +1,9 @@
 #ifndef LECTEUR_PARAM_H
 #define LECTEUR_PARAM_H
-#include "data_struct.h"
+#include "struct.h"
 
 using namespace std;
 
-void lecteur_param(string file, param &p);
+int lecteur_param(string file, param &p);
 
 #endif

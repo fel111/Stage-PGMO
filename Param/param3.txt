@@ -1,0 +1,23 @@
+taches_avec_fenetre_temps 1 // 1 si les taches ont des fenetres de temps a respecter, 0 sinon
+
+boucle_relaxation 0 // 1 si on utilise la relaxation pour premiere solution ordo, 0 sinon
+
+aff_log_ordo_cplex 0 // 1 si on souhaite afficher le deroulement cplex ordo, 0 sinon
+
+aff_log_lotsizingcont_cplex 0 // 1 si on souhaite afficher le deroulement cplex lotsizcont, 0 sinon
+
+aff_log_compact_cplex 0 // 1 si on souhaite afficher le deroulement cplex lotsizent, 0 sinon
+
+aff_log_lotsizingent_cplex 0 // 1 si on souhaite afficher le deroulement cplex lotsizent, 0 sinon
+
+nb_threads_cplex 1 // nombre de threads pour cplex
+
+time_limit_compact 600
+
+nb_iter_max_boucle 3 // nombre d'iteration max boucle ordo + lotsizing
+
+choix_dt_ls 1 // 1 si on prend l'entier superieur pour la demande en entree du LS, 2 si on multiplie par 100 la demande
+
+type_cap 2 // 1 si la capacité est absolue (>=1), 2 si elle est relative ({0,1})
+
+val_cap 0.15 // valeur de la capacité de batterie

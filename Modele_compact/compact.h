@@ -1,7 +1,7 @@
 #ifndef ALL_COMPACT_H
 #define ALL_COMPACT_H
 
-#include "data_struct.h"
+#include "struct.h"
 
 
 

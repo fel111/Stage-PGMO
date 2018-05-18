@@ -1,6 +1,6 @@
 #ifndef GENERATEUR_PWD_H
 #define GENERATEUR_PWD_H
-//#include "data_struct.h"
+//#include "struct.h"
 
 using namespace std;
 

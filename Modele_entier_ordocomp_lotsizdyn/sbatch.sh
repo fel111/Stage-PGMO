@@ -1,12 +1,14 @@
 #!/bin/bash
 
 #SBATCH --ntasks=1
-#SBATCH --array=1
+#SBATCH --array=1-288
 #SBATCH --time=01:00:00
 #SBATCH --cpus-per-task=1
-#SBATCH -J=felix_test
-#SBATCH -o slurmouts/slurmout_%a.out
-#SBATCH -e slurmouts/slurmout_%a.errarray
+#SBATCH -J=inst_test
+#SBATCH -o slurmouts_sansrelax/slurmout_%a_12.out
+#SBATCH -e slurmouts_sansrelax/slurmout_%a_12.errarray
+#SBATCH --exclude=trencavel.10g,balibaste.10g,nestorius.10g
 
-./modele_entier inst_${SLURM_ARRAY_TASK_ID} param1.txt
+
+./modele_entier inst_${SLURM_ARRAY_TASK_ID} param12.txt
 

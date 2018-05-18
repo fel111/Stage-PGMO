@@ -8,7 +8,7 @@
 #include "ordo_comp.h"
 #include "scip/scip.h"
 #include "scip/scipdefplugins.h"
-#include "data_struct.h"
+#include "struct.h"
 //#include <ilcplex/cplex.h>
 //#define SCIP_DEBUG
 using namespace std;

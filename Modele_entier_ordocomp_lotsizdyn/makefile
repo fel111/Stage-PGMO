@@ -51,7 +51,7 @@ COMPILO=g++
 #    -ansi : Assure que le code C++ suit la norme ANSI, et est donc portable.
 #    -O2   : Lorsque votre programme est au point, l'option -O2 permet d'optimiser votre programme (le rendre plus rapide) 
 #FLAGS= -O3 -ansi
-FLAGS= -W -Wall -DIL_STD -std=c++11 -g -O3
+FLAGS= -W -Wall -DIL_STD -std=c++11 -O3
 #-m64 
 #-DNDEBUG deactivate assertions
 #FLAGS= -g -W -Wall -DIL_STD 
@@ -64,7 +64,7 @@ OBJ=	modele_entier.o \
 		../Lot_Sizing/Lot_Sizing_Compact/lotsizentCPX.o \
 		../Lot_Sizing/Lot_Sizing_Compact/lotsizcontcom.o \
 		../Lot_Sizing/Lot_Sizing_Compact/lotsizcontCPX.o \
-		../data_struct.o \
+		../struct.o \
 		../Modele_compact/compact.o \
 		../Modele_compact/modele_entier_cplex.o \
 		../Lecteur_Fichiers/lecteur_taches.o \

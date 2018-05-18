@@ -1,6 +1,6 @@
 #ifndef LECTEUR_DEMANDE_H
 #define LECTEUR_DEMANDE_H
-#include "data_struct.h"
+#include "struct.h"
 
 using namespace std;
 

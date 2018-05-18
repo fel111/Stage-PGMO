@@ -2,7 +2,7 @@
 #define LOTSIZDYN_H
 
 #include <vector>
-#include "data_struct.h"
+#include "struct.h"
 
 using namespace std;
 

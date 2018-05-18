@@ -3,7 +3,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
-#include "data_struct.h"
+#include "struct.h"
 #include "lecteur_taches.h"
 //#include <algorithm>
 //#include <chrono>
@@ -62,6 +62,7 @@ void lecteur_taches_EnergSchedInst(string file, data &d){ //bool precise si l'on
 	if(fichier){  // si l'ouverture fonctionne
 		string ligne;
         float conso;
+        float consoTot = 0.0;
         int duree, releasedate, duedate, cardJ;
         int cardT = 0;     
         vector<vector<float> > Djk;
@@ -76,6 +77,7 @@ void lecteur_taches_EnergSchedInst(string file, data &d){ //bool precise si l'on
             if(duedate > cardT) cardT = duedate;
 			vector<float> cons (d.cardM,conso);
             Djk.push_back(cons);
+            consoTot += conso;
             pj.push_back(duree);
             rj.push_back(releasedate);
             dj.push_back(duedate);
@@ -87,6 +89,7 @@ void lecteur_taches_EnergSchedInst(string file, data &d){ //bool precise si l'on
         d.dj = dj;
         d.cardJ = cardJ;
         d.cardT = cardT+1;
+        d.consoTot = consoTot;
 		fichier.close();
 	}
 	else{

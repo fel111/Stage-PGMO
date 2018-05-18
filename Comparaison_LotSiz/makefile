@@ -61,7 +61,7 @@ OBJ=	comparaison_lotsiz.o \
 		../Lot_Sizing/Lot_Sizing_Dynamique/lotsizdyn2.o \
 		../Lot_Sizing/Lot_Sizing_Compact/lotsizingcom.o \
 		../Lot_Sizing/Lot_Sizing_Compact/lotsizcontcom.o \
-		../data_struct.o \
+		../struct.o \
 		../Lecteur_Fichiers/lecteur_pwd.o \
 		../Lecteur_Fichiers/lecteur_demande.o \
 		../Lecteur_Fichiers/generateur_demande.o \

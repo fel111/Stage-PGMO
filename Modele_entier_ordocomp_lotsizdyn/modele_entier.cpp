@@ -10,7 +10,7 @@
 //#include <deque>
 //#include "scip/scip.h"
 //#include "scip/scipdefplugins.h"
-#include "data_struct.h"
+#include "struct.h"
 #include "Ordo_compact/ordo_comp.h"
 #include "Ordo_compact/ordo_cplex.h"
 #include "Lot_Sizing/Lot_Sizing_Dynamique/lotsizdyn2.h"
@@ -42,11 +42,14 @@ int main(int argc, char* argv[]){
 
 	d.cardR = 2;
 	d.s0 = 0;
-	d.Q = 100;
+	//d.Q = 100;
 	d.cardM = 1;
 
-	lecteur_param("../Param/"+parametre,p);
+	if(lecteur_param("../Param/"+parametre,p) == 0) return 0;
+	
 	lecteur_taches_EnergSchedInst("../Donnees/dataSchedulingInstances_newname/"+instance,d);
+
+	initCap(d,p);
 	//lecteur_taches_EnergSchedInst("../Donnees/dataSchedulingInstances/inst60-1_25-0_1-3_2-1.dat",d);
 
 	//cout << "cardT : " << d.cardT << endl;
@@ -88,10 +91,10 @@ int main(int argc, char* argv[]){
 	float timeRabRelax = 0.0;
 	int cptBoucle = 0;
 
-	cout << "instance="<<instance<<" parametre="<<parametre<<" nbPeriodes="<<d.cardT<<" nbTaches="<<d.cardJ<<" nbMachines="<<d.cardM<<" borneBatterie="<<d.Q<<" limiteNbBoucles="<<p.nb_iter_max_boucle<<" limiteTps="<<p.time_limit_compact<<" limiteThreads="<<p.nb_threads_cplex<<endl;
+	cout << "instance="<<instance<<" parametre="<<parametre<<" nbPeriodes="<<d.cardT<<" nbTaches="<<d.cardJ<<" nbMachines="<<d.cardM<<" borneBatterie="<<d.Q<<" ratioDemandeTot/Capacite="<<d.Q/d.consoTot<<" limiteNbBoucles="<<p.nb_iter_max_boucle<<" limiteTps="<<p.time_limit_compact<<" limiteThreads="<<p.nb_threads_cplex<<endl;
 	// MODELE COMPACT CPLEX
 	//auto start_time = chrono::steady_clock::now();
-	solComp = modele_entier_cplex(d,p,tpsComp,borneinftemp,statusComp);
+	solComp = modele_entier_cplex(d,p,tpsComp,borneinfComp,statusComp);
 	//auto end_time = chrono::steady_clock::now();
 	//tpsComp = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
 
@@ -104,11 +107,16 @@ int main(int argc, char* argv[]){
 		float borneSupRelax = relaxation_modele_entier_cplex(d,solrelax,p,tpsRelax, borneinfRelax,statusRelax);
 		//end_time = chrono::steady_clock::now();
 		//tpsRelax = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
-		cout << "RELAX tps= "<<tpsRelax<<" statut="<<statusRelax<<" bornesup="<<borneSupRelax<<" borneinf="<<borneinfRelax<<endl;;
+		cout << "INIT=relax tps= "<<tpsRelax<<" statut="<<statusRelax<<" bornesup="<<borneSupRelax<<" borneinf="<<borneinfRelax<<endl;;
 		timeRabRelax = timeBoucle-tpsRelax;
 	}
+	else{
+		cout << "INIT=none"<<endl;
+	}
 
-
+	/*for(int i=0; i<d.cardT;++i){
+		cout << "relax["<<i<<"] = "<<solrelax[i] <<endl;
+	}*/
 
 
 	// BOUCLE ORDO + LOTSIZING PL (PWD)
@@ -286,6 +294,8 @@ int main(int argc, char* argv[]){
 	cout << "BOUCLE Dyn  tpsBoucle=" << tpsBoucleDyn << " tpsOrdo="<<tpsTotOrdo<<" tpsLS="<<tpsTotLS<<" bornesup=" << solDyn << " nbBoucle="<<cptBoucle;
 	if (solOrdo==solLS) cout << " arret=CONV" << endl;
 	else cout << " arret=MAXITER" << endl;
+
+	cout << endl << endl;
 	return 0;
 }
 

@@ -4,7 +4,7 @@
 #include <string>
 #include <random>
 #include <cmath>
-#include "data_struct.h"
+#include "struct.h"
 
 using namespace std;
 

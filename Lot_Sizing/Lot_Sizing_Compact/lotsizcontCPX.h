@@ -1,7 +1,7 @@
 #ifndef LOTSIZCONTCPX_H
 #define LOTSIZCONTCPX_H
 
-#include "data_struct.h"
+#include "struct.h"
 #include <vector>
 
 using namespace std;

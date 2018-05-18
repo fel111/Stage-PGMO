@@ -7,7 +7,7 @@
 #include <chrono>
 //#include "scip/scip.h"
 //#include "scip/scipdefplugins.h"
-#include "data_struct.h"
+#include "struct.h"
 //#include "lotsizcontcom.h"
 #include <ilcplex/ilocplex.h>
 #include "lotsizcontCPX.h"

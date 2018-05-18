@@ -1,7 +1,7 @@
 #ifndef MODELE_ENTIER_CPLEX_H
 #define MODELE_ENTIER_CPLEX_H
 #include <vector>
-#include "data_struct.h"
+#include "struct.h"
 
 
 
