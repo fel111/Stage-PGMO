@@ -7,7 +7,7 @@ using namespace std;
 
 
 struct data{
-	// PWD
+	// PWL
 	vector<int> nb_bp;
 	vector<vector <float> > bpt;
 	vector< vector<float> > valbpt;
@@ -23,6 +23,7 @@ struct data{
 	vector<int> rj;
 	vector<int> dj;
 	float consoTot;
+	int releaseDateMin;
 };
 
 struct param{
@@ -43,6 +44,9 @@ struct param{
 	int choix_dt_ls;
 	int type_cap;
 	float val_cap;
+	float qmin;
+	float qmax;
+	float qinit;
 };
 
 void modifPWL(data& d, vector<int> const& rt);

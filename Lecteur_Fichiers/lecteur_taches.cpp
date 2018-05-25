@@ -64,6 +64,7 @@ void lecteur_taches_EnergSchedInst(string file, data &d){ //bool precise si l'on
         float conso;
         float consoTot = 0.0;
         int duree, releasedate, duedate, cardJ;
+        int releaseMin; bool init=false;
         int cardT = 0;     
         vector<vector<float> > Djk;
         vector<int> pj, rj, dj;
@@ -75,6 +76,8 @@ void lecteur_taches_EnergSchedInst(string file, data &d){ //bool precise si l'on
 			istringstream iss2 (ligne);
 			iss2 >> conso >> duree >> releasedate >> duedate;
             if(duedate > cardT) cardT = duedate;
+            if(!init){ releaseMin = releasedate; init = true; }
+            else if(releasedate < releaseMin) releaseMin = releasedate;
 			vector<float> cons (d.cardM,conso);
             Djk.push_back(cons);
             consoTot += conso;
@@ -90,6 +93,7 @@ void lecteur_taches_EnergSchedInst(string file, data &d){ //bool precise si l'on
         d.cardJ = cardJ;
         d.cardT = cardT+1;
         d.consoTot = consoTot;
+        d.releaseDateMin = releaseMin;
 		fichier.close();
 	}
 	else{
