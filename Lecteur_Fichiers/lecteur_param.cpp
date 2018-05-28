@@ -3,7 +3,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
-#include "struct.h"
+#include "../struct.h"
 #include "lecteur_param.h"
 //#include <algorithm>
 //#include <chrono>
@@ -54,7 +54,7 @@ int lecteur_param(string file, param &p){
         return 1;
     }
     else{
-        cout << "erreur lecture fichier" << endl;
+        cout << "erreur lecture fichier param" << endl;
         return 0;
     }
 }

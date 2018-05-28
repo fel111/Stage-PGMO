@@ -3,25 +3,60 @@
 //#include <sstream>
 #include <vector>
 #include <string>
-//#include <limits>
+#include <limits>
 //#include <math.h>
 //#include <algorithm>
 //#include <chrono>
 //#include <deque>
 #include "scip/scip.h"
 #include "scip/scipdefplugins.h"
-#include "struct.h"
+#include "../struct.h"
 #include "struct_gencol.h"
+#include "../Lecteur_Fichiers/lecteur_taches.h"
+#include "../Lecteur_Fichiers/lecteur_param.h"
+#include "probScip.cpp"
 
 using namespace std;
+float infini = numeric_limits<float>::max();
 
+void affK_l(structGenCol const& sGC){
+	cout << "--- K_l ---"<<endl;
+	for(int l=0; l<sGC.cardL; ++l){
+		cout << l << " : ";
+		for(const auto& k : sGC.K_l[l]){
+			cout << k << " ";
+		}
+		cout << endl;
+	}
+}
 
+void affL_t(structGenCol const& sGC){
+	cout << "--- L_t ---"<<endl;
+	for(int t=0; t<sGC.d.cardT; ++t){
+		cout << t << " : ";
+		for(const auto& l : sGC.L_t[t]){
+			cout << l << " ";
+		}
+		cout << endl;
+	}
+}
+
+void affAllSet(structGenCol const& sGC){
+	cout << "--- FeasibleSets ---"<<endl;
+	for(int l=0; l<sGC.cardL; ++l){
+		cout << l << " : ";
+		for(const auto& t : sGC.L[l].tasksList){
+			cout << t << " ";
+		}
+		cout << endl;
+	}
+}
 
 void addSetK_l(feasibleSet const& l, structGenCol & sGC){
     vector<int> k;
     for(int p=0; p<(sGC.d.nb_bp[0]/2); ++p){
-        if(sGC.d.bpt[p*2+1] - l.energyDemand >= -sGC.p.qmax) k.push_back(p*2);
-        if(sGC.d.bpt[p*2] - l.energyDemand <= sGC.p.qmax) k.push_back(p*2+1);
+        if((sGC.d.bpt[0][p*2+1] - l.energyDemand) >= -sGC.p.qmax) k.push_back(p*2);
+        if(sGC.d.bpt[0][p*2] - l.energyDemand <= sGC.p.qmax) k.push_back(p*2+1);
     }
     sGC.K_l.push_back(k);
 }
@@ -32,15 +67,21 @@ void addA_il(feasibleSet const& l, structGenCol & sGC){
         for(const auto& task : l.tasksList){
             if(j==task) match=1;
         }
-        sGC.a_il[j] = match;
+        sGC.a_il[j].push_back(match);
     }
+}
+
+void addL_t(feasibleSet const& l, structGenCol & sGC){
+	for(int t=0; t<sGC.d.cardT; ++t){
+		if((l.releaseTime<=t)&&(t<l.deadLine)) sGC.L_t[t].push_back(l.id);
+	}
 }
 
 
 
 
 void firstSol(structGenCol & sGC){
-    cptId = 0;
+    int cptId = 0;
     /*vector<vector<int> > matr (sgc.d.cardT, vector<int> (sGC.d.cardJ,0));
     for(int i=0; i<sGC.d.cardJ; ++i){
         for(int t=sGC.d.dj[i]; t<sGC.d.dj[i]+sGC.d.pj-1; ++t){
@@ -76,7 +117,7 @@ void firstSol(structGenCol & sGC){
         vector<int> taskList;
         feasibleSet l;
         for(int i=0; i<sGC.d.cardJ; ++i){
-            if(sGC.d.rj[i])<=t && t<sGC.d.dj[i]+sGC.d.pj-1){
+            if((sGC.d.rj[i]<=t) && (t<sGC.d.rj[i]+sGC.d.pj[i])){
                 taskList.push_back(i);
                 if(taskList.size() == 1){
                     l.energyDemand = sGC.d.Djk[i][0];
@@ -85,8 +126,8 @@ void firstSol(structGenCol & sGC){
                 }
                 else{
                     l.energyDemand += sGC.d.Djk[i][0];
-                    if(l.deadLine < sGC.d.dj[i]) l.deadLine = sGC.d.dj[i];
-                    if(l.releaseTime > sGC.d.rj[i]) l.releaseTime = sGC.d.rj[i];
+                    if(l.deadLine > sGC.d.dj[i]) l.deadLine = sGC.d.dj[i];
+                    if(l.releaseTime < sGC.d.rj[i]) l.releaseTime = sGC.d.rj[i];
                 }
             }
         }
@@ -95,11 +136,14 @@ void firstSol(structGenCol & sGC){
             l.timeGen = t; 
             l.tasksList = taskList;
             sGC.L.push_back(l);
+			sGC.cardL++;
             addSetK_l(l,sGC);
             addA_il(l,sGC);
-            sGC.L_t[t].push_back(cptId);
+			addL_t(l,sGC);
             cptId++;
+			
         }
+	}
 
 }
 
@@ -112,24 +156,31 @@ int initData(structGenCol & sGC){
 	d.s0 = 0;
 	d.cardM = 1;
     string param = "param1.txt";
-    string instance = inst
-	if(lecteur_param("../Param/"+parametre,p) == 0) return 0;
+    string instance = "inst_test";
+	if(lecteur_param("Param/"+param,p) == 0) return 0;
 	
-	lecteur_taches_EnergSchedInst("../Donnees/dataSchedulingInstances_newname/"+instance,d);
+	p.qmax = 20;
+	p.qmin = 0;
+	p.qinit = 10;
+	
+	lecteur_taches_EnergSchedInst("Donnees/dataSchedulingInstances_newname/"+instance,d);
 
 	initCap(d,p);
 
     for(int i=0;i<d.cardT;++i){
-        /*vector<float> temp_pente = {1.0,0.0,0.5,0.0,2.0,0.0,1.5};
-		vector<float> temp_bpt = {0.0,4.0,4.0,8.0,8.0,100.0,100.0,infini};
-		vector<float> temp_valbpt = {0.0,4.0,4.0,6.0,6.0,190.0,190.0};*/
-		vector<float> temp_pente = {1.0,0.5,2.0,1.5};
-		vector<float> temp_bpt = {0.0,4.0,8.0,100.0,infini};
-		vector<float> temp_valbpt = {0.0,4.0,6.0,190.0};
+        //vector<float> temp_pente = {1.0,0.0,0.5,0.0,2.0,0.0,1.5};
+		/*vector<float> temp_bpt = {0.0,4.0,4.0,8.0,8.0,100.0,100.0,infini};
+		vector<float> temp_valbpt = {0.0,4.0,4.0,6.0,6.0,190.0,190.0};
+		vector<float> temp_pente = {1.0,0.5,2.0,1.5};*/
+		//vector<float> temp_bpt = {0.0,4.0,8.0,100.0,infini};
+		//vector<float> temp_valbpt = {0.0,4.0,6.0,190.0};
+		vector<float> temp_bpt = {0.0,5.0,5.0,1000.0};
+		vector<float> temp_valbpt = {0.0,10.0,10.0,3000.0};
+		vector<float> temp_pente = {2.0,0.5,2.0};
 		d.pente.push_back(temp_pente);
 		d.bpt.push_back(temp_bpt);
 		d.valbpt.push_back(temp_valbpt);
-		d.nb_bp.push_back(8);
+		d.nb_bp.push_back(4);
 
         //initialisation L_t
         vector<int> lt_temp;
@@ -158,15 +209,24 @@ int initData(structGenCol & sGC){
 }
 
 
-SCIP_RETCODE ColGen_Scip(structGenCol const& sGC){
+SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
 	int tmp;
     SCIP_RETCODE status;
     SCIP_STATUS solstatus;
     initData(sGC);
-    
+    cout <<"initData OK ! "<<endl;
+	
+	firstSol(sGC);
+	cout <<"firstSol OK ! "<<endl;
+	
+	affK_l(sGC);
+	affL_t(sGC);
+	affAllSet(sGC);
+	
     // Load and build model
-    SCIP_CALL (status = Load_Original_Model((*pU).Knap, (*pU).Params, (*pU).Files, pU) );
+    SCIP_CALL (status = Load_Original_Model(sGC));
     
+	
     // Set dedicated parameters
     //SCIP_CALL (status = SetColGenParameters_Scip((*pU).scip, (*pU).Params));
     
@@ -175,9 +235,9 @@ SCIP_RETCODE ColGen_Scip(structGenCol const& sGC){
     //SCIP_CALL( SCIPactivatePricer(sGC.scip, SCIPfindPricer(sGC.scip, "pricerTest")) );
     
     // SOLVE
-    cout << "Start solve..."<<endl;
+    //cout << "Start solve..."<<endl;
     SCIP_CALL( status = SCIPsolve(sGC.scip) );
-    cout<<"... End solve"<<endl;
+    //cout<<"... End solve"<<endl;
     /*
     printf("\nstart solution export ...\n");
     // Get the current scip solving time in seconds.

@@ -3,7 +3,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
-#include "struct.h"
+#include "../struct.h"
 #include "lecteur_taches.h"
 //#include <algorithm>
 //#include <chrono>
@@ -51,7 +51,7 @@ void lecteur_taches(string file, data &d, bool fenetre){ //bool precise si l'on 
 		fichier.close();
 	}
 	else{
-		cout << "erreur lecture fichier" << endl;
+		cout << "erreur lecture fichier taches" << endl;
 	}
 }
 
@@ -97,7 +97,7 @@ void lecteur_taches_EnergSchedInst(string file, data &d){ //bool precise si l'on
 		fichier.close();
 	}
 	else{
-		cout << "erreur lecture fichier" << endl;
+		cout << "erreur lecture fichier taches" << endl;
 	}
 }
 

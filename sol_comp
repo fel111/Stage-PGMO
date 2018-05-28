@@ -1,0 +1,157 @@
+\ SCIP STATISTICS
+\   Problem name     : Problem_to_Solve_for_Test
+\   Variables        : 145 (60 binary, 0 integer, 0 implicit integer, 85 continuous)
+\   Constraints      : 61
+\   Obj. scale       : 1
+\   Obj. offset      : 0
+Minimize
+ Obj: +10 y_lkt010 +10 y_lkt011 +10 y_lkt020 +10 y_lkt021 +3000 y_lkt030 +3000 y_lkt031 +10 y_lkt111 +10 y_lkt112
+      +10 y_lkt121 +10 y_lkt122 +3000 y_lkt131 +3000 y_lkt132 +10 y_lkt212 +10 y_lkt213 +10 y_lkt222 +10 y_lkt223
+      +3000 y_lkt232 +3000 y_lkt233 +10 y0_kt10 +10 y0_kt11 +10 y0_kt12 +10 y0_kt13 +10 y0_kt20 +10 y0_kt21
+      +10 y0_kt22 +10 y0_kt23 +3000 y0_kt30 +3000 y0_kt31 +3000 y0_kt32 +3000 y0_kt33
+Subject to
+ cons_1: +1 x_it00 -1 y_lkt000 -1 y_lkt010 -1 y_lkt020 -1 y_lkt030 = +0
+ cons_1: +1 x_it01 -1 y_lkt001 -1 y_lkt011 -1 y_lkt021 -1 y_lkt031 = +0
+ cons_1: +1 x_it02 = +0
+ cons_1: +1 x_it03 = +0
+ cons_1: +1 x_it04 = +0
+ cons_1: +1 x_it10 = +0
+ cons_1: +1 x_it11 -1 y_lkt101 -1 y_lkt111 -1 y_lkt121 -1 y_lkt131 = +0
+ cons_1: +1 x_it12 -1 y_lkt102 -1 y_lkt112 -1 y_lkt122 -1 y_lkt132 = +0
+ cons_1: +1 x_it13 = +0
+ cons_1: +1 x_it14 = +0
+ cons_1: +1 x_it20 -1 y_lkt000 -1 y_lkt010 -1 y_lkt020 -1 y_lkt030 = +0
+ cons_1: +1 x_it21 -1 y_lkt001 -1 y_lkt011 -1 y_lkt021 -1 y_lkt031 -1 y_lkt101 -1 y_lkt111 -1 y_lkt121
+  -1 y_lkt131 = +0
+ cons_1: +1 x_it22 -1 y_lkt102 -1 y_lkt112 -1 y_lkt122 -1 y_lkt132 = +0
+ cons_1: +1 x_it23 = +0
+ cons_1: +1 x_it24 = +0
+ cons_1: +1 x_it30 = +0
+ cons_1: +1 x_it31 = +0
+ cons_1: +1 x_it32 -1 y_lkt202 -1 y_lkt212 -1 y_lkt222 -1 y_lkt232 = +0
+ cons_1: +1 x_it33 -1 y_lkt203 -1 y_lkt213 -1 y_lkt223 -1 y_lkt233 = +0
+ cons_1: +1 x_it34 = +0
+ cons_2: -1 y_lkt000 -1 y_lkt010 -1 y_lkt020 -1 y_lkt030 -1 y_lkt001 -1 y_lkt011 -1 y_lkt021 -1 y_lkt031
+  >= +1
+ cons_2: -1 y_lkt101 -1 y_lkt111 -1 y_lkt121 -1 y_lkt131 -1 y_lkt102 -1 y_lkt112 -1 y_lkt122 -1 y_lkt132
+  >= +1
+ cons_2: -1 y_lkt000 -1 y_lkt010 -1 y_lkt020 -1 y_lkt030 -1 y_lkt001 -1 y_lkt011 -1 y_lkt021 -1 y_lkt031
+  -1 y_lkt101 -1 y_lkt111 -1 y_lkt121 -1 y_lkt131 -1 y_lkt102 -1 y_lkt112 -1 y_lkt122 -1 y_lkt132 >= +2
+ cons_2: -1 y_lkt202 -1 y_lkt212 -1 y_lkt222 -1 y_lkt232 -1 y_lkt203 -1 y_lkt213 -1 y_lkt223 -1 y_lkt233
+  >= +1
+ cons_3: +1 z_pt00 -1 y_lkt000 -1 y_lkt010 = +0
+ cons_3: +1 z_pt01 -1 y_lkt001 -1 y_lkt011 -1 y_lkt101 -1 y_lkt111 = +0
+ cons_3: +1 z_pt02 -1 y_lkt102 -1 y_lkt112 -1 y_lkt202 -1 y_lkt212 = +0
+ cons_3: +1 z_pt03 -1 y_lkt203 -1 y_lkt213 = +0
+ cons_3: +1 z_pt04 = +0
+ cons_3: +1 z_pt10 -1 y_lkt020 -1 y_lkt030 = +0
+ cons_3: +1 z_pt11 -1 y_lkt021 -1 y_lkt031 -1 y_lkt121 -1 y_lkt131 = +0
+ cons_3: +1 z_pt12 -1 y_lkt122 -1 y_lkt132 -1 y_lkt222 -1 y_lkt232 = +0
+ cons_3: +1 z_pt13 -1 y_lkt223 -1 y_lkt233 = +0
+ cons_3: +1 z_pt14 = +0
+ cons_4: +1 z0_pt00 -1 y0_kt00 -1 y0_kt10 = +0
+ cons_4: +1 z0_pt01 -1 y0_kt01 -1 y0_kt11 = +0
+ cons_4: +1 z0_pt02 -1 y0_kt02 -1 y0_kt12 = +0
+ cons_4: +1 z0_pt03 -1 y0_kt03 -1 y0_kt13 = +0
+ cons_4: +1 z0_pt04 -1 y0_kt04 -1 y0_kt14 = +0
+ cons_4: +1 z0_pt10 -1 y0_kt20 -1 y0_kt30 = +0
+ cons_4: +1 z0_pt11 -1 y0_kt21 -1 y0_kt31 = +0
+ cons_4: +1 z0_pt12 -1 y0_kt22 -1 y0_kt32 = +0
+ cons_4: +1 z0_pt13 -1 y0_kt23 -1 y0_kt33 = +0
+ cons_4: +1 z0_pt14 -1 y0_kt24 -1 y0_kt34 = +0
+ cons_5: +1 z_pt00 +1 z0_pt00 +1 z_pt10 +1 z0_pt10 <= +1
+ cons_5: +1 z_pt01 +1 z0_pt01 +1 z_pt11 +1 z0_pt11 <= +1
+ cons_5: +1 z_pt02 +1 z0_pt02 +1 z_pt12 +1 z0_pt12 <= +1
+ cons_5: +1 z_pt03 +1 z0_pt03 +1 z_pt13 +1 z0_pt13 <= +1
+ cons_5: +1 z_pt04 +1 z0_pt04 +1 z_pt14 +1 z0_pt14 <= +1
+ cons_6: +1 q_t0 = +10
+ cons_7: +1 q_t4 -1 q_t0 >= +0
+ cons_8: +1 q_t1 -1 q_t0 +8 y_lkt000 +3 y_lkt010 -5 y0_kt10 +3 y_lkt020 -5 y0_kt20 -992 y_lkt030 -1000 y0_kt30
+  = +0
+ cons_8: +1 q_t2 -1 q_t1 +8 y_lkt001 +3 y_lkt011 -5 y0_kt11 +3 y_lkt021 -5 y0_kt21 -992 y_lkt031 -1000 y0_kt31
+  +10 y_lkt101 +5 y_lkt111 -5 y0_kt11 +5 y_lkt121 -5 y0_kt21 -990 y_lkt131 -1000 y0_kt31 = +0
+ cons_8: +1 q_t3 -1 q_t2 +10 y_lkt102 +5 y_lkt112 -5 y0_kt12 +5 y_lkt122 -5 y0_kt22 -990 y_lkt132 -1000 y0_kt32
+  +4 y_lkt202 -1 y_lkt212 -5 y0_kt12 -1 y_lkt222 -5 y0_kt22 -996 y_lkt232 -1000 y0_kt32 = +0
+ cons_8: +1 q_t4 -1 q_t3 +4 y_lkt203 -1 y_lkt213 -5 y0_kt13 -1 y_lkt223 -5 y0_kt23 -996 y_lkt233 -1000 y0_kt33
+  = +0
+ cons_8: -1 q_t4 = +0
+ cons_9: +8 y_lkt000 +8 y_lkt010 +8 y_lkt020 +8 y_lkt030 +2 x_it00 +3 x_it10 +3 x_it20 +4 x_it30 = +0
+ cons_9: +8 y_lkt001 +8 y_lkt011 +8 y_lkt021 +8 y_lkt031 +10 y_lkt101 +10 y_lkt111 +10 y_lkt121 +10 y_lkt131
+  +2 x_it01 +3 x_it11 +3 x_it21 +4 x_it31 = +0
+ cons_9: +10 y_lkt102 +10 y_lkt112 +10 y_lkt122 +10 y_lkt132 +4 y_lkt202 +4 y_lkt212 +4 y_lkt222 +4 y_lkt232
+  +2 x_it02 +3 x_it12 +3 x_it22 +4 x_it32 = +0
+ cons_9: +4 y_lkt203 +4 y_lkt213 +4 y_lkt223 +4 y_lkt233 +2 x_it03 +3 x_it13 +3 x_it23 +4 x_it33 = +0
+ cons_9: +2 x_it04 +3 x_it14 +3 x_it24 +4 x_it34 = +0
+Bounds
+ 0 <= x_it00 <= 1
+ 0 <= x_it01 <= 1
+ 0 <= x_it02 <= 1
+ 0 <= x_it03 <= 1
+ 0 <= x_it04 <= 1
+ 0 <= x_it10 <= 1
+ 0 <= x_it11 <= 1
+ 0 <= x_it12 <= 1
+ 0 <= x_it13 <= 1
+ 0 <= x_it14 <= 1
+ 0 <= x_it20 <= 1
+ 0 <= x_it21 <= 1
+ 0 <= x_it22 <= 1
+ 0 <= x_it23 <= 1
+ 0 <= x_it24 <= 1
+ 0 <= x_it30 <= 1
+ 0 <= x_it31 <= 1
+ 0 <= x_it32 <= 1
+ 0 <= x_it33 <= 1
+ 0 <= x_it34 <= 1
+ 0 <= z_pt00 <= 1
+ 0 <= z0_pt00 <= 1
+ 0 <= z_pt01 <= 1
+ 0 <= z0_pt01 <= 1
+ 0 <= z_pt02 <= 1
+ 0 <= z0_pt02 <= 1
+ 0 <= z_pt03 <= 1
+ 0 <= z0_pt03 <= 1
+ 0 <= z_pt04 <= 1
+ 0 <= z0_pt04 <= 1
+ 0 <= z_pt10 <= 1
+ 0 <= z0_pt10 <= 1
+ 0 <= z_pt11 <= 1
+ 0 <= z0_pt11 <= 1
+ 0 <= z_pt12 <= 1
+ 0 <= z0_pt12 <= 1
+ 0 <= z_pt13 <= 1
+ 0 <= z0_pt13 <= 1
+ 0 <= z_pt14 <= 1
+ 0 <= z0_pt14 <= 1
+ 0 <= z_pt20 <= 1
+ 0 <= z0_pt20 <= 1
+ 0 <= z_pt21 <= 1
+ 0 <= z0_pt21 <= 1
+ 0 <= z_pt22 <= 1
+ 0 <= z0_pt22 <= 1
+ 0 <= z_pt23 <= 1
+ 0 <= z0_pt23 <= 1
+ 0 <= z_pt24 <= 1
+ 0 <= z0_pt24 <= 1
+ 0 <= z_pt30 <= 1
+ 0 <= z0_pt30 <= 1
+ 0 <= z_pt31 <= 1
+ 0 <= z0_pt31 <= 1
+ 0 <= z_pt32 <= 1
+ 0 <= z0_pt32 <= 1
+ 0 <= z_pt33 <= 1
+ 0 <= z0_pt33 <= 1
+ 0 <= z_pt34 <= 1
+ 0 <= z0_pt34 <= 1
+ 0 <= q_t0 <= 20
+ 0 <= q_t1 <= 20
+ 0 <= q_t2 <= 20
+ 0 <= q_t3 <= 20
+ 0 <= q_t4 <= 20
+Binaries
+ x_it00 x_it01 x_it02 x_it03 x_it04 x_it10 x_it11 x_it12 x_it13 x_it14 x_it20 x_it21 x_it22 x_it23 x_it24
+ x_it30 x_it31 x_it32 x_it33 x_it34 z_pt00 z0_pt00 z_pt01 z0_pt01 z_pt02 z0_pt02 z_pt03 z0_pt03 z_pt04
+ z0_pt04 z_pt10 z0_pt10 z_pt11 z0_pt11 z_pt12 z0_pt12 z_pt13 z0_pt13 z_pt14 z0_pt14 z_pt20 z0_pt20 z_pt21
+ z0_pt21 z_pt22 z0_pt22 z_pt23 z0_pt23 z_pt24 z0_pt24 z_pt30 z0_pt30 z_pt31 z0_pt31 z_pt32 z0_pt32 z_pt33
+ z0_pt33 z_pt34 z0_pt34
+End

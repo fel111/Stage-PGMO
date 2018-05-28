@@ -2,12 +2,22 @@
 #define struct_gencol_H
 
 #include <vector>
-#include "struct.h"
+#include "../struct.h"
 #include "scip/scip.h"
 #include "scip/scipdefplugins.h"
 
 using namespace std;
 
+
+struct feasibleSet{
+    int id;
+	int releaseTime;
+	int deadLine;
+	float energyDemand;
+	float cost;
+	vector<int> tasksList;
+	int timeGen;
+};
 
 struct structGenCol{
     data d;
@@ -39,15 +49,7 @@ struct structGenCol{
 
 };
 
-struct feasibleSet{
-    int id;
-	int releaseTime;
-	int deadLine;
-	float energyDemand;
-	float cost;
-	vector<int> tasksList;
-	int timeGen;
-};
+
 
 float cl(int k, int l, structGenCol const& sGC);
 

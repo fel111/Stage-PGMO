@@ -1,6 +1,6 @@
 #ifndef LECTEUR_PARAM_H
 #define LECTEUR_PARAM_H
-#include "struct.h"
+#include "../struct.h"
 
 using namespace std;
 

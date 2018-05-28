@@ -1,6 +1,6 @@
 #ifndef LECTEUR_TACHES_H
 #define LECTEUR_TACHES_H
-//#include "struct.h"
+#include "../struct.h"
 
 using namespace std;
 
