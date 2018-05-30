@@ -158,7 +158,7 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 			for(const auto& l : sGC.L_t[t]){
 				for(const auto& k : sGC.K_l[l]){
 					//cout << "a_"<<i<<l<<" : "<<sGC.a_il[i][l]<<endl;
-					SCIPaddCoefLinear(sGC.scip, cons_2[i], y_lkt[l][k][t],-sGC.a_il[i][l]);
+					SCIPaddCoefLinear(sGC.scip, cons_2[i], y_lkt[l][k][t],sGC.a_il[i][l]);
 				}
 			}
 		}
@@ -202,7 +202,6 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 			SCIPaddCons(sGC.scip, cons_4[p][t]);
 		}
 	}
-	sGC.cons_4 = cons_4;
 	cout<<"cons_4 ok"<<endl;
 
 	// sum_p z_pt + z0_pt <= 1
@@ -245,12 +244,12 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 		for(const auto& l : sGC.L_t[t]){
 			for(const auto& k : sGC.K_l[l]){
 				SCIPaddCoefLinear(sGC.scip, cons_8[t], y_lkt[l][k][t],(sGC.L[l].energyDemand-sGC.d.bpt[0][k]));
-				SCIPaddCoefLinear(sGC.scip, cons_8[t], y0_kt[k][t],-sGC.d.bpt[0][k]);
+				if(sGC.L[l].energyDemand<sGC.d.bpt[0][k]) SCIPaddCoefLinear(sGC.scip, cons_8[t], y0_kt[k][t],sGC.L[l].energyDemand-sGC.d.bpt[0][k]);
 			}
 		}
 		SCIPaddCons(sGC.scip, cons_8[t]);
 	}
-	int t = sGC.d.cardT-1;
+	/*int t = sGC.d.cardT-1;
 	SCIP_CONS * c;
 	cons_8.push_back(c);
 	SCIPcreateConsLinear(sGC.scip, &cons_8[t], "cons_8", 0, 0, 0, 0, 0, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE);  
@@ -261,7 +260,7 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 			SCIPaddCoefLinear(sGC.scip, cons_8[t], y0_kt[k][t],-sGC.d.bpt[0][k]);
 		}
 	}
-	SCIPaddCons(sGC.scip, cons_8[t]);
+	SCIPaddCons(sGC.scip, cons_8[t]);*/
 	sGC.cons_8 = cons_8;
 	cout<<"cons_8 ok"<<endl;
 
@@ -276,7 +275,7 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 				SCIPaddCoefLinear(sGC.scip, cons_9[t], y_lkt[l][k][t],sGC.L[l].energyDemand);
 			}
 		}
-		for(int i=0; i<sGC.d.cardJ; ++i) SCIPaddCoefLinear(sGC.scip, cons_9[t], x_it[i][t],sGC.d.dj[i]);
+		for(int i=0; i<sGC.d.cardJ; ++i) SCIPaddCoefLinear(sGC.scip, cons_9[t], x_it[i][t],-sGC.d.Djk[i][0]);
 		SCIPaddCons(sGC.scip, cons_9[t]);
 	}
 	sGC.cons_9 = cons_9;

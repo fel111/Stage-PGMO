@@ -43,9 +43,11 @@ struct structGenCol{
     vector<vector<SCIP_CONS *> > cons_1;
     vector<SCIP_CONS *> cons_2;
     vector<vector<SCIP_CONS *> > cons_3;
-    vector<vector<SCIP_CONS *> > cons_4;
+    //vector<vector<SCIP_CONS *> > cons_4;
     vector<SCIP_CONS *> cons_8;
     vector<SCIP_CONS *> cons_9;
+
+    SCIP_SOL * sol;
 
 };
 

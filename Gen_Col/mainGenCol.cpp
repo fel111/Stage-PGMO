@@ -15,13 +15,14 @@
 #include "../Lecteur_Fichiers/lecteur_taches.h"
 #include "../Lecteur_Fichiers/lecteur_param.h"
 #include "probScip.cpp"
+#include "pricer.h"
 
 using namespace std;
 float infini = numeric_limits<float>::max();
 
 void affK_l(structGenCol const& sGC){
 	cout << "--- K_l ---"<<endl;
-	for(int l=0; l<sGC.cardL; ++l){
+	for(int l=0; l<sGC.L.size(); ++l){
 		cout << l << " : ";
 		for(const auto& k : sGC.K_l[l]){
 			cout << k << " ";
@@ -43,13 +44,25 @@ void affL_t(structGenCol const& sGC){
 
 void affAllSet(structGenCol const& sGC){
 	cout << "--- FeasibleSets ---"<<endl;
-	for(int l=0; l<sGC.cardL; ++l){
+	for(int l=0; l<sGC.L.size(); ++l){
 		cout << l << " : ";
 		for(const auto& t : sGC.L[l].tasksList){
 			cout << t << " ";
 		}
 		cout << endl;
 	}
+}
+
+// renvoie vrai si l'ensemble l n'est pas déjà présent, faux sinon
+bool checkSet(feasibleSet const& l, structGenCol const& sGC){
+    for(int i=0; i<sGC.L.size(); ++i){
+        if(sGC.L[i].tasksList.size() == l.tasksList.size()){
+            int cpt = 0;
+            while((sGC.L[i].tasksList[cpt] == l.tasksList[cpt])&&(cpt<l.tasksList.size())) ++cpt;
+            if(cpt == l.tasksList.size()) return false;
+        }
+    }
+    return true;
 }
 
 void addSetK_l(feasibleSet const& l, structGenCol & sGC){
@@ -82,37 +95,7 @@ void addL_t(feasibleSet const& l, structGenCol & sGC){
 
 void firstSol(structGenCol & sGC){
     int cptId = 0;
-    /*vector<vector<int> > matr (sgc.d.cardT, vector<int> (sGC.d.cardJ,0));
-    for(int i=0; i<sGC.d.cardJ; ++i){
-        for(int t=sGC.d.dj[i]; t<sGC.d.dj[i]+sGC.d.pj-1; ++t){
-            matr[t][i] = 1;
-        }
-    }
-
-    for(int t=sGC.d.releaseDateMin; t<sGC.d.cardT; ++t){
-        bool empty = true;
-        for(int i=0; i<sGC.d.cardJ; ++i){
-            if((matr[t][i] == 1)&&(empty)){
-                feasibleSet l;
-                l.id = cptId;
-                l.energyDemand = sGC.d.Djk[i][0];
-                l.deadLine = sGC.d.dj[i];
-                l.releaseTime = sGC.d.rj[i];
-                l.tasksList.push_back(i);
-                l.timeGen = t;
-                empty = false;
-                sGC.L.push_back(l);
-                sGC.cardL++;
-            }
-            else if(matr[t][i] == 1){
-                sGC.L[cptId].energyDemand += sGC.d.Djk[i][0];
-                if(sGC.L[cptId].deadLine < sGC.d.dj[i]) sGC.L[cptId].deadLine = sGC.d.dj[i];
-                if(sGC.L[cptId].releaseTime > sGC.d.rj[i]) sGC.L[cptId].releaseTime = sGC.d.rj[i];
-                sGC.L[cptId].tasksList.push_back(i);
-            }
-            cptId++;
-        }
-    }*/
+    
     for(int t=sGC.d.releaseDateMin; t<sGC.d.cardT; ++t){
         vector<int> taskList;
         feasibleSet l;
@@ -135,13 +118,14 @@ void firstSol(structGenCol & sGC){
             l.id = cptId;
             l.timeGen = t; 
             l.tasksList = taskList;
-            sGC.L.push_back(l);
-			sGC.cardL++;
-            addSetK_l(l,sGC);
-            addA_il(l,sGC);
-			addL_t(l,sGC);
-            cptId++;
-			
+            if(checkSet(l,sGC)){
+                sGC.L.push_back(l);
+                sGC.cardL = sGC.L.size();
+                addSetK_l(l,sGC);
+                addA_il(l,sGC);
+                addL_t(l,sGC);
+                cptId++;
+            }else cout << "l deja present " << l.id << endl;
         }
 	}
 
@@ -156,12 +140,12 @@ int initData(structGenCol & sGC){
 	d.s0 = 0;
 	d.cardM = 1;
     string param = "param1.txt";
-    string instance = "inst_test";
+    string instance = "inst_2";
 	if(lecteur_param("Param/"+param,p) == 0) return 0;
 	
 	p.qmax = 20;
 	p.qmin = 0;
-	p.qinit = 10;
+	p.qinit = 0;
 	
 	lecteur_taches_EnergSchedInst("Donnees/dataSchedulingInstances_newname/"+instance,d);
 
@@ -214,13 +198,13 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
     SCIP_RETCODE status;
     SCIP_STATUS solstatus;
     initData(sGC);
-    cout <<"initData OK ! "<<endl;
+    //cout <<"initData OK ! "<<endl;
 	
 	firstSol(sGC);
-	cout <<"firstSol OK ! "<<endl;
+	//cout <<"firstSol OK ! "<<endl;
 	
-	affK_l(sGC);
-	affL_t(sGC);
+	//affK_l(sGC);
+	//affL_t(sGC);
 	affAllSet(sGC);
 	
     // Load and build model
@@ -237,6 +221,17 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
     // SOLVE
     //cout << "Start solve..."<<endl;
     SCIP_CALL( status = SCIPsolve(sGC.scip) );
+
+
+    sGC.sol = SCIPgetBestSol(sGC.scip);
+
+    cout << "verif : "<<verifSol(sGC) << endl; 
+
+    /*for(int j=0; j<sGC.d.cardJ; ++j){
+        for(int t=0; t<sGC.d.cardT;++t){
+            if(SCIPgetSolVal(sGC.scip,sGC.sol,sGC.varX_it[j][t]) == 1) cout <<"tache "<<j<<" réalisée au temps "<<t<<endl;
+        }
+    }*/
     //cout<<"... End solve"<<endl;
     /*
     printf("\nstart solution export ...\n");
