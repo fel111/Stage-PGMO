@@ -1,2457 +1,1256 @@
 \ SCIP STATISTICS
 \   Problem name     : Problem_to_Solve_for_Test
-\   Variables        : 3094 (988 binary, 0 integer, 0 implicit integer, 2106 continuous)
-\   Constraints      : 993
+\   Variables        : 836 (394 binary, 0 integer, 0 implicit integer, 442 continuous)
+\   Constraints      : 399
 \   Obj. scale       : 1
 \   Obj. offset      : 0
 Minimize
- Obj: +10 y_lkt010 +10 y_lkt011 +10 y_lkt012 +10 y_lkt013 +10 y_lkt014 +10 y_lkt015 +10 y_lkt016 +10 y_lkt017
-      +10 y_lkt018 +10 y_lkt020 +10 y_lkt021 +10 y_lkt022 +10 y_lkt023 +10 y_lkt024 +10 y_lkt025 +10 y_lkt026
-      +10 y_lkt027 +10 y_lkt028 +3000 y_lkt030 +3000 y_lkt031 +3000 y_lkt032 +3000 y_lkt033 +3000 y_lkt034
-      +3000 y_lkt035 +3000 y_lkt036 +3000 y_lkt037 +3000 y_lkt038 +10 y_lkt111 +10 y_lkt112 +10 y_lkt113
-      +10 y_lkt114 +10 y_lkt121 +10 y_lkt122 +10 y_lkt123 +10 y_lkt124 +3000 y_lkt131 +3000 y_lkt132 +3000 y_lkt133
-      +3000 y_lkt134 +10 y_lkt212 +10 y_lkt213 +10 y_lkt214 +10 y_lkt222 +10 y_lkt223 +10 y_lkt224 +3000 y_lkt232
-      +3000 y_lkt233 +3000 y_lkt234 +10 y_lkt313 +10 y_lkt314 +10 y_lkt315 +10 y_lkt316 +10 y_lkt323 +10 y_lkt324
-      +10 y_lkt325 +10 y_lkt326 +3000 y_lkt333 +3000 y_lkt334 +3000 y_lkt335 +3000 y_lkt336 +10 y_lkt414
-      +10 y_lkt415 +10 y_lkt424 +10 y_lkt425 +3000 y_lkt434 +3000 y_lkt435 +10 y_lkt515 +10 y_lkt516 +10 y_lkt517
-      +10 y_lkt525 +10 y_lkt526 +10 y_lkt527 +3000 y_lkt535 +3000 y_lkt536 +3000 y_lkt537 +10 y_lkt616
-      +10 y_lkt617 +10 y_lkt618 +10 y_lkt619 +10 y_lkt626 +10 y_lkt627 +10 y_lkt628 +10 y_lkt629 +3000 y_lkt636
-      +3000 y_lkt637 +3000 y_lkt638 +3000 y_lkt639 +10 y_lkt716 +10 y_lkt717 +10 y_lkt718 +10 y_lkt719
-      +10 y_lkt7110 +10 y_lkt726 +10 y_lkt727 +10 y_lkt728 +10 y_lkt729 +10 y_lkt7210 +3000 y_lkt736 +3000 y_lkt737
-      +3000 y_lkt738 +3000 y_lkt739 +3000 y_lkt7310 +10 y_lkt818 +10 y_lkt819 +10 y_lkt828 +10 y_lkt829
-      +3000 y_lkt838 +3000 y_lkt839 +10 y_lkt919 +10 y_lkt9110 +10 y_lkt9111 +10 y_lkt9112 +10 y_lkt9113
-      +10 y_lkt9114 +10 y_lkt929 +10 y_lkt9210 +10 y_lkt9211 +10 y_lkt9212 +10 y_lkt9213 +10 y_lkt9214
-      +3000 y_lkt939 +3000 y_lkt9310 +3000 y_lkt9311 +3000 y_lkt9312 +3000 y_lkt9313 +3000 y_lkt9314 +10 y_lkt10110
-      +10 y_lkt10111 +10 y_lkt10112 +10 y_lkt10113 +10 y_lkt10114 +10 y_lkt10210 +10 y_lkt10211 +10 y_lkt10212
-      +10 y_lkt10213 +10 y_lkt10214 +3000 y_lkt10310 +3000 y_lkt10311 +3000 y_lkt10312 +3000 y_lkt10313
-      +3000 y_lkt10314 +10 y_lkt11110 +10 y_lkt11111 +10 y_lkt11112 +10 y_lkt11113 +10 y_lkt11114 +10 y_lkt11115
-      +10 y_lkt11116 +10 y_lkt11210 +10 y_lkt11211 +10 y_lkt11212 +10 y_lkt11213 +10 y_lkt11214 +10 y_lkt11215
-      +10 y_lkt11216 +3000 y_lkt11310 +3000 y_lkt11311 +3000 y_lkt11312 +3000 y_lkt11313 +3000 y_lkt11314
-      +3000 y_lkt11315 +3000 y_lkt11316 +10 y_lkt12112 +10 y_lkt12113 +10 y_lkt12212 +10 y_lkt12213 +3000 y_lkt12312
-      +3000 y_lkt12313 +10 y_lkt13113 +10 y_lkt13114 +10 y_lkt13115 +10 y_lkt13213 +10 y_lkt13214 +10 y_lkt13215
-      +3000 y_lkt13313 +3000 y_lkt13314 +3000 y_lkt13315 +10 y_lkt14114 +10 y_lkt14115 +10 y_lkt14116
-      +10 y_lkt14117 +10 y_lkt14118 +10 y_lkt14214 +10 y_lkt14215 +10 y_lkt14216 +10 y_lkt14217 +10 y_lkt14218
-      +3000 y_lkt14314 +3000 y_lkt14315 +3000 y_lkt14316 +3000 y_lkt14317 +3000 y_lkt14318 +10 y_lkt15115
-      +10 y_lkt15116 +10 y_lkt15117 +10 y_lkt15118 +10 y_lkt15215 +10 y_lkt15216 +10 y_lkt15217 +10 y_lkt15218
-      +3000 y_lkt15315 +3000 y_lkt15316 +3000 y_lkt15317 +3000 y_lkt15318 +10 y_lkt16116 +10 y_lkt16117
-      +10 y_lkt16118 +10 y_lkt16216 +10 y_lkt16217 +10 y_lkt16218 +3000 y_lkt16316 +3000 y_lkt16317 +3000 y_lkt16318
-      +10 y_lkt17117 +10 y_lkt17118 +10 y_lkt17119 +10 y_lkt17217 +10 y_lkt17218 +10 y_lkt17219 +3000 y_lkt17317
-      +3000 y_lkt17318 +3000 y_lkt17319 +10 y_lkt18117 +10 y_lkt18118 +10 y_lkt18119 +10 y_lkt18120 +10 y_lkt18217
-      +10 y_lkt18218 +10 y_lkt18219 +10 y_lkt18220 +3000 y_lkt18317 +3000 y_lkt18318 +3000 y_lkt18319
-      +3000 y_lkt18320 +10 y0_kt10 +10 y0_kt11 +10 y0_kt12 +10 y0_kt13 +10 y0_kt14 +10 y0_kt15 +10 y0_kt16
-      +10 y0_kt17 +10 y0_kt18 +10 y0_kt19 +10 y0_kt110 +10 y0_kt111 +10 y0_kt112 +10 y0_kt113 +10 y0_kt114
-      +10 y0_kt115 +10 y0_kt116 +10 y0_kt117 +10 y0_kt118 +10 y0_kt119 +10 y0_kt120 +10 y0_kt20 +10 y0_kt21
-      +10 y0_kt22 +10 y0_kt23 +10 y0_kt24 +10 y0_kt25 +10 y0_kt26 +10 y0_kt27 +10 y0_kt28 +10 y0_kt29
-      +10 y0_kt210 +10 y0_kt211 +10 y0_kt212 +10 y0_kt213 +10 y0_kt214 +10 y0_kt215 +10 y0_kt216 +10 y0_kt217
-      +10 y0_kt218 +10 y0_kt219 +10 y0_kt220 +3000 y0_kt30 +3000 y0_kt31 +3000 y0_kt32 +3000 y0_kt33 +3000 y0_kt34
-      +3000 y0_kt35 +3000 y0_kt36 +3000 y0_kt37 +3000 y0_kt38 +3000 y0_kt39 +3000 y0_kt310 +3000 y0_kt311
-      +3000 y0_kt312 +3000 y0_kt313 +3000 y0_kt314 +3000 y0_kt315 +3000 y0_kt316 +3000 y0_kt317 +3000 y0_kt318
-      +3000 y0_kt319 +3000 y0_kt320
+ Obj: +10 y_lkt0,1,0 +10 y_lkt0,1,1 +10 y_lkt0,1,2 +10 y_lkt0,1,3 +10 y_lkt0,1,4 +10 y_lkt0,1,5 +10 y_lkt0,1,6
+      +10 y_lkt0,1,7 +10 y_lkt0,1,8 +10 y_lkt0,2,0 +10 y_lkt0,2,1 +10 y_lkt0,2,2 +10 y_lkt0,2,3 +10 y_lkt0,2,4
+      +10 y_lkt0,2,5 +10 y_lkt0,2,6 +10 y_lkt0,2,7 +10 y_lkt0,2,8 +3000 y_lkt0,3,0 +3000 y_lkt0,3,1 +3000 y_lkt0,3,2
+      +3000 y_lkt0,3,3 +3000 y_lkt0,3,4 +3000 y_lkt0,3,5 +3000 y_lkt0,3,6 +3000 y_lkt0,3,7 +3000 y_lkt0,3,8
+      +10 y_lkt1,1,1 +10 y_lkt1,1,2 +10 y_lkt1,1,3 +10 y_lkt1,1,4 +10 y_lkt1,2,1 +10 y_lkt1,2,2 +10 y_lkt1,2,3
+      +10 y_lkt1,2,4 +3000 y_lkt1,3,1 +3000 y_lkt1,3,2 +3000 y_lkt1,3,3 +3000 y_lkt1,3,4 +10 y_lkt2,1,2
+      +10 y_lkt2,1,3 +10 y_lkt2,1,4 +10 y_lkt2,2,2 +10 y_lkt2,2,3 +10 y_lkt2,2,4 +3000 y_lkt2,3,2 +3000 y_lkt2,3,3
+      +3000 y_lkt2,3,4 +10 y_lkt3,1,3 +10 y_lkt3,1,4 +10 y_lkt3,1,5 +10 y_lkt3,1,6 +10 y_lkt3,2,3 +10 y_lkt3,2,4
+      +10 y_lkt3,2,5 +10 y_lkt3,2,6 +3000 y_lkt3,3,3 +3000 y_lkt3,3,4 +3000 y_lkt3,3,5 +3000 y_lkt3,3,6
+      +10 y_lkt4,1,4 +10 y_lkt4,1,5 +10 y_lkt4,2,4 +10 y_lkt4,2,5 +3000 y_lkt4,3,4 +3000 y_lkt4,3,5 +10 y_lkt5,1,5
+      +10 y_lkt5,1,6 +10 y_lkt5,1,7 +10 y_lkt5,2,5 +10 y_lkt5,2,6 +10 y_lkt5,2,7 +3000 y_lkt5,3,5 +3000 y_lkt5,3,6
+      +3000 y_lkt5,3,7 +10 y_lkt6,1,6 +10 y_lkt6,1,7 +10 y_lkt6,1,8 +10 y_lkt6,1,9 +10 y_lkt6,2,6 +10 y_lkt6,2,7
+      +10 y_lkt6,2,8 +10 y_lkt6,2,9 +3000 y_lkt6,3,6 +3000 y_lkt6,3,7 +3000 y_lkt6,3,8 +3000 y_lkt6,3,9
+      +10 y_lkt7,1,6 +10 y_lkt7,1,7 +10 y_lkt7,1,8 +10 y_lkt7,1,9 +10 y_lkt7,1,10 +10 y_lkt7,2,6 +10 y_lkt7,2,7
+      +10 y_lkt7,2,8 +10 y_lkt7,2,9 +10 y_lkt7,2,10 +3000 y_lkt7,3,6 +3000 y_lkt7,3,7 +3000 y_lkt7,3,8
+      +3000 y_lkt7,3,9 +3000 y_lkt7,3,10 +10 y_lkt8,1,8 +10 y_lkt8,1,9 +10 y_lkt8,2,8 +10 y_lkt8,2,9 +3000 y_lkt8,3,8
+      +3000 y_lkt8,3,9 +10 y_lkt9,1,9 +10 y_lkt9,1,10 +10 y_lkt9,1,11 +10 y_lkt9,1,12 +10 y_lkt9,1,13
+      +10 y_lkt9,1,14 +10 y_lkt9,2,9 +10 y_lkt9,2,10 +10 y_lkt9,2,11 +10 y_lkt9,2,12 +10 y_lkt9,2,13 +10 y_lkt9,2,14
+      +3000 y_lkt9,3,9 +3000 y_lkt9,3,10 +3000 y_lkt9,3,11 +3000 y_lkt9,3,12 +3000 y_lkt9,3,13 +3000 y_lkt9,3,14
+      +10 y_lkt10,1,10 +10 y_lkt10,1,11 +10 y_lkt10,1,12 +10 y_lkt10,1,13 +10 y_lkt10,1,14 +10 y_lkt10,2,10
+      +10 y_lkt10,2,11 +10 y_lkt10,2,12 +10 y_lkt10,2,13 +10 y_lkt10,2,14 +3000 y_lkt10,3,10 +3000 y_lkt10,3,11
+      +3000 y_lkt10,3,12 +3000 y_lkt10,3,13 +3000 y_lkt10,3,14 +10 y_lkt11,1,10 +10 y_lkt11,1,11 +10 y_lkt11,1,12
+      +10 y_lkt11,1,13 +10 y_lkt11,1,14 +10 y_lkt11,1,15 +10 y_lkt11,1,16 +10 y_lkt11,2,10 +10 y_lkt11,2,11
+      +10 y_lkt11,2,12 +10 y_lkt11,2,13 +10 y_lkt11,2,14 +10 y_lkt11,2,15 +10 y_lkt11,2,16 +3000 y_lkt11,3,10
+      +3000 y_lkt11,3,11 +3000 y_lkt11,3,12 +3000 y_lkt11,3,13 +3000 y_lkt11,3,14 +3000 y_lkt11,3,15 +3000 y_lkt11,3,16
+      +10 y_lkt12,1,12 +10 y_lkt12,1,13 +10 y_lkt12,2,12 +10 y_lkt12,2,13 +3000 y_lkt12,3,12 +3000 y_lkt12,3,13
+      +10 y_lkt13,1,13 +10 y_lkt13,1,14 +10 y_lkt13,1,15 +10 y_lkt13,2,13 +10 y_lkt13,2,14 +10 y_lkt13,2,15
+      +3000 y_lkt13,3,13 +3000 y_lkt13,3,14 +3000 y_lkt13,3,15 +10 y_lkt14,1,14 +10 y_lkt14,1,15 +10 y_lkt14,1,16
+      +10 y_lkt14,1,17 +10 y_lkt14,1,18 +10 y_lkt14,2,14 +10 y_lkt14,2,15 +10 y_lkt14,2,16 +10 y_lkt14,2,17
+      +10 y_lkt14,2,18 +3000 y_lkt14,3,14 +3000 y_lkt14,3,15 +3000 y_lkt14,3,16 +3000 y_lkt14,3,17 +3000 y_lkt14,3,18
+      +10 y_lkt15,1,15 +10 y_lkt15,1,16 +10 y_lkt15,1,17 +10 y_lkt15,1,18 +10 y_lkt15,2,15 +10 y_lkt15,2,16
+      +10 y_lkt15,2,17 +10 y_lkt15,2,18 +3000 y_lkt15,3,15 +3000 y_lkt15,3,16 +3000 y_lkt15,3,17 +3000 y_lkt15,3,18
+      +10 y_lkt16,1,16 +10 y_lkt16,1,17 +10 y_lkt16,1,18 +10 y_lkt16,2,16 +10 y_lkt16,2,17 +10 y_lkt16,2,18
+      +3000 y_lkt16,3,16 +3000 y_lkt16,3,17 +3000 y_lkt16,3,18 +10 y_lkt17,1,17 +10 y_lkt17,1,18 +10 y_lkt17,1,19
+      +10 y_lkt17,2,17 +10 y_lkt17,2,18 +10 y_lkt17,2,19 +3000 y_lkt17,3,17 +3000 y_lkt17,3,18 +3000 y_lkt17,3,19
+      +10 y_lkt18,1,17 +10 y_lkt18,1,18 +10 y_lkt18,1,19 +10 y_lkt18,1,20 +10 y_lkt18,2,17 +10 y_lkt18,2,18
+      +10 y_lkt18,2,19 +10 y_lkt18,2,20 +3000 y_lkt18,3,17 +3000 y_lkt18,3,18 +3000 y_lkt18,3,19 +3000 y_lkt18,3,20
+      +10 y0_kt1,0 +10 y0_kt1,1 +10 y0_kt1,2 +10 y0_kt1,3 +10 y0_kt1,4 +10 y0_kt1,5 +10 y0_kt1,6 +10 y0_kt1,7
+      +10 y0_kt1,8 +10 y0_kt1,9 +10 y0_kt1,10 +10 y0_kt1,11 +10 y0_kt1,12 +10 y0_kt1,13 +10 y0_kt1,14
+      +10 y0_kt1,15 +10 y0_kt1,16 +10 y0_kt1,17 +10 y0_kt1,18 +10 y0_kt1,19 +10 y0_kt1,20 +10 y0_kt1,21
+      +10 y0_kt1,22 +10 y0_kt1,23 +10 y0_kt1,24 +10 y0_kt1,25 +10 y0_kt2,0 +10 y0_kt2,1 +10 y0_kt2,2 +10 y0_kt2,3
+      +10 y0_kt2,4 +10 y0_kt2,5 +10 y0_kt2,6 +10 y0_kt2,7 +10 y0_kt2,8 +10 y0_kt2,9 +10 y0_kt2,10 +10 y0_kt2,11
+      +10 y0_kt2,12 +10 y0_kt2,13 +10 y0_kt2,14 +10 y0_kt2,15 +10 y0_kt2,16 +10 y0_kt2,17 +10 y0_kt2,18
+      +10 y0_kt2,19 +10 y0_kt2,20 +10 y0_kt2,21 +10 y0_kt2,22 +10 y0_kt2,23 +10 y0_kt2,24 +10 y0_kt2,25
+      +3000 y0_kt3,0 +3000 y0_kt3,1 +3000 y0_kt3,2 +3000 y0_kt3,3 +3000 y0_kt3,4 +3000 y0_kt3,5 +3000 y0_kt3,6
+      +3000 y0_kt3,7 +3000 y0_kt3,8 +3000 y0_kt3,9 +3000 y0_kt3,10 +3000 y0_kt3,11 +3000 y0_kt3,12 +3000 y0_kt3,13
+      +3000 y0_kt3,14 +3000 y0_kt3,15 +3000 y0_kt3,16 +3000 y0_kt3,17 +3000 y0_kt3,18 +3000 y0_kt3,19
+      +3000 y0_kt3,20 +3000 y0_kt3,21 +3000 y0_kt3,22 +3000 y0_kt3,23 +3000 y0_kt3,24 +3000 y0_kt3,25
 Subject to
- cons_1: +1 x_it00 = +0
- cons_1: +1 x_it01 = +0
- cons_1: +1 x_it02 = +0
- cons_1: +1 x_it03 = +0
- cons_1: +1 x_it04 = +0
- cons_1: +1 x_it05 = +0
- cons_1: +1 x_it06 = +0
- cons_1: +1 x_it07 = +0
- cons_1: +1 x_it08 = +0
- cons_1: +1 x_it09 = +0
- cons_1: +1 x_it010 -1 y_lkt10010 -1 y_lkt10110 -1 y_lkt10210 -1 y_lkt10310 -1 y_lkt11010 -1 y_lkt11110
-  -1 y_lkt11210 -1 y_lkt11310 = +0
- cons_1: +1 x_it011 -1 y_lkt10011 -1 y_lkt10111 -1 y_lkt10211 -1 y_lkt10311 -1 y_lkt11011 -1 y_lkt11111
-  -1 y_lkt11211 -1 y_lkt11311 = +0
- cons_1: +1 x_it012 -1 y_lkt10012 -1 y_lkt10112 -1 y_lkt10212 -1 y_lkt10312 -1 y_lkt11012 -1 y_lkt11112
-  -1 y_lkt11212 -1 y_lkt11312 -1 y_lkt12012 -1 y_lkt12112 -1 y_lkt12212 -1 y_lkt12312 = +0
- cons_1: +1 x_it013 -1 y_lkt10013 -1 y_lkt10113 -1 y_lkt10213 -1 y_lkt10313 -1 y_lkt11013 -1 y_lkt11113
-  -1 y_lkt11213 -1 y_lkt11313 -1 y_lkt12013 -1 y_lkt12113 -1 y_lkt12213 -1 y_lkt12313 -1 y_lkt13013 -1 y_lkt13113
-  -1 y_lkt13213 -1 y_lkt13313 = +0
- cons_1: +1 x_it014 -1 y_lkt10014 -1 y_lkt10114 -1 y_lkt10214 -1 y_lkt10314 -1 y_lkt11014 -1 y_lkt11114
-  -1 y_lkt11214 -1 y_lkt11314 -1 y_lkt13014 -1 y_lkt13114 -1 y_lkt13214 -1 y_lkt13314 = +0
- cons_1: +1 x_it015 -1 y_lkt11015 -1 y_lkt11115 -1 y_lkt11215 -1 y_lkt11315 -1 y_lkt13015 -1 y_lkt13115
-  -1 y_lkt13215 -1 y_lkt13315 = +0
- cons_1: +1 x_it016 -1 y_lkt11016 -1 y_lkt11116 -1 y_lkt11216 -1 y_lkt11316 = +0
- cons_1: +1 x_it017 = +0
- cons_1: +1 x_it018 = +0
- cons_1: +1 x_it019 = +0
- cons_1: +1 x_it020 = +0
- cons_1: +1 x_it021 = +0
- cons_1: +1 x_it022 = +0
- cons_1: +1 x_it023 = +0
- cons_1: +1 x_it024 = +0
- cons_1: +1 x_it025 = +0
- cons_1: +1 x_it10 = +0
- cons_1: +1 x_it11 = +0
- cons_1: +1 x_it12 = +0
- cons_1: +1 x_it13 = +0
- cons_1: +1 x_it14 = +0
- cons_1: +1 x_it15 = +0
- cons_1: +1 x_it16 = +0
- cons_1: +1 x_it17 = +0
- cons_1: +1 x_it18 = +0
- cons_1: +1 x_it19 = +0
- cons_1: +1 x_it110 = +0
- cons_1: +1 x_it111 = +0
- cons_1: +1 x_it112 -1 y_lkt12012 -1 y_lkt12112 -1 y_lkt12212 -1 y_lkt12312 = +0
- cons_1: +1 x_it113 -1 y_lkt12013 -1 y_lkt12113 -1 y_lkt12213 -1 y_lkt12313 -1 y_lkt13013 -1 y_lkt13113
-  -1 y_lkt13213 -1 y_lkt13313 = +0
- cons_1: +1 x_it114 -1 y_lkt13014 -1 y_lkt13114 -1 y_lkt13214 -1 y_lkt13314 = +0
- cons_1: +1 x_it115 -1 y_lkt13015 -1 y_lkt13115 -1 y_lkt13215 -1 y_lkt13315 = +0
- cons_1: +1 x_it116 = +0
- cons_1: +1 x_it117 = +0
- cons_1: +1 x_it118 = +0
- cons_1: +1 x_it119 = +0
- cons_1: +1 x_it120 = +0
- cons_1: +1 x_it121 = +0
- cons_1: +1 x_it122 = +0
- cons_1: +1 x_it123 = +0
- cons_1: +1 x_it124 = +0
- cons_1: +1 x_it125 = +0
- cons_1: +1 x_it20 = +0
- cons_1: +1 x_it21 = +0
- cons_1: +1 x_it22 = +0
- cons_1: +1 x_it23 = +0
- cons_1: +1 x_it24 = +0
- cons_1: +1 x_it25 = +0
- cons_1: +1 x_it26 = +0
- cons_1: +1 x_it27 = +0
- cons_1: +1 x_it28 = +0
- cons_1: +1 x_it29 = +0
- cons_1: +1 x_it210 = +0
- cons_1: +1 x_it211 = +0
- cons_1: +1 x_it212 = +0
- cons_1: +1 x_it213 = +0
- cons_1: +1 x_it214 = +0
- cons_1: +1 x_it215 = +0
- cons_1: +1 x_it216 = +0
- cons_1: +1 x_it217 -1 y_lkt17017 -1 y_lkt17117 -1 y_lkt17217 -1 y_lkt17317 -1 y_lkt18017 -1 y_lkt18117
-  -1 y_lkt18217 -1 y_lkt18317 = +0
- cons_1: +1 x_it218 -1 y_lkt17018 -1 y_lkt17118 -1 y_lkt17218 -1 y_lkt17318 -1 y_lkt18018 -1 y_lkt18118
-  -1 y_lkt18218 -1 y_lkt18318 = +0
- cons_1: +1 x_it219 -1 y_lkt17019 -1 y_lkt17119 -1 y_lkt17219 -1 y_lkt17319 -1 y_lkt18019 -1 y_lkt18119
-  -1 y_lkt18219 -1 y_lkt18319 = +0
- cons_1: +1 x_it220 -1 y_lkt18020 -1 y_lkt18120 -1 y_lkt18220 -1 y_lkt18320 = +0
- cons_1: +1 x_it221 = +0
- cons_1: +1 x_it222 = +0
- cons_1: +1 x_it223 = +0
- cons_1: +1 x_it224 = +0
- cons_1: +1 x_it225 = +0
- cons_1: +1 x_it30 = +0
- cons_1: +1 x_it31 = +0
- cons_1: +1 x_it32 = +0
- cons_1: +1 x_it33 = +0
- cons_1: +1 x_it34 -1 y_lkt404 -1 y_lkt414 -1 y_lkt424 -1 y_lkt434 = +0
- cons_1: +1 x_it35 -1 y_lkt405 -1 y_lkt415 -1 y_lkt425 -1 y_lkt435 -1 y_lkt505 -1 y_lkt515 -1 y_lkt525
-  -1 y_lkt535 = +0
- cons_1: +1 x_it36 -1 y_lkt506 -1 y_lkt516 -1 y_lkt526 -1 y_lkt536 = +0
- cons_1: +1 x_it37 -1 y_lkt507 -1 y_lkt517 -1 y_lkt527 -1 y_lkt537 = +0
- cons_1: +1 x_it38 = +0
- cons_1: +1 x_it39 = +0
- cons_1: +1 x_it310 = +0
- cons_1: +1 x_it311 = +0
- cons_1: +1 x_it312 = +0
- cons_1: +1 x_it313 = +0
- cons_1: +1 x_it314 = +0
- cons_1: +1 x_it315 = +0
- cons_1: +1 x_it316 = +0
- cons_1: +1 x_it317 = +0
- cons_1: +1 x_it318 = +0
- cons_1: +1 x_it319 = +0
- cons_1: +1 x_it320 = +0
- cons_1: +1 x_it321 = +0
- cons_1: +1 x_it322 = +0
- cons_1: +1 x_it323 = +0
- cons_1: +1 x_it324 = +0
- cons_1: +1 x_it325 = +0
- cons_1: +1 x_it40 = +0
- cons_1: +1 x_it41 = +0
- cons_1: +1 x_it42 = +0
- cons_1: +1 x_it43 = +0
- cons_1: +1 x_it44 = +0
- cons_1: +1 x_it45 = +0
- cons_1: +1 x_it46 = +0
- cons_1: +1 x_it47 = +0
- cons_1: +1 x_it48 -1 y_lkt808 -1 y_lkt818 -1 y_lkt828 -1 y_lkt838 = +0
- cons_1: +1 x_it49 -1 y_lkt809 -1 y_lkt819 -1 y_lkt829 -1 y_lkt839 -1 y_lkt909 -1 y_lkt919 -1 y_lkt929
-  -1 y_lkt939 = +0
- cons_1: +1 x_it410 -1 y_lkt9010 -1 y_lkt9110 -1 y_lkt9210 -1 y_lkt9310 -1 y_lkt10010 -1 y_lkt10110 -1 y_lkt10210
-  -1 y_lkt10310 = +0
- cons_1: +1 x_it411 -1 y_lkt9011 -1 y_lkt9111 -1 y_lkt9211 -1 y_lkt9311 -1 y_lkt10011 -1 y_lkt10111 -1 y_lkt10211
-  -1 y_lkt10311 = +0
- cons_1: +1 x_it412 -1 y_lkt9012 -1 y_lkt9112 -1 y_lkt9212 -1 y_lkt9312 -1 y_lkt10012 -1 y_lkt10112 -1 y_lkt10212
-  -1 y_lkt10312 = +0
- cons_1: +1 x_it413 -1 y_lkt9013 -1 y_lkt9113 -1 y_lkt9213 -1 y_lkt9313 -1 y_lkt10013 -1 y_lkt10113 -1 y_lkt10213
-  -1 y_lkt10313 = +0
- cons_1: +1 x_it414 -1 y_lkt9014 -1 y_lkt9114 -1 y_lkt9214 -1 y_lkt9314 -1 y_lkt10014 -1 y_lkt10114 -1 y_lkt10214
-  -1 y_lkt10314 = +0
- cons_1: +1 x_it415 = +0
- cons_1: +1 x_it416 = +0
- cons_1: +1 x_it417 = +0
- cons_1: +1 x_it418 = +0
- cons_1: +1 x_it419 = +0
- cons_1: +1 x_it420 = +0
- cons_1: +1 x_it421 = +0
- cons_1: +1 x_it422 = +0
- cons_1: +1 x_it423 = +0
- cons_1: +1 x_it424 = +0
- cons_1: +1 x_it425 = +0
- cons_1: +1 x_it50 = +0
- cons_1: +1 x_it51 = +0
- cons_1: +1 x_it52 = +0
- cons_1: +1 x_it53 = +0
- cons_1: +1 x_it54 -1 y_lkt404 -1 y_lkt414 -1 y_lkt424 -1 y_lkt434 = +0
- cons_1: +1 x_it55 -1 y_lkt405 -1 y_lkt415 -1 y_lkt425 -1 y_lkt435 -1 y_lkt505 -1 y_lkt515 -1 y_lkt525
-  -1 y_lkt535 = +0
- cons_1: +1 x_it56 -1 y_lkt506 -1 y_lkt516 -1 y_lkt526 -1 y_lkt536 = +0
- cons_1: +1 x_it57 -1 y_lkt507 -1 y_lkt517 -1 y_lkt527 -1 y_lkt537 = +0
- cons_1: +1 x_it58 = +0
- cons_1: +1 x_it59 = +0
- cons_1: +1 x_it510 = +0
- cons_1: +1 x_it511 = +0
- cons_1: +1 x_it512 = +0
- cons_1: +1 x_it513 = +0
- cons_1: +1 x_it514 = +0
- cons_1: +1 x_it515 = +0
- cons_1: +1 x_it516 = +0
- cons_1: +1 x_it517 = +0
- cons_1: +1 x_it518 = +0
- cons_1: +1 x_it519 = +0
- cons_1: +1 x_it520 = +0
- cons_1: +1 x_it521 = +0
- cons_1: +1 x_it522 = +0
- cons_1: +1 x_it523 = +0
- cons_1: +1 x_it524 = +0
- cons_1: +1 x_it525 = +0
- cons_1: +1 x_it60 = +0
- cons_1: +1 x_it61 = +0
- cons_1: +1 x_it62 -1 y_lkt202 -1 y_lkt212 -1 y_lkt222 -1 y_lkt232 = +0
- cons_1: +1 x_it63 -1 y_lkt203 -1 y_lkt213 -1 y_lkt223 -1 y_lkt233 -1 y_lkt303 -1 y_lkt313 -1 y_lkt323
-  -1 y_lkt333 = +0
- cons_1: +1 x_it64 -1 y_lkt204 -1 y_lkt214 -1 y_lkt224 -1 y_lkt234 -1 y_lkt304 -1 y_lkt314 -1 y_lkt324
-  -1 y_lkt334 -1 y_lkt404 -1 y_lkt414 -1 y_lkt424 -1 y_lkt434 = +0
- cons_1: +1 x_it65 -1 y_lkt305 -1 y_lkt315 -1 y_lkt325 -1 y_lkt335 -1 y_lkt405 -1 y_lkt415 -1 y_lkt425
-  -1 y_lkt435 = +0
- cons_1: +1 x_it66 -1 y_lkt306 -1 y_lkt316 -1 y_lkt326 -1 y_lkt336 = +0
- cons_1: +1 x_it67 = +0
- cons_1: +1 x_it68 = +0
- cons_1: +1 x_it69 = +0
- cons_1: +1 x_it610 = +0
- cons_1: +1 x_it611 = +0
- cons_1: +1 x_it612 = +0
- cons_1: +1 x_it613 = +0
- cons_1: +1 x_it614 = +0
- cons_1: +1 x_it615 = +0
- cons_1: +1 x_it616 = +0
- cons_1: +1 x_it617 = +0
- cons_1: +1 x_it618 = +0
- cons_1: +1 x_it619 = +0
- cons_1: +1 x_it620 = +0
- cons_1: +1 x_it621 = +0
- cons_1: +1 x_it622 = +0
- cons_1: +1 x_it623 = +0
- cons_1: +1 x_it624 = +0
- cons_1: +1 x_it625 = +0
- cons_1: +1 x_it70 = +0
- cons_1: +1 x_it71 = +0
- cons_1: +1 x_it72 = +0
- cons_1: +1 x_it73 = +0
- cons_1: +1 x_it74 = +0
- cons_1: +1 x_it75 = +0
- cons_1: +1 x_it76 = +0
- cons_1: +1 x_it77 = +0
- cons_1: +1 x_it78 = +0
- cons_1: +1 x_it79 = +0
- cons_1: +1 x_it710 = +0
- cons_1: +1 x_it711 = +0
- cons_1: +1 x_it712 = +0
- cons_1: +1 x_it713 = +0
- cons_1: +1 x_it714 = +0
- cons_1: +1 x_it715 = +0
- cons_1: +1 x_it716 = +0
- cons_1: +1 x_it717 -1 y_lkt17017 -1 y_lkt17117 -1 y_lkt17217 -1 y_lkt17317 -1 y_lkt18017 -1 y_lkt18117
-  -1 y_lkt18217 -1 y_lkt18317 = +0
- cons_1: +1 x_it718 -1 y_lkt17018 -1 y_lkt17118 -1 y_lkt17218 -1 y_lkt17318 -1 y_lkt18018 -1 y_lkt18118
-  -1 y_lkt18218 -1 y_lkt18318 = +0
- cons_1: +1 x_it719 -1 y_lkt17019 -1 y_lkt17119 -1 y_lkt17219 -1 y_lkt17319 -1 y_lkt18019 -1 y_lkt18119
-  -1 y_lkt18219 -1 y_lkt18319 = +0
- cons_1: +1 x_it720 -1 y_lkt18020 -1 y_lkt18120 -1 y_lkt18220 -1 y_lkt18320 = +0
- cons_1: +1 x_it721 = +0
- cons_1: +1 x_it722 = +0
- cons_1: +1 x_it723 = +0
- cons_1: +1 x_it724 = +0
- cons_1: +1 x_it725 = +0
- cons_1: +1 x_it80 = +0
- cons_1: +1 x_it81 = +0
- cons_1: +1 x_it82 = +0
- cons_1: +1 x_it83 = +0
- cons_1: +1 x_it84 = +0
- cons_1: +1 x_it85 = +0
- cons_1: +1 x_it86 = +0
- cons_1: +1 x_it87 = +0
- cons_1: +1 x_it88 = +0
- cons_1: +1 x_it89 = +0
- cons_1: +1 x_it810 = +0
- cons_1: +1 x_it811 = +0
- cons_1: +1 x_it812 = +0
- cons_1: +1 x_it813 = +0
- cons_1: +1 x_it814 = +0
- cons_1: +1 x_it815 -1 y_lkt15015 -1 y_lkt15115 -1 y_lkt15215 -1 y_lkt15315 = +0
- cons_1: +1 x_it816 -1 y_lkt15016 -1 y_lkt15116 -1 y_lkt15216 -1 y_lkt15316 -1 y_lkt16016 -1 y_lkt16116
-  -1 y_lkt16216 -1 y_lkt16316 = +0
- cons_1: +1 x_it817 -1 y_lkt15017 -1 y_lkt15117 -1 y_lkt15217 -1 y_lkt15317 -1 y_lkt16017 -1 y_lkt16117
-  -1 y_lkt16217 -1 y_lkt16317 = +0
- cons_1: +1 x_it818 -1 y_lkt15018 -1 y_lkt15118 -1 y_lkt15218 -1 y_lkt15318 -1 y_lkt16018 -1 y_lkt16118
-  -1 y_lkt16218 -1 y_lkt16318 = +0
- cons_1: +1 x_it819 = +0
- cons_1: +1 x_it820 = +0
- cons_1: +1 x_it821 = +0
- cons_1: +1 x_it822 = +0
- cons_1: +1 x_it823 = +0
- cons_1: +1 x_it824 = +0
- cons_1: +1 x_it825 = +0
- cons_1: +1 x_it90 -1 y_lkt000 -1 y_lkt010 -1 y_lkt020 -1 y_lkt030 = +0
- cons_1: +1 x_it91 -1 y_lkt001 -1 y_lkt011 -1 y_lkt021 -1 y_lkt031 -1 y_lkt101 -1 y_lkt111 -1 y_lkt121
-  -1 y_lkt131 = +0
- cons_1: +1 x_it92 -1 y_lkt002 -1 y_lkt012 -1 y_lkt022 -1 y_lkt032 -1 y_lkt102 -1 y_lkt112 -1 y_lkt122
-  -1 y_lkt132 -1 y_lkt202 -1 y_lkt212 -1 y_lkt222 -1 y_lkt232 = +0
- cons_1: +1 x_it93 -1 y_lkt003 -1 y_lkt013 -1 y_lkt023 -1 y_lkt033 -1 y_lkt103 -1 y_lkt113 -1 y_lkt123
-  -1 y_lkt133 -1 y_lkt203 -1 y_lkt213 -1 y_lkt223 -1 y_lkt233 -1 y_lkt303 -1 y_lkt313 -1 y_lkt323 -1 y_lkt333
+ cons_1: +1 x_it0,10 -1 y_lkt10,0,10 -1 y_lkt10,1,10 -1 y_lkt10,2,10 -1 y_lkt10,3,10 -1 y_lkt11,0,10 -1 y_lkt11,1,10
+  -1 y_lkt11,2,10 -1 y_lkt11,3,10 = +0
+ cons_1: +1 x_it0,11 -1 y_lkt10,0,11 -1 y_lkt10,1,11 -1 y_lkt10,2,11 -1 y_lkt10,3,11 -1 y_lkt11,0,11 -1 y_lkt11,1,11
+  -1 y_lkt11,2,11 -1 y_lkt11,3,11 = +0
+ cons_1: +1 x_it0,12 -1 y_lkt10,0,12 -1 y_lkt10,1,12 -1 y_lkt10,2,12 -1 y_lkt10,3,12 -1 y_lkt11,0,12 -1 y_lkt11,1,12
+  -1 y_lkt11,2,12 -1 y_lkt11,3,12 -1 y_lkt12,0,12 -1 y_lkt12,1,12 -1 y_lkt12,2,12 -1 y_lkt12,3,12 = +0
+ cons_1: +1 x_it0,13 -1 y_lkt10,0,13 -1 y_lkt10,1,13 -1 y_lkt10,2,13 -1 y_lkt10,3,13 -1 y_lkt11,0,13 -1 y_lkt11,1,13
+  -1 y_lkt11,2,13 -1 y_lkt11,3,13 -1 y_lkt12,0,13 -1 y_lkt12,1,13 -1 y_lkt12,2,13 -1 y_lkt12,3,13 -1 y_lkt13,0,13
+  -1 y_lkt13,1,13 -1 y_lkt13,2,13 -1 y_lkt13,3,13 = +0
+ cons_1: +1 x_it0,14 -1 y_lkt10,0,14 -1 y_lkt10,1,14 -1 y_lkt10,2,14 -1 y_lkt10,3,14 -1 y_lkt11,0,14 -1 y_lkt11,1,14
+  -1 y_lkt11,2,14 -1 y_lkt11,3,14 -1 y_lkt13,0,14 -1 y_lkt13,1,14 -1 y_lkt13,2,14 -1 y_lkt13,3,14 = +0
+ cons_1: +1 x_it0,15 -1 y_lkt11,0,15 -1 y_lkt11,1,15 -1 y_lkt11,2,15 -1 y_lkt11,3,15 -1 y_lkt13,0,15 -1 y_lkt13,1,15
+  -1 y_lkt13,2,15 -1 y_lkt13,3,15 = +0
+ cons_1: +1 x_it0,16 -1 y_lkt11,0,16 -1 y_lkt11,1,16 -1 y_lkt11,2,16 -1 y_lkt11,3,16 = +0
+ cons_1: +1 x_it0,17 = +0
+ cons_1: +1 x_it0,18 = +0
+ cons_1: +1 x_it1,12 -1 y_lkt12,0,12 -1 y_lkt12,1,12 -1 y_lkt12,2,12 -1 y_lkt12,3,12 = +0
+ cons_1: +1 x_it1,13 -1 y_lkt12,0,13 -1 y_lkt12,1,13 -1 y_lkt12,2,13 -1 y_lkt12,3,13 -1 y_lkt13,0,13 -1 y_lkt13,1,13
+  -1 y_lkt13,2,13 -1 y_lkt13,3,13 = +0
+ cons_1: +1 x_it1,14 -1 y_lkt13,0,14 -1 y_lkt13,1,14 -1 y_lkt13,2,14 -1 y_lkt13,3,14 = +0
+ cons_1: +1 x_it1,15 -1 y_lkt13,0,15 -1 y_lkt13,1,15 -1 y_lkt13,2,15 -1 y_lkt13,3,15 = +0
+ cons_1: +1 x_it1,16 = +0
+ cons_1: +1 x_it2,17 -1 y_lkt17,0,17 -1 y_lkt17,1,17 -1 y_lkt17,2,17 -1 y_lkt17,3,17 -1 y_lkt18,0,17 -1 y_lkt18,1,17
+  -1 y_lkt18,2,17 -1 y_lkt18,3,17 = +0
+ cons_1: +1 x_it2,18 -1 y_lkt17,0,18 -1 y_lkt17,1,18 -1 y_lkt17,2,18 -1 y_lkt17,3,18 -1 y_lkt18,0,18 -1 y_lkt18,1,18
+  -1 y_lkt18,2,18 -1 y_lkt18,3,18 = +0
+ cons_1: +1 x_it2,19 -1 y_lkt17,0,19 -1 y_lkt17,1,19 -1 y_lkt17,2,19 -1 y_lkt17,3,19 -1 y_lkt18,0,19 -1 y_lkt18,1,19
+  -1 y_lkt18,2,19 -1 y_lkt18,3,19 = +0
+ cons_1: +1 x_it2,20 -1 y_lkt18,0,20 -1 y_lkt18,1,20 -1 y_lkt18,2,20 -1 y_lkt18,3,20 = +0
+ cons_1: +1 x_it3,4 -1 y_lkt4,0,4 -1 y_lkt4,1,4 -1 y_lkt4,2,4 -1 y_lkt4,3,4 = +0
+ cons_1: +1 x_it3,5 -1 y_lkt4,0,5 -1 y_lkt4,1,5 -1 y_lkt4,2,5 -1 y_lkt4,3,5 -1 y_lkt5,0,5 -1 y_lkt5,1,5
+  -1 y_lkt5,2,5 -1 y_lkt5,3,5 = +0
+ cons_1: +1 x_it3,6 -1 y_lkt5,0,6 -1 y_lkt5,1,6 -1 y_lkt5,2,6 -1 y_lkt5,3,6 = +0
+ cons_1: +1 x_it3,7 -1 y_lkt5,0,7 -1 y_lkt5,1,7 -1 y_lkt5,2,7 -1 y_lkt5,3,7 = +0
+ cons_1: +1 x_it4,8 -1 y_lkt8,0,8 -1 y_lkt8,1,8 -1 y_lkt8,2,8 -1 y_lkt8,3,8 = +0
+ cons_1: +1 x_it4,9 -1 y_lkt8,0,9 -1 y_lkt8,1,9 -1 y_lkt8,2,9 -1 y_lkt8,3,9 -1 y_lkt9,0,9 -1 y_lkt9,1,9
+  -1 y_lkt9,2,9 -1 y_lkt9,3,9 = +0
+ cons_1: +1 x_it4,10 -1 y_lkt9,0,10 -1 y_lkt9,1,10 -1 y_lkt9,2,10 -1 y_lkt9,3,10 -1 y_lkt10,0,10 -1 y_lkt10,1,10
+  -1 y_lkt10,2,10 -1 y_lkt10,3,10 = +0
+ cons_1: +1 x_it4,11 -1 y_lkt9,0,11 -1 y_lkt9,1,11 -1 y_lkt9,2,11 -1 y_lkt9,3,11 -1 y_lkt10,0,11 -1 y_lkt10,1,11
+  -1 y_lkt10,2,11 -1 y_lkt10,3,11 = +0
+ cons_1: +1 x_it4,12 -1 y_lkt9,0,12 -1 y_lkt9,1,12 -1 y_lkt9,2,12 -1 y_lkt9,3,12 -1 y_lkt10,0,12 -1 y_lkt10,1,12
+  -1 y_lkt10,2,12 -1 y_lkt10,3,12 = +0
+ cons_1: +1 x_it4,13 -1 y_lkt9,0,13 -1 y_lkt9,1,13 -1 y_lkt9,2,13 -1 y_lkt9,3,13 -1 y_lkt10,0,13 -1 y_lkt10,1,13
+  -1 y_lkt10,2,13 -1 y_lkt10,3,13 = +0
+ cons_1: +1 x_it4,14 -1 y_lkt9,0,14 -1 y_lkt9,1,14 -1 y_lkt9,2,14 -1 y_lkt9,3,14 -1 y_lkt10,0,14 -1 y_lkt10,1,14
+  -1 y_lkt10,2,14 -1 y_lkt10,3,14 = +0
+ cons_1: +1 x_it4,15 = +0
+ cons_1: +1 x_it4,16 = +0
+ cons_1: +1 x_it4,17 = +0
+ cons_1: +1 x_it4,18 = +0
+ cons_1: +1 x_it5,4 -1 y_lkt4,0,4 -1 y_lkt4,1,4 -1 y_lkt4,2,4 -1 y_lkt4,3,4 = +0
+ cons_1: +1 x_it5,5 -1 y_lkt4,0,5 -1 y_lkt4,1,5 -1 y_lkt4,2,5 -1 y_lkt4,3,5 -1 y_lkt5,0,5 -1 y_lkt5,1,5
+  -1 y_lkt5,2,5 -1 y_lkt5,3,5 = +0
+ cons_1: +1 x_it5,6 -1 y_lkt5,0,6 -1 y_lkt5,1,6 -1 y_lkt5,2,6 -1 y_lkt5,3,6 = +0
+ cons_1: +1 x_it5,7 -1 y_lkt5,0,7 -1 y_lkt5,1,7 -1 y_lkt5,2,7 -1 y_lkt5,3,7 = +0
+ cons_1: +1 x_it6,2 -1 y_lkt2,0,2 -1 y_lkt2,1,2 -1 y_lkt2,2,2 -1 y_lkt2,3,2 = +0
+ cons_1: +1 x_it6,3 -1 y_lkt2,0,3 -1 y_lkt2,1,3 -1 y_lkt2,2,3 -1 y_lkt2,3,3 -1 y_lkt3,0,3 -1 y_lkt3,1,3
+  -1 y_lkt3,2,3 -1 y_lkt3,3,3 = +0
+ cons_1: +1 x_it6,4 -1 y_lkt2,0,4 -1 y_lkt2,1,4 -1 y_lkt2,2,4 -1 y_lkt2,3,4 -1 y_lkt3,0,4 -1 y_lkt3,1,4
+  -1 y_lkt3,2,4 -1 y_lkt3,3,4 -1 y_lkt4,0,4 -1 y_lkt4,1,4 -1 y_lkt4,2,4 -1 y_lkt4,3,4 = +0
+ cons_1: +1 x_it6,5 -1 y_lkt3,0,5 -1 y_lkt3,1,5 -1 y_lkt3,2,5 -1 y_lkt3,3,5 -1 y_lkt4,0,5 -1 y_lkt4,1,5
+  -1 y_lkt4,2,5 -1 y_lkt4,3,5 = +0
+ cons_1: +1 x_it6,6 -1 y_lkt3,0,6 -1 y_lkt3,1,6 -1 y_lkt3,2,6 -1 y_lkt3,3,6 = +0
+ cons_1: +1 x_it6,7 = +0
+ cons_1: +1 x_it6,8 = +0
+ cons_1: +1 x_it6,9 = +0
+ cons_1: +1 x_it6,10 = +0
+ cons_1: +1 x_it6,11 = +0
+ cons_1: +1 x_it7,17 -1 y_lkt17,0,17 -1 y_lkt17,1,17 -1 y_lkt17,2,17 -1 y_lkt17,3,17 -1 y_lkt18,0,17 -1 y_lkt18,1,17
+  -1 y_lkt18,2,17 -1 y_lkt18,3,17 = +0
+ cons_1: +1 x_it7,18 -1 y_lkt17,0,18 -1 y_lkt17,1,18 -1 y_lkt17,2,18 -1 y_lkt17,3,18 -1 y_lkt18,0,18 -1 y_lkt18,1,18
+  -1 y_lkt18,2,18 -1 y_lkt18,3,18 = +0
+ cons_1: +1 x_it7,19 -1 y_lkt17,0,19 -1 y_lkt17,1,19 -1 y_lkt17,2,19 -1 y_lkt17,3,19 -1 y_lkt18,0,19 -1 y_lkt18,1,19
+  -1 y_lkt18,2,19 -1 y_lkt18,3,19 = +0
+ cons_1: +1 x_it7,20 -1 y_lkt18,0,20 -1 y_lkt18,1,20 -1 y_lkt18,2,20 -1 y_lkt18,3,20 = +0
+ cons_1: +1 x_it7,21 = +0
+ cons_1: +1 x_it8,15 -1 y_lkt15,0,15 -1 y_lkt15,1,15 -1 y_lkt15,2,15 -1 y_lkt15,3,15 = +0
+ cons_1: +1 x_it8,16 -1 y_lkt15,0,16 -1 y_lkt15,1,16 -1 y_lkt15,2,16 -1 y_lkt15,3,16 -1 y_lkt16,0,16 -1 y_lkt16,1,16
+  -1 y_lkt16,2,16 -1 y_lkt16,3,16 = +0
+ cons_1: +1 x_it8,17 -1 y_lkt15,0,17 -1 y_lkt15,1,17 -1 y_lkt15,2,17 -1 y_lkt15,3,17 -1 y_lkt16,0,17 -1 y_lkt16,1,17
+  -1 y_lkt16,2,17 -1 y_lkt16,3,17 = +0
+ cons_1: +1 x_it8,18 -1 y_lkt15,0,18 -1 y_lkt15,1,18 -1 y_lkt15,2,18 -1 y_lkt15,3,18 -1 y_lkt16,0,18 -1 y_lkt16,1,18
+  -1 y_lkt16,2,18 -1 y_lkt16,3,18 = +0
+ cons_1: +1 x_it9,0 -1 y_lkt0,0,0 -1 y_lkt0,1,0 -1 y_lkt0,2,0 -1 y_lkt0,3,0 = +0
+ cons_1: +1 x_it9,1 -1 y_lkt0,0,1 -1 y_lkt0,1,1 -1 y_lkt0,2,1 -1 y_lkt0,3,1 -1 y_lkt1,0,1 -1 y_lkt1,1,1
+  -1 y_lkt1,2,1 -1 y_lkt1,3,1 = +0
+ cons_1: +1 x_it9,2 -1 y_lkt0,0,2 -1 y_lkt0,1,2 -1 y_lkt0,2,2 -1 y_lkt0,3,2 -1 y_lkt1,0,2 -1 y_lkt1,1,2
+  -1 y_lkt1,2,2 -1 y_lkt1,3,2 -1 y_lkt2,0,2 -1 y_lkt2,1,2 -1 y_lkt2,2,2 -1 y_lkt2,3,2 = +0
+ cons_1: +1 x_it9,3 -1 y_lkt0,0,3 -1 y_lkt0,1,3 -1 y_lkt0,2,3 -1 y_lkt0,3,3 -1 y_lkt1,0,3 -1 y_lkt1,1,3
+  -1 y_lkt1,2,3 -1 y_lkt1,3,3 -1 y_lkt2,0,3 -1 y_lkt2,1,3 -1 y_lkt2,2,3 -1 y_lkt2,3,3 -1 y_lkt3,0,3 -1 y_lkt3,1,3
+  -1 y_lkt3,2,3 -1 y_lkt3,3,3 = +0
+ cons_1: +1 x_it9,4 -1 y_lkt0,0,4 -1 y_lkt0,1,4 -1 y_lkt0,2,4 -1 y_lkt0,3,4 -1 y_lkt1,0,4 -1 y_lkt1,1,4
+  -1 y_lkt1,2,4 -1 y_lkt1,3,4 -1 y_lkt2,0,4 -1 y_lkt2,1,4 -1 y_lkt2,2,4 -1 y_lkt2,3,4 -1 y_lkt3,0,4 -1 y_lkt3,1,4
+  -1 y_lkt3,2,4 -1 y_lkt3,3,4 = +0
+ cons_1: +1 x_it9,5 -1 y_lkt0,0,5 -1 y_lkt0,1,5 -1 y_lkt0,2,5 -1 y_lkt0,3,5 -1 y_lkt3,0,5 -1 y_lkt3,1,5
+  -1 y_lkt3,2,5 -1 y_lkt3,3,5 = +0
+ cons_1: +1 x_it9,6 -1 y_lkt0,0,6 -1 y_lkt0,1,6 -1 y_lkt0,2,6 -1 y_lkt0,3,6 -1 y_lkt3,0,6 -1 y_lkt3,1,6
+  -1 y_lkt3,2,6 -1 y_lkt3,3,6 = +0
+ cons_1: +1 x_it9,7 -1 y_lkt0,0,7 -1 y_lkt0,1,7 -1 y_lkt0,2,7 -1 y_lkt0,3,7 = +0
+ cons_1: +1 x_it9,8 -1 y_lkt0,0,8 -1 y_lkt0,1,8 -1 y_lkt0,2,8 -1 y_lkt0,3,8 = +0
+ cons_1: +1 x_it10,16 -1 y_lkt16,0,16 -1 y_lkt16,1,16 -1 y_lkt16,2,16 -1 y_lkt16,3,16 = +0
+ cons_1: +1 x_it10,17 -1 y_lkt16,0,17 -1 y_lkt16,1,17 -1 y_lkt16,2,17 -1 y_lkt16,3,17 -1 y_lkt17,0,17
+  -1 y_lkt17,1,17 -1 y_lkt17,2,17 -1 y_lkt17,3,17 = +0
+ cons_1: +1 x_it10,18 -1 y_lkt16,0,18 -1 y_lkt16,1,18 -1 y_lkt16,2,18 -1 y_lkt16,3,18 -1 y_lkt17,0,18
+  -1 y_lkt17,1,18 -1 y_lkt17,2,18 -1 y_lkt17,3,18 = +0
+ cons_1: +1 x_it10,19 -1 y_lkt17,0,19 -1 y_lkt17,1,19 -1 y_lkt17,2,19 -1 y_lkt17,3,19 = +0
+ cons_1: +1 x_it11,5 -1 y_lkt5,0,5 -1 y_lkt5,1,5 -1 y_lkt5,2,5 -1 y_lkt5,3,5 = +0
+ cons_1: +1 x_it11,6 -1 y_lkt5,0,6 -1 y_lkt5,1,6 -1 y_lkt5,2,6 -1 y_lkt5,3,6 -1 y_lkt6,0,6 -1 y_lkt6,1,6
+  -1 y_lkt6,2,6 -1 y_lkt6,3,6 = +0
+ cons_1: +1 x_it11,7 -1 y_lkt5,0,7 -1 y_lkt5,1,7 -1 y_lkt5,2,7 -1 y_lkt5,3,7 -1 y_lkt6,0,7 -1 y_lkt6,1,7
+  -1 y_lkt6,2,7 -1 y_lkt6,3,7 = +0
+ cons_1: +1 x_it11,8 -1 y_lkt6,0,8 -1 y_lkt6,1,8 -1 y_lkt6,2,8 -1 y_lkt6,3,8 = +0
+ cons_1: +1 x_it11,9 -1 y_lkt6,0,9 -1 y_lkt6,1,9 -1 y_lkt6,2,9 -1 y_lkt6,3,9 = +0
+ cons_1: +1 x_it12,3 -1 y_lkt3,0,3 -1 y_lkt3,1,3 -1 y_lkt3,2,3 -1 y_lkt3,3,3 = +0
+ cons_1: +1 x_it12,4 -1 y_lkt3,0,4 -1 y_lkt3,1,4 -1 y_lkt3,2,4 -1 y_lkt3,3,4 -1 y_lkt4,0,4 -1 y_lkt4,1,4
+  -1 y_lkt4,2,4 -1 y_lkt4,3,4 = +0
+ cons_1: +1 x_it12,5 -1 y_lkt3,0,5 -1 y_lkt3,1,5 -1 y_lkt3,2,5 -1 y_lkt3,3,5 -1 y_lkt4,0,5 -1 y_lkt4,1,5
+  -1 y_lkt4,2,5 -1 y_lkt4,3,5 -1 y_lkt5,0,5 -1 y_lkt5,1,5 -1 y_lkt5,2,5 -1 y_lkt5,3,5 = +0
+ cons_1: +1 x_it12,6 -1 y_lkt3,0,6 -1 y_lkt3,1,6 -1 y_lkt3,2,6 -1 y_lkt3,3,6 -1 y_lkt5,0,6 -1 y_lkt5,1,6
+  -1 y_lkt5,2,6 -1 y_lkt5,3,6 = +0
+ cons_1: +1 x_it12,7 -1 y_lkt5,0,7 -1 y_lkt5,1,7 -1 y_lkt5,2,7 -1 y_lkt5,3,7 = +0
+ cons_1: +1 x_it12,8 = +0
+ cons_1: +1 x_it12,9 = +0
+ cons_1: +1 x_it13,9 -1 y_lkt9,0,9 -1 y_lkt9,1,9 -1 y_lkt9,2,9 -1 y_lkt9,3,9 = +0
+ cons_1: +1 x_it13,10 -1 y_lkt9,0,10 -1 y_lkt9,1,10 -1 y_lkt9,2,10 -1 y_lkt9,3,10 -1 y_lkt10,0,10 -1 y_lkt10,1,10
+  -1 y_lkt10,2,10 -1 y_lkt10,3,10 -1 y_lkt11,0,10 -1 y_lkt11,1,10 -1 y_lkt11,2,10 -1 y_lkt11,3,10 = +0
+ cons_1: +1 x_it13,11 -1 y_lkt9,0,11 -1 y_lkt9,1,11 -1 y_lkt9,2,11 -1 y_lkt9,3,11 -1 y_lkt10,0,11 -1 y_lkt10,1,11
+  -1 y_lkt10,2,11 -1 y_lkt10,3,11 -1 y_lkt11,0,11 -1 y_lkt11,1,11 -1 y_lkt11,2,11 -1 y_lkt11,3,11 = +0
+ cons_1: +1 x_it13,12 -1 y_lkt9,0,12 -1 y_lkt9,1,12 -1 y_lkt9,2,12 -1 y_lkt9,3,12 -1 y_lkt10,0,12 -1 y_lkt10,1,12
+  -1 y_lkt10,2,12 -1 y_lkt10,3,12 -1 y_lkt11,0,12 -1 y_lkt11,1,12 -1 y_lkt11,2,12 -1 y_lkt11,3,12 -1 y_lkt12,0,12
+  -1 y_lkt12,1,12 -1 y_lkt12,2,12 -1 y_lkt12,3,12 = +0
+ cons_1: +1 x_it13,13 -1 y_lkt9,0,13 -1 y_lkt9,1,13 -1 y_lkt9,2,13 -1 y_lkt9,3,13 -1 y_lkt10,0,13 -1 y_lkt10,1,13
+  -1 y_lkt10,2,13 -1 y_lkt10,3,13 -1 y_lkt11,0,13 -1 y_lkt11,1,13 -1 y_lkt11,2,13 -1 y_lkt11,3,13 -1 y_lkt12,0,13
+  -1 y_lkt12,1,13 -1 y_lkt12,2,13 -1 y_lkt12,3,13 = +0
+ cons_1: +1 x_it13,14 -1 y_lkt9,0,14 -1 y_lkt9,1,14 -1 y_lkt9,2,14 -1 y_lkt9,3,14 -1 y_lkt10,0,14 -1 y_lkt10,1,14
+  -1 y_lkt10,2,14 -1 y_lkt10,3,14 -1 y_lkt11,0,14 -1 y_lkt11,1,14 -1 y_lkt11,2,14 -1 y_lkt11,3,14 = +0
+ cons_1: +1 x_it13,15 -1 y_lkt11,0,15 -1 y_lkt11,1,15 -1 y_lkt11,2,15 -1 y_lkt11,3,15 = +0
+ cons_1: +1 x_it13,16 -1 y_lkt11,0,16 -1 y_lkt11,1,16 -1 y_lkt11,2,16 -1 y_lkt11,3,16 = +0
+ cons_1: +1 x_it14,2 -1 y_lkt2,0,2 -1 y_lkt2,1,2 -1 y_lkt2,2,2 -1 y_lkt2,3,2 = +0
+ cons_1: +1 x_it14,3 -1 y_lkt2,0,3 -1 y_lkt2,1,3 -1 y_lkt2,2,3 -1 y_lkt2,3,3 -1 y_lkt3,0,3 -1 y_lkt3,1,3
+  -1 y_lkt3,2,3 -1 y_lkt3,3,3 = +0
+ cons_1: +1 x_it14,4 -1 y_lkt2,0,4 -1 y_lkt2,1,4 -1 y_lkt2,2,4 -1 y_lkt2,3,4 -1 y_lkt3,0,4 -1 y_lkt3,1,4
+  -1 y_lkt3,2,4 -1 y_lkt3,3,4 = +0
+ cons_1: +1 x_it14,5 -1 y_lkt3,0,5 -1 y_lkt3,1,5 -1 y_lkt3,2,5 -1 y_lkt3,3,5 = +0
+ cons_1: +1 x_it14,6 -1 y_lkt3,0,6 -1 y_lkt3,1,6 -1 y_lkt3,2,6 -1 y_lkt3,3,6 = +0
+ cons_1: +1 x_it15,13 -1 y_lkt13,0,13 -1 y_lkt13,1,13 -1 y_lkt13,2,13 -1 y_lkt13,3,13 = +0
+ cons_1: +1 x_it15,14 -1 y_lkt13,0,14 -1 y_lkt13,1,14 -1 y_lkt13,2,14 -1 y_lkt13,3,14 -1 y_lkt14,0,14
+  -1 y_lkt14,1,14 -1 y_lkt14,2,14 -1 y_lkt14,3,14 = +0
+ cons_1: +1 x_it15,15 -1 y_lkt13,0,15 -1 y_lkt13,1,15 -1 y_lkt13,2,15 -1 y_lkt13,3,15 -1 y_lkt14,0,15
+  -1 y_lkt14,1,15 -1 y_lkt14,2,15 -1 y_lkt14,3,15 -1 y_lkt15,0,15 -1 y_lkt15,1,15 -1 y_lkt15,2,15 -1 y_lkt15,3,15
   = +0
- cons_1: +1 x_it94 -1 y_lkt004 -1 y_lkt014 -1 y_lkt024 -1 y_lkt034 -1 y_lkt104 -1 y_lkt114 -1 y_lkt124
-  -1 y_lkt134 -1 y_lkt204 -1 y_lkt214 -1 y_lkt224 -1 y_lkt234 -1 y_lkt304 -1 y_lkt314 -1 y_lkt324 -1 y_lkt334
+ cons_1: +1 x_it15,16 -1 y_lkt14,0,16 -1 y_lkt14,1,16 -1 y_lkt14,2,16 -1 y_lkt14,3,16 -1 y_lkt15,0,16
+  -1 y_lkt15,1,16 -1 y_lkt15,2,16 -1 y_lkt15,3,16 -1 y_lkt16,0,16 -1 y_lkt16,1,16 -1 y_lkt16,2,16 -1 y_lkt16,3,16
   = +0
- cons_1: +1 x_it95 -1 y_lkt005 -1 y_lkt015 -1 y_lkt025 -1 y_lkt035 -1 y_lkt305 -1 y_lkt315 -1 y_lkt325
-  -1 y_lkt335 = +0
- cons_1: +1 x_it96 -1 y_lkt006 -1 y_lkt016 -1 y_lkt026 -1 y_lkt036 -1 y_lkt306 -1 y_lkt316 -1 y_lkt326
-  -1 y_lkt336 = +0
- cons_1: +1 x_it97 -1 y_lkt007 -1 y_lkt017 -1 y_lkt027 -1 y_lkt037 = +0
- cons_1: +1 x_it98 -1 y_lkt008 -1 y_lkt018 -1 y_lkt028 -1 y_lkt038 = +0
- cons_1: +1 x_it99 = +0
- cons_1: +1 x_it910 = +0
- cons_1: +1 x_it911 = +0
- cons_1: +1 x_it912 = +0
- cons_1: +1 x_it913 = +0
- cons_1: +1 x_it914 = +0
- cons_1: +1 x_it915 = +0
- cons_1: +1 x_it916 = +0
- cons_1: +1 x_it917 = +0
- cons_1: +1 x_it918 = +0
- cons_1: +1 x_it919 = +0
- cons_1: +1 x_it920 = +0
- cons_1: +1 x_it921 = +0
- cons_1: +1 x_it922 = +0
- cons_1: +1 x_it923 = +0
- cons_1: +1 x_it924 = +0
- cons_1: +1 x_it925 = +0
- cons_1: +1 x_it100 = +0
- cons_1: +1 x_it101 = +0
- cons_1: +1 x_it102 = +0
- cons_1: +1 x_it103 = +0
- cons_1: +1 x_it104 = +0
- cons_1: +1 x_it105 = +0
- cons_1: +1 x_it106 = +0
- cons_1: +1 x_it107 = +0
- cons_1: +1 x_it108 = +0
- cons_1: +1 x_it109 = +0
- cons_1: +1 x_it1010 = +0
- cons_1: +1 x_it1011 = +0
- cons_1: +1 x_it1012 = +0
- cons_1: +1 x_it1013 = +0
- cons_1: +1 x_it1014 = +0
- cons_1: +1 x_it1015 = +0
- cons_1: +1 x_it1016 -1 y_lkt16016 -1 y_lkt16116 -1 y_lkt16216 -1 y_lkt16316 = +0
- cons_1: +1 x_it1017 -1 y_lkt16017 -1 y_lkt16117 -1 y_lkt16217 -1 y_lkt16317 -1 y_lkt17017 -1 y_lkt17117
-  -1 y_lkt17217 -1 y_lkt17317 = +0
- cons_1: +1 x_it1018 -1 y_lkt16018 -1 y_lkt16118 -1 y_lkt16218 -1 y_lkt16318 -1 y_lkt17018 -1 y_lkt17118
-  -1 y_lkt17218 -1 y_lkt17318 = +0
- cons_1: +1 x_it1019 -1 y_lkt17019 -1 y_lkt17119 -1 y_lkt17219 -1 y_lkt17319 = +0
- cons_1: +1 x_it1020 = +0
- cons_1: +1 x_it1021 = +0
- cons_1: +1 x_it1022 = +0
- cons_1: +1 x_it1023 = +0
- cons_1: +1 x_it1024 = +0
- cons_1: +1 x_it1025 = +0
- cons_1: +1 x_it110 = +0
- cons_1: +1 x_it111 = +0
- cons_1: +1 x_it112 = +0
- cons_1: +1 x_it113 = +0
- cons_1: +1 x_it114 = +0
- cons_1: +1 x_it115 -1 y_lkt505 -1 y_lkt515 -1 y_lkt525 -1 y_lkt535 = +0
- cons_1: +1 x_it116 -1 y_lkt506 -1 y_lkt516 -1 y_lkt526 -1 y_lkt536 -1 y_lkt606 -1 y_lkt616 -1 y_lkt626
-  -1 y_lkt636 = +0
- cons_1: +1 x_it117 -1 y_lkt507 -1 y_lkt517 -1 y_lkt527 -1 y_lkt537 -1 y_lkt607 -1 y_lkt617 -1 y_lkt627
-  -1 y_lkt637 = +0
- cons_1: +1 x_it118 -1 y_lkt608 -1 y_lkt618 -1 y_lkt628 -1 y_lkt638 = +0
- cons_1: +1 x_it119 -1 y_lkt609 -1 y_lkt619 -1 y_lkt629 -1 y_lkt639 = +0
- cons_1: +1 x_it1110 = +0
- cons_1: +1 x_it1111 = +0
- cons_1: +1 x_it1112 = +0
- cons_1: +1 x_it1113 = +0
- cons_1: +1 x_it1114 = +0
- cons_1: +1 x_it1115 = +0
- cons_1: +1 x_it1116 = +0
- cons_1: +1 x_it1117 = +0
- cons_1: +1 x_it1118 = +0
- cons_1: +1 x_it1119 = +0
- cons_1: +1 x_it1120 = +0
- cons_1: +1 x_it1121 = +0
- cons_1: +1 x_it1122 = +0
- cons_1: +1 x_it1123 = +0
- cons_1: +1 x_it1124 = +0
- cons_1: +1 x_it1125 = +0
- cons_1: +1 x_it120 = +0
- cons_1: +1 x_it121 = +0
- cons_1: +1 x_it122 = +0
- cons_1: +1 x_it123 -1 y_lkt303 -1 y_lkt313 -1 y_lkt323 -1 y_lkt333 = +0
- cons_1: +1 x_it124 -1 y_lkt304 -1 y_lkt314 -1 y_lkt324 -1 y_lkt334 -1 y_lkt404 -1 y_lkt414 -1 y_lkt424
-  -1 y_lkt434 = +0
- cons_1: +1 x_it125 -1 y_lkt305 -1 y_lkt315 -1 y_lkt325 -1 y_lkt335 -1 y_lkt405 -1 y_lkt415 -1 y_lkt425
-  -1 y_lkt435 -1 y_lkt505 -1 y_lkt515 -1 y_lkt525 -1 y_lkt535 = +0
- cons_1: +1 x_it126 -1 y_lkt306 -1 y_lkt316 -1 y_lkt326 -1 y_lkt336 -1 y_lkt506 -1 y_lkt516 -1 y_lkt526
-  -1 y_lkt536 = +0
- cons_1: +1 x_it127 -1 y_lkt507 -1 y_lkt517 -1 y_lkt527 -1 y_lkt537 = +0
- cons_1: +1 x_it128 = +0
- cons_1: +1 x_it129 = +0
- cons_1: +1 x_it1210 = +0
- cons_1: +1 x_it1211 = +0
- cons_1: +1 x_it1212 = +0
- cons_1: +1 x_it1213 = +0
- cons_1: +1 x_it1214 = +0
- cons_1: +1 x_it1215 = +0
- cons_1: +1 x_it1216 = +0
- cons_1: +1 x_it1217 = +0
- cons_1: +1 x_it1218 = +0
- cons_1: +1 x_it1219 = +0
- cons_1: +1 x_it1220 = +0
- cons_1: +1 x_it1221 = +0
- cons_1: +1 x_it1222 = +0
- cons_1: +1 x_it1223 = +0
- cons_1: +1 x_it1224 = +0
- cons_1: +1 x_it1225 = +0
- cons_1: +1 x_it130 = +0
- cons_1: +1 x_it131 = +0
- cons_1: +1 x_it132 = +0
- cons_1: +1 x_it133 = +0
- cons_1: +1 x_it134 = +0
- cons_1: +1 x_it135 = +0
- cons_1: +1 x_it136 = +0
- cons_1: +1 x_it137 = +0
- cons_1: +1 x_it138 = +0
- cons_1: +1 x_it139 -1 y_lkt909 -1 y_lkt919 -1 y_lkt929 -1 y_lkt939 = +0
- cons_1: +1 x_it1310 -1 y_lkt9010 -1 y_lkt9110 -1 y_lkt9210 -1 y_lkt9310 -1 y_lkt10010 -1 y_lkt10110 -1 y_lkt10210
-  -1 y_lkt10310 -1 y_lkt11010 -1 y_lkt11110 -1 y_lkt11210 -1 y_lkt11310 = +0
- cons_1: +1 x_it1311 -1 y_lkt9011 -1 y_lkt9111 -1 y_lkt9211 -1 y_lkt9311 -1 y_lkt10011 -1 y_lkt10111 -1 y_lkt10211
-  -1 y_lkt10311 -1 y_lkt11011 -1 y_lkt11111 -1 y_lkt11211 -1 y_lkt11311 = +0
- cons_1: +1 x_it1312 -1 y_lkt9012 -1 y_lkt9112 -1 y_lkt9212 -1 y_lkt9312 -1 y_lkt10012 -1 y_lkt10112 -1 y_lkt10212
-  -1 y_lkt10312 -1 y_lkt11012 -1 y_lkt11112 -1 y_lkt11212 -1 y_lkt11312 -1 y_lkt12012 -1 y_lkt12112 -1 y_lkt12212
-  -1 y_lkt12312 = +0
- cons_1: +1 x_it1313 -1 y_lkt9013 -1 y_lkt9113 -1 y_lkt9213 -1 y_lkt9313 -1 y_lkt10013 -1 y_lkt10113 -1 y_lkt10213
-  -1 y_lkt10313 -1 y_lkt11013 -1 y_lkt11113 -1 y_lkt11213 -1 y_lkt11313 -1 y_lkt12013 -1 y_lkt12113 -1 y_lkt12213
-  -1 y_lkt12313 = +0
- cons_1: +1 x_it1314 -1 y_lkt9014 -1 y_lkt9114 -1 y_lkt9214 -1 y_lkt9314 -1 y_lkt10014 -1 y_lkt10114 -1 y_lkt10214
-  -1 y_lkt10314 -1 y_lkt11014 -1 y_lkt11114 -1 y_lkt11214 -1 y_lkt11314 = +0
- cons_1: +1 x_it1315 -1 y_lkt11015 -1 y_lkt11115 -1 y_lkt11215 -1 y_lkt11315 = +0
- cons_1: +1 x_it1316 -1 y_lkt11016 -1 y_lkt11116 -1 y_lkt11216 -1 y_lkt11316 = +0
- cons_1: +1 x_it1317 = +0
- cons_1: +1 x_it1318 = +0
- cons_1: +1 x_it1319 = +0
- cons_1: +1 x_it1320 = +0
- cons_1: +1 x_it1321 = +0
- cons_1: +1 x_it1322 = +0
- cons_1: +1 x_it1323 = +0
- cons_1: +1 x_it1324 = +0
- cons_1: +1 x_it1325 = +0
- cons_1: +1 x_it140 = +0
- cons_1: +1 x_it141 = +0
- cons_1: +1 x_it142 -1 y_lkt202 -1 y_lkt212 -1 y_lkt222 -1 y_lkt232 = +0
- cons_1: +1 x_it143 -1 y_lkt203 -1 y_lkt213 -1 y_lkt223 -1 y_lkt233 -1 y_lkt303 -1 y_lkt313 -1 y_lkt323
-  -1 y_lkt333 = +0
- cons_1: +1 x_it144 -1 y_lkt204 -1 y_lkt214 -1 y_lkt224 -1 y_lkt234 -1 y_lkt304 -1 y_lkt314 -1 y_lkt324
-  -1 y_lkt334 = +0
- cons_1: +1 x_it145 -1 y_lkt305 -1 y_lkt315 -1 y_lkt325 -1 y_lkt335 = +0
- cons_1: +1 x_it146 -1 y_lkt306 -1 y_lkt316 -1 y_lkt326 -1 y_lkt336 = +0
- cons_1: +1 x_it147 = +0
- cons_1: +1 x_it148 = +0
- cons_1: +1 x_it149 = +0
- cons_1: +1 x_it1410 = +0
- cons_1: +1 x_it1411 = +0
- cons_1: +1 x_it1412 = +0
- cons_1: +1 x_it1413 = +0
- cons_1: +1 x_it1414 = +0
- cons_1: +1 x_it1415 = +0
- cons_1: +1 x_it1416 = +0
- cons_1: +1 x_it1417 = +0
- cons_1: +1 x_it1418 = +0
- cons_1: +1 x_it1419 = +0
- cons_1: +1 x_it1420 = +0
- cons_1: +1 x_it1421 = +0
- cons_1: +1 x_it1422 = +0
- cons_1: +1 x_it1423 = +0
- cons_1: +1 x_it1424 = +0
- cons_1: +1 x_it1425 = +0
- cons_1: +1 x_it150 = +0
- cons_1: +1 x_it151 = +0
- cons_1: +1 x_it152 = +0
- cons_1: +1 x_it153 = +0
- cons_1: +1 x_it154 = +0
- cons_1: +1 x_it155 = +0
- cons_1: +1 x_it156 = +0
- cons_1: +1 x_it157 = +0
- cons_1: +1 x_it158 = +0
- cons_1: +1 x_it159 = +0
- cons_1: +1 x_it1510 = +0
- cons_1: +1 x_it1511 = +0
- cons_1: +1 x_it1512 = +0
- cons_1: +1 x_it1513 -1 y_lkt13013 -1 y_lkt13113 -1 y_lkt13213 -1 y_lkt13313 = +0
- cons_1: +1 x_it1514 -1 y_lkt13014 -1 y_lkt13114 -1 y_lkt13214 -1 y_lkt13314 -1 y_lkt14014 -1 y_lkt14114
-  -1 y_lkt14214 -1 y_lkt14314 = +0
- cons_1: +1 x_it1515 -1 y_lkt13015 -1 y_lkt13115 -1 y_lkt13215 -1 y_lkt13315 -1 y_lkt14015 -1 y_lkt14115
-  -1 y_lkt14215 -1 y_lkt14315 -1 y_lkt15015 -1 y_lkt15115 -1 y_lkt15215 -1 y_lkt15315 = +0
- cons_1: +1 x_it1516 -1 y_lkt14016 -1 y_lkt14116 -1 y_lkt14216 -1 y_lkt14316 -1 y_lkt15016 -1 y_lkt15116
-  -1 y_lkt15216 -1 y_lkt15316 -1 y_lkt16016 -1 y_lkt16116 -1 y_lkt16216 -1 y_lkt16316 = +0
- cons_1: +1 x_it1517 -1 y_lkt14017 -1 y_lkt14117 -1 y_lkt14217 -1 y_lkt14317 -1 y_lkt15017 -1 y_lkt15117
-  -1 y_lkt15217 -1 y_lkt15317 -1 y_lkt16017 -1 y_lkt16117 -1 y_lkt16217 -1 y_lkt16317 = +0
- cons_1: +1 x_it1518 -1 y_lkt14018 -1 y_lkt14118 -1 y_lkt14218 -1 y_lkt14318 -1 y_lkt15018 -1 y_lkt15118
-  -1 y_lkt15218 -1 y_lkt15318 -1 y_lkt16018 -1 y_lkt16118 -1 y_lkt16218 -1 y_lkt16318 = +0
- cons_1: +1 x_it1519 = +0
- cons_1: +1 x_it1520 = +0
- cons_1: +1 x_it1521 = +0
- cons_1: +1 x_it1522 = +0
- cons_1: +1 x_it1523 = +0
- cons_1: +1 x_it1524 = +0
- cons_1: +1 x_it1525 = +0
- cons_1: +1 x_it160 = +0
- cons_1: +1 x_it161 = +0
- cons_1: +1 x_it162 = +0
- cons_1: +1 x_it163 = +0
- cons_1: +1 x_it164 = +0
- cons_1: +1 x_it165 = +0
- cons_1: +1 x_it166 = +0
- cons_1: +1 x_it167 = +0
- cons_1: +1 x_it168 = +0
- cons_1: +1 x_it169 = +0
- cons_1: +1 x_it1610 = +0
- cons_1: +1 x_it1611 = +0
- cons_1: +1 x_it1612 = +0
- cons_1: +1 x_it1613 = +0
- cons_1: +1 x_it1614 = +0
- cons_1: +1 x_it1615 -1 y_lkt15015 -1 y_lkt15115 -1 y_lkt15215 -1 y_lkt15315 = +0
- cons_1: +1 x_it1616 -1 y_lkt15016 -1 y_lkt15116 -1 y_lkt15216 -1 y_lkt15316 -1 y_lkt16016 -1 y_lkt16116
-  -1 y_lkt16216 -1 y_lkt16316 = +0
- cons_1: +1 x_it1617 -1 y_lkt15017 -1 y_lkt15117 -1 y_lkt15217 -1 y_lkt15317 -1 y_lkt16017 -1 y_lkt16117
-  -1 y_lkt16217 -1 y_lkt16317 -1 y_lkt17017 -1 y_lkt17117 -1 y_lkt17217 -1 y_lkt17317 = +0
- cons_1: +1 x_it1618 -1 y_lkt15018 -1 y_lkt15118 -1 y_lkt15218 -1 y_lkt15318 -1 y_lkt16018 -1 y_lkt16118
-  -1 y_lkt16218 -1 y_lkt16318 -1 y_lkt17018 -1 y_lkt17118 -1 y_lkt17218 -1 y_lkt17318 = +0
- cons_1: +1 x_it1619 -1 y_lkt17019 -1 y_lkt17119 -1 y_lkt17219 -1 y_lkt17319 = +0
- cons_1: +1 x_it1620 = +0
- cons_1: +1 x_it1621 = +0
- cons_1: +1 x_it1622 = +0
- cons_1: +1 x_it1623 = +0
- cons_1: +1 x_it1624 = +0
- cons_1: +1 x_it1625 = +0
- cons_1: +1 x_it170 = +0
- cons_1: +1 x_it171 = +0
- cons_1: +1 x_it172 = +0
- cons_1: +1 x_it173 = +0
- cons_1: +1 x_it174 = +0
- cons_1: +1 x_it175 = +0
- cons_1: +1 x_it176 = +0
- cons_1: +1 x_it177 = +0
- cons_1: +1 x_it178 = +0
- cons_1: +1 x_it179 = +0
- cons_1: +1 x_it1710 = +0
- cons_1: +1 x_it1711 = +0
- cons_1: +1 x_it1712 -1 y_lkt12012 -1 y_lkt12112 -1 y_lkt12212 -1 y_lkt12312 = +0
- cons_1: +1 x_it1713 -1 y_lkt12013 -1 y_lkt12113 -1 y_lkt12213 -1 y_lkt12313 = +0
- cons_1: +1 x_it1714 = +0
- cons_1: +1 x_it1715 = +0
- cons_1: +1 x_it1716 = +0
- cons_1: +1 x_it1717 = +0
- cons_1: +1 x_it1718 = +0
- cons_1: +1 x_it1719 = +0
- cons_1: +1 x_it1720 = +0
- cons_1: +1 x_it1721 = +0
- cons_1: +1 x_it1722 = +0
- cons_1: +1 x_it1723 = +0
- cons_1: +1 x_it1724 = +0
- cons_1: +1 x_it1725 = +0
- cons_1: +1 x_it180 = +0
- cons_1: +1 x_it181 = +0
- cons_1: +1 x_it182 = +0
- cons_1: +1 x_it183 = +0
- cons_1: +1 x_it184 = +0
- cons_1: +1 x_it185 = +0
- cons_1: +1 x_it186 = +0
- cons_1: +1 x_it187 = +0
- cons_1: +1 x_it188 -1 y_lkt808 -1 y_lkt818 -1 y_lkt828 -1 y_lkt838 = +0
- cons_1: +1 x_it189 -1 y_lkt809 -1 y_lkt819 -1 y_lkt829 -1 y_lkt839 = +0
- cons_1: +1 x_it1810 = +0
- cons_1: +1 x_it1811 = +0
- cons_1: +1 x_it1812 = +0
- cons_1: +1 x_it1813 = +0
- cons_1: +1 x_it1814 = +0
- cons_1: +1 x_it1815 = +0
- cons_1: +1 x_it1816 = +0
- cons_1: +1 x_it1817 = +0
- cons_1: +1 x_it1818 = +0
- cons_1: +1 x_it1819 = +0
- cons_1: +1 x_it1820 = +0
- cons_1: +1 x_it1821 = +0
- cons_1: +1 x_it1822 = +0
- cons_1: +1 x_it1823 = +0
- cons_1: +1 x_it1824 = +0
- cons_1: +1 x_it1825 = +0
- cons_1: +1 x_it190 = +0
- cons_1: +1 x_it191 = +0
- cons_1: +1 x_it192 = +0
- cons_1: +1 x_it193 = +0
- cons_1: +1 x_it194 = +0
- cons_1: +1 x_it195 = +0
- cons_1: +1 x_it196 = +0
- cons_1: +1 x_it197 = +0
- cons_1: +1 x_it198 = +0
- cons_1: +1 x_it199 = +0
- cons_1: +1 x_it1910 = +0
- cons_1: +1 x_it1911 = +0
- cons_1: +1 x_it1912 = +0
- cons_1: +1 x_it1913 = +0
- cons_1: +1 x_it1914 = +0
- cons_1: +1 x_it1915 -1 y_lkt15015 -1 y_lkt15115 -1 y_lkt15215 -1 y_lkt15315 = +0
- cons_1: +1 x_it1916 -1 y_lkt15016 -1 y_lkt15116 -1 y_lkt15216 -1 y_lkt15316 -1 y_lkt16016 -1 y_lkt16116
-  -1 y_lkt16216 -1 y_lkt16316 = +0
- cons_1: +1 x_it1917 -1 y_lkt15017 -1 y_lkt15117 -1 y_lkt15217 -1 y_lkt15317 -1 y_lkt16017 -1 y_lkt16117
-  -1 y_lkt16217 -1 y_lkt16317 = +0
- cons_1: +1 x_it1918 -1 y_lkt15018 -1 y_lkt15118 -1 y_lkt15218 -1 y_lkt15318 -1 y_lkt16018 -1 y_lkt16118
-  -1 y_lkt16218 -1 y_lkt16318 = +0
- cons_1: +1 x_it1919 = +0
- cons_1: +1 x_it1920 = +0
- cons_1: +1 x_it1921 = +0
- cons_1: +1 x_it1922 = +0
- cons_1: +1 x_it1923 = +0
- cons_1: +1 x_it1924 = +0
- cons_1: +1 x_it1925 = +0
- cons_1: +1 x_it200 = +0
- cons_1: +1 x_it201 = +0
- cons_1: +1 x_it202 = +0
- cons_1: +1 x_it203 -1 y_lkt303 -1 y_lkt313 -1 y_lkt323 -1 y_lkt333 = +0
- cons_1: +1 x_it204 -1 y_lkt304 -1 y_lkt314 -1 y_lkt324 -1 y_lkt334 -1 y_lkt404 -1 y_lkt414 -1 y_lkt424
-  -1 y_lkt434 = +0
- cons_1: +1 x_it205 -1 y_lkt305 -1 y_lkt315 -1 y_lkt325 -1 y_lkt335 -1 y_lkt405 -1 y_lkt415 -1 y_lkt425
-  -1 y_lkt435 -1 y_lkt505 -1 y_lkt515 -1 y_lkt525 -1 y_lkt535 = +0
- cons_1: +1 x_it206 -1 y_lkt306 -1 y_lkt316 -1 y_lkt326 -1 y_lkt336 -1 y_lkt506 -1 y_lkt516 -1 y_lkt526
-  -1 y_lkt536 -1 y_lkt606 -1 y_lkt616 -1 y_lkt626 -1 y_lkt636 = +0
- cons_1: +1 x_it207 -1 y_lkt507 -1 y_lkt517 -1 y_lkt527 -1 y_lkt537 -1 y_lkt607 -1 y_lkt617 -1 y_lkt627
-  -1 y_lkt637 = +0
- cons_1: +1 x_it208 -1 y_lkt608 -1 y_lkt618 -1 y_lkt628 -1 y_lkt638 = +0
- cons_1: +1 x_it209 -1 y_lkt609 -1 y_lkt619 -1 y_lkt629 -1 y_lkt639 = +0
- cons_1: +1 x_it2010 = +0
- cons_1: +1 x_it2011 = +0
- cons_1: +1 x_it2012 = +0
- cons_1: +1 x_it2013 = +0
- cons_1: +1 x_it2014 = +0
- cons_1: +1 x_it2015 = +0
- cons_1: +1 x_it2016 = +0
- cons_1: +1 x_it2017 = +0
- cons_1: +1 x_it2018 = +0
- cons_1: +1 x_it2019 = +0
- cons_1: +1 x_it2020 = +0
- cons_1: +1 x_it2021 = +0
- cons_1: +1 x_it2022 = +0
- cons_1: +1 x_it2023 = +0
- cons_1: +1 x_it2024 = +0
- cons_1: +1 x_it2025 = +0
- cons_1: +1 x_it210 = +0
- cons_1: +1 x_it211 = +0
- cons_1: +1 x_it212 = +0
- cons_1: +1 x_it213 = +0
- cons_1: +1 x_it214 = +0
- cons_1: +1 x_it215 = +0
- cons_1: +1 x_it216 = +0
- cons_1: +1 x_it217 = +0
- cons_1: +1 x_it218 = +0
- cons_1: +1 x_it219 = +0
- cons_1: +1 x_it2110 = +0
- cons_1: +1 x_it2111 = +0
- cons_1: +1 x_it2112 -1 y_lkt12012 -1 y_lkt12112 -1 y_lkt12212 -1 y_lkt12312 = +0
- cons_1: +1 x_it2113 -1 y_lkt12013 -1 y_lkt12113 -1 y_lkt12213 -1 y_lkt12313 -1 y_lkt13013 -1 y_lkt13113
-  -1 y_lkt13213 -1 y_lkt13313 = +0
- cons_1: +1 x_it2114 -1 y_lkt13014 -1 y_lkt13114 -1 y_lkt13214 -1 y_lkt13314 = +0
- cons_1: +1 x_it2115 -1 y_lkt13015 -1 y_lkt13115 -1 y_lkt13215 -1 y_lkt13315 = +0
- cons_1: +1 x_it2116 = +0
- cons_1: +1 x_it2117 = +0
- cons_1: +1 x_it2118 = +0
- cons_1: +1 x_it2119 = +0
- cons_1: +1 x_it2120 = +0
- cons_1: +1 x_it2121 = +0
- cons_1: +1 x_it2122 = +0
- cons_1: +1 x_it2123 = +0
- cons_1: +1 x_it2124 = +0
- cons_1: +1 x_it2125 = +0
- cons_1: +1 x_it220 = +0
- cons_1: +1 x_it221 = +0
- cons_1: +1 x_it222 = +0
- cons_1: +1 x_it223 = +0
- cons_1: +1 x_it224 = +0
- cons_1: +1 x_it225 = +0
- cons_1: +1 x_it226 = +0
- cons_1: +1 x_it227 = +0
- cons_1: +1 x_it228 = +0
- cons_1: +1 x_it229 = +0
- cons_1: +1 x_it2210 = +0
- cons_1: +1 x_it2211 = +0
- cons_1: +1 x_it2212 = +0
- cons_1: +1 x_it2213 -1 y_lkt13013 -1 y_lkt13113 -1 y_lkt13213 -1 y_lkt13313 = +0
- cons_1: +1 x_it2214 -1 y_lkt13014 -1 y_lkt13114 -1 y_lkt13214 -1 y_lkt13314 -1 y_lkt14014 -1 y_lkt14114
-  -1 y_lkt14214 -1 y_lkt14314 = +0
- cons_1: +1 x_it2215 -1 y_lkt13015 -1 y_lkt13115 -1 y_lkt13215 -1 y_lkt13315 -1 y_lkt14015 -1 y_lkt14115
-  -1 y_lkt14215 -1 y_lkt14315 -1 y_lkt15015 -1 y_lkt15115 -1 y_lkt15215 -1 y_lkt15315 = +0
- cons_1: +1 x_it2216 -1 y_lkt14016 -1 y_lkt14116 -1 y_lkt14216 -1 y_lkt14316 -1 y_lkt15016 -1 y_lkt15116
-  -1 y_lkt15216 -1 y_lkt15316 -1 y_lkt16016 -1 y_lkt16116 -1 y_lkt16216 -1 y_lkt16316 = +0
- cons_1: +1 x_it2217 -1 y_lkt14017 -1 y_lkt14117 -1 y_lkt14217 -1 y_lkt14317 -1 y_lkt15017 -1 y_lkt15117
-  -1 y_lkt15217 -1 y_lkt15317 -1 y_lkt16017 -1 y_lkt16117 -1 y_lkt16217 -1 y_lkt16317 = +0
- cons_1: +1 x_it2218 -1 y_lkt14018 -1 y_lkt14118 -1 y_lkt14218 -1 y_lkt14318 -1 y_lkt15018 -1 y_lkt15118
-  -1 y_lkt15218 -1 y_lkt15318 -1 y_lkt16018 -1 y_lkt16118 -1 y_lkt16218 -1 y_lkt16318 = +0
- cons_1: +1 x_it2219 = +0
- cons_1: +1 x_it2220 = +0
- cons_1: +1 x_it2221 = +0
- cons_1: +1 x_it2222 = +0
- cons_1: +1 x_it2223 = +0
- cons_1: +1 x_it2224 = +0
- cons_1: +1 x_it2225 = +0
- cons_1: +1 x_it230 = +0
- cons_1: +1 x_it231 = +0
- cons_1: +1 x_it232 = +0
- cons_1: +1 x_it233 = +0
- cons_1: +1 x_it234 -1 y_lkt404 -1 y_lkt414 -1 y_lkt424 -1 y_lkt434 = +0
- cons_1: +1 x_it235 -1 y_lkt405 -1 y_lkt415 -1 y_lkt425 -1 y_lkt435 = +0
- cons_1: +1 x_it236 = +0
- cons_1: +1 x_it237 = +0
- cons_1: +1 x_it238 = +0
- cons_1: +1 x_it239 = +0
- cons_1: +1 x_it2310 = +0
- cons_1: +1 x_it2311 = +0
- cons_1: +1 x_it2312 = +0
- cons_1: +1 x_it2313 = +0
- cons_1: +1 x_it2314 = +0
- cons_1: +1 x_it2315 = +0
- cons_1: +1 x_it2316 = +0
- cons_1: +1 x_it2317 = +0
- cons_1: +1 x_it2318 = +0
- cons_1: +1 x_it2319 = +0
- cons_1: +1 x_it2320 = +0
- cons_1: +1 x_it2321 = +0
- cons_1: +1 x_it2322 = +0
- cons_1: +1 x_it2323 = +0
- cons_1: +1 x_it2324 = +0
- cons_1: +1 x_it2325 = +0
- cons_1: +1 x_it240 = +0
- cons_1: +1 x_it241 = +0
- cons_1: +1 x_it242 = +0
- cons_1: +1 x_it243 = +0
- cons_1: +1 x_it244 = +0
- cons_1: +1 x_it245 = +0
- cons_1: +1 x_it246 = +0
- cons_1: +1 x_it247 = +0
- cons_1: +1 x_it248 = +0
- cons_1: +1 x_it249 -1 y_lkt909 -1 y_lkt919 -1 y_lkt929 -1 y_lkt939 = +0
- cons_1: +1 x_it2410 -1 y_lkt9010 -1 y_lkt9110 -1 y_lkt9210 -1 y_lkt9310 -1 y_lkt10010 -1 y_lkt10110 -1 y_lkt10210
-  -1 y_lkt10310 = +0
- cons_1: +1 x_it2411 -1 y_lkt9011 -1 y_lkt9111 -1 y_lkt9211 -1 y_lkt9311 -1 y_lkt10011 -1 y_lkt10111 -1 y_lkt10211
-  -1 y_lkt10311 = +0
- cons_1: +1 x_it2412 -1 y_lkt9012 -1 y_lkt9112 -1 y_lkt9212 -1 y_lkt9312 -1 y_lkt10012 -1 y_lkt10112 -1 y_lkt10212
-  -1 y_lkt10312 = +0
- cons_1: +1 x_it2413 -1 y_lkt9013 -1 y_lkt9113 -1 y_lkt9213 -1 y_lkt9313 -1 y_lkt10013 -1 y_lkt10113 -1 y_lkt10213
-  -1 y_lkt10313 = +0
- cons_1: +1 x_it2414 -1 y_lkt9014 -1 y_lkt9114 -1 y_lkt9214 -1 y_lkt9314 -1 y_lkt10014 -1 y_lkt10114 -1 y_lkt10214
-  -1 y_lkt10314 = +0
- cons_1: +1 x_it2415 = +0
- cons_1: +1 x_it2416 = +0
- cons_1: +1 x_it2417 = +0
- cons_1: +1 x_it2418 = +0
- cons_1: +1 x_it2419 = +0
- cons_1: +1 x_it2420 = +0
- cons_1: +1 x_it2421 = +0
- cons_1: +1 x_it2422 = +0
- cons_1: +1 x_it2423 = +0
- cons_1: +1 x_it2424 = +0
- cons_1: +1 x_it2425 = +0
- cons_1: +1 x_it250 = +0
- cons_1: +1 x_it251 = +0
- cons_1: +1 x_it252 = +0
- cons_1: +1 x_it253 = +0
- cons_1: +1 x_it254 = +0
- cons_1: +1 x_it255 = +0
- cons_1: +1 x_it256 = +0
- cons_1: +1 x_it257 = +0
- cons_1: +1 x_it258 = +0
- cons_1: +1 x_it259 = +0
- cons_1: +1 x_it2510 -1 y_lkt10010 -1 y_lkt10110 -1 y_lkt10210 -1 y_lkt10310 -1 y_lkt11010 -1 y_lkt11110
-  -1 y_lkt11210 -1 y_lkt11310 = +0
- cons_1: +1 x_it2511 -1 y_lkt10011 -1 y_lkt10111 -1 y_lkt10211 -1 y_lkt10311 -1 y_lkt11011 -1 y_lkt11111
-  -1 y_lkt11211 -1 y_lkt11311 = +0
- cons_1: +1 x_it2512 -1 y_lkt10012 -1 y_lkt10112 -1 y_lkt10212 -1 y_lkt10312 -1 y_lkt11012 -1 y_lkt11112
-  -1 y_lkt11212 -1 y_lkt11312 -1 y_lkt12012 -1 y_lkt12112 -1 y_lkt12212 -1 y_lkt12312 = +0
- cons_1: +1 x_it2513 -1 y_lkt10013 -1 y_lkt10113 -1 y_lkt10213 -1 y_lkt10313 -1 y_lkt11013 -1 y_lkt11113
-  -1 y_lkt11213 -1 y_lkt11313 -1 y_lkt12013 -1 y_lkt12113 -1 y_lkt12213 -1 y_lkt12313 -1 y_lkt13013 -1 y_lkt13113
-  -1 y_lkt13213 -1 y_lkt13313 = +0
- cons_1: +1 x_it2514 -1 y_lkt10014 -1 y_lkt10114 -1 y_lkt10214 -1 y_lkt10314 -1 y_lkt11014 -1 y_lkt11114
-  -1 y_lkt11214 -1 y_lkt11314 -1 y_lkt13014 -1 y_lkt13114 -1 y_lkt13214 -1 y_lkt13314 = +0
- cons_1: +1 x_it2515 -1 y_lkt11015 -1 y_lkt11115 -1 y_lkt11215 -1 y_lkt11315 -1 y_lkt13015 -1 y_lkt13115
-  -1 y_lkt13215 -1 y_lkt13315 = +0
- cons_1: +1 x_it2516 -1 y_lkt11016 -1 y_lkt11116 -1 y_lkt11216 -1 y_lkt11316 = +0
- cons_1: +1 x_it2517 = +0
- cons_1: +1 x_it2518 = +0
- cons_1: +1 x_it2519 = +0
- cons_1: +1 x_it2520 = +0
- cons_1: +1 x_it2521 = +0
- cons_1: +1 x_it2522 = +0
- cons_1: +1 x_it2523 = +0
- cons_1: +1 x_it2524 = +0
- cons_1: +1 x_it2525 = +0
- cons_1: +1 x_it260 = +0
- cons_1: +1 x_it261 = +0
- cons_1: +1 x_it262 = +0
- cons_1: +1 x_it263 = +0
- cons_1: +1 x_it264 = +0
- cons_1: +1 x_it265 = +0
- cons_1: +1 x_it266 -1 y_lkt606 -1 y_lkt616 -1 y_lkt626 -1 y_lkt636 -1 y_lkt706 -1 y_lkt716 -1 y_lkt726
-  -1 y_lkt736 = +0
- cons_1: +1 x_it267 -1 y_lkt607 -1 y_lkt617 -1 y_lkt627 -1 y_lkt637 -1 y_lkt707 -1 y_lkt717 -1 y_lkt727
-  -1 y_lkt737 = +0
- cons_1: +1 x_it268 -1 y_lkt608 -1 y_lkt618 -1 y_lkt628 -1 y_lkt638 -1 y_lkt708 -1 y_lkt718 -1 y_lkt728
-  -1 y_lkt738 = +0
- cons_1: +1 x_it269 -1 y_lkt609 -1 y_lkt619 -1 y_lkt629 -1 y_lkt639 -1 y_lkt709 -1 y_lkt719 -1 y_lkt729
-  -1 y_lkt739 = +0
- cons_1: +1 x_it2610 -1 y_lkt7010 -1 y_lkt7110 -1 y_lkt7210 -1 y_lkt7310 = +0
- cons_1: +1 x_it2611 = +0
- cons_1: +1 x_it2612 = +0
- cons_1: +1 x_it2613 = +0
- cons_1: +1 x_it2614 = +0
- cons_1: +1 x_it2615 = +0
- cons_1: +1 x_it2616 = +0
- cons_1: +1 x_it2617 = +0
- cons_1: +1 x_it2618 = +0
- cons_1: +1 x_it2619 = +0
- cons_1: +1 x_it2620 = +0
- cons_1: +1 x_it2621 = +0
- cons_1: +1 x_it2622 = +0
- cons_1: +1 x_it2623 = +0
- cons_1: +1 x_it2624 = +0
- cons_1: +1 x_it2625 = +0
- cons_1: +1 x_it270 = +0
- cons_1: +1 x_it271 = +0
- cons_1: +1 x_it272 = +0
- cons_1: +1 x_it273 = +0
- cons_1: +1 x_it274 = +0
- cons_1: +1 x_it275 = +0
- cons_1: +1 x_it276 = +0
- cons_1: +1 x_it277 = +0
- cons_1: +1 x_it278 = +0
- cons_1: +1 x_it279 = +0
- cons_1: +1 x_it2710 = +0
- cons_1: +1 x_it2711 = +0
- cons_1: +1 x_it2712 = +0
- cons_1: +1 x_it2713 = +0
- cons_1: +1 x_it2714 -1 y_lkt14014 -1 y_lkt14114 -1 y_lkt14214 -1 y_lkt14314 = +0
- cons_1: +1 x_it2715 -1 y_lkt14015 -1 y_lkt14115 -1 y_lkt14215 -1 y_lkt14315 -1 y_lkt15015 -1 y_lkt15115
-  -1 y_lkt15215 -1 y_lkt15315 = +0
- cons_1: +1 x_it2716 -1 y_lkt14016 -1 y_lkt14116 -1 y_lkt14216 -1 y_lkt14316 -1 y_lkt15016 -1 y_lkt15116
-  -1 y_lkt15216 -1 y_lkt15316 = +0
- cons_1: +1 x_it2717 -1 y_lkt14017 -1 y_lkt14117 -1 y_lkt14217 -1 y_lkt14317 -1 y_lkt15017 -1 y_lkt15117
-  -1 y_lkt15217 -1 y_lkt15317 = +0
- cons_1: +1 x_it2718 -1 y_lkt14018 -1 y_lkt14118 -1 y_lkt14218 -1 y_lkt14318 -1 y_lkt15018 -1 y_lkt15118
-  -1 y_lkt15218 -1 y_lkt15318 = +0
- cons_1: +1 x_it2719 = +0
- cons_1: +1 x_it2720 = +0
- cons_1: +1 x_it2721 = +0
- cons_1: +1 x_it2722 = +0
- cons_1: +1 x_it2723 = +0
- cons_1: +1 x_it2724 = +0
- cons_1: +1 x_it2725 = +0
- cons_1: +1 x_it280 = +0
- cons_1: +1 x_it281 = +0
- cons_1: +1 x_it282 = +0
- cons_1: +1 x_it283 = +0
- cons_1: +1 x_it284 -1 y_lkt404 -1 y_lkt414 -1 y_lkt424 -1 y_lkt434 = +0
- cons_1: +1 x_it285 -1 y_lkt405 -1 y_lkt415 -1 y_lkt425 -1 y_lkt435 -1 y_lkt505 -1 y_lkt515 -1 y_lkt525
-  -1 y_lkt535 = +0
- cons_1: +1 x_it286 -1 y_lkt506 -1 y_lkt516 -1 y_lkt526 -1 y_lkt536 -1 y_lkt606 -1 y_lkt616 -1 y_lkt626
-  -1 y_lkt636 = +0
- cons_1: +1 x_it287 -1 y_lkt507 -1 y_lkt517 -1 y_lkt527 -1 y_lkt537 -1 y_lkt607 -1 y_lkt617 -1 y_lkt627
-  -1 y_lkt637 = +0
- cons_1: +1 x_it288 -1 y_lkt608 -1 y_lkt618 -1 y_lkt628 -1 y_lkt638 = +0
- cons_1: +1 x_it289 -1 y_lkt609 -1 y_lkt619 -1 y_lkt629 -1 y_lkt639 = +0
- cons_1: +1 x_it2810 = +0
- cons_1: +1 x_it2811 = +0
- cons_1: +1 x_it2812 = +0
- cons_1: +1 x_it2813 = +0
- cons_1: +1 x_it2814 = +0
- cons_1: +1 x_it2815 = +0
- cons_1: +1 x_it2816 = +0
- cons_1: +1 x_it2817 = +0
- cons_1: +1 x_it2818 = +0
- cons_1: +1 x_it2819 = +0
- cons_1: +1 x_it2820 = +0
- cons_1: +1 x_it2821 = +0
- cons_1: +1 x_it2822 = +0
- cons_1: +1 x_it2823 = +0
- cons_1: +1 x_it2824 = +0
- cons_1: +1 x_it2825 = +0
- cons_1: +1 x_it290 = +0
- cons_1: +1 x_it291 -1 y_lkt101 -1 y_lkt111 -1 y_lkt121 -1 y_lkt131 = +0
- cons_1: +1 x_it292 -1 y_lkt102 -1 y_lkt112 -1 y_lkt122 -1 y_lkt132 -1 y_lkt202 -1 y_lkt212 -1 y_lkt222
-  -1 y_lkt232 = +0
- cons_1: +1 x_it293 -1 y_lkt103 -1 y_lkt113 -1 y_lkt123 -1 y_lkt133 -1 y_lkt203 -1 y_lkt213 -1 y_lkt223
-  -1 y_lkt233 = +0
- cons_1: +1 x_it294 -1 y_lkt104 -1 y_lkt114 -1 y_lkt124 -1 y_lkt134 -1 y_lkt204 -1 y_lkt214 -1 y_lkt224
-  -1 y_lkt234 = +0
- cons_1: +1 x_it295 = +0
- cons_1: +1 x_it296 = +0
- cons_1: +1 x_it297 = +0
- cons_1: +1 x_it298 = +0
- cons_1: +1 x_it299 = +0
- cons_1: +1 x_it2910 = +0
- cons_1: +1 x_it2911 = +0
- cons_1: +1 x_it2912 = +0
- cons_1: +1 x_it2913 = +0
- cons_1: +1 x_it2914 = +0
- cons_1: +1 x_it2915 = +0
- cons_1: +1 x_it2916 = +0
- cons_1: +1 x_it2917 = +0
- cons_1: +1 x_it2918 = +0
- cons_1: +1 x_it2919 = +0
- cons_1: +1 x_it2920 = +0
- cons_1: +1 x_it2921 = +0
- cons_1: +1 x_it2922 = +0
- cons_1: +1 x_it2923 = +0
- cons_1: +1 x_it2924 = +0
- cons_1: +1 x_it2925 = +0
- cons_2: +1 y_lkt10010 +1 y_lkt10110 +1 y_lkt10210 +1 y_lkt10310 +1 y_lkt11010 +1 y_lkt11110 +1 y_lkt11210
-  +1 y_lkt11310 +1 y_lkt10011 +1 y_lkt10111 +1 y_lkt10211 +1 y_lkt10311 +1 y_lkt11011 +1 y_lkt11111 +1 y_lkt11211
-  +1 y_lkt11311 +1 y_lkt10012 +1 y_lkt10112 +1 y_lkt10212 +1 y_lkt10312 +1 y_lkt11012 +1 y_lkt11112 +1 y_lkt11212
-  +1 y_lkt11312 +1 y_lkt12012 +1 y_lkt12112 +1 y_lkt12212 +1 y_lkt12312 +1 y_lkt10013 +1 y_lkt10113 +1 y_lkt10213
-  +1 y_lkt10313 +1 y_lkt11013 +1 y_lkt11113 +1 y_lkt11213 +1 y_lkt11313 +1 y_lkt12013 +1 y_lkt12113 +1 y_lkt12213
-  +1 y_lkt12313 +1 y_lkt13013 +1 y_lkt13113 +1 y_lkt13213 +1 y_lkt13313 +1 y_lkt10014 +1 y_lkt10114 +1 y_lkt10214
-  +1 y_lkt10314 +1 y_lkt11014 +1 y_lkt11114 +1 y_lkt11214 +1 y_lkt11314 +1 y_lkt13014 +1 y_lkt13114 +1 y_lkt13214
-  +1 y_lkt13314 +1 y_lkt11015 +1 y_lkt11115 +1 y_lkt11215 +1 y_lkt11315 +1 y_lkt13015 +1 y_lkt13115 +1 y_lkt13215
-  +1 y_lkt13315 +1 y_lkt11016 +1 y_lkt11116 +1 y_lkt11216 +1 y_lkt11316 >= +4
- cons_2: +1 y_lkt12012 +1 y_lkt12112 +1 y_lkt12212 +1 y_lkt12312 +1 y_lkt12013 +1 y_lkt12113 +1 y_lkt12213
-  +1 y_lkt12313 +1 y_lkt13013 +1 y_lkt13113 +1 y_lkt13213 +1 y_lkt13313 +1 y_lkt13014 +1 y_lkt13114 +1 y_lkt13214
-  +1 y_lkt13314 +1 y_lkt13015 +1 y_lkt13115 +1 y_lkt13215 +1 y_lkt13315 >= +2
- cons_2: +1 y_lkt17017 +1 y_lkt17117 +1 y_lkt17217 +1 y_lkt17317 +1 y_lkt18017 +1 y_lkt18117 +1 y_lkt18217
-  +1 y_lkt18317 +1 y_lkt17018 +1 y_lkt17118 +1 y_lkt17218 +1 y_lkt17318 +1 y_lkt18018 +1 y_lkt18118 +1 y_lkt18218
-  +1 y_lkt18318 +1 y_lkt17019 +1 y_lkt17119 +1 y_lkt17219 +1 y_lkt17319 +1 y_lkt18019 +1 y_lkt18119 +1 y_lkt18219
-  +1 y_lkt18319 +1 y_lkt18020 +1 y_lkt18120 +1 y_lkt18220 +1 y_lkt18320 >= +2
- cons_2: +1 y_lkt404 +1 y_lkt414 +1 y_lkt424 +1 y_lkt434 +1 y_lkt405 +1 y_lkt415 +1 y_lkt425 +1 y_lkt435
-  +1 y_lkt505 +1 y_lkt515 +1 y_lkt525 +1 y_lkt535 +1 y_lkt506 +1 y_lkt516 +1 y_lkt526 +1 y_lkt536 +1 y_lkt507
-  +1 y_lkt517 +1 y_lkt527 +1 y_lkt537 >= +2
- cons_2: +1 y_lkt808 +1 y_lkt818 +1 y_lkt828 +1 y_lkt838 +1 y_lkt809 +1 y_lkt819 +1 y_lkt829 +1 y_lkt839
-  +1 y_lkt909 +1 y_lkt919 +1 y_lkt929 +1 y_lkt939 +1 y_lkt9010 +1 y_lkt9110 +1 y_lkt9210 +1 y_lkt9310
-  +1 y_lkt10010 +1 y_lkt10110 +1 y_lkt10210 +1 y_lkt10310 +1 y_lkt9011 +1 y_lkt9111 +1 y_lkt9211 +1 y_lkt9311
-  +1 y_lkt10011 +1 y_lkt10111 +1 y_lkt10211 +1 y_lkt10311 +1 y_lkt9012 +1 y_lkt9112 +1 y_lkt9212 +1 y_lkt9312
-  +1 y_lkt10012 +1 y_lkt10112 +1 y_lkt10212 +1 y_lkt10312 +1 y_lkt9013 +1 y_lkt9113 +1 y_lkt9213 +1 y_lkt9313
-  +1 y_lkt10013 +1 y_lkt10113 +1 y_lkt10213 +1 y_lkt10313 +1 y_lkt9014 +1 y_lkt9114 +1 y_lkt9214 +1 y_lkt9314
-  +1 y_lkt10014 +1 y_lkt10114 +1 y_lkt10214 +1 y_lkt10314 >= +3
- cons_2: +1 y_lkt404 +1 y_lkt414 +1 y_lkt424 +1 y_lkt434 +1 y_lkt405 +1 y_lkt415 +1 y_lkt425 +1 y_lkt435
-  +1 y_lkt505 +1 y_lkt515 +1 y_lkt525 +1 y_lkt535 +1 y_lkt506 +1 y_lkt516 +1 y_lkt526 +1 y_lkt536 +1 y_lkt507
-  +1 y_lkt517 +1 y_lkt527 +1 y_lkt537 >= +2
- cons_2: +1 y_lkt202 +1 y_lkt212 +1 y_lkt222 +1 y_lkt232 +1 y_lkt203 +1 y_lkt213 +1 y_lkt223 +1 y_lkt233
-  +1 y_lkt303 +1 y_lkt313 +1 y_lkt323 +1 y_lkt333 +1 y_lkt204 +1 y_lkt214 +1 y_lkt224 +1 y_lkt234 +1 y_lkt304
-  +1 y_lkt314 +1 y_lkt324 +1 y_lkt334 +1 y_lkt404 +1 y_lkt414 +1 y_lkt424 +1 y_lkt434 +1 y_lkt305 +1 y_lkt315
-  +1 y_lkt325 +1 y_lkt335 +1 y_lkt405 +1 y_lkt415 +1 y_lkt425 +1 y_lkt435 +1 y_lkt306 +1 y_lkt316 +1 y_lkt326
-  +1 y_lkt336 >= +3
- cons_2: +1 y_lkt17017 +1 y_lkt17117 +1 y_lkt17217 +1 y_lkt17317 +1 y_lkt18017 +1 y_lkt18117 +1 y_lkt18217
-  +1 y_lkt18317 +1 y_lkt17018 +1 y_lkt17118 +1 y_lkt17218 +1 y_lkt17318 +1 y_lkt18018 +1 y_lkt18118 +1 y_lkt18218
-  +1 y_lkt18318 +1 y_lkt17019 +1 y_lkt17119 +1 y_lkt17219 +1 y_lkt17319 +1 y_lkt18019 +1 y_lkt18119 +1 y_lkt18219
-  +1 y_lkt18319 +1 y_lkt18020 +1 y_lkt18120 +1 y_lkt18220 +1 y_lkt18320 >= +2
- cons_2: +1 y_lkt15015 +1 y_lkt15115 +1 y_lkt15215 +1 y_lkt15315 +1 y_lkt15016 +1 y_lkt15116 +1 y_lkt15216
-  +1 y_lkt15316 +1 y_lkt16016 +1 y_lkt16116 +1 y_lkt16216 +1 y_lkt16316 +1 y_lkt15017 +1 y_lkt15117 +1 y_lkt15217
-  +1 y_lkt15317 +1 y_lkt16017 +1 y_lkt16117 +1 y_lkt16217 +1 y_lkt16317 +1 y_lkt15018 +1 y_lkt15118 +1 y_lkt15218
-  +1 y_lkt15318 +1 y_lkt16018 +1 y_lkt16118 +1 y_lkt16218 +1 y_lkt16318 >= +2
- cons_2: +1 y_lkt000 +1 y_lkt010 +1 y_lkt020 +1 y_lkt030 +1 y_lkt001 +1 y_lkt011 +1 y_lkt021 +1 y_lkt031
-  +1 y_lkt101 +1 y_lkt111 +1 y_lkt121 +1 y_lkt131 +1 y_lkt002 +1 y_lkt012 +1 y_lkt022 +1 y_lkt032 +1 y_lkt102
-  +1 y_lkt112 +1 y_lkt122 +1 y_lkt132 +1 y_lkt202 +1 y_lkt212 +1 y_lkt222 +1 y_lkt232 +1 y_lkt003 +1 y_lkt013
-  +1 y_lkt023 +1 y_lkt033 +1 y_lkt103 +1 y_lkt113 +1 y_lkt123 +1 y_lkt133 +1 y_lkt203 +1 y_lkt213 +1 y_lkt223
-  +1 y_lkt233 +1 y_lkt303 +1 y_lkt313 +1 y_lkt323 +1 y_lkt333 +1 y_lkt004 +1 y_lkt014 +1 y_lkt024 +1 y_lkt034
-  +1 y_lkt104 +1 y_lkt114 +1 y_lkt124 +1 y_lkt134 +1 y_lkt204 +1 y_lkt214 +1 y_lkt224 +1 y_lkt234 +1 y_lkt304
-  +1 y_lkt314 +1 y_lkt324 +1 y_lkt334 +1 y_lkt005 +1 y_lkt015 +1 y_lkt025 +1 y_lkt035 +1 y_lkt305 +1 y_lkt315
-  +1 y_lkt325 +1 y_lkt335 +1 y_lkt006 +1 y_lkt016 +1 y_lkt026 +1 y_lkt036 +1 y_lkt306 +1 y_lkt316 +1 y_lkt326
-  +1 y_lkt336 +1 y_lkt007 +1 y_lkt017 +1 y_lkt027 +1 y_lkt037 +1 y_lkt008 +1 y_lkt018 +1 y_lkt028 +1 y_lkt038
-  >= +4
- cons_2: +1 y_lkt16016 +1 y_lkt16116 +1 y_lkt16216 +1 y_lkt16316 +1 y_lkt16017 +1 y_lkt16117 +1 y_lkt16217
-  +1 y_lkt16317 +1 y_lkt17017 +1 y_lkt17117 +1 y_lkt17217 +1 y_lkt17317 +1 y_lkt16018 +1 y_lkt16118 +1 y_lkt16218
-  +1 y_lkt16318 +1 y_lkt17018 +1 y_lkt17118 +1 y_lkt17218 +1 y_lkt17318 +1 y_lkt17019 +1 y_lkt17119 +1 y_lkt17219
-  +1 y_lkt17319 >= +2
- cons_2: +1 y_lkt505 +1 y_lkt515 +1 y_lkt525 +1 y_lkt535 +1 y_lkt506 +1 y_lkt516 +1 y_lkt526 +1 y_lkt536
-  +1 y_lkt606 +1 y_lkt616 +1 y_lkt626 +1 y_lkt636 +1 y_lkt507 +1 y_lkt517 +1 y_lkt527 +1 y_lkt537 +1 y_lkt607
-  +1 y_lkt617 +1 y_lkt627 +1 y_lkt637 +1 y_lkt608 +1 y_lkt618 +1 y_lkt628 +1 y_lkt638 +1 y_lkt609 +1 y_lkt619
-  +1 y_lkt629 +1 y_lkt639 >= +2
- cons_2: +1 y_lkt303 +1 y_lkt313 +1 y_lkt323 +1 y_lkt333 +1 y_lkt304 +1 y_lkt314 +1 y_lkt324 +1 y_lkt334
-  +1 y_lkt404 +1 y_lkt414 +1 y_lkt424 +1 y_lkt434 +1 y_lkt305 +1 y_lkt315 +1 y_lkt325 +1 y_lkt335 +1 y_lkt405
-  +1 y_lkt415 +1 y_lkt425 +1 y_lkt435 +1 y_lkt505 +1 y_lkt515 +1 y_lkt525 +1 y_lkt535 +1 y_lkt306 +1 y_lkt316
-  +1 y_lkt326 +1 y_lkt336 +1 y_lkt506 +1 y_lkt516 +1 y_lkt526 +1 y_lkt536 +1 y_lkt507 +1 y_lkt517 +1 y_lkt527
-  +1 y_lkt537 >= +3
- cons_2: +1 y_lkt909 +1 y_lkt919 +1 y_lkt929 +1 y_lkt939 +1 y_lkt9010 +1 y_lkt9110 +1 y_lkt9210 +1 y_lkt9310
-  +1 y_lkt10010 +1 y_lkt10110 +1 y_lkt10210 +1 y_lkt10310 +1 y_lkt11010 +1 y_lkt11110 +1 y_lkt11210 +1 y_lkt11310
-  +1 y_lkt9011 +1 y_lkt9111 +1 y_lkt9211 +1 y_lkt9311 +1 y_lkt10011 +1 y_lkt10111 +1 y_lkt10211 +1 y_lkt10311
-  +1 y_lkt11011 +1 y_lkt11111 +1 y_lkt11211 +1 y_lkt11311 +1 y_lkt9012 +1 y_lkt9112 +1 y_lkt9212 +1 y_lkt9312
-  +1 y_lkt10012 +1 y_lkt10112 +1 y_lkt10212 +1 y_lkt10312 +1 y_lkt11012 +1 y_lkt11112 +1 y_lkt11212 +1 y_lkt11312
-  +1 y_lkt12012 +1 y_lkt12112 +1 y_lkt12212 +1 y_lkt12312 +1 y_lkt9013 +1 y_lkt9113 +1 y_lkt9213 +1 y_lkt9313
-  +1 y_lkt10013 +1 y_lkt10113 +1 y_lkt10213 +1 y_lkt10313 +1 y_lkt11013 +1 y_lkt11113 +1 y_lkt11213 +1 y_lkt11313
-  +1 y_lkt12013 +1 y_lkt12113 +1 y_lkt12213 +1 y_lkt12313 +1 y_lkt9014 +1 y_lkt9114 +1 y_lkt9214 +1 y_lkt9314
-  +1 y_lkt10014 +1 y_lkt10114 +1 y_lkt10214 +1 y_lkt10314 +1 y_lkt11014 +1 y_lkt11114 +1 y_lkt11214 +1 y_lkt11314
-  +1 y_lkt11015 +1 y_lkt11115 +1 y_lkt11215 +1 y_lkt11315 +1 y_lkt11016 +1 y_lkt11116 +1 y_lkt11216 +1 y_lkt11316
-  >= +4
- cons_2: +1 y_lkt202 +1 y_lkt212 +1 y_lkt222 +1 y_lkt232 +1 y_lkt203 +1 y_lkt213 +1 y_lkt223 +1 y_lkt233
-  +1 y_lkt303 +1 y_lkt313 +1 y_lkt323 +1 y_lkt333 +1 y_lkt204 +1 y_lkt214 +1 y_lkt224 +1 y_lkt234 +1 y_lkt304
-  +1 y_lkt314 +1 y_lkt324 +1 y_lkt334 +1 y_lkt305 +1 y_lkt315 +1 y_lkt325 +1 y_lkt335 +1 y_lkt306 +1 y_lkt316
-  +1 y_lkt326 +1 y_lkt336 >= +2
- cons_2: +1 y_lkt13013 +1 y_lkt13113 +1 y_lkt13213 +1 y_lkt13313 +1 y_lkt13014 +1 y_lkt13114 +1 y_lkt13214
-  +1 y_lkt13314 +1 y_lkt14014 +1 y_lkt14114 +1 y_lkt14214 +1 y_lkt14314 +1 y_lkt13015 +1 y_lkt13115 +1 y_lkt13215
-  +1 y_lkt13315 +1 y_lkt14015 +1 y_lkt14115 +1 y_lkt14215 +1 y_lkt14315 +1 y_lkt15015 +1 y_lkt15115 +1 y_lkt15215
-  +1 y_lkt15315 +1 y_lkt14016 +1 y_lkt14116 +1 y_lkt14216 +1 y_lkt14316 +1 y_lkt15016 +1 y_lkt15116 +1 y_lkt15216
-  +1 y_lkt15316 +1 y_lkt16016 +1 y_lkt16116 +1 y_lkt16216 +1 y_lkt16316 +1 y_lkt14017 +1 y_lkt14117 +1 y_lkt14217
-  +1 y_lkt14317 +1 y_lkt15017 +1 y_lkt15117 +1 y_lkt15217 +1 y_lkt15317 +1 y_lkt16017 +1 y_lkt16117 +1 y_lkt16217
-  +1 y_lkt16317 +1 y_lkt14018 +1 y_lkt14118 +1 y_lkt14218 +1 y_lkt14318 +1 y_lkt15018 +1 y_lkt15118 +1 y_lkt15218
-  +1 y_lkt15318 +1 y_lkt16018 +1 y_lkt16118 +1 y_lkt16218 +1 y_lkt16318 >= +4
- cons_2: +1 y_lkt15015 +1 y_lkt15115 +1 y_lkt15215 +1 y_lkt15315 +1 y_lkt15016 +1 y_lkt15116 +1 y_lkt15216
-  +1 y_lkt15316 +1 y_lkt16016 +1 y_lkt16116 +1 y_lkt16216 +1 y_lkt16316 +1 y_lkt15017 +1 y_lkt15117 +1 y_lkt15217
-  +1 y_lkt15317 +1 y_lkt16017 +1 y_lkt16117 +1 y_lkt16217 +1 y_lkt16317 +1 y_lkt17017 +1 y_lkt17117 +1 y_lkt17217
-  +1 y_lkt17317 +1 y_lkt15018 +1 y_lkt15118 +1 y_lkt15218 +1 y_lkt15318 +1 y_lkt16018 +1 y_lkt16118 +1 y_lkt16218
-  +1 y_lkt16318 +1 y_lkt17018 +1 y_lkt17118 +1 y_lkt17218 +1 y_lkt17318 +1 y_lkt17019 +1 y_lkt17119 +1 y_lkt17219
-  +1 y_lkt17319 >= +3
- cons_2: +1 y_lkt12012 +1 y_lkt12112 +1 y_lkt12212 +1 y_lkt12312 +1 y_lkt12013 +1 y_lkt12113 +1 y_lkt12213
-  +1 y_lkt12313 >= +1
- cons_2: +1 y_lkt808 +1 y_lkt818 +1 y_lkt828 +1 y_lkt838 +1 y_lkt809 +1 y_lkt819 +1 y_lkt829 +1 y_lkt839
-  >= +1
- cons_2: +1 y_lkt15015 +1 y_lkt15115 +1 y_lkt15215 +1 y_lkt15315 +1 y_lkt15016 +1 y_lkt15116 +1 y_lkt15216
-  +1 y_lkt15316 +1 y_lkt16016 +1 y_lkt16116 +1 y_lkt16216 +1 y_lkt16316 +1 y_lkt15017 +1 y_lkt15117 +1 y_lkt15217
-  +1 y_lkt15317 +1 y_lkt16017 +1 y_lkt16117 +1 y_lkt16217 +1 y_lkt16317 +1 y_lkt15018 +1 y_lkt15118 +1 y_lkt15218
-  +1 y_lkt15318 +1 y_lkt16018 +1 y_lkt16118 +1 y_lkt16218 +1 y_lkt16318 >= +2
- cons_2: +1 y_lkt303 +1 y_lkt313 +1 y_lkt323 +1 y_lkt333 +1 y_lkt304 +1 y_lkt314 +1 y_lkt324 +1 y_lkt334
-  +1 y_lkt404 +1 y_lkt414 +1 y_lkt424 +1 y_lkt434 +1 y_lkt305 +1 y_lkt315 +1 y_lkt325 +1 y_lkt335 +1 y_lkt405
-  +1 y_lkt415 +1 y_lkt425 +1 y_lkt435 +1 y_lkt505 +1 y_lkt515 +1 y_lkt525 +1 y_lkt535 +1 y_lkt306 +1 y_lkt316
-  +1 y_lkt326 +1 y_lkt336 +1 y_lkt506 +1 y_lkt516 +1 y_lkt526 +1 y_lkt536 +1 y_lkt606 +1 y_lkt616 +1 y_lkt626
-  +1 y_lkt636 +1 y_lkt507 +1 y_lkt517 +1 y_lkt527 +1 y_lkt537 +1 y_lkt607 +1 y_lkt617 +1 y_lkt627 +1 y_lkt637
-  +1 y_lkt608 +1 y_lkt618 +1 y_lkt628 +1 y_lkt638 +1 y_lkt609 +1 y_lkt619 +1 y_lkt629 +1 y_lkt639 >= +4
- cons_2: +1 y_lkt12012 +1 y_lkt12112 +1 y_lkt12212 +1 y_lkt12312 +1 y_lkt12013 +1 y_lkt12113 +1 y_lkt12213
-  +1 y_lkt12313 +1 y_lkt13013 +1 y_lkt13113 +1 y_lkt13213 +1 y_lkt13313 +1 y_lkt13014 +1 y_lkt13114 +1 y_lkt13214
-  +1 y_lkt13314 +1 y_lkt13015 +1 y_lkt13115 +1 y_lkt13215 +1 y_lkt13315 >= +2
- cons_2: +1 y_lkt13013 +1 y_lkt13113 +1 y_lkt13213 +1 y_lkt13313 +1 y_lkt13014 +1 y_lkt13114 +1 y_lkt13214
-  +1 y_lkt13314 +1 y_lkt14014 +1 y_lkt14114 +1 y_lkt14214 +1 y_lkt14314 +1 y_lkt13015 +1 y_lkt13115 +1 y_lkt13215
-  +1 y_lkt13315 +1 y_lkt14015 +1 y_lkt14115 +1 y_lkt14215 +1 y_lkt14315 +1 y_lkt15015 +1 y_lkt15115 +1 y_lkt15215
-  +1 y_lkt15315 +1 y_lkt14016 +1 y_lkt14116 +1 y_lkt14216 +1 y_lkt14316 +1 y_lkt15016 +1 y_lkt15116 +1 y_lkt15216
-  +1 y_lkt15316 +1 y_lkt16016 +1 y_lkt16116 +1 y_lkt16216 +1 y_lkt16316 +1 y_lkt14017 +1 y_lkt14117 +1 y_lkt14217
-  +1 y_lkt14317 +1 y_lkt15017 +1 y_lkt15117 +1 y_lkt15217 +1 y_lkt15317 +1 y_lkt16017 +1 y_lkt16117 +1 y_lkt16217
-  +1 y_lkt16317 +1 y_lkt14018 +1 y_lkt14118 +1 y_lkt14218 +1 y_lkt14318 +1 y_lkt15018 +1 y_lkt15118 +1 y_lkt15218
-  +1 y_lkt15318 +1 y_lkt16018 +1 y_lkt16118 +1 y_lkt16218 +1 y_lkt16318 >= +4
- cons_2: +1 y_lkt404 +1 y_lkt414 +1 y_lkt424 +1 y_lkt434 +1 y_lkt405 +1 y_lkt415 +1 y_lkt425 +1 y_lkt435
-  >= +1
- cons_2: +1 y_lkt909 +1 y_lkt919 +1 y_lkt929 +1 y_lkt939 +1 y_lkt9010 +1 y_lkt9110 +1 y_lkt9210 +1 y_lkt9310
-  +1 y_lkt10010 +1 y_lkt10110 +1 y_lkt10210 +1 y_lkt10310 +1 y_lkt9011 +1 y_lkt9111 +1 y_lkt9211 +1 y_lkt9311
-  +1 y_lkt10011 +1 y_lkt10111 +1 y_lkt10211 +1 y_lkt10311 +1 y_lkt9012 +1 y_lkt9112 +1 y_lkt9212 +1 y_lkt9312
-  +1 y_lkt10012 +1 y_lkt10112 +1 y_lkt10212 +1 y_lkt10312 +1 y_lkt9013 +1 y_lkt9113 +1 y_lkt9213 +1 y_lkt9313
-  +1 y_lkt10013 +1 y_lkt10113 +1 y_lkt10213 +1 y_lkt10313 +1 y_lkt9014 +1 y_lkt9114 +1 y_lkt9214 +1 y_lkt9314
-  +1 y_lkt10014 +1 y_lkt10114 +1 y_lkt10214 +1 y_lkt10314 >= +2
- cons_2: +1 y_lkt10010 +1 y_lkt10110 +1 y_lkt10210 +1 y_lkt10310 +1 y_lkt11010 +1 y_lkt11110 +1 y_lkt11210
-  +1 y_lkt11310 +1 y_lkt10011 +1 y_lkt10111 +1 y_lkt10211 +1 y_lkt10311 +1 y_lkt11011 +1 y_lkt11111 +1 y_lkt11211
-  +1 y_lkt11311 +1 y_lkt10012 +1 y_lkt10112 +1 y_lkt10212 +1 y_lkt10312 +1 y_lkt11012 +1 y_lkt11112 +1 y_lkt11212
-  +1 y_lkt11312 +1 y_lkt12012 +1 y_lkt12112 +1 y_lkt12212 +1 y_lkt12312 +1 y_lkt10013 +1 y_lkt10113 +1 y_lkt10213
-  +1 y_lkt10313 +1 y_lkt11013 +1 y_lkt11113 +1 y_lkt11213 +1 y_lkt11313 +1 y_lkt12013 +1 y_lkt12113 +1 y_lkt12213
-  +1 y_lkt12313 +1 y_lkt13013 +1 y_lkt13113 +1 y_lkt13213 +1 y_lkt13313 +1 y_lkt10014 +1 y_lkt10114 +1 y_lkt10214
-  +1 y_lkt10314 +1 y_lkt11014 +1 y_lkt11114 +1 y_lkt11214 +1 y_lkt11314 +1 y_lkt13014 +1 y_lkt13114 +1 y_lkt13214
-  +1 y_lkt13314 +1 y_lkt11015 +1 y_lkt11115 +1 y_lkt11215 +1 y_lkt11315 +1 y_lkt13015 +1 y_lkt13115 +1 y_lkt13215
-  +1 y_lkt13315 +1 y_lkt11016 +1 y_lkt11116 +1 y_lkt11216 +1 y_lkt11316 >= +4
- cons_2: +1 y_lkt606 +1 y_lkt616 +1 y_lkt626 +1 y_lkt636 +1 y_lkt706 +1 y_lkt716 +1 y_lkt726 +1 y_lkt736
-  +1 y_lkt607 +1 y_lkt617 +1 y_lkt627 +1 y_lkt637 +1 y_lkt707 +1 y_lkt717 +1 y_lkt727 +1 y_lkt737 +1 y_lkt608
-  +1 y_lkt618 +1 y_lkt628 +1 y_lkt638 +1 y_lkt708 +1 y_lkt718 +1 y_lkt728 +1 y_lkt738 +1 y_lkt609 +1 y_lkt619
-  +1 y_lkt629 +1 y_lkt639 +1 y_lkt709 +1 y_lkt719 +1 y_lkt729 +1 y_lkt739 +1 y_lkt7010 +1 y_lkt7110 +1 y_lkt7210
-  +1 y_lkt7310 >= +2
- cons_2: +1 y_lkt14014 +1 y_lkt14114 +1 y_lkt14214 +1 y_lkt14314 +1 y_lkt14015 +1 y_lkt14115 +1 y_lkt14215
-  +1 y_lkt14315 +1 y_lkt15015 +1 y_lkt15115 +1 y_lkt15215 +1 y_lkt15315 +1 y_lkt14016 +1 y_lkt14116 +1 y_lkt14216
-  +1 y_lkt14316 +1 y_lkt15016 +1 y_lkt15116 +1 y_lkt15216 +1 y_lkt15316 +1 y_lkt14017 +1 y_lkt14117 +1 y_lkt14217
-  +1 y_lkt14317 +1 y_lkt15017 +1 y_lkt15117 +1 y_lkt15217 +1 y_lkt15317 +1 y_lkt14018 +1 y_lkt14118 +1 y_lkt14218
-  +1 y_lkt14318 +1 y_lkt15018 +1 y_lkt15118 +1 y_lkt15218 +1 y_lkt15318 >= +2
- cons_2: +1 y_lkt404 +1 y_lkt414 +1 y_lkt424 +1 y_lkt434 +1 y_lkt405 +1 y_lkt415 +1 y_lkt425 +1 y_lkt435
-  +1 y_lkt505 +1 y_lkt515 +1 y_lkt525 +1 y_lkt535 +1 y_lkt506 +1 y_lkt516 +1 y_lkt526 +1 y_lkt536 +1 y_lkt606
-  +1 y_lkt616 +1 y_lkt626 +1 y_lkt636 +1 y_lkt507 +1 y_lkt517 +1 y_lkt527 +1 y_lkt537 +1 y_lkt607 +1 y_lkt617
-  +1 y_lkt627 +1 y_lkt637 +1 y_lkt608 +1 y_lkt618 +1 y_lkt628 +1 y_lkt638 +1 y_lkt609 +1 y_lkt619 +1 y_lkt629
-  +1 y_lkt639 >= +3
- cons_2: +1 y_lkt101 +1 y_lkt111 +1 y_lkt121 +1 y_lkt131 +1 y_lkt102 +1 y_lkt112 +1 y_lkt122 +1 y_lkt132
-  +1 y_lkt202 +1 y_lkt212 +1 y_lkt222 +1 y_lkt232 +1 y_lkt103 +1 y_lkt113 +1 y_lkt123 +1 y_lkt133 +1 y_lkt203
-  +1 y_lkt213 +1 y_lkt223 +1 y_lkt233 +1 y_lkt104 +1 y_lkt114 +1 y_lkt124 +1 y_lkt134 +1 y_lkt204 +1 y_lkt214
-  +1 y_lkt224 +1 y_lkt234 >= +2
- cons_3: +1 z_pt00 -1 y_lkt000 -1 y_lkt010 = +0
- cons_3: +1 z_pt01 -1 y_lkt001 -1 y_lkt011 -1 y_lkt101 -1 y_lkt111 = +0
- cons_3: +1 z_pt02 -1 y_lkt002 -1 y_lkt012 -1 y_lkt102 -1 y_lkt112 -1 y_lkt202 -1 y_lkt212 = +0
- cons_3: +1 z_pt03 -1 y_lkt003 -1 y_lkt013 -1 y_lkt103 -1 y_lkt113 -1 y_lkt203 -1 y_lkt213 -1 y_lkt303
-  -1 y_lkt313 = +0
- cons_3: +1 z_pt04 -1 y_lkt004 -1 y_lkt014 -1 y_lkt104 -1 y_lkt114 -1 y_lkt204 -1 y_lkt214 -1 y_lkt304
-  -1 y_lkt314 -1 y_lkt404 -1 y_lkt414 = +0
- cons_3: +1 z_pt05 -1 y_lkt005 -1 y_lkt015 -1 y_lkt305 -1 y_lkt315 -1 y_lkt405 -1 y_lkt415 -1 y_lkt505
-  -1 y_lkt515 = +0
- cons_3: +1 z_pt06 -1 y_lkt006 -1 y_lkt016 -1 y_lkt306 -1 y_lkt316 -1 y_lkt506 -1 y_lkt516 -1 y_lkt606
-  -1 y_lkt616 -1 y_lkt706 -1 y_lkt716 = +0
- cons_3: +1 z_pt07 -1 y_lkt007 -1 y_lkt017 -1 y_lkt507 -1 y_lkt517 -1 y_lkt607 -1 y_lkt617 -1 y_lkt707
-  -1 y_lkt717 = +0
- cons_3: +1 z_pt08 -1 y_lkt008 -1 y_lkt018 -1 y_lkt608 -1 y_lkt618 -1 y_lkt708 -1 y_lkt718 -1 y_lkt808
-  -1 y_lkt818 = +0
- cons_3: +1 z_pt09 -1 y_lkt609 -1 y_lkt619 -1 y_lkt709 -1 y_lkt719 -1 y_lkt809 -1 y_lkt819 -1 y_lkt909
-  -1 y_lkt919 = +0
- cons_3: +1 z_pt010 -1 y_lkt7010 -1 y_lkt7110 -1 y_lkt9010 -1 y_lkt9110 -1 y_lkt10010 -1 y_lkt10110 -1 y_lkt11010
-  -1 y_lkt11110 = +0
- cons_3: +1 z_pt011 -1 y_lkt9011 -1 y_lkt9111 -1 y_lkt10011 -1 y_lkt10111 -1 y_lkt11011 -1 y_lkt11111
+ cons_1: +1 x_it15,17 -1 y_lkt14,0,17 -1 y_lkt14,1,17 -1 y_lkt14,2,17 -1 y_lkt14,3,17 -1 y_lkt15,0,17
+  -1 y_lkt15,1,17 -1 y_lkt15,2,17 -1 y_lkt15,3,17 -1 y_lkt16,0,17 -1 y_lkt16,1,17 -1 y_lkt16,2,17 -1 y_lkt16,3,17
   = +0
- cons_3: +1 z_pt012 -1 y_lkt9012 -1 y_lkt9112 -1 y_lkt10012 -1 y_lkt10112 -1 y_lkt11012 -1 y_lkt11112
-  -1 y_lkt12012 -1 y_lkt12112 = +0
- cons_3: +1 z_pt013 -1 y_lkt9013 -1 y_lkt9113 -1 y_lkt10013 -1 y_lkt10113 -1 y_lkt11013 -1 y_lkt11113
-  -1 y_lkt12013 -1 y_lkt12113 -1 y_lkt13013 -1 y_lkt13113 = +0
- cons_3: +1 z_pt014 -1 y_lkt9014 -1 y_lkt9114 -1 y_lkt10014 -1 y_lkt10114 -1 y_lkt11014 -1 y_lkt11114
-  -1 y_lkt13014 -1 y_lkt13114 -1 y_lkt14014 -1 y_lkt14114 = +0
- cons_3: +1 z_pt015 -1 y_lkt11015 -1 y_lkt11115 -1 y_lkt13015 -1 y_lkt13115 -1 y_lkt14015 -1 y_lkt14115
-  -1 y_lkt15015 -1 y_lkt15115 = +0
- cons_3: +1 z_pt016 -1 y_lkt11016 -1 y_lkt11116 -1 y_lkt14016 -1 y_lkt14116 -1 y_lkt15016 -1 y_lkt15116
-  -1 y_lkt16016 -1 y_lkt16116 = +0
- cons_3: +1 z_pt017 -1 y_lkt14017 -1 y_lkt14117 -1 y_lkt15017 -1 y_lkt15117 -1 y_lkt16017 -1 y_lkt16117
-  -1 y_lkt17017 -1 y_lkt17117 -1 y_lkt18017 -1 y_lkt18117 = +0
- cons_3: +1 z_pt018 -1 y_lkt14018 -1 y_lkt14118 -1 y_lkt15018 -1 y_lkt15118 -1 y_lkt16018 -1 y_lkt16118
-  -1 y_lkt17018 -1 y_lkt17118 -1 y_lkt18018 -1 y_lkt18118 = +0
- cons_3: +1 z_pt019 -1 y_lkt17019 -1 y_lkt17119 -1 y_lkt18019 -1 y_lkt18119 = +0
- cons_3: +1 z_pt020 -1 y_lkt18020 -1 y_lkt18120 = +0
- cons_3: +1 z_pt021 = +0
- cons_3: +1 z_pt022 = +0
- cons_3: +1 z_pt023 = +0
- cons_3: +1 z_pt024 = +0
- cons_3: +1 z_pt025 = +0
- cons_3: +1 z_pt10 -1 y_lkt020 -1 y_lkt030 = +0
- cons_3: +1 z_pt11 -1 y_lkt021 -1 y_lkt031 -1 y_lkt121 -1 y_lkt131 = +0
- cons_3: +1 z_pt12 -1 y_lkt022 -1 y_lkt032 -1 y_lkt122 -1 y_lkt132 -1 y_lkt222 -1 y_lkt232 = +0
- cons_3: +1 z_pt13 -1 y_lkt023 -1 y_lkt033 -1 y_lkt123 -1 y_lkt133 -1 y_lkt223 -1 y_lkt233 -1 y_lkt323
-  -1 y_lkt333 = +0
- cons_3: +1 z_pt14 -1 y_lkt024 -1 y_lkt034 -1 y_lkt124 -1 y_lkt134 -1 y_lkt224 -1 y_lkt234 -1 y_lkt324
-  -1 y_lkt334 -1 y_lkt424 -1 y_lkt434 = +0
- cons_3: +1 z_pt15 -1 y_lkt025 -1 y_lkt035 -1 y_lkt325 -1 y_lkt335 -1 y_lkt425 -1 y_lkt435 -1 y_lkt525
-  -1 y_lkt535 = +0
- cons_3: +1 z_pt16 -1 y_lkt026 -1 y_lkt036 -1 y_lkt326 -1 y_lkt336 -1 y_lkt526 -1 y_lkt536 -1 y_lkt626
-  -1 y_lkt636 -1 y_lkt726 -1 y_lkt736 = +0
- cons_3: +1 z_pt17 -1 y_lkt027 -1 y_lkt037 -1 y_lkt527 -1 y_lkt537 -1 y_lkt627 -1 y_lkt637 -1 y_lkt727
-  -1 y_lkt737 = +0
- cons_3: +1 z_pt18 -1 y_lkt028 -1 y_lkt038 -1 y_lkt628 -1 y_lkt638 -1 y_lkt728 -1 y_lkt738 -1 y_lkt828
-  -1 y_lkt838 = +0
- cons_3: +1 z_pt19 -1 y_lkt629 -1 y_lkt639 -1 y_lkt729 -1 y_lkt739 -1 y_lkt829 -1 y_lkt839 -1 y_lkt929
-  -1 y_lkt939 = +0
- cons_3: +1 z_pt110 -1 y_lkt7210 -1 y_lkt7310 -1 y_lkt9210 -1 y_lkt9310 -1 y_lkt10210 -1 y_lkt10310 -1 y_lkt11210
-  -1 y_lkt11310 = +0
- cons_3: +1 z_pt111 -1 y_lkt9211 -1 y_lkt9311 -1 y_lkt10211 -1 y_lkt10311 -1 y_lkt11211 -1 y_lkt11311
+ cons_1: +1 x_it15,18 -1 y_lkt14,0,18 -1 y_lkt14,1,18 -1 y_lkt14,2,18 -1 y_lkt14,3,18 -1 y_lkt15,0,18
+  -1 y_lkt15,1,18 -1 y_lkt15,2,18 -1 y_lkt15,3,18 -1 y_lkt16,0,18 -1 y_lkt16,1,18 -1 y_lkt16,2,18 -1 y_lkt16,3,18
   = +0
- cons_3: +1 z_pt112 -1 y_lkt9212 -1 y_lkt9312 -1 y_lkt10212 -1 y_lkt10312 -1 y_lkt11212 -1 y_lkt11312
-  -1 y_lkt12212 -1 y_lkt12312 = +0
- cons_3: +1 z_pt113 -1 y_lkt9213 -1 y_lkt9313 -1 y_lkt10213 -1 y_lkt10313 -1 y_lkt11213 -1 y_lkt11313
-  -1 y_lkt12213 -1 y_lkt12313 -1 y_lkt13213 -1 y_lkt13313 = +0
- cons_3: +1 z_pt114 -1 y_lkt9214 -1 y_lkt9314 -1 y_lkt10214 -1 y_lkt10314 -1 y_lkt11214 -1 y_lkt11314
-  -1 y_lkt13214 -1 y_lkt13314 -1 y_lkt14214 -1 y_lkt14314 = +0
- cons_3: +1 z_pt115 -1 y_lkt11215 -1 y_lkt11315 -1 y_lkt13215 -1 y_lkt13315 -1 y_lkt14215 -1 y_lkt14315
-  -1 y_lkt15215 -1 y_lkt15315 = +0
- cons_3: +1 z_pt116 -1 y_lkt11216 -1 y_lkt11316 -1 y_lkt14216 -1 y_lkt14316 -1 y_lkt15216 -1 y_lkt15316
-  -1 y_lkt16216 -1 y_lkt16316 = +0
- cons_3: +1 z_pt117 -1 y_lkt14217 -1 y_lkt14317 -1 y_lkt15217 -1 y_lkt15317 -1 y_lkt16217 -1 y_lkt16317
-  -1 y_lkt17217 -1 y_lkt17317 -1 y_lkt18217 -1 y_lkt18317 = +0
- cons_3: +1 z_pt118 -1 y_lkt14218 -1 y_lkt14318 -1 y_lkt15218 -1 y_lkt15318 -1 y_lkt16218 -1 y_lkt16318
-  -1 y_lkt17218 -1 y_lkt17318 -1 y_lkt18218 -1 y_lkt18318 = +0
- cons_3: +1 z_pt119 -1 y_lkt17219 -1 y_lkt17319 -1 y_lkt18219 -1 y_lkt18319 = +0
- cons_3: +1 z_pt120 -1 y_lkt18220 -1 y_lkt18320 = +0
- cons_3: +1 z_pt121 = +0
- cons_3: +1 z_pt122 = +0
- cons_3: +1 z_pt123 = +0
- cons_3: +1 z_pt124 = +0
- cons_3: +1 z_pt125 = +0
- cons_4: +1 z0_pt00 -1 y0_kt00 -1 y0_kt10 = +0
- cons_4: +1 z0_pt01 -1 y0_kt01 -1 y0_kt11 = +0
- cons_4: +1 z0_pt02 -1 y0_kt02 -1 y0_kt12 = +0
- cons_4: +1 z0_pt03 -1 y0_kt03 -1 y0_kt13 = +0
- cons_4: +1 z0_pt04 -1 y0_kt04 -1 y0_kt14 = +0
- cons_4: +1 z0_pt05 -1 y0_kt05 -1 y0_kt15 = +0
- cons_4: +1 z0_pt06 -1 y0_kt06 -1 y0_kt16 = +0
- cons_4: +1 z0_pt07 -1 y0_kt07 -1 y0_kt17 = +0
- cons_4: +1 z0_pt08 -1 y0_kt08 -1 y0_kt18 = +0
- cons_4: +1 z0_pt09 -1 y0_kt09 -1 y0_kt19 = +0
- cons_4: +1 z0_pt010 -1 y0_kt010 -1 y0_kt110 = +0
- cons_4: +1 z0_pt011 -1 y0_kt011 -1 y0_kt111 = +0
- cons_4: +1 z0_pt012 -1 y0_kt012 -1 y0_kt112 = +0
- cons_4: +1 z0_pt013 -1 y0_kt013 -1 y0_kt113 = +0
- cons_4: +1 z0_pt014 -1 y0_kt014 -1 y0_kt114 = +0
- cons_4: +1 z0_pt015 -1 y0_kt015 -1 y0_kt115 = +0
- cons_4: +1 z0_pt016 -1 y0_kt016 -1 y0_kt116 = +0
- cons_4: +1 z0_pt017 -1 y0_kt017 -1 y0_kt117 = +0
- cons_4: +1 z0_pt018 -1 y0_kt018 -1 y0_kt118 = +0
- cons_4: +1 z0_pt019 -1 y0_kt019 -1 y0_kt119 = +0
- cons_4: +1 z0_pt020 -1 y0_kt020 -1 y0_kt120 = +0
- cons_4: +1 z0_pt021 -1 y0_kt021 -1 y0_kt121 = +0
- cons_4: +1 z0_pt022 -1 y0_kt022 -1 y0_kt122 = +0
- cons_4: +1 z0_pt023 -1 y0_kt023 -1 y0_kt123 = +0
- cons_4: +1 z0_pt024 -1 y0_kt024 -1 y0_kt124 = +0
- cons_4: +1 z0_pt025 -1 y0_kt025 -1 y0_kt125 = +0
- cons_4: +1 z0_pt10 -1 y0_kt20 -1 y0_kt30 = +0
- cons_4: +1 z0_pt11 -1 y0_kt21 -1 y0_kt31 = +0
- cons_4: +1 z0_pt12 -1 y0_kt22 -1 y0_kt32 = +0
- cons_4: +1 z0_pt13 -1 y0_kt23 -1 y0_kt33 = +0
- cons_4: +1 z0_pt14 -1 y0_kt24 -1 y0_kt34 = +0
- cons_4: +1 z0_pt15 -1 y0_kt25 -1 y0_kt35 = +0
- cons_4: +1 z0_pt16 -1 y0_kt26 -1 y0_kt36 = +0
- cons_4: +1 z0_pt17 -1 y0_kt27 -1 y0_kt37 = +0
- cons_4: +1 z0_pt18 -1 y0_kt28 -1 y0_kt38 = +0
- cons_4: +1 z0_pt19 -1 y0_kt29 -1 y0_kt39 = +0
- cons_4: +1 z0_pt110 -1 y0_kt210 -1 y0_kt310 = +0
- cons_4: +1 z0_pt111 -1 y0_kt211 -1 y0_kt311 = +0
- cons_4: +1 z0_pt112 -1 y0_kt212 -1 y0_kt312 = +0
- cons_4: +1 z0_pt113 -1 y0_kt213 -1 y0_kt313 = +0
- cons_4: +1 z0_pt114 -1 y0_kt214 -1 y0_kt314 = +0
- cons_4: +1 z0_pt115 -1 y0_kt215 -1 y0_kt315 = +0
- cons_4: +1 z0_pt116 -1 y0_kt216 -1 y0_kt316 = +0
- cons_4: +1 z0_pt117 -1 y0_kt217 -1 y0_kt317 = +0
- cons_4: +1 z0_pt118 -1 y0_kt218 -1 y0_kt318 = +0
- cons_4: +1 z0_pt119 -1 y0_kt219 -1 y0_kt319 = +0
- cons_4: +1 z0_pt120 -1 y0_kt220 -1 y0_kt320 = +0
- cons_4: +1 z0_pt121 -1 y0_kt221 -1 y0_kt321 = +0
- cons_4: +1 z0_pt122 -1 y0_kt222 -1 y0_kt322 = +0
- cons_4: +1 z0_pt123 -1 y0_kt223 -1 y0_kt323 = +0
- cons_4: +1 z0_pt124 -1 y0_kt224 -1 y0_kt324 = +0
- cons_4: +1 z0_pt125 -1 y0_kt225 -1 y0_kt325 = +0
- cons_5: +1 z_pt00 +1 z0_pt00 +1 z_pt10 +1 z0_pt10 <= +1
- cons_5: +1 z_pt01 +1 z0_pt01 +1 z_pt11 +1 z0_pt11 <= +1
- cons_5: +1 z_pt02 +1 z0_pt02 +1 z_pt12 +1 z0_pt12 <= +1
- cons_5: +1 z_pt03 +1 z0_pt03 +1 z_pt13 +1 z0_pt13 <= +1
- cons_5: +1 z_pt04 +1 z0_pt04 +1 z_pt14 +1 z0_pt14 <= +1
- cons_5: +1 z_pt05 +1 z0_pt05 +1 z_pt15 +1 z0_pt15 <= +1
- cons_5: +1 z_pt06 +1 z0_pt06 +1 z_pt16 +1 z0_pt16 <= +1
- cons_5: +1 z_pt07 +1 z0_pt07 +1 z_pt17 +1 z0_pt17 <= +1
- cons_5: +1 z_pt08 +1 z0_pt08 +1 z_pt18 +1 z0_pt18 <= +1
- cons_5: +1 z_pt09 +1 z0_pt09 +1 z_pt19 +1 z0_pt19 <= +1
- cons_5: +1 z_pt010 +1 z0_pt010 +1 z_pt110 +1 z0_pt110 <= +1
- cons_5: +1 z_pt011 +1 z0_pt011 +1 z_pt111 +1 z0_pt111 <= +1
- cons_5: +1 z_pt012 +1 z0_pt012 +1 z_pt112 +1 z0_pt112 <= +1
- cons_5: +1 z_pt013 +1 z0_pt013 +1 z_pt113 +1 z0_pt113 <= +1
- cons_5: +1 z_pt014 +1 z0_pt014 +1 z_pt114 +1 z0_pt114 <= +1
- cons_5: +1 z_pt015 +1 z0_pt015 +1 z_pt115 +1 z0_pt115 <= +1
- cons_5: +1 z_pt016 +1 z0_pt016 +1 z_pt116 +1 z0_pt116 <= +1
- cons_5: +1 z_pt017 +1 z0_pt017 +1 z_pt117 +1 z0_pt117 <= +1
- cons_5: +1 z_pt018 +1 z0_pt018 +1 z_pt118 +1 z0_pt118 <= +1
- cons_5: +1 z_pt019 +1 z0_pt019 +1 z_pt119 +1 z0_pt119 <= +1
- cons_5: +1 z_pt020 +1 z0_pt020 +1 z_pt120 +1 z0_pt120 <= +1
- cons_5: +1 z_pt021 +1 z0_pt021 +1 z_pt121 +1 z0_pt121 <= +1
- cons_5: +1 z_pt022 +1 z0_pt022 +1 z_pt122 +1 z0_pt122 <= +1
- cons_5: +1 z_pt023 +1 z0_pt023 +1 z_pt123 +1 z0_pt123 <= +1
- cons_5: +1 z_pt024 +1 z0_pt024 +1 z_pt124 +1 z0_pt124 <= +1
- cons_5: +1 z_pt025 +1 z0_pt025 +1 z_pt125 +1 z0_pt125 <= +1
+ cons_1: +1 x_it15,19 = +0
+ cons_1: +1 x_it15,20 = +0
+ cons_1: +1 x_it15,21 = +0
+ cons_1: +1 x_it15,22 = +0
+ cons_1: +1 x_it15,23 = +0
+ cons_1: +1 x_it15,24 = +0
+ cons_1: +1 x_it16,15 -1 y_lkt15,0,15 -1 y_lkt15,1,15 -1 y_lkt15,2,15 -1 y_lkt15,3,15 = +0
+ cons_1: +1 x_it16,16 -1 y_lkt15,0,16 -1 y_lkt15,1,16 -1 y_lkt15,2,16 -1 y_lkt15,3,16 -1 y_lkt16,0,16
+  -1 y_lkt16,1,16 -1 y_lkt16,2,16 -1 y_lkt16,3,16 = +0
+ cons_1: +1 x_it16,17 -1 y_lkt15,0,17 -1 y_lkt15,1,17 -1 y_lkt15,2,17 -1 y_lkt15,3,17 -1 y_lkt16,0,17
+  -1 y_lkt16,1,17 -1 y_lkt16,2,17 -1 y_lkt16,3,17 -1 y_lkt17,0,17 -1 y_lkt17,1,17 -1 y_lkt17,2,17 -1 y_lkt17,3,17
+  = +0
+ cons_1: +1 x_it16,18 -1 y_lkt15,0,18 -1 y_lkt15,1,18 -1 y_lkt15,2,18 -1 y_lkt15,3,18 -1 y_lkt16,0,18
+  -1 y_lkt16,1,18 -1 y_lkt16,2,18 -1 y_lkt16,3,18 -1 y_lkt17,0,18 -1 y_lkt17,1,18 -1 y_lkt17,2,18 -1 y_lkt17,3,18
+  = +0
+ cons_1: +1 x_it16,19 -1 y_lkt17,0,19 -1 y_lkt17,1,19 -1 y_lkt17,2,19 -1 y_lkt17,3,19 = +0
+ cons_1: +1 x_it16,20 = +0
+ cons_1: +1 x_it16,21 = +0
+ cons_1: +1 x_it17,12 -1 y_lkt12,0,12 -1 y_lkt12,1,12 -1 y_lkt12,2,12 -1 y_lkt12,3,12 = +0
+ cons_1: +1 x_it17,13 -1 y_lkt12,0,13 -1 y_lkt12,1,13 -1 y_lkt12,2,13 -1 y_lkt12,3,13 = +0
+ cons_1: +1 x_it18,8 -1 y_lkt8,0,8 -1 y_lkt8,1,8 -1 y_lkt8,2,8 -1 y_lkt8,3,8 = +0
+ cons_1: +1 x_it18,9 -1 y_lkt8,0,9 -1 y_lkt8,1,9 -1 y_lkt8,2,9 -1 y_lkt8,3,9 = +0
+ cons_1: +1 x_it19,15 -1 y_lkt15,0,15 -1 y_lkt15,1,15 -1 y_lkt15,2,15 -1 y_lkt15,3,15 = +0
+ cons_1: +1 x_it19,16 -1 y_lkt15,0,16 -1 y_lkt15,1,16 -1 y_lkt15,2,16 -1 y_lkt15,3,16 -1 y_lkt16,0,16
+  -1 y_lkt16,1,16 -1 y_lkt16,2,16 -1 y_lkt16,3,16 = +0
+ cons_1: +1 x_it19,17 -1 y_lkt15,0,17 -1 y_lkt15,1,17 -1 y_lkt15,2,17 -1 y_lkt15,3,17 -1 y_lkt16,0,17
+  -1 y_lkt16,1,17 -1 y_lkt16,2,17 -1 y_lkt16,3,17 = +0
+ cons_1: +1 x_it19,18 -1 y_lkt15,0,18 -1 y_lkt15,1,18 -1 y_lkt15,2,18 -1 y_lkt15,3,18 -1 y_lkt16,0,18
+  -1 y_lkt16,1,18 -1 y_lkt16,2,18 -1 y_lkt16,3,18 = +0
+ cons_1: +1 x_it20,3 -1 y_lkt3,0,3 -1 y_lkt3,1,3 -1 y_lkt3,2,3 -1 y_lkt3,3,3 = +0
+ cons_1: +1 x_it20,4 -1 y_lkt3,0,4 -1 y_lkt3,1,4 -1 y_lkt3,2,4 -1 y_lkt3,3,4 -1 y_lkt4,0,4 -1 y_lkt4,1,4
+  -1 y_lkt4,2,4 -1 y_lkt4,3,4 = +0
+ cons_1: +1 x_it20,5 -1 y_lkt3,0,5 -1 y_lkt3,1,5 -1 y_lkt3,2,5 -1 y_lkt3,3,5 -1 y_lkt4,0,5 -1 y_lkt4,1,5
+  -1 y_lkt4,2,5 -1 y_lkt4,3,5 -1 y_lkt5,0,5 -1 y_lkt5,1,5 -1 y_lkt5,2,5 -1 y_lkt5,3,5 = +0
+ cons_1: +1 x_it20,6 -1 y_lkt3,0,6 -1 y_lkt3,1,6 -1 y_lkt3,2,6 -1 y_lkt3,3,6 -1 y_lkt5,0,6 -1 y_lkt5,1,6
+  -1 y_lkt5,2,6 -1 y_lkt5,3,6 -1 y_lkt6,0,6 -1 y_lkt6,1,6 -1 y_lkt6,2,6 -1 y_lkt6,3,6 = +0
+ cons_1: +1 x_it20,7 -1 y_lkt5,0,7 -1 y_lkt5,1,7 -1 y_lkt5,2,7 -1 y_lkt5,3,7 -1 y_lkt6,0,7 -1 y_lkt6,1,7
+  -1 y_lkt6,2,7 -1 y_lkt6,3,7 = +0
+ cons_1: +1 x_it20,8 -1 y_lkt6,0,8 -1 y_lkt6,1,8 -1 y_lkt6,2,8 -1 y_lkt6,3,8 = +0
+ cons_1: +1 x_it20,9 -1 y_lkt6,0,9 -1 y_lkt6,1,9 -1 y_lkt6,2,9 -1 y_lkt6,3,9 = +0
+ cons_1: +1 x_it20,10 = +0
+ cons_1: +1 x_it20,11 = +0
+ cons_1: +1 x_it20,12 = +0
+ cons_1: +1 x_it20,13 = +0
+ cons_1: +1 x_it20,14 = +0
+ cons_1: +1 x_it21,12 -1 y_lkt12,0,12 -1 y_lkt12,1,12 -1 y_lkt12,2,12 -1 y_lkt12,3,12 = +0
+ cons_1: +1 x_it21,13 -1 y_lkt12,0,13 -1 y_lkt12,1,13 -1 y_lkt12,2,13 -1 y_lkt12,3,13 -1 y_lkt13,0,13
+  -1 y_lkt13,1,13 -1 y_lkt13,2,13 -1 y_lkt13,3,13 = +0
+ cons_1: +1 x_it21,14 -1 y_lkt13,0,14 -1 y_lkt13,1,14 -1 y_lkt13,2,14 -1 y_lkt13,3,14 = +0
+ cons_1: +1 x_it21,15 -1 y_lkt13,0,15 -1 y_lkt13,1,15 -1 y_lkt13,2,15 -1 y_lkt13,3,15 = +0
+ cons_1: +1 x_it22,13 -1 y_lkt13,0,13 -1 y_lkt13,1,13 -1 y_lkt13,2,13 -1 y_lkt13,3,13 = +0
+ cons_1: +1 x_it22,14 -1 y_lkt13,0,14 -1 y_lkt13,1,14 -1 y_lkt13,2,14 -1 y_lkt13,3,14 -1 y_lkt14,0,14
+  -1 y_lkt14,1,14 -1 y_lkt14,2,14 -1 y_lkt14,3,14 = +0
+ cons_1: +1 x_it22,15 -1 y_lkt13,0,15 -1 y_lkt13,1,15 -1 y_lkt13,2,15 -1 y_lkt13,3,15 -1 y_lkt14,0,15
+  -1 y_lkt14,1,15 -1 y_lkt14,2,15 -1 y_lkt14,3,15 -1 y_lkt15,0,15 -1 y_lkt15,1,15 -1 y_lkt15,2,15 -1 y_lkt15,3,15
+  = +0
+ cons_1: +1 x_it22,16 -1 y_lkt14,0,16 -1 y_lkt14,1,16 -1 y_lkt14,2,16 -1 y_lkt14,3,16 -1 y_lkt15,0,16
+  -1 y_lkt15,1,16 -1 y_lkt15,2,16 -1 y_lkt15,3,16 -1 y_lkt16,0,16 -1 y_lkt16,1,16 -1 y_lkt16,2,16 -1 y_lkt16,3,16
+  = +0
+ cons_1: +1 x_it22,17 -1 y_lkt14,0,17 -1 y_lkt14,1,17 -1 y_lkt14,2,17 -1 y_lkt14,3,17 -1 y_lkt15,0,17
+  -1 y_lkt15,1,17 -1 y_lkt15,2,17 -1 y_lkt15,3,17 -1 y_lkt16,0,17 -1 y_lkt16,1,17 -1 y_lkt16,2,17 -1 y_lkt16,3,17
+  = +0
+ cons_1: +1 x_it22,18 -1 y_lkt14,0,18 -1 y_lkt14,1,18 -1 y_lkt14,2,18 -1 y_lkt14,3,18 -1 y_lkt15,0,18
+  -1 y_lkt15,1,18 -1 y_lkt15,2,18 -1 y_lkt15,3,18 -1 y_lkt16,0,18 -1 y_lkt16,1,18 -1 y_lkt16,2,18 -1 y_lkt16,3,18
+  = +0
+ cons_1: +1 x_it22,19 = +0
+ cons_1: +1 x_it22,20 = +0
+ cons_1: +1 x_it23,4 -1 y_lkt4,0,4 -1 y_lkt4,1,4 -1 y_lkt4,2,4 -1 y_lkt4,3,4 = +0
+ cons_1: +1 x_it23,5 -1 y_lkt4,0,5 -1 y_lkt4,1,5 -1 y_lkt4,2,5 -1 y_lkt4,3,5 = +0
+ cons_1: +1 x_it24,9 -1 y_lkt9,0,9 -1 y_lkt9,1,9 -1 y_lkt9,2,9 -1 y_lkt9,3,9 = +0
+ cons_1: +1 x_it24,10 -1 y_lkt9,0,10 -1 y_lkt9,1,10 -1 y_lkt9,2,10 -1 y_lkt9,3,10 -1 y_lkt10,0,10 -1 y_lkt10,1,10
+  -1 y_lkt10,2,10 -1 y_lkt10,3,10 = +0
+ cons_1: +1 x_it24,11 -1 y_lkt9,0,11 -1 y_lkt9,1,11 -1 y_lkt9,2,11 -1 y_lkt9,3,11 -1 y_lkt10,0,11 -1 y_lkt10,1,11
+  -1 y_lkt10,2,11 -1 y_lkt10,3,11 = +0
+ cons_1: +1 x_it24,12 -1 y_lkt9,0,12 -1 y_lkt9,1,12 -1 y_lkt9,2,12 -1 y_lkt9,3,12 -1 y_lkt10,0,12 -1 y_lkt10,1,12
+  -1 y_lkt10,2,12 -1 y_lkt10,3,12 = +0
+ cons_1: +1 x_it24,13 -1 y_lkt9,0,13 -1 y_lkt9,1,13 -1 y_lkt9,2,13 -1 y_lkt9,3,13 -1 y_lkt10,0,13 -1 y_lkt10,1,13
+  -1 y_lkt10,2,13 -1 y_lkt10,3,13 = +0
+ cons_1: +1 x_it24,14 -1 y_lkt9,0,14 -1 y_lkt9,1,14 -1 y_lkt9,2,14 -1 y_lkt9,3,14 -1 y_lkt10,0,14 -1 y_lkt10,1,14
+  -1 y_lkt10,2,14 -1 y_lkt10,3,14 = +0
+ cons_1: +1 x_it25,10 -1 y_lkt10,0,10 -1 y_lkt10,1,10 -1 y_lkt10,2,10 -1 y_lkt10,3,10 -1 y_lkt11,0,10
+  -1 y_lkt11,1,10 -1 y_lkt11,2,10 -1 y_lkt11,3,10 = +0
+ cons_1: +1 x_it25,11 -1 y_lkt10,0,11 -1 y_lkt10,1,11 -1 y_lkt10,2,11 -1 y_lkt10,3,11 -1 y_lkt11,0,11
+  -1 y_lkt11,1,11 -1 y_lkt11,2,11 -1 y_lkt11,3,11 = +0
+ cons_1: +1 x_it25,12 -1 y_lkt10,0,12 -1 y_lkt10,1,12 -1 y_lkt10,2,12 -1 y_lkt10,3,12 -1 y_lkt11,0,12
+  -1 y_lkt11,1,12 -1 y_lkt11,2,12 -1 y_lkt11,3,12 -1 y_lkt12,0,12 -1 y_lkt12,1,12 -1 y_lkt12,2,12 -1 y_lkt12,3,12
+  = +0
+ cons_1: +1 x_it25,13 -1 y_lkt10,0,13 -1 y_lkt10,1,13 -1 y_lkt10,2,13 -1 y_lkt10,3,13 -1 y_lkt11,0,13
+  -1 y_lkt11,1,13 -1 y_lkt11,2,13 -1 y_lkt11,3,13 -1 y_lkt12,0,13 -1 y_lkt12,1,13 -1 y_lkt12,2,13 -1 y_lkt12,3,13
+  -1 y_lkt13,0,13 -1 y_lkt13,1,13 -1 y_lkt13,2,13 -1 y_lkt13,3,13 = +0
+ cons_1: +1 x_it25,14 -1 y_lkt10,0,14 -1 y_lkt10,1,14 -1 y_lkt10,2,14 -1 y_lkt10,3,14 -1 y_lkt11,0,14
+  -1 y_lkt11,1,14 -1 y_lkt11,2,14 -1 y_lkt11,3,14 -1 y_lkt13,0,14 -1 y_lkt13,1,14 -1 y_lkt13,2,14 -1 y_lkt13,3,14
+  = +0
+ cons_1: +1 x_it25,15 -1 y_lkt11,0,15 -1 y_lkt11,1,15 -1 y_lkt11,2,15 -1 y_lkt11,3,15 -1 y_lkt13,0,15
+  -1 y_lkt13,1,15 -1 y_lkt13,2,15 -1 y_lkt13,3,15 = +0
+ cons_1: +1 x_it25,16 -1 y_lkt11,0,16 -1 y_lkt11,1,16 -1 y_lkt11,2,16 -1 y_lkt11,3,16 = +0
+ cons_1: +1 x_it25,17 = +0
+ cons_1: +1 x_it26,6 -1 y_lkt6,0,6 -1 y_lkt6,1,6 -1 y_lkt6,2,6 -1 y_lkt6,3,6 -1 y_lkt7,0,6 -1 y_lkt7,1,6
+  -1 y_lkt7,2,6 -1 y_lkt7,3,6 = +0
+ cons_1: +1 x_it26,7 -1 y_lkt6,0,7 -1 y_lkt6,1,7 -1 y_lkt6,2,7 -1 y_lkt6,3,7 -1 y_lkt7,0,7 -1 y_lkt7,1,7
+  -1 y_lkt7,2,7 -1 y_lkt7,3,7 = +0
+ cons_1: +1 x_it26,8 -1 y_lkt6,0,8 -1 y_lkt6,1,8 -1 y_lkt6,2,8 -1 y_lkt6,3,8 -1 y_lkt7,0,8 -1 y_lkt7,1,8
+  -1 y_lkt7,2,8 -1 y_lkt7,3,8 = +0
+ cons_1: +1 x_it26,9 -1 y_lkt6,0,9 -1 y_lkt6,1,9 -1 y_lkt6,2,9 -1 y_lkt6,3,9 -1 y_lkt7,0,9 -1 y_lkt7,1,9
+  -1 y_lkt7,2,9 -1 y_lkt7,3,9 = +0
+ cons_1: +1 x_it26,10 -1 y_lkt7,0,10 -1 y_lkt7,1,10 -1 y_lkt7,2,10 -1 y_lkt7,3,10 = +0
+ cons_1: +1 x_it27,14 -1 y_lkt14,0,14 -1 y_lkt14,1,14 -1 y_lkt14,2,14 -1 y_lkt14,3,14 = +0
+ cons_1: +1 x_it27,15 -1 y_lkt14,0,15 -1 y_lkt14,1,15 -1 y_lkt14,2,15 -1 y_lkt14,3,15 -1 y_lkt15,0,15
+  -1 y_lkt15,1,15 -1 y_lkt15,2,15 -1 y_lkt15,3,15 = +0
+ cons_1: +1 x_it27,16 -1 y_lkt14,0,16 -1 y_lkt14,1,16 -1 y_lkt14,2,16 -1 y_lkt14,3,16 -1 y_lkt15,0,16
+  -1 y_lkt15,1,16 -1 y_lkt15,2,16 -1 y_lkt15,3,16 = +0
+ cons_1: +1 x_it27,17 -1 y_lkt14,0,17 -1 y_lkt14,1,17 -1 y_lkt14,2,17 -1 y_lkt14,3,17 -1 y_lkt15,0,17
+  -1 y_lkt15,1,17 -1 y_lkt15,2,17 -1 y_lkt15,3,17 = +0
+ cons_1: +1 x_it27,18 -1 y_lkt14,0,18 -1 y_lkt14,1,18 -1 y_lkt14,2,18 -1 y_lkt14,3,18 -1 y_lkt15,0,18
+  -1 y_lkt15,1,18 -1 y_lkt15,2,18 -1 y_lkt15,3,18 = +0
+ cons_1: +1 x_it28,4 -1 y_lkt4,0,4 -1 y_lkt4,1,4 -1 y_lkt4,2,4 -1 y_lkt4,3,4 = +0
+ cons_1: +1 x_it28,5 -1 y_lkt4,0,5 -1 y_lkt4,1,5 -1 y_lkt4,2,5 -1 y_lkt4,3,5 -1 y_lkt5,0,5 -1 y_lkt5,1,5
+  -1 y_lkt5,2,5 -1 y_lkt5,3,5 = +0
+ cons_1: +1 x_it28,6 -1 y_lkt5,0,6 -1 y_lkt5,1,6 -1 y_lkt5,2,6 -1 y_lkt5,3,6 -1 y_lkt6,0,6 -1 y_lkt6,1,6
+  -1 y_lkt6,2,6 -1 y_lkt6,3,6 = +0
+ cons_1: +1 x_it28,7 -1 y_lkt5,0,7 -1 y_lkt5,1,7 -1 y_lkt5,2,7 -1 y_lkt5,3,7 -1 y_lkt6,0,7 -1 y_lkt6,1,7
+  -1 y_lkt6,2,7 -1 y_lkt6,3,7 = +0
+ cons_1: +1 x_it28,8 -1 y_lkt6,0,8 -1 y_lkt6,1,8 -1 y_lkt6,2,8 -1 y_lkt6,3,8 = +0
+ cons_1: +1 x_it28,9 -1 y_lkt6,0,9 -1 y_lkt6,1,9 -1 y_lkt6,2,9 -1 y_lkt6,3,9 = +0
+ cons_1: +1 x_it28,10 = +0
+ cons_1: +1 x_it28,11 = +0
+ cons_1: +1 x_it28,12 = +0
+ cons_1: +1 x_it28,13 = +0
+ cons_1: +1 x_it28,14 = +0
+ cons_1: +1 x_it29,1 -1 y_lkt1,0,1 -1 y_lkt1,1,1 -1 y_lkt1,2,1 -1 y_lkt1,3,1 = +0
+ cons_1: +1 x_it29,2 -1 y_lkt1,0,2 -1 y_lkt1,1,2 -1 y_lkt1,2,2 -1 y_lkt1,3,2 -1 y_lkt2,0,2 -1 y_lkt2,1,2
+  -1 y_lkt2,2,2 -1 y_lkt2,3,2 = +0
+ cons_1: +1 x_it29,3 -1 y_lkt1,0,3 -1 y_lkt1,1,3 -1 y_lkt1,2,3 -1 y_lkt1,3,3 -1 y_lkt2,0,3 -1 y_lkt2,1,3
+  -1 y_lkt2,2,3 -1 y_lkt2,3,3 = +0
+ cons_1: +1 x_it29,4 -1 y_lkt1,0,4 -1 y_lkt1,1,4 -1 y_lkt1,2,4 -1 y_lkt1,3,4 -1 y_lkt2,0,4 -1 y_lkt2,1,4
+  -1 y_lkt2,2,4 -1 y_lkt2,3,4 = +0
+ cons_2: +1 y_lkt10,0,10 +1 y_lkt10,1,10 +1 y_lkt10,2,10 +1 y_lkt10,3,10 +1 y_lkt11,0,10 +1 y_lkt11,1,10
+  +1 y_lkt11,2,10 +1 y_lkt11,3,10 +1 y_lkt10,0,11 +1 y_lkt10,1,11 +1 y_lkt10,2,11 +1 y_lkt10,3,11 +1 y_lkt11,0,11
+  +1 y_lkt11,1,11 +1 y_lkt11,2,11 +1 y_lkt11,3,11 +1 y_lkt10,0,12 +1 y_lkt10,1,12 +1 y_lkt10,2,12 +1 y_lkt10,3,12
+  +1 y_lkt11,0,12 +1 y_lkt11,1,12 +1 y_lkt11,2,12 +1 y_lkt11,3,12 +1 y_lkt12,0,12 +1 y_lkt12,1,12 +1 y_lkt12,2,12
+  +1 y_lkt12,3,12 +1 y_lkt10,0,13 +1 y_lkt10,1,13 +1 y_lkt10,2,13 +1 y_lkt10,3,13 +1 y_lkt11,0,13 +1 y_lkt11,1,13
+  +1 y_lkt11,2,13 +1 y_lkt11,3,13 +1 y_lkt12,0,13 +1 y_lkt12,1,13 +1 y_lkt12,2,13 +1 y_lkt12,3,13 +1 y_lkt13,0,13
+  +1 y_lkt13,1,13 +1 y_lkt13,2,13 +1 y_lkt13,3,13 +1 y_lkt10,0,14 +1 y_lkt10,1,14 +1 y_lkt10,2,14 +1 y_lkt10,3,14
+  +1 y_lkt11,0,14 +1 y_lkt11,1,14 +1 y_lkt11,2,14 +1 y_lkt11,3,14 +1 y_lkt13,0,14 +1 y_lkt13,1,14 +1 y_lkt13,2,14
+  +1 y_lkt13,3,14 +1 y_lkt11,0,15 +1 y_lkt11,1,15 +1 y_lkt11,2,15 +1 y_lkt11,3,15 +1 y_lkt13,0,15 +1 y_lkt13,1,15
+  +1 y_lkt13,2,15 +1 y_lkt13,3,15 +1 y_lkt11,0,16 +1 y_lkt11,1,16 +1 y_lkt11,2,16 +1 y_lkt11,3,16 >= +4
+ cons_2: +1 y_lkt12,0,12 +1 y_lkt12,1,12 +1 y_lkt12,2,12 +1 y_lkt12,3,12 +1 y_lkt12,0,13 +1 y_lkt12,1,13
+  +1 y_lkt12,2,13 +1 y_lkt12,3,13 +1 y_lkt13,0,13 +1 y_lkt13,1,13 +1 y_lkt13,2,13 +1 y_lkt13,3,13 +1 y_lkt13,0,14
+  +1 y_lkt13,1,14 +1 y_lkt13,2,14 +1 y_lkt13,3,14 +1 y_lkt13,0,15 +1 y_lkt13,1,15 +1 y_lkt13,2,15 +1 y_lkt13,3,15
+  >= +2
+ cons_2: +1 y_lkt17,0,17 +1 y_lkt17,1,17 +1 y_lkt17,2,17 +1 y_lkt17,3,17 +1 y_lkt18,0,17 +1 y_lkt18,1,17
+  +1 y_lkt18,2,17 +1 y_lkt18,3,17 +1 y_lkt17,0,18 +1 y_lkt17,1,18 +1 y_lkt17,2,18 +1 y_lkt17,3,18 +1 y_lkt18,0,18
+  +1 y_lkt18,1,18 +1 y_lkt18,2,18 +1 y_lkt18,3,18 +1 y_lkt17,0,19 +1 y_lkt17,1,19 +1 y_lkt17,2,19 +1 y_lkt17,3,19
+  +1 y_lkt18,0,19 +1 y_lkt18,1,19 +1 y_lkt18,2,19 +1 y_lkt18,3,19 +1 y_lkt18,0,20 +1 y_lkt18,1,20 +1 y_lkt18,2,20
+  +1 y_lkt18,3,20 >= +2
+ cons_2: +1 y_lkt4,0,4 +1 y_lkt4,1,4 +1 y_lkt4,2,4 +1 y_lkt4,3,4 +1 y_lkt4,0,5 +1 y_lkt4,1,5 +1 y_lkt4,2,5
+  +1 y_lkt4,3,5 +1 y_lkt5,0,5 +1 y_lkt5,1,5 +1 y_lkt5,2,5 +1 y_lkt5,3,5 +1 y_lkt5,0,6 +1 y_lkt5,1,6 +1 y_lkt5,2,6
+  +1 y_lkt5,3,6 +1 y_lkt5,0,7 +1 y_lkt5,1,7 +1 y_lkt5,2,7 +1 y_lkt5,3,7 >= +2
+ cons_2: +1 y_lkt8,0,8 +1 y_lkt8,1,8 +1 y_lkt8,2,8 +1 y_lkt8,3,8 +1 y_lkt8,0,9 +1 y_lkt8,1,9 +1 y_lkt8,2,9
+  +1 y_lkt8,3,9 +1 y_lkt9,0,9 +1 y_lkt9,1,9 +1 y_lkt9,2,9 +1 y_lkt9,3,9 +1 y_lkt9,0,10 +1 y_lkt9,1,10
+  +1 y_lkt9,2,10 +1 y_lkt9,3,10 +1 y_lkt10,0,10 +1 y_lkt10,1,10 +1 y_lkt10,2,10 +1 y_lkt10,3,10 +1 y_lkt9,0,11
+  +1 y_lkt9,1,11 +1 y_lkt9,2,11 +1 y_lkt9,3,11 +1 y_lkt10,0,11 +1 y_lkt10,1,11 +1 y_lkt10,2,11 +1 y_lkt10,3,11
+  +1 y_lkt9,0,12 +1 y_lkt9,1,12 +1 y_lkt9,2,12 +1 y_lkt9,3,12 +1 y_lkt10,0,12 +1 y_lkt10,1,12 +1 y_lkt10,2,12
+  +1 y_lkt10,3,12 +1 y_lkt9,0,13 +1 y_lkt9,1,13 +1 y_lkt9,2,13 +1 y_lkt9,3,13 +1 y_lkt10,0,13 +1 y_lkt10,1,13
+  +1 y_lkt10,2,13 +1 y_lkt10,3,13 +1 y_lkt9,0,14 +1 y_lkt9,1,14 +1 y_lkt9,2,14 +1 y_lkt9,3,14 +1 y_lkt10,0,14
+  +1 y_lkt10,1,14 +1 y_lkt10,2,14 +1 y_lkt10,3,14 >= +3
+ cons_2: +1 y_lkt4,0,4 +1 y_lkt4,1,4 +1 y_lkt4,2,4 +1 y_lkt4,3,4 +1 y_lkt4,0,5 +1 y_lkt4,1,5 +1 y_lkt4,2,5
+  +1 y_lkt4,3,5 +1 y_lkt5,0,5 +1 y_lkt5,1,5 +1 y_lkt5,2,5 +1 y_lkt5,3,5 +1 y_lkt5,0,6 +1 y_lkt5,1,6 +1 y_lkt5,2,6
+  +1 y_lkt5,3,6 +1 y_lkt5,0,7 +1 y_lkt5,1,7 +1 y_lkt5,2,7 +1 y_lkt5,3,7 >= +2
+ cons_2: +1 y_lkt2,0,2 +1 y_lkt2,1,2 +1 y_lkt2,2,2 +1 y_lkt2,3,2 +1 y_lkt2,0,3 +1 y_lkt2,1,3 +1 y_lkt2,2,3
+  +1 y_lkt2,3,3 +1 y_lkt3,0,3 +1 y_lkt3,1,3 +1 y_lkt3,2,3 +1 y_lkt3,3,3 +1 y_lkt2,0,4 +1 y_lkt2,1,4 +1 y_lkt2,2,4
+  +1 y_lkt2,3,4 +1 y_lkt3,0,4 +1 y_lkt3,1,4 +1 y_lkt3,2,4 +1 y_lkt3,3,4 +1 y_lkt4,0,4 +1 y_lkt4,1,4 +1 y_lkt4,2,4
+  +1 y_lkt4,3,4 +1 y_lkt3,0,5 +1 y_lkt3,1,5 +1 y_lkt3,2,5 +1 y_lkt3,3,5 +1 y_lkt4,0,5 +1 y_lkt4,1,5 +1 y_lkt4,2,5
+  +1 y_lkt4,3,5 +1 y_lkt3,0,6 +1 y_lkt3,1,6 +1 y_lkt3,2,6 +1 y_lkt3,3,6 >= +3
+ cons_2: +1 y_lkt17,0,17 +1 y_lkt17,1,17 +1 y_lkt17,2,17 +1 y_lkt17,3,17 +1 y_lkt18,0,17 +1 y_lkt18,1,17
+  +1 y_lkt18,2,17 +1 y_lkt18,3,17 +1 y_lkt17,0,18 +1 y_lkt17,1,18 +1 y_lkt17,2,18 +1 y_lkt17,3,18 +1 y_lkt18,0,18
+  +1 y_lkt18,1,18 +1 y_lkt18,2,18 +1 y_lkt18,3,18 +1 y_lkt17,0,19 +1 y_lkt17,1,19 +1 y_lkt17,2,19 +1 y_lkt17,3,19
+  +1 y_lkt18,0,19 +1 y_lkt18,1,19 +1 y_lkt18,2,19 +1 y_lkt18,3,19 +1 y_lkt18,0,20 +1 y_lkt18,1,20 +1 y_lkt18,2,20
+  +1 y_lkt18,3,20 >= +2
+ cons_2: +1 y_lkt15,0,15 +1 y_lkt15,1,15 +1 y_lkt15,2,15 +1 y_lkt15,3,15 +1 y_lkt15,0,16 +1 y_lkt15,1,16
+  +1 y_lkt15,2,16 +1 y_lkt15,3,16 +1 y_lkt16,0,16 +1 y_lkt16,1,16 +1 y_lkt16,2,16 +1 y_lkt16,3,16 +1 y_lkt15,0,17
+  +1 y_lkt15,1,17 +1 y_lkt15,2,17 +1 y_lkt15,3,17 +1 y_lkt16,0,17 +1 y_lkt16,1,17 +1 y_lkt16,2,17 +1 y_lkt16,3,17
+  +1 y_lkt15,0,18 +1 y_lkt15,1,18 +1 y_lkt15,2,18 +1 y_lkt15,3,18 +1 y_lkt16,0,18 +1 y_lkt16,1,18 +1 y_lkt16,2,18
+  +1 y_lkt16,3,18 >= +2
+ cons_2: +1 y_lkt0,0,0 +1 y_lkt0,1,0 +1 y_lkt0,2,0 +1 y_lkt0,3,0 +1 y_lkt0,0,1 +1 y_lkt0,1,1 +1 y_lkt0,2,1
+  +1 y_lkt0,3,1 +1 y_lkt1,0,1 +1 y_lkt1,1,1 +1 y_lkt1,2,1 +1 y_lkt1,3,1 +1 y_lkt0,0,2 +1 y_lkt0,1,2 +1 y_lkt0,2,2
+  +1 y_lkt0,3,2 +1 y_lkt1,0,2 +1 y_lkt1,1,2 +1 y_lkt1,2,2 +1 y_lkt1,3,2 +1 y_lkt2,0,2 +1 y_lkt2,1,2 +1 y_lkt2,2,2
+  +1 y_lkt2,3,2 +1 y_lkt0,0,3 +1 y_lkt0,1,3 +1 y_lkt0,2,3 +1 y_lkt0,3,3 +1 y_lkt1,0,3 +1 y_lkt1,1,3 +1 y_lkt1,2,3
+  +1 y_lkt1,3,3 +1 y_lkt2,0,3 +1 y_lkt2,1,3 +1 y_lkt2,2,3 +1 y_lkt2,3,3 +1 y_lkt3,0,3 +1 y_lkt3,1,3 +1 y_lkt3,2,3
+  +1 y_lkt3,3,3 +1 y_lkt0,0,4 +1 y_lkt0,1,4 +1 y_lkt0,2,4 +1 y_lkt0,3,4 +1 y_lkt1,0,4 +1 y_lkt1,1,4 +1 y_lkt1,2,4
+  +1 y_lkt1,3,4 +1 y_lkt2,0,4 +1 y_lkt2,1,4 +1 y_lkt2,2,4 +1 y_lkt2,3,4 +1 y_lkt3,0,4 +1 y_lkt3,1,4 +1 y_lkt3,2,4
+  +1 y_lkt3,3,4 +1 y_lkt0,0,5 +1 y_lkt0,1,5 +1 y_lkt0,2,5 +1 y_lkt0,3,5 +1 y_lkt3,0,5 +1 y_lkt3,1,5 +1 y_lkt3,2,5
+  +1 y_lkt3,3,5 +1 y_lkt0,0,6 +1 y_lkt0,1,6 +1 y_lkt0,2,6 +1 y_lkt0,3,6 +1 y_lkt3,0,6 +1 y_lkt3,1,6 +1 y_lkt3,2,6
+  +1 y_lkt3,3,6 +1 y_lkt0,0,7 +1 y_lkt0,1,7 +1 y_lkt0,2,7 +1 y_lkt0,3,7 +1 y_lkt0,0,8 +1 y_lkt0,1,8 +1 y_lkt0,2,8
+  +1 y_lkt0,3,8 >= +4
+ cons_2: +1 y_lkt16,0,16 +1 y_lkt16,1,16 +1 y_lkt16,2,16 +1 y_lkt16,3,16 +1 y_lkt16,0,17 +1 y_lkt16,1,17
+  +1 y_lkt16,2,17 +1 y_lkt16,3,17 +1 y_lkt17,0,17 +1 y_lkt17,1,17 +1 y_lkt17,2,17 +1 y_lkt17,3,17 +1 y_lkt16,0,18
+  +1 y_lkt16,1,18 +1 y_lkt16,2,18 +1 y_lkt16,3,18 +1 y_lkt17,0,18 +1 y_lkt17,1,18 +1 y_lkt17,2,18 +1 y_lkt17,3,18
+  +1 y_lkt17,0,19 +1 y_lkt17,1,19 +1 y_lkt17,2,19 +1 y_lkt17,3,19 >= +2
+ cons_2: +1 y_lkt5,0,5 +1 y_lkt5,1,5 +1 y_lkt5,2,5 +1 y_lkt5,3,5 +1 y_lkt5,0,6 +1 y_lkt5,1,6 +1 y_lkt5,2,6
+  +1 y_lkt5,3,6 +1 y_lkt6,0,6 +1 y_lkt6,1,6 +1 y_lkt6,2,6 +1 y_lkt6,3,6 +1 y_lkt5,0,7 +1 y_lkt5,1,7 +1 y_lkt5,2,7
+  +1 y_lkt5,3,7 +1 y_lkt6,0,7 +1 y_lkt6,1,7 +1 y_lkt6,2,7 +1 y_lkt6,3,7 +1 y_lkt6,0,8 +1 y_lkt6,1,8 +1 y_lkt6,2,8
+  +1 y_lkt6,3,8 +1 y_lkt6,0,9 +1 y_lkt6,1,9 +1 y_lkt6,2,9 +1 y_lkt6,3,9 >= +2
+ cons_2: +1 y_lkt3,0,3 +1 y_lkt3,1,3 +1 y_lkt3,2,3 +1 y_lkt3,3,3 +1 y_lkt3,0,4 +1 y_lkt3,1,4 +1 y_lkt3,2,4
+  +1 y_lkt3,3,4 +1 y_lkt4,0,4 +1 y_lkt4,1,4 +1 y_lkt4,2,4 +1 y_lkt4,3,4 +1 y_lkt3,0,5 +1 y_lkt3,1,5 +1 y_lkt3,2,5
+  +1 y_lkt3,3,5 +1 y_lkt4,0,5 +1 y_lkt4,1,5 +1 y_lkt4,2,5 +1 y_lkt4,3,5 +1 y_lkt5,0,5 +1 y_lkt5,1,5 +1 y_lkt5,2,5
+  +1 y_lkt5,3,5 +1 y_lkt3,0,6 +1 y_lkt3,1,6 +1 y_lkt3,2,6 +1 y_lkt3,3,6 +1 y_lkt5,0,6 +1 y_lkt5,1,6 +1 y_lkt5,2,6
+  +1 y_lkt5,3,6 +1 y_lkt5,0,7 +1 y_lkt5,1,7 +1 y_lkt5,2,7 +1 y_lkt5,3,7 >= +3
+ cons_2: +1 y_lkt9,0,9 +1 y_lkt9,1,9 +1 y_lkt9,2,9 +1 y_lkt9,3,9 +1 y_lkt9,0,10 +1 y_lkt9,1,10 +1 y_lkt9,2,10
+  +1 y_lkt9,3,10 +1 y_lkt10,0,10 +1 y_lkt10,1,10 +1 y_lkt10,2,10 +1 y_lkt10,3,10 +1 y_lkt11,0,10 +1 y_lkt11,1,10
+  +1 y_lkt11,2,10 +1 y_lkt11,3,10 +1 y_lkt9,0,11 +1 y_lkt9,1,11 +1 y_lkt9,2,11 +1 y_lkt9,3,11 +1 y_lkt10,0,11
+  +1 y_lkt10,1,11 +1 y_lkt10,2,11 +1 y_lkt10,3,11 +1 y_lkt11,0,11 +1 y_lkt11,1,11 +1 y_lkt11,2,11 +1 y_lkt11,3,11
+  +1 y_lkt9,0,12 +1 y_lkt9,1,12 +1 y_lkt9,2,12 +1 y_lkt9,3,12 +1 y_lkt10,0,12 +1 y_lkt10,1,12 +1 y_lkt10,2,12
+  +1 y_lkt10,3,12 +1 y_lkt11,0,12 +1 y_lkt11,1,12 +1 y_lkt11,2,12 +1 y_lkt11,3,12 +1 y_lkt12,0,12 +1 y_lkt12,1,12
+  +1 y_lkt12,2,12 +1 y_lkt12,3,12 +1 y_lkt9,0,13 +1 y_lkt9,1,13 +1 y_lkt9,2,13 +1 y_lkt9,3,13 +1 y_lkt10,0,13
+  +1 y_lkt10,1,13 +1 y_lkt10,2,13 +1 y_lkt10,3,13 +1 y_lkt11,0,13 +1 y_lkt11,1,13 +1 y_lkt11,2,13 +1 y_lkt11,3,13
+  +1 y_lkt12,0,13 +1 y_lkt12,1,13 +1 y_lkt12,2,13 +1 y_lkt12,3,13 +1 y_lkt9,0,14 +1 y_lkt9,1,14 +1 y_lkt9,2,14
+  +1 y_lkt9,3,14 +1 y_lkt10,0,14 +1 y_lkt10,1,14 +1 y_lkt10,2,14 +1 y_lkt10,3,14 +1 y_lkt11,0,14 +1 y_lkt11,1,14
+  +1 y_lkt11,2,14 +1 y_lkt11,3,14 +1 y_lkt11,0,15 +1 y_lkt11,1,15 +1 y_lkt11,2,15 +1 y_lkt11,3,15 +1 y_lkt11,0,16
+  +1 y_lkt11,1,16 +1 y_lkt11,2,16 +1 y_lkt11,3,16 >= +4
+ cons_2: +1 y_lkt2,0,2 +1 y_lkt2,1,2 +1 y_lkt2,2,2 +1 y_lkt2,3,2 +1 y_lkt2,0,3 +1 y_lkt2,1,3 +1 y_lkt2,2,3
+  +1 y_lkt2,3,3 +1 y_lkt3,0,3 +1 y_lkt3,1,3 +1 y_lkt3,2,3 +1 y_lkt3,3,3 +1 y_lkt2,0,4 +1 y_lkt2,1,4 +1 y_lkt2,2,4
+  +1 y_lkt2,3,4 +1 y_lkt3,0,4 +1 y_lkt3,1,4 +1 y_lkt3,2,4 +1 y_lkt3,3,4 +1 y_lkt3,0,5 +1 y_lkt3,1,5 +1 y_lkt3,2,5
+  +1 y_lkt3,3,5 +1 y_lkt3,0,6 +1 y_lkt3,1,6 +1 y_lkt3,2,6 +1 y_lkt3,3,6 >= +2
+ cons_2: +1 y_lkt13,0,13 +1 y_lkt13,1,13 +1 y_lkt13,2,13 +1 y_lkt13,3,13 +1 y_lkt13,0,14 +1 y_lkt13,1,14
+  +1 y_lkt13,2,14 +1 y_lkt13,3,14 +1 y_lkt14,0,14 +1 y_lkt14,1,14 +1 y_lkt14,2,14 +1 y_lkt14,3,14 +1 y_lkt13,0,15
+  +1 y_lkt13,1,15 +1 y_lkt13,2,15 +1 y_lkt13,3,15 +1 y_lkt14,0,15 +1 y_lkt14,1,15 +1 y_lkt14,2,15 +1 y_lkt14,3,15
+  +1 y_lkt15,0,15 +1 y_lkt15,1,15 +1 y_lkt15,2,15 +1 y_lkt15,3,15 +1 y_lkt14,0,16 +1 y_lkt14,1,16 +1 y_lkt14,2,16
+  +1 y_lkt14,3,16 +1 y_lkt15,0,16 +1 y_lkt15,1,16 +1 y_lkt15,2,16 +1 y_lkt15,3,16 +1 y_lkt16,0,16 +1 y_lkt16,1,16
+  +1 y_lkt16,2,16 +1 y_lkt16,3,16 +1 y_lkt14,0,17 +1 y_lkt14,1,17 +1 y_lkt14,2,17 +1 y_lkt14,3,17 +1 y_lkt15,0,17
+  +1 y_lkt15,1,17 +1 y_lkt15,2,17 +1 y_lkt15,3,17 +1 y_lkt16,0,17 +1 y_lkt16,1,17 +1 y_lkt16,2,17 +1 y_lkt16,3,17
+  +1 y_lkt14,0,18 +1 y_lkt14,1,18 +1 y_lkt14,2,18 +1 y_lkt14,3,18 +1 y_lkt15,0,18 +1 y_lkt15,1,18 +1 y_lkt15,2,18
+  +1 y_lkt15,3,18 +1 y_lkt16,0,18 +1 y_lkt16,1,18 +1 y_lkt16,2,18 +1 y_lkt16,3,18 >= +4
+ cons_2: +1 y_lkt15,0,15 +1 y_lkt15,1,15 +1 y_lkt15,2,15 +1 y_lkt15,3,15 +1 y_lkt15,0,16 +1 y_lkt15,1,16
+  +1 y_lkt15,2,16 +1 y_lkt15,3,16 +1 y_lkt16,0,16 +1 y_lkt16,1,16 +1 y_lkt16,2,16 +1 y_lkt16,3,16 +1 y_lkt15,0,17
+  +1 y_lkt15,1,17 +1 y_lkt15,2,17 +1 y_lkt15,3,17 +1 y_lkt16,0,17 +1 y_lkt16,1,17 +1 y_lkt16,2,17 +1 y_lkt16,3,17
+  +1 y_lkt17,0,17 +1 y_lkt17,1,17 +1 y_lkt17,2,17 +1 y_lkt17,3,17 +1 y_lkt15,0,18 +1 y_lkt15,1,18 +1 y_lkt15,2,18
+  +1 y_lkt15,3,18 +1 y_lkt16,0,18 +1 y_lkt16,1,18 +1 y_lkt16,2,18 +1 y_lkt16,3,18 +1 y_lkt17,0,18 +1 y_lkt17,1,18
+  +1 y_lkt17,2,18 +1 y_lkt17,3,18 +1 y_lkt17,0,19 +1 y_lkt17,1,19 +1 y_lkt17,2,19 +1 y_lkt17,3,19 >= +3
+ cons_2: +1 y_lkt12,0,12 +1 y_lkt12,1,12 +1 y_lkt12,2,12 +1 y_lkt12,3,12 +1 y_lkt12,0,13 +1 y_lkt12,1,13
+  +1 y_lkt12,2,13 +1 y_lkt12,3,13 >= +1
+ cons_2: +1 y_lkt8,0,8 +1 y_lkt8,1,8 +1 y_lkt8,2,8 +1 y_lkt8,3,8 +1 y_lkt8,0,9 +1 y_lkt8,1,9 +1 y_lkt8,2,9
+  +1 y_lkt8,3,9 >= +1
+ cons_2: +1 y_lkt15,0,15 +1 y_lkt15,1,15 +1 y_lkt15,2,15 +1 y_lkt15,3,15 +1 y_lkt15,0,16 +1 y_lkt15,1,16
+  +1 y_lkt15,2,16 +1 y_lkt15,3,16 +1 y_lkt16,0,16 +1 y_lkt16,1,16 +1 y_lkt16,2,16 +1 y_lkt16,3,16 +1 y_lkt15,0,17
+  +1 y_lkt15,1,17 +1 y_lkt15,2,17 +1 y_lkt15,3,17 +1 y_lkt16,0,17 +1 y_lkt16,1,17 +1 y_lkt16,2,17 +1 y_lkt16,3,17
+  +1 y_lkt15,0,18 +1 y_lkt15,1,18 +1 y_lkt15,2,18 +1 y_lkt15,3,18 +1 y_lkt16,0,18 +1 y_lkt16,1,18 +1 y_lkt16,2,18
+  +1 y_lkt16,3,18 >= +2
+ cons_2: +1 y_lkt3,0,3 +1 y_lkt3,1,3 +1 y_lkt3,2,3 +1 y_lkt3,3,3 +1 y_lkt3,0,4 +1 y_lkt3,1,4 +1 y_lkt3,2,4
+  +1 y_lkt3,3,4 +1 y_lkt4,0,4 +1 y_lkt4,1,4 +1 y_lkt4,2,4 +1 y_lkt4,3,4 +1 y_lkt3,0,5 +1 y_lkt3,1,5 +1 y_lkt3,2,5
+  +1 y_lkt3,3,5 +1 y_lkt4,0,5 +1 y_lkt4,1,5 +1 y_lkt4,2,5 +1 y_lkt4,3,5 +1 y_lkt5,0,5 +1 y_lkt5,1,5 +1 y_lkt5,2,5
+  +1 y_lkt5,3,5 +1 y_lkt3,0,6 +1 y_lkt3,1,6 +1 y_lkt3,2,6 +1 y_lkt3,3,6 +1 y_lkt5,0,6 +1 y_lkt5,1,6 +1 y_lkt5,2,6
+  +1 y_lkt5,3,6 +1 y_lkt6,0,6 +1 y_lkt6,1,6 +1 y_lkt6,2,6 +1 y_lkt6,3,6 +1 y_lkt5,0,7 +1 y_lkt5,1,7 +1 y_lkt5,2,7
+  +1 y_lkt5,3,7 +1 y_lkt6,0,7 +1 y_lkt6,1,7 +1 y_lkt6,2,7 +1 y_lkt6,3,7 +1 y_lkt6,0,8 +1 y_lkt6,1,8 +1 y_lkt6,2,8
+  +1 y_lkt6,3,8 +1 y_lkt6,0,9 +1 y_lkt6,1,9 +1 y_lkt6,2,9 +1 y_lkt6,3,9 >= +4
+ cons_2: +1 y_lkt12,0,12 +1 y_lkt12,1,12 +1 y_lkt12,2,12 +1 y_lkt12,3,12 +1 y_lkt12,0,13 +1 y_lkt12,1,13
+  +1 y_lkt12,2,13 +1 y_lkt12,3,13 +1 y_lkt13,0,13 +1 y_lkt13,1,13 +1 y_lkt13,2,13 +1 y_lkt13,3,13 +1 y_lkt13,0,14
+  +1 y_lkt13,1,14 +1 y_lkt13,2,14 +1 y_lkt13,3,14 +1 y_lkt13,0,15 +1 y_lkt13,1,15 +1 y_lkt13,2,15 +1 y_lkt13,3,15
+  >= +2
+ cons_2: +1 y_lkt13,0,13 +1 y_lkt13,1,13 +1 y_lkt13,2,13 +1 y_lkt13,3,13 +1 y_lkt13,0,14 +1 y_lkt13,1,14
+  +1 y_lkt13,2,14 +1 y_lkt13,3,14 +1 y_lkt14,0,14 +1 y_lkt14,1,14 +1 y_lkt14,2,14 +1 y_lkt14,3,14 +1 y_lkt13,0,15
+  +1 y_lkt13,1,15 +1 y_lkt13,2,15 +1 y_lkt13,3,15 +1 y_lkt14,0,15 +1 y_lkt14,1,15 +1 y_lkt14,2,15 +1 y_lkt14,3,15
+  +1 y_lkt15,0,15 +1 y_lkt15,1,15 +1 y_lkt15,2,15 +1 y_lkt15,3,15 +1 y_lkt14,0,16 +1 y_lkt14,1,16 +1 y_lkt14,2,16
+  +1 y_lkt14,3,16 +1 y_lkt15,0,16 +1 y_lkt15,1,16 +1 y_lkt15,2,16 +1 y_lkt15,3,16 +1 y_lkt16,0,16 +1 y_lkt16,1,16
+  +1 y_lkt16,2,16 +1 y_lkt16,3,16 +1 y_lkt14,0,17 +1 y_lkt14,1,17 +1 y_lkt14,2,17 +1 y_lkt14,3,17 +1 y_lkt15,0,17
+  +1 y_lkt15,1,17 +1 y_lkt15,2,17 +1 y_lkt15,3,17 +1 y_lkt16,0,17 +1 y_lkt16,1,17 +1 y_lkt16,2,17 +1 y_lkt16,3,17
+  +1 y_lkt14,0,18 +1 y_lkt14,1,18 +1 y_lkt14,2,18 +1 y_lkt14,3,18 +1 y_lkt15,0,18 +1 y_lkt15,1,18 +1 y_lkt15,2,18
+  +1 y_lkt15,3,18 +1 y_lkt16,0,18 +1 y_lkt16,1,18 +1 y_lkt16,2,18 +1 y_lkt16,3,18 >= +4
+ cons_2: +1 y_lkt4,0,4 +1 y_lkt4,1,4 +1 y_lkt4,2,4 +1 y_lkt4,3,4 +1 y_lkt4,0,5 +1 y_lkt4,1,5 +1 y_lkt4,2,5
+  +1 y_lkt4,3,5 >= +1
+ cons_2: +1 y_lkt9,0,9 +1 y_lkt9,1,9 +1 y_lkt9,2,9 +1 y_lkt9,3,9 +1 y_lkt9,0,10 +1 y_lkt9,1,10 +1 y_lkt9,2,10
+  +1 y_lkt9,3,10 +1 y_lkt10,0,10 +1 y_lkt10,1,10 +1 y_lkt10,2,10 +1 y_lkt10,3,10 +1 y_lkt9,0,11 +1 y_lkt9,1,11
+  +1 y_lkt9,2,11 +1 y_lkt9,3,11 +1 y_lkt10,0,11 +1 y_lkt10,1,11 +1 y_lkt10,2,11 +1 y_lkt10,3,11 +1 y_lkt9,0,12
+  +1 y_lkt9,1,12 +1 y_lkt9,2,12 +1 y_lkt9,3,12 +1 y_lkt10,0,12 +1 y_lkt10,1,12 +1 y_lkt10,2,12 +1 y_lkt10,3,12
+  +1 y_lkt9,0,13 +1 y_lkt9,1,13 +1 y_lkt9,2,13 +1 y_lkt9,3,13 +1 y_lkt10,0,13 +1 y_lkt10,1,13 +1 y_lkt10,2,13
+  +1 y_lkt10,3,13 +1 y_lkt9,0,14 +1 y_lkt9,1,14 +1 y_lkt9,2,14 +1 y_lkt9,3,14 +1 y_lkt10,0,14 +1 y_lkt10,1,14
+  +1 y_lkt10,2,14 +1 y_lkt10,3,14 >= +2
+ cons_2: +1 y_lkt10,0,10 +1 y_lkt10,1,10 +1 y_lkt10,2,10 +1 y_lkt10,3,10 +1 y_lkt11,0,10 +1 y_lkt11,1,10
+  +1 y_lkt11,2,10 +1 y_lkt11,3,10 +1 y_lkt10,0,11 +1 y_lkt10,1,11 +1 y_lkt10,2,11 +1 y_lkt10,3,11 +1 y_lkt11,0,11
+  +1 y_lkt11,1,11 +1 y_lkt11,2,11 +1 y_lkt11,3,11 +1 y_lkt10,0,12 +1 y_lkt10,1,12 +1 y_lkt10,2,12 +1 y_lkt10,3,12
+  +1 y_lkt11,0,12 +1 y_lkt11,1,12 +1 y_lkt11,2,12 +1 y_lkt11,3,12 +1 y_lkt12,0,12 +1 y_lkt12,1,12 +1 y_lkt12,2,12
+  +1 y_lkt12,3,12 +1 y_lkt10,0,13 +1 y_lkt10,1,13 +1 y_lkt10,2,13 +1 y_lkt10,3,13 +1 y_lkt11,0,13 +1 y_lkt11,1,13
+  +1 y_lkt11,2,13 +1 y_lkt11,3,13 +1 y_lkt12,0,13 +1 y_lkt12,1,13 +1 y_lkt12,2,13 +1 y_lkt12,3,13 +1 y_lkt13,0,13
+  +1 y_lkt13,1,13 +1 y_lkt13,2,13 +1 y_lkt13,3,13 +1 y_lkt10,0,14 +1 y_lkt10,1,14 +1 y_lkt10,2,14 +1 y_lkt10,3,14
+  +1 y_lkt11,0,14 +1 y_lkt11,1,14 +1 y_lkt11,2,14 +1 y_lkt11,3,14 +1 y_lkt13,0,14 +1 y_lkt13,1,14 +1 y_lkt13,2,14
+  +1 y_lkt13,3,14 +1 y_lkt11,0,15 +1 y_lkt11,1,15 +1 y_lkt11,2,15 +1 y_lkt11,3,15 +1 y_lkt13,0,15 +1 y_lkt13,1,15
+  +1 y_lkt13,2,15 +1 y_lkt13,3,15 +1 y_lkt11,0,16 +1 y_lkt11,1,16 +1 y_lkt11,2,16 +1 y_lkt11,3,16 >= +4
+ cons_2: +1 y_lkt6,0,6 +1 y_lkt6,1,6 +1 y_lkt6,2,6 +1 y_lkt6,3,6 +1 y_lkt7,0,6 +1 y_lkt7,1,6 +1 y_lkt7,2,6
+  +1 y_lkt7,3,6 +1 y_lkt6,0,7 +1 y_lkt6,1,7 +1 y_lkt6,2,7 +1 y_lkt6,3,7 +1 y_lkt7,0,7 +1 y_lkt7,1,7 +1 y_lkt7,2,7
+  +1 y_lkt7,3,7 +1 y_lkt6,0,8 +1 y_lkt6,1,8 +1 y_lkt6,2,8 +1 y_lkt6,3,8 +1 y_lkt7,0,8 +1 y_lkt7,1,8 +1 y_lkt7,2,8
+  +1 y_lkt7,3,8 +1 y_lkt6,0,9 +1 y_lkt6,1,9 +1 y_lkt6,2,9 +1 y_lkt6,3,9 +1 y_lkt7,0,9 +1 y_lkt7,1,9 +1 y_lkt7,2,9
+  +1 y_lkt7,3,9 +1 y_lkt7,0,10 +1 y_lkt7,1,10 +1 y_lkt7,2,10 +1 y_lkt7,3,10 >= +2
+ cons_2: +1 y_lkt14,0,14 +1 y_lkt14,1,14 +1 y_lkt14,2,14 +1 y_lkt14,3,14 +1 y_lkt14,0,15 +1 y_lkt14,1,15
+  +1 y_lkt14,2,15 +1 y_lkt14,3,15 +1 y_lkt15,0,15 +1 y_lkt15,1,15 +1 y_lkt15,2,15 +1 y_lkt15,3,15 +1 y_lkt14,0,16
+  +1 y_lkt14,1,16 +1 y_lkt14,2,16 +1 y_lkt14,3,16 +1 y_lkt15,0,16 +1 y_lkt15,1,16 +1 y_lkt15,2,16 +1 y_lkt15,3,16
+  +1 y_lkt14,0,17 +1 y_lkt14,1,17 +1 y_lkt14,2,17 +1 y_lkt14,3,17 +1 y_lkt15,0,17 +1 y_lkt15,1,17 +1 y_lkt15,2,17
+  +1 y_lkt15,3,17 +1 y_lkt14,0,18 +1 y_lkt14,1,18 +1 y_lkt14,2,18 +1 y_lkt14,3,18 +1 y_lkt15,0,18 +1 y_lkt15,1,18
+  +1 y_lkt15,2,18 +1 y_lkt15,3,18 >= +2
+ cons_2: +1 y_lkt4,0,4 +1 y_lkt4,1,4 +1 y_lkt4,2,4 +1 y_lkt4,3,4 +1 y_lkt4,0,5 +1 y_lkt4,1,5 +1 y_lkt4,2,5
+  +1 y_lkt4,3,5 +1 y_lkt5,0,5 +1 y_lkt5,1,5 +1 y_lkt5,2,5 +1 y_lkt5,3,5 +1 y_lkt5,0,6 +1 y_lkt5,1,6 +1 y_lkt5,2,6
+  +1 y_lkt5,3,6 +1 y_lkt6,0,6 +1 y_lkt6,1,6 +1 y_lkt6,2,6 +1 y_lkt6,3,6 +1 y_lkt5,0,7 +1 y_lkt5,1,7 +1 y_lkt5,2,7
+  +1 y_lkt5,3,7 +1 y_lkt6,0,7 +1 y_lkt6,1,7 +1 y_lkt6,2,7 +1 y_lkt6,3,7 +1 y_lkt6,0,8 +1 y_lkt6,1,8 +1 y_lkt6,2,8
+  +1 y_lkt6,3,8 +1 y_lkt6,0,9 +1 y_lkt6,1,9 +1 y_lkt6,2,9 +1 y_lkt6,3,9 >= +3
+ cons_2: +1 y_lkt1,0,1 +1 y_lkt1,1,1 +1 y_lkt1,2,1 +1 y_lkt1,3,1 +1 y_lkt1,0,2 +1 y_lkt1,1,2 +1 y_lkt1,2,2
+  +1 y_lkt1,3,2 +1 y_lkt2,0,2 +1 y_lkt2,1,2 +1 y_lkt2,2,2 +1 y_lkt2,3,2 +1 y_lkt1,0,3 +1 y_lkt1,1,3 +1 y_lkt1,2,3
+  +1 y_lkt1,3,3 +1 y_lkt2,0,3 +1 y_lkt2,1,3 +1 y_lkt2,2,3 +1 y_lkt2,3,3 +1 y_lkt1,0,4 +1 y_lkt1,1,4 +1 y_lkt1,2,4
+  +1 y_lkt1,3,4 +1 y_lkt2,0,4 +1 y_lkt2,1,4 +1 y_lkt2,2,4 +1 y_lkt2,3,4 >= +2
+ cons_3: +1 z_pt0,0 -1 y_lkt0,0,0 -1 y_lkt0,1,0 = +0
+ cons_3: +1 z_pt0,1 -1 y_lkt0,0,1 -1 y_lkt0,1,1 -1 y_lkt1,0,1 -1 y_lkt1,1,1 = +0
+ cons_3: +1 z_pt0,2 -1 y_lkt0,0,2 -1 y_lkt0,1,2 -1 y_lkt1,0,2 -1 y_lkt1,1,2 -1 y_lkt2,0,2 -1 y_lkt2,1,2
+  = +0
+ cons_3: +1 z_pt0,3 -1 y_lkt0,0,3 -1 y_lkt0,1,3 -1 y_lkt1,0,3 -1 y_lkt1,1,3 -1 y_lkt2,0,3 -1 y_lkt2,1,3
+  -1 y_lkt3,0,3 -1 y_lkt3,1,3 = +0
+ cons_3: +1 z_pt0,4 -1 y_lkt0,0,4 -1 y_lkt0,1,4 -1 y_lkt1,0,4 -1 y_lkt1,1,4 -1 y_lkt2,0,4 -1 y_lkt2,1,4
+  -1 y_lkt3,0,4 -1 y_lkt3,1,4 -1 y_lkt4,0,4 -1 y_lkt4,1,4 = +0
+ cons_3: +1 z_pt0,5 -1 y_lkt0,0,5 -1 y_lkt0,1,5 -1 y_lkt3,0,5 -1 y_lkt3,1,5 -1 y_lkt4,0,5 -1 y_lkt4,1,5
+  -1 y_lkt5,0,5 -1 y_lkt5,1,5 = +0
+ cons_3: +1 z_pt0,6 -1 y_lkt0,0,6 -1 y_lkt0,1,6 -1 y_lkt3,0,6 -1 y_lkt3,1,6 -1 y_lkt5,0,6 -1 y_lkt5,1,6
+  -1 y_lkt6,0,6 -1 y_lkt6,1,6 -1 y_lkt7,0,6 -1 y_lkt7,1,6 = +0
+ cons_3: +1 z_pt0,7 -1 y_lkt0,0,7 -1 y_lkt0,1,7 -1 y_lkt5,0,7 -1 y_lkt5,1,7 -1 y_lkt6,0,7 -1 y_lkt6,1,7
+  -1 y_lkt7,0,7 -1 y_lkt7,1,7 = +0
+ cons_3: +1 z_pt0,8 -1 y_lkt0,0,8 -1 y_lkt0,1,8 -1 y_lkt6,0,8 -1 y_lkt6,1,8 -1 y_lkt7,0,8 -1 y_lkt7,1,8
+  -1 y_lkt8,0,8 -1 y_lkt8,1,8 = +0
+ cons_3: +1 z_pt0,9 -1 y_lkt6,0,9 -1 y_lkt6,1,9 -1 y_lkt7,0,9 -1 y_lkt7,1,9 -1 y_lkt8,0,9 -1 y_lkt8,1,9
+  -1 y_lkt9,0,9 -1 y_lkt9,1,9 = +0
+ cons_3: +1 z_pt0,10 -1 y_lkt7,0,10 -1 y_lkt7,1,10 -1 y_lkt9,0,10 -1 y_lkt9,1,10 -1 y_lkt10,0,10 -1 y_lkt10,1,10
+  -1 y_lkt11,0,10 -1 y_lkt11,1,10 = +0
+ cons_3: +1 z_pt0,11 -1 y_lkt9,0,11 -1 y_lkt9,1,11 -1 y_lkt10,0,11 -1 y_lkt10,1,11 -1 y_lkt11,0,11 -1 y_lkt11,1,11
+  = +0
+ cons_3: +1 z_pt0,12 -1 y_lkt9,0,12 -1 y_lkt9,1,12 -1 y_lkt10,0,12 -1 y_lkt10,1,12 -1 y_lkt11,0,12 -1 y_lkt11,1,12
+  -1 y_lkt12,0,12 -1 y_lkt12,1,12 = +0
+ cons_3: +1 z_pt0,13 -1 y_lkt9,0,13 -1 y_lkt9,1,13 -1 y_lkt10,0,13 -1 y_lkt10,1,13 -1 y_lkt11,0,13 -1 y_lkt11,1,13
+  -1 y_lkt12,0,13 -1 y_lkt12,1,13 -1 y_lkt13,0,13 -1 y_lkt13,1,13 = +0
+ cons_3: +1 z_pt0,14 -1 y_lkt9,0,14 -1 y_lkt9,1,14 -1 y_lkt10,0,14 -1 y_lkt10,1,14 -1 y_lkt11,0,14 -1 y_lkt11,1,14
+  -1 y_lkt13,0,14 -1 y_lkt13,1,14 -1 y_lkt14,0,14 -1 y_lkt14,1,14 = +0
+ cons_3: +1 z_pt0,15 -1 y_lkt11,0,15 -1 y_lkt11,1,15 -1 y_lkt13,0,15 -1 y_lkt13,1,15 -1 y_lkt14,0,15 -1 y_lkt14,1,15
+  -1 y_lkt15,0,15 -1 y_lkt15,1,15 = +0
+ cons_3: +1 z_pt0,16 -1 y_lkt11,0,16 -1 y_lkt11,1,16 -1 y_lkt14,0,16 -1 y_lkt14,1,16 -1 y_lkt15,0,16 -1 y_lkt15,1,16
+  -1 y_lkt16,0,16 -1 y_lkt16,1,16 = +0
+ cons_3: +1 z_pt0,17 -1 y_lkt14,0,17 -1 y_lkt14,1,17 -1 y_lkt15,0,17 -1 y_lkt15,1,17 -1 y_lkt16,0,17 -1 y_lkt16,1,17
+  -1 y_lkt17,0,17 -1 y_lkt17,1,17 -1 y_lkt18,0,17 -1 y_lkt18,1,17 = +0
+ cons_3: +1 z_pt0,18 -1 y_lkt14,0,18 -1 y_lkt14,1,18 -1 y_lkt15,0,18 -1 y_lkt15,1,18 -1 y_lkt16,0,18 -1 y_lkt16,1,18
+  -1 y_lkt17,0,18 -1 y_lkt17,1,18 -1 y_lkt18,0,18 -1 y_lkt18,1,18 = +0
+ cons_3: +1 z_pt0,19 -1 y_lkt17,0,19 -1 y_lkt17,1,19 -1 y_lkt18,0,19 -1 y_lkt18,1,19 = +0
+ cons_3: +1 z_pt0,20 -1 y_lkt18,0,20 -1 y_lkt18,1,20 = +0
+ cons_3: +1 z_pt0,21 = +0
+ cons_3: +1 z_pt0,22 = +0
+ cons_3: +1 z_pt0,23 = +0
+ cons_3: +1 z_pt0,24 = +0
+ cons_3: +1 z_pt0,25 = +0
+ cons_3: +1 z_pt1,0 -1 y_lkt0,2,0 -1 y_lkt0,3,0 = +0
+ cons_3: +1 z_pt1,1 -1 y_lkt0,2,1 -1 y_lkt0,3,1 -1 y_lkt1,2,1 -1 y_lkt1,3,1 = +0
+ cons_3: +1 z_pt1,2 -1 y_lkt0,2,2 -1 y_lkt0,3,2 -1 y_lkt1,2,2 -1 y_lkt1,3,2 -1 y_lkt2,2,2 -1 y_lkt2,3,2
+  = +0
+ cons_3: +1 z_pt1,3 -1 y_lkt0,2,3 -1 y_lkt0,3,3 -1 y_lkt1,2,3 -1 y_lkt1,3,3 -1 y_lkt2,2,3 -1 y_lkt2,3,3
+  -1 y_lkt3,2,3 -1 y_lkt3,3,3 = +0
+ cons_3: +1 z_pt1,4 -1 y_lkt0,2,4 -1 y_lkt0,3,4 -1 y_lkt1,2,4 -1 y_lkt1,3,4 -1 y_lkt2,2,4 -1 y_lkt2,3,4
+  -1 y_lkt3,2,4 -1 y_lkt3,3,4 -1 y_lkt4,2,4 -1 y_lkt4,3,4 = +0
+ cons_3: +1 z_pt1,5 -1 y_lkt0,2,5 -1 y_lkt0,3,5 -1 y_lkt3,2,5 -1 y_lkt3,3,5 -1 y_lkt4,2,5 -1 y_lkt4,3,5
+  -1 y_lkt5,2,5 -1 y_lkt5,3,5 = +0
+ cons_3: +1 z_pt1,6 -1 y_lkt0,2,6 -1 y_lkt0,3,6 -1 y_lkt3,2,6 -1 y_lkt3,3,6 -1 y_lkt5,2,6 -1 y_lkt5,3,6
+  -1 y_lkt6,2,6 -1 y_lkt6,3,6 -1 y_lkt7,2,6 -1 y_lkt7,3,6 = +0
+ cons_3: +1 z_pt1,7 -1 y_lkt0,2,7 -1 y_lkt0,3,7 -1 y_lkt5,2,7 -1 y_lkt5,3,7 -1 y_lkt6,2,7 -1 y_lkt6,3,7
+  -1 y_lkt7,2,7 -1 y_lkt7,3,7 = +0
+ cons_3: +1 z_pt1,8 -1 y_lkt0,2,8 -1 y_lkt0,3,8 -1 y_lkt6,2,8 -1 y_lkt6,3,8 -1 y_lkt7,2,8 -1 y_lkt7,3,8
+  -1 y_lkt8,2,8 -1 y_lkt8,3,8 = +0
+ cons_3: +1 z_pt1,9 -1 y_lkt6,2,9 -1 y_lkt6,3,9 -1 y_lkt7,2,9 -1 y_lkt7,3,9 -1 y_lkt8,2,9 -1 y_lkt8,3,9
+  -1 y_lkt9,2,9 -1 y_lkt9,3,9 = +0
+ cons_3: +1 z_pt1,10 -1 y_lkt7,2,10 -1 y_lkt7,3,10 -1 y_lkt9,2,10 -1 y_lkt9,3,10 -1 y_lkt10,2,10 -1 y_lkt10,3,10
+  -1 y_lkt11,2,10 -1 y_lkt11,3,10 = +0
+ cons_3: +1 z_pt1,11 -1 y_lkt9,2,11 -1 y_lkt9,3,11 -1 y_lkt10,2,11 -1 y_lkt10,3,11 -1 y_lkt11,2,11 -1 y_lkt11,3,11
+  = +0
+ cons_3: +1 z_pt1,12 -1 y_lkt9,2,12 -1 y_lkt9,3,12 -1 y_lkt10,2,12 -1 y_lkt10,3,12 -1 y_lkt11,2,12 -1 y_lkt11,3,12
+  -1 y_lkt12,2,12 -1 y_lkt12,3,12 = +0
+ cons_3: +1 z_pt1,13 -1 y_lkt9,2,13 -1 y_lkt9,3,13 -1 y_lkt10,2,13 -1 y_lkt10,3,13 -1 y_lkt11,2,13 -1 y_lkt11,3,13
+  -1 y_lkt12,2,13 -1 y_lkt12,3,13 -1 y_lkt13,2,13 -1 y_lkt13,3,13 = +0
+ cons_3: +1 z_pt1,14 -1 y_lkt9,2,14 -1 y_lkt9,3,14 -1 y_lkt10,2,14 -1 y_lkt10,3,14 -1 y_lkt11,2,14 -1 y_lkt11,3,14
+  -1 y_lkt13,2,14 -1 y_lkt13,3,14 -1 y_lkt14,2,14 -1 y_lkt14,3,14 = +0
+ cons_3: +1 z_pt1,15 -1 y_lkt11,2,15 -1 y_lkt11,3,15 -1 y_lkt13,2,15 -1 y_lkt13,3,15 -1 y_lkt14,2,15 -1 y_lkt14,3,15
+  -1 y_lkt15,2,15 -1 y_lkt15,3,15 = +0
+ cons_3: +1 z_pt1,16 -1 y_lkt11,2,16 -1 y_lkt11,3,16 -1 y_lkt14,2,16 -1 y_lkt14,3,16 -1 y_lkt15,2,16 -1 y_lkt15,3,16
+  -1 y_lkt16,2,16 -1 y_lkt16,3,16 = +0
+ cons_3: +1 z_pt1,17 -1 y_lkt14,2,17 -1 y_lkt14,3,17 -1 y_lkt15,2,17 -1 y_lkt15,3,17 -1 y_lkt16,2,17 -1 y_lkt16,3,17
+  -1 y_lkt17,2,17 -1 y_lkt17,3,17 -1 y_lkt18,2,17 -1 y_lkt18,3,17 = +0
+ cons_3: +1 z_pt1,18 -1 y_lkt14,2,18 -1 y_lkt14,3,18 -1 y_lkt15,2,18 -1 y_lkt15,3,18 -1 y_lkt16,2,18 -1 y_lkt16,3,18
+  -1 y_lkt17,2,18 -1 y_lkt17,3,18 -1 y_lkt18,2,18 -1 y_lkt18,3,18 = +0
+ cons_3: +1 z_pt1,19 -1 y_lkt17,2,19 -1 y_lkt17,3,19 -1 y_lkt18,2,19 -1 y_lkt18,3,19 = +0
+ cons_3: +1 z_pt1,20 -1 y_lkt18,2,20 -1 y_lkt18,3,20 = +0
+ cons_3: +1 z_pt1,21 = +0
+ cons_3: +1 z_pt1,22 = +0
+ cons_3: +1 z_pt1,23 = +0
+ cons_3: +1 z_pt1,24 = +0
+ cons_3: +1 z_pt1,25 = +0
+ cons_4: +1 z0_pt0,0 -1 y0_kt0,0 -1 y0_kt1,0 = +0
+ cons_4: +1 z0_pt0,1 -1 y0_kt0,1 -1 y0_kt1,1 = +0
+ cons_4: +1 z0_pt0,2 -1 y0_kt0,2 -1 y0_kt1,2 = +0
+ cons_4: +1 z0_pt0,3 -1 y0_kt0,3 -1 y0_kt1,3 = +0
+ cons_4: +1 z0_pt0,4 -1 y0_kt0,4 -1 y0_kt1,4 = +0
+ cons_4: +1 z0_pt0,5 -1 y0_kt0,5 -1 y0_kt1,5 = +0
+ cons_4: +1 z0_pt0,6 -1 y0_kt0,6 -1 y0_kt1,6 = +0
+ cons_4: +1 z0_pt0,7 -1 y0_kt0,7 -1 y0_kt1,7 = +0
+ cons_4: +1 z0_pt0,8 -1 y0_kt0,8 -1 y0_kt1,8 = +0
+ cons_4: +1 z0_pt0,9 -1 y0_kt0,9 -1 y0_kt1,9 = +0
+ cons_4: +1 z0_pt0,10 -1 y0_kt0,10 -1 y0_kt1,10 = +0
+ cons_4: +1 z0_pt0,11 -1 y0_kt0,11 -1 y0_kt1,11 = +0
+ cons_4: +1 z0_pt0,12 -1 y0_kt0,12 -1 y0_kt1,12 = +0
+ cons_4: +1 z0_pt0,13 -1 y0_kt0,13 -1 y0_kt1,13 = +0
+ cons_4: +1 z0_pt0,14 -1 y0_kt0,14 -1 y0_kt1,14 = +0
+ cons_4: +1 z0_pt0,15 -1 y0_kt0,15 -1 y0_kt1,15 = +0
+ cons_4: +1 z0_pt0,16 -1 y0_kt0,16 -1 y0_kt1,16 = +0
+ cons_4: +1 z0_pt0,17 -1 y0_kt0,17 -1 y0_kt1,17 = +0
+ cons_4: +1 z0_pt0,18 -1 y0_kt0,18 -1 y0_kt1,18 = +0
+ cons_4: +1 z0_pt0,19 -1 y0_kt0,19 -1 y0_kt1,19 = +0
+ cons_4: +1 z0_pt0,20 -1 y0_kt0,20 -1 y0_kt1,20 = +0
+ cons_4: +1 z0_pt0,21 -1 y0_kt0,21 -1 y0_kt1,21 = +0
+ cons_4: +1 z0_pt0,22 -1 y0_kt0,22 -1 y0_kt1,22 = +0
+ cons_4: +1 z0_pt0,23 -1 y0_kt0,23 -1 y0_kt1,23 = +0
+ cons_4: +1 z0_pt0,24 -1 y0_kt0,24 -1 y0_kt1,24 = +0
+ cons_4: +1 z0_pt0,25 -1 y0_kt0,25 -1 y0_kt1,25 = +0
+ cons_4: +1 z0_pt1,0 -1 y0_kt2,0 -1 y0_kt3,0 = +0
+ cons_4: +1 z0_pt1,1 -1 y0_kt2,1 -1 y0_kt3,1 = +0
+ cons_4: +1 z0_pt1,2 -1 y0_kt2,2 -1 y0_kt3,2 = +0
+ cons_4: +1 z0_pt1,3 -1 y0_kt2,3 -1 y0_kt3,3 = +0
+ cons_4: +1 z0_pt1,4 -1 y0_kt2,4 -1 y0_kt3,4 = +0
+ cons_4: +1 z0_pt1,5 -1 y0_kt2,5 -1 y0_kt3,5 = +0
+ cons_4: +1 z0_pt1,6 -1 y0_kt2,6 -1 y0_kt3,6 = +0
+ cons_4: +1 z0_pt1,7 -1 y0_kt2,7 -1 y0_kt3,7 = +0
+ cons_4: +1 z0_pt1,8 -1 y0_kt2,8 -1 y0_kt3,8 = +0
+ cons_4: +1 z0_pt1,9 -1 y0_kt2,9 -1 y0_kt3,9 = +0
+ cons_4: +1 z0_pt1,10 -1 y0_kt2,10 -1 y0_kt3,10 = +0
+ cons_4: +1 z0_pt1,11 -1 y0_kt2,11 -1 y0_kt3,11 = +0
+ cons_4: +1 z0_pt1,12 -1 y0_kt2,12 -1 y0_kt3,12 = +0
+ cons_4: +1 z0_pt1,13 -1 y0_kt2,13 -1 y0_kt3,13 = +0
+ cons_4: +1 z0_pt1,14 -1 y0_kt2,14 -1 y0_kt3,14 = +0
+ cons_4: +1 z0_pt1,15 -1 y0_kt2,15 -1 y0_kt3,15 = +0
+ cons_4: +1 z0_pt1,16 -1 y0_kt2,16 -1 y0_kt3,16 = +0
+ cons_4: +1 z0_pt1,17 -1 y0_kt2,17 -1 y0_kt3,17 = +0
+ cons_4: +1 z0_pt1,18 -1 y0_kt2,18 -1 y0_kt3,18 = +0
+ cons_4: +1 z0_pt1,19 -1 y0_kt2,19 -1 y0_kt3,19 = +0
+ cons_4: +1 z0_pt1,20 -1 y0_kt2,20 -1 y0_kt3,20 = +0
+ cons_4: +1 z0_pt1,21 -1 y0_kt2,21 -1 y0_kt3,21 = +0
+ cons_4: +1 z0_pt1,22 -1 y0_kt2,22 -1 y0_kt3,22 = +0
+ cons_4: +1 z0_pt1,23 -1 y0_kt2,23 -1 y0_kt3,23 = +0
+ cons_4: +1 z0_pt1,24 -1 y0_kt2,24 -1 y0_kt3,24 = +0
+ cons_4: +1 z0_pt1,25 -1 y0_kt2,25 -1 y0_kt3,25 = +0
+ cons_5: +1 z_pt0,0 +1 z0_pt0,0 +1 z_pt1,0 +1 z0_pt1,0 <= +1
+ cons_5: +1 z_pt0,1 +1 z0_pt0,1 +1 z_pt1,1 +1 z0_pt1,1 <= +1
+ cons_5: +1 z_pt0,2 +1 z0_pt0,2 +1 z_pt1,2 +1 z0_pt1,2 <= +1
+ cons_5: +1 z_pt0,3 +1 z0_pt0,3 +1 z_pt1,3 +1 z0_pt1,3 <= +1
+ cons_5: +1 z_pt0,4 +1 z0_pt0,4 +1 z_pt1,4 +1 z0_pt1,4 <= +1
+ cons_5: +1 z_pt0,5 +1 z0_pt0,5 +1 z_pt1,5 +1 z0_pt1,5 <= +1
+ cons_5: +1 z_pt0,6 +1 z0_pt0,6 +1 z_pt1,6 +1 z0_pt1,6 <= +1
+ cons_5: +1 z_pt0,7 +1 z0_pt0,7 +1 z_pt1,7 +1 z0_pt1,7 <= +1
+ cons_5: +1 z_pt0,8 +1 z0_pt0,8 +1 z_pt1,8 +1 z0_pt1,8 <= +1
+ cons_5: +1 z_pt0,9 +1 z0_pt0,9 +1 z_pt1,9 +1 z0_pt1,9 <= +1
+ cons_5: +1 z_pt0,10 +1 z0_pt0,10 +1 z_pt1,10 +1 z0_pt1,10 <= +1
+ cons_5: +1 z_pt0,11 +1 z0_pt0,11 +1 z_pt1,11 +1 z0_pt1,11 <= +1
+ cons_5: +1 z_pt0,12 +1 z0_pt0,12 +1 z_pt1,12 +1 z0_pt1,12 <= +1
+ cons_5: +1 z_pt0,13 +1 z0_pt0,13 +1 z_pt1,13 +1 z0_pt1,13 <= +1
+ cons_5: +1 z_pt0,14 +1 z0_pt0,14 +1 z_pt1,14 +1 z0_pt1,14 <= +1
+ cons_5: +1 z_pt0,15 +1 z0_pt0,15 +1 z_pt1,15 +1 z0_pt1,15 <= +1
+ cons_5: +1 z_pt0,16 +1 z0_pt0,16 +1 z_pt1,16 +1 z0_pt1,16 <= +1
+ cons_5: +1 z_pt0,17 +1 z0_pt0,17 +1 z_pt1,17 +1 z0_pt1,17 <= +1
+ cons_5: +1 z_pt0,18 +1 z0_pt0,18 +1 z_pt1,18 +1 z0_pt1,18 <= +1
+ cons_5: +1 z_pt0,19 +1 z0_pt0,19 +1 z_pt1,19 +1 z0_pt1,19 <= +1
+ cons_5: +1 z_pt0,20 +1 z0_pt0,20 +1 z_pt1,20 +1 z0_pt1,20 <= +1
+ cons_5: +1 z_pt0,21 +1 z0_pt0,21 +1 z_pt1,21 +1 z0_pt1,21 <= +1
+ cons_5: +1 z_pt0,22 +1 z0_pt0,22 +1 z_pt1,22 +1 z0_pt1,22 <= +1
+ cons_5: +1 z_pt0,23 +1 z0_pt0,23 +1 z_pt1,23 +1 z0_pt1,23 <= +1
+ cons_5: +1 z_pt0,24 +1 z0_pt0,24 +1 z_pt1,24 +1 z0_pt1,24 <= +1
+ cons_5: +1 z_pt0,25 +1 z0_pt0,25 +1 z_pt1,25 +1 z0_pt1,25 <= +1
  cons_6: +1 q_t0 = +0
  cons_7: +1 q_t25 -1 q_t0 >= +0
- cons_8: +1 q_t1 -1 q_t0 +2 y_lkt000 -3 y_lkt010 -3 y0_kt10 -3 y_lkt020 -3 y0_kt20 -998 y_lkt030 -998 y0_kt30
+ cons_8: +1 q_t1 -1 q_t0 +2 y_lkt0,0,0 -3 y_lkt0,1,0 -3 y0_kt1,0 -3 y_lkt0,2,0 -3 y0_kt2,0 -998 y_lkt0,3,0
+  -998 y0_kt3,0 = +0
+ cons_8: +1 q_t2 -1 q_t1 +2 y_lkt0,0,1 -3 y_lkt0,1,1 -3 y0_kt1,1 -3 y_lkt0,2,1 -3 y0_kt2,1 -998 y_lkt0,3,1
+  -998 y0_kt3,1 +5 y_lkt1,0,1 -995 y_lkt1,3,1 -995 y0_kt3,1 = +0
+ cons_8: +1 q_t3 -1 q_t2 +2 y_lkt0,0,2 -3 y_lkt0,1,2 -3 y0_kt1,2 -3 y_lkt0,2,2 -3 y0_kt2,2 -998 y_lkt0,3,2
+  -998 y0_kt3,2 +5 y_lkt1,0,2 -995 y_lkt1,3,2 -995 y0_kt3,2 +11 y_lkt2,0,2 +6 y_lkt2,1,2 +6 y_lkt2,2,2
+  -989 y_lkt2,3,2 -989 y0_kt3,2 = +0
+ cons_8: +1 q_t4 -1 q_t3 +2 y_lkt0,0,3 -3 y_lkt0,1,3 -3 y0_kt1,3 -3 y_lkt0,2,3 -3 y0_kt2,3 -998 y_lkt0,3,3
+  -998 y0_kt3,3 +5 y_lkt1,0,3 -995 y_lkt1,3,3 -995 y0_kt3,3 +11 y_lkt2,0,3 +6 y_lkt2,1,3 +6 y_lkt2,2,3
+  -989 y_lkt2,3,3 -989 y0_kt3,3 +12 y_lkt3,0,3 +7 y_lkt3,1,3 +7 y_lkt3,2,3 -988 y_lkt3,3,3 -988 y0_kt3,3
   = +0
- cons_8: +1 q_t2 -1 q_t1 +2 y_lkt001 -3 y_lkt011 -3 y0_kt11 -3 y_lkt021 -3 y0_kt21 -998 y_lkt031 -998 y0_kt31
-  +5 y_lkt101 -995 y_lkt131 -995 y0_kt31 = +0
- cons_8: +1 q_t3 -1 q_t2 +2 y_lkt002 -3 y_lkt012 -3 y0_kt12 -3 y_lkt022 -3 y0_kt22 -998 y_lkt032 -998 y0_kt32
-  +5 y_lkt102 -995 y_lkt132 -995 y0_kt32 +11 y_lkt202 +6 y_lkt212 +6 y_lkt222 -989 y_lkt232 -989 y0_kt32
+ cons_8: +1 q_t5 -1 q_t4 +2 y_lkt0,0,4 -3 y_lkt0,1,4 -3 y0_kt1,4 -3 y_lkt0,2,4 -3 y0_kt2,4 -998 y_lkt0,3,4
+  -998 y0_kt3,4 +5 y_lkt1,0,4 -995 y_lkt1,3,4 -995 y0_kt3,4 +11 y_lkt2,0,4 +6 y_lkt2,1,4 +6 y_lkt2,2,4
+  -989 y_lkt2,3,4 -989 y0_kt3,4 +12 y_lkt3,0,4 +7 y_lkt3,1,4 +7 y_lkt3,2,4 -988 y_lkt3,3,4 -988 y0_kt3,4
+  +24 y_lkt4,0,4 +19 y_lkt4,1,4 +19 y_lkt4,2,4 -976 y_lkt4,3,4 -976 y0_kt3,4 = +0
+ cons_8: +1 q_t6 -1 q_t5 +2 y_lkt0,0,5 -3 y_lkt0,1,5 -3 y0_kt1,5 -3 y_lkt0,2,5 -3 y0_kt2,5 -998 y_lkt0,3,5
+  -998 y0_kt3,5 +12 y_lkt3,0,5 +7 y_lkt3,1,5 +7 y_lkt3,2,5 -988 y_lkt3,3,5 -988 y0_kt3,5 +24 y_lkt4,0,5
+  +19 y_lkt4,1,5 +19 y_lkt4,2,5 -976 y_lkt4,3,5 -976 y0_kt3,5 +21 y_lkt5,0,5 +16 y_lkt5,1,5 +16 y_lkt5,2,5
+  -979 y_lkt5,3,5 -979 y0_kt3,5 = +0
+ cons_8: +1 q_t7 -1 q_t6 +2 y_lkt0,0,6 -3 y_lkt0,1,6 -3 y0_kt1,6 -3 y_lkt0,2,6 -3 y0_kt2,6 -998 y_lkt0,3,6
+  -998 y0_kt3,6 +12 y_lkt3,0,6 +7 y_lkt3,1,6 +7 y_lkt3,2,6 -988 y_lkt3,3,6 -988 y0_kt3,6 +21 y_lkt5,0,6
+  +16 y_lkt5,1,6 +16 y_lkt5,2,6 -979 y_lkt5,3,6 -979 y0_kt3,6 +13 y_lkt6,0,6 +8 y_lkt6,1,6 +8 y_lkt6,2,6
+  -987 y_lkt6,3,6 -987 y0_kt3,6 +4 y_lkt7,0,6 -1 y_lkt7,1,6 -1 y0_kt1,6 -1 y_lkt7,2,6 -1 y0_kt2,6 -996 y_lkt7,3,6
+  -996 y0_kt3,6 = +0
+ cons_8: +1 q_t8 -1 q_t7 +2 y_lkt0,0,7 -3 y_lkt0,1,7 -3 y0_kt1,7 -3 y_lkt0,2,7 -3 y0_kt2,7 -998 y_lkt0,3,7
+  -998 y0_kt3,7 +21 y_lkt5,0,7 +16 y_lkt5,1,7 +16 y_lkt5,2,7 -979 y_lkt5,3,7 -979 y0_kt3,7 +13 y_lkt6,0,7
+  +8 y_lkt6,1,7 +8 y_lkt6,2,7 -987 y_lkt6,3,7 -987 y0_kt3,7 +4 y_lkt7,0,7 -1 y_lkt7,1,7 -1 y0_kt1,7 -1 y_lkt7,2,7
+  -1 y0_kt2,7 -996 y_lkt7,3,7 -996 y0_kt3,7 = +0
+ cons_8: +1 q_t9 -1 q_t8 +2 y_lkt0,0,8 -3 y_lkt0,1,8 -3 y0_kt1,8 -3 y_lkt0,2,8 -3 y0_kt2,8 -998 y_lkt0,3,8
+  -998 y0_kt3,8 +13 y_lkt6,0,8 +8 y_lkt6,1,8 +8 y_lkt6,2,8 -987 y_lkt6,3,8 -987 y0_kt3,8 +4 y_lkt7,0,8
+  -1 y_lkt7,1,8 -1 y0_kt1,8 -1 y_lkt7,2,8 -1 y0_kt2,8 -996 y_lkt7,3,8 -996 y0_kt3,8 +10 y_lkt8,0,8 +5 y_lkt8,1,8
+  +5 y_lkt8,2,8 -990 y_lkt8,3,8 -990 y0_kt3,8 = +0
+ cons_8: +1 q_t10 -1 q_t9 +13 y_lkt6,0,9 +8 y_lkt6,1,9 +8 y_lkt6,2,9 -987 y_lkt6,3,9 -987 y0_kt3,9 +4 y_lkt7,0,9
+  -1 y_lkt7,1,9 -1 y0_kt1,9 -1 y_lkt7,2,9 -1 y0_kt2,9 -996 y_lkt7,3,9 -996 y0_kt3,9 +10 y_lkt8,0,9 +5 y_lkt8,1,9
+  +5 y_lkt8,2,9 -990 y_lkt8,3,9 -990 y0_kt3,9 +6 y_lkt9,0,9 +1 y_lkt9,1,9 +1 y_lkt9,2,9 -994 y_lkt9,3,9
+  -994 y0_kt3,9 = +0
+ cons_8: +1 q_t11 -1 q_t10 +4 y_lkt7,0,10 -1 y_lkt7,1,10 -1 y0_kt1,10 -1 y_lkt7,2,10 -1 y0_kt2,10 -996 y_lkt7,3,10
+  -996 y0_kt3,10 +6 y_lkt9,0,10 +1 y_lkt9,1,10 +1 y_lkt9,2,10 -994 y_lkt9,3,10 -994 y0_kt3,10 +10 y_lkt10,0,10
+  +5 y_lkt10,1,10 +5 y_lkt10,2,10 -990 y_lkt10,3,10 -990 y0_kt3,10 +6 y_lkt11,0,10 +1 y_lkt11,1,10 +1 y_lkt11,2,10
+  -994 y_lkt11,3,10 -994 y0_kt3,10 = +0
+ cons_8: +1 q_t12 -1 q_t11 +6 y_lkt9,0,11 +1 y_lkt9,1,11 +1 y_lkt9,2,11 -994 y_lkt9,3,11 -994 y0_kt3,11
+  +10 y_lkt10,0,11 +5 y_lkt10,1,11 +5 y_lkt10,2,11 -990 y_lkt10,3,11 -990 y0_kt3,11 +6 y_lkt11,0,11 +1 y_lkt11,1,11
+  +1 y_lkt11,2,11 -994 y_lkt11,3,11 -994 y0_kt3,11 = +0
+ cons_8: +1 q_t13 -1 q_t12 +6 y_lkt9,0,12 +1 y_lkt9,1,12 +1 y_lkt9,2,12 -994 y_lkt9,3,12 -994 y0_kt3,12
+  +10 y_lkt10,0,12 +5 y_lkt10,1,12 +5 y_lkt10,2,12 -990 y_lkt10,3,12 -990 y0_kt3,12 +6 y_lkt11,0,12 +1 y_lkt11,1,12
+  +1 y_lkt11,2,12 -994 y_lkt11,3,12 -994 y0_kt3,12 +21 y_lkt12,0,12 +16 y_lkt12,1,12 +16 y_lkt12,2,12
+  -979 y_lkt12,3,12 -979 y0_kt3,12 = +0
+ cons_8: +1 q_t14 -1 q_t13 +6 y_lkt9,0,13 +1 y_lkt9,1,13 +1 y_lkt9,2,13 -994 y_lkt9,3,13 -994 y0_kt3,13
+  +10 y_lkt10,0,13 +5 y_lkt10,1,13 +5 y_lkt10,2,13 -990 y_lkt10,3,13 -990 y0_kt3,13 +6 y_lkt11,0,13 +1 y_lkt11,1,13
+  +1 y_lkt11,2,13 -994 y_lkt11,3,13 -994 y0_kt3,13 +21 y_lkt12,0,13 +16 y_lkt12,1,13 +16 y_lkt12,2,13
+  -979 y_lkt12,3,13 -979 y0_kt3,13 +17 y_lkt13,0,13 +12 y_lkt13,1,13 +12 y_lkt13,2,13 -983 y_lkt13,3,13
+  -983 y0_kt3,13 = +0
+ cons_8: +1 q_t15 -1 q_t14 +6 y_lkt9,0,14 +1 y_lkt9,1,14 +1 y_lkt9,2,14 -994 y_lkt9,3,14 -994 y0_kt3,14
+  +10 y_lkt10,0,14 +5 y_lkt10,1,14 +5 y_lkt10,2,14 -990 y_lkt10,3,14 -990 y0_kt3,14 +6 y_lkt11,0,14 +1 y_lkt11,1,14
+  +1 y_lkt11,2,14 -994 y_lkt11,3,14 -994 y0_kt3,14 +17 y_lkt13,0,14 +12 y_lkt13,1,14 +12 y_lkt13,2,14
+  -983 y_lkt13,3,14 -983 y0_kt3,14 +8 y_lkt14,0,14 +3 y_lkt14,1,14 +3 y_lkt14,2,14 -992 y_lkt14,3,14 -992 y0_kt3,14
   = +0
- cons_8: +1 q_t4 -1 q_t3 +2 y_lkt003 -3 y_lkt013 -3 y0_kt13 -3 y_lkt023 -3 y0_kt23 -998 y_lkt033 -998 y0_kt33
-  +5 y_lkt103 -995 y_lkt133 -995 y0_kt33 +11 y_lkt203 +6 y_lkt213 +6 y_lkt223 -989 y_lkt233 -989 y0_kt33
-  +12 y_lkt303 +7 y_lkt313 +7 y_lkt323 -988 y_lkt333 -988 y0_kt33 = +0
- cons_8: +1 q_t5 -1 q_t4 +2 y_lkt004 -3 y_lkt014 -3 y0_kt14 -3 y_lkt024 -3 y0_kt24 -998 y_lkt034 -998 y0_kt34
-  +5 y_lkt104 -995 y_lkt134 -995 y0_kt34 +11 y_lkt204 +6 y_lkt214 +6 y_lkt224 -989 y_lkt234 -989 y0_kt34
-  +12 y_lkt304 +7 y_lkt314 +7 y_lkt324 -988 y_lkt334 -988 y0_kt34 +24 y_lkt404 +19 y_lkt414 +19 y_lkt424
-  -976 y_lkt434 -976 y0_kt34 = +0
- cons_8: +1 q_t6 -1 q_t5 +2 y_lkt005 -3 y_lkt015 -3 y0_kt15 -3 y_lkt025 -3 y0_kt25 -998 y_lkt035 -998 y0_kt35
-  +12 y_lkt305 +7 y_lkt315 +7 y_lkt325 -988 y_lkt335 -988 y0_kt35 +24 y_lkt405 +19 y_lkt415 +19 y_lkt425
-  -976 y_lkt435 -976 y0_kt35 +21 y_lkt505 +16 y_lkt515 +16 y_lkt525 -979 y_lkt535 -979 y0_kt35 = +0
- cons_8: +1 q_t7 -1 q_t6 +2 y_lkt006 -3 y_lkt016 -3 y0_kt16 -3 y_lkt026 -3 y0_kt26 -998 y_lkt036 -998 y0_kt36
-  +12 y_lkt306 +7 y_lkt316 +7 y_lkt326 -988 y_lkt336 -988 y0_kt36 +21 y_lkt506 +16 y_lkt516 +16 y_lkt526
-  -979 y_lkt536 -979 y0_kt36 +13 y_lkt606 +8 y_lkt616 +8 y_lkt626 -987 y_lkt636 -987 y0_kt36 +4 y_lkt706
-  -1 y_lkt716 -1 y0_kt16 -1 y_lkt726 -1 y0_kt26 -996 y_lkt736 -996 y0_kt36 = +0
- cons_8: +1 q_t8 -1 q_t7 +2 y_lkt007 -3 y_lkt017 -3 y0_kt17 -3 y_lkt027 -3 y0_kt27 -998 y_lkt037 -998 y0_kt37
-  +21 y_lkt507 +16 y_lkt517 +16 y_lkt527 -979 y_lkt537 -979 y0_kt37 +13 y_lkt607 +8 y_lkt617 +8 y_lkt627
-  -987 y_lkt637 -987 y0_kt37 +4 y_lkt707 -1 y_lkt717 -1 y0_kt17 -1 y_lkt727 -1 y0_kt27 -996 y_lkt737 -996 y0_kt37
+ cons_8: +1 q_t16 -1 q_t15 +6 y_lkt11,0,15 +1 y_lkt11,1,15 +1 y_lkt11,2,15 -994 y_lkt11,3,15 -994 y0_kt3,15
+  +17 y_lkt13,0,15 +12 y_lkt13,1,15 +12 y_lkt13,2,15 -983 y_lkt13,3,15 -983 y0_kt3,15 +8 y_lkt14,0,15
+  +3 y_lkt14,1,15 +3 y_lkt14,2,15 -992 y_lkt14,3,15 -992 y0_kt3,15 +18 y_lkt15,0,15 +13 y_lkt15,1,15 +13 y_lkt15,2,15
+  -982 y_lkt15,3,15 -982 y0_kt3,15 = +0
+ cons_8: +1 q_t17 -1 q_t16 +6 y_lkt11,0,16 +1 y_lkt11,1,16 +1 y_lkt11,2,16 -994 y_lkt11,3,16 -994 y0_kt3,16
+  +8 y_lkt14,0,16 +3 y_lkt14,1,16 +3 y_lkt14,2,16 -992 y_lkt14,3,16 -992 y0_kt3,16 +18 y_lkt15,0,16 +13 y_lkt15,1,16
+  +13 y_lkt15,2,16 -982 y_lkt15,3,16 -982 y0_kt3,16 +16 y_lkt16,0,16 +11 y_lkt16,1,16 +11 y_lkt16,2,16
+  -984 y_lkt16,3,16 -984 y0_kt3,16 = +0
+ cons_8: +1 q_t18 -1 q_t17 +8 y_lkt14,0,17 +3 y_lkt14,1,17 +3 y_lkt14,2,17 -992 y_lkt14,3,17 -992 y0_kt3,17
+  +18 y_lkt15,0,17 +13 y_lkt15,1,17 +13 y_lkt15,2,17 -982 y_lkt15,3,17 -982 y0_kt3,17 +16 y_lkt16,0,17
+  +11 y_lkt16,1,17 +11 y_lkt16,2,17 -984 y_lkt16,3,17 -984 y0_kt3,17 +11 y_lkt17,0,17 +6 y_lkt17,1,17
+  +6 y_lkt17,2,17 -989 y_lkt17,3,17 -989 y0_kt3,17 +7 y_lkt18,0,17 +2 y_lkt18,1,17 +2 y_lkt18,2,17 -993 y_lkt18,3,17
+  -993 y0_kt3,17 = +0
+ cons_8: +1 q_t19 -1 q_t18 +8 y_lkt14,0,18 +3 y_lkt14,1,18 +3 y_lkt14,2,18 -992 y_lkt14,3,18 -992 y0_kt3,18
+  +18 y_lkt15,0,18 +13 y_lkt15,1,18 +13 y_lkt15,2,18 -982 y_lkt15,3,18 -982 y0_kt3,18 +16 y_lkt16,0,18
+  +11 y_lkt16,1,18 +11 y_lkt16,2,18 -984 y_lkt16,3,18 -984 y0_kt3,18 +11 y_lkt17,0,18 +6 y_lkt17,1,18
+  +6 y_lkt17,2,18 -989 y_lkt17,3,18 -989 y0_kt3,18 +7 y_lkt18,0,18 +2 y_lkt18,1,18 +2 y_lkt18,2,18 -993 y_lkt18,3,18
+  -993 y0_kt3,18 = +0
+ cons_8: +1 q_t20 -1 q_t19 +11 y_lkt17,0,19 +6 y_lkt17,1,19 +6 y_lkt17,2,19 -989 y_lkt17,3,19 -989 y0_kt3,19
+  +7 y_lkt18,0,19 +2 y_lkt18,1,19 +2 y_lkt18,2,19 -993 y_lkt18,3,19 -993 y0_kt3,19 = +0
+ cons_8: +1 q_t21 -1 q_t20 +7 y_lkt18,0,20 +2 y_lkt18,1,20 +2 y_lkt18,2,20 -993 y_lkt18,3,20 -993 y0_kt3,20
   = +0
- cons_8: +1 q_t9 -1 q_t8 +2 y_lkt008 -3 y_lkt018 -3 y0_kt18 -3 y_lkt028 -3 y0_kt28 -998 y_lkt038 -998 y0_kt38
-  +13 y_lkt608 +8 y_lkt618 +8 y_lkt628 -987 y_lkt638 -987 y0_kt38 +4 y_lkt708 -1 y_lkt718 -1 y0_kt18 -1 y_lkt728
-  -1 y0_kt28 -996 y_lkt738 -996 y0_kt38 +10 y_lkt808 +5 y_lkt818 +5 y_lkt828 -990 y_lkt838 -990 y0_kt38
-  = +0
- cons_8: +1 q_t10 -1 q_t9 +13 y_lkt609 +8 y_lkt619 +8 y_lkt629 -987 y_lkt639 -987 y0_kt39 +4 y_lkt709
-  -1 y_lkt719 -1 y0_kt19 -1 y_lkt729 -1 y0_kt29 -996 y_lkt739 -996 y0_kt39 +10 y_lkt809 +5 y_lkt819 +5 y_lkt829
-  -990 y_lkt839 -990 y0_kt39 +6 y_lkt909 +1 y_lkt919 +1 y_lkt929 -994 y_lkt939 -994 y0_kt39 = +0
- cons_8: +1 q_t11 -1 q_t10 +4 y_lkt7010 -1 y_lkt7110 -1 y0_kt110 -1 y_lkt7210 -1 y0_kt210 -996 y_lkt7310
-  -996 y0_kt310 +6 y_lkt9010 +1 y_lkt9110 +1 y_lkt9210 -994 y_lkt9310 -994 y0_kt310 +10 y_lkt10010 +5 y_lkt10110
-  +5 y_lkt10210 -990 y_lkt10310 -990 y0_kt310 +6 y_lkt11010 +1 y_lkt11110 +1 y_lkt11210 -994 y_lkt11310
-  -994 y0_kt310 = +0
- cons_8: +1 q_t12 -1 q_t11 +6 y_lkt9011 +1 y_lkt9111 +1 y_lkt9211 -994 y_lkt9311 -994 y0_kt311 +10 y_lkt10011
-  +5 y_lkt10111 +5 y_lkt10211 -990 y_lkt10311 -990 y0_kt311 +6 y_lkt11011 +1 y_lkt11111 +1 y_lkt11211
-  -994 y_lkt11311 -994 y0_kt311 = +0
- cons_8: +1 q_t13 -1 q_t12 +6 y_lkt9012 +1 y_lkt9112 +1 y_lkt9212 -994 y_lkt9312 -994 y0_kt312 +10 y_lkt10012
-  +5 y_lkt10112 +5 y_lkt10212 -990 y_lkt10312 -990 y0_kt312 +6 y_lkt11012 +1 y_lkt11112 +1 y_lkt11212
-  -994 y_lkt11312 -994 y0_kt312 +21 y_lkt12012 +16 y_lkt12112 +16 y_lkt12212 -979 y_lkt12312 -979 y0_kt312
-  = +0
- cons_8: +1 q_t14 -1 q_t13 +6 y_lkt9013 +1 y_lkt9113 +1 y_lkt9213 -994 y_lkt9313 -994 y0_kt313 +10 y_lkt10013
-  +5 y_lkt10113 +5 y_lkt10213 -990 y_lkt10313 -990 y0_kt313 +6 y_lkt11013 +1 y_lkt11113 +1 y_lkt11213
-  -994 y_lkt11313 -994 y0_kt313 +21 y_lkt12013 +16 y_lkt12113 +16 y_lkt12213 -979 y_lkt12313 -979 y0_kt313
-  +17 y_lkt13013 +12 y_lkt13113 +12 y_lkt13213 -983 y_lkt13313 -983 y0_kt313 = +0
- cons_8: +1 q_t15 -1 q_t14 +6 y_lkt9014 +1 y_lkt9114 +1 y_lkt9214 -994 y_lkt9314 -994 y0_kt314 +10 y_lkt10014
-  +5 y_lkt10114 +5 y_lkt10214 -990 y_lkt10314 -990 y0_kt314 +6 y_lkt11014 +1 y_lkt11114 +1 y_lkt11214
-  -994 y_lkt11314 -994 y0_kt314 +17 y_lkt13014 +12 y_lkt13114 +12 y_lkt13214 -983 y_lkt13314 -983 y0_kt314
-  +8 y_lkt14014 +3 y_lkt14114 +3 y_lkt14214 -992 y_lkt14314 -992 y0_kt314 = +0
- cons_8: +1 q_t16 -1 q_t15 +6 y_lkt11015 +1 y_lkt11115 +1 y_lkt11215 -994 y_lkt11315 -994 y0_kt315 +17 y_lkt13015
-  +12 y_lkt13115 +12 y_lkt13215 -983 y_lkt13315 -983 y0_kt315 +8 y_lkt14015 +3 y_lkt14115 +3 y_lkt14215
-  -992 y_lkt14315 -992 y0_kt315 +18 y_lkt15015 +13 y_lkt15115 +13 y_lkt15215 -982 y_lkt15315 -982 y0_kt315
-  = +0
- cons_8: +1 q_t17 -1 q_t16 +6 y_lkt11016 +1 y_lkt11116 +1 y_lkt11216 -994 y_lkt11316 -994 y0_kt316 +8 y_lkt14016
-  +3 y_lkt14116 +3 y_lkt14216 -992 y_lkt14316 -992 y0_kt316 +18 y_lkt15016 +13 y_lkt15116 +13 y_lkt15216
-  -982 y_lkt15316 -982 y0_kt316 +16 y_lkt16016 +11 y_lkt16116 +11 y_lkt16216 -984 y_lkt16316 -984 y0_kt316
-  = +0
- cons_8: +1 q_t18 -1 q_t17 +8 y_lkt14017 +3 y_lkt14117 +3 y_lkt14217 -992 y_lkt14317 -992 y0_kt317 +18 y_lkt15017
-  +13 y_lkt15117 +13 y_lkt15217 -982 y_lkt15317 -982 y0_kt317 +16 y_lkt16017 +11 y_lkt16117 +11 y_lkt16217
-  -984 y_lkt16317 -984 y0_kt317 +11 y_lkt17017 +6 y_lkt17117 +6 y_lkt17217 -989 y_lkt17317 -989 y0_kt317
-  +7 y_lkt18017 +2 y_lkt18117 +2 y_lkt18217 -993 y_lkt18317 -993 y0_kt317 = +0
- cons_8: +1 q_t19 -1 q_t18 +8 y_lkt14018 +3 y_lkt14118 +3 y_lkt14218 -992 y_lkt14318 -992 y0_kt318 +18 y_lkt15018
-  +13 y_lkt15118 +13 y_lkt15218 -982 y_lkt15318 -982 y0_kt318 +16 y_lkt16018 +11 y_lkt16118 +11 y_lkt16218
-  -984 y_lkt16318 -984 y0_kt318 +11 y_lkt17018 +6 y_lkt17118 +6 y_lkt17218 -989 y_lkt17318 -989 y0_kt318
-  +7 y_lkt18018 +2 y_lkt18118 +2 y_lkt18218 -993 y_lkt18318 -993 y0_kt318 = +0
- cons_8: +1 q_t20 -1 q_t19 +11 y_lkt17019 +6 y_lkt17119 +6 y_lkt17219 -989 y_lkt17319 -989 y0_kt319 +7 y_lkt18019
-  +2 y_lkt18119 +2 y_lkt18219 -993 y_lkt18319 -993 y0_kt319 = +0
- cons_8: +1 q_t21 -1 q_t20 +7 y_lkt18020 +2 y_lkt18120 +2 y_lkt18220 -993 y_lkt18320 -993 y0_kt320 = +0
  cons_8: +1 q_t22 -1 q_t21 = +0
  cons_8: +1 q_t23 -1 q_t22 = +0
  cons_8: +1 q_t24 -1 q_t23 = +0
  cons_8: +1 q_t25 -1 q_t24 = +0
- cons_9: +2 y_lkt000 +2 y_lkt010 +2 y_lkt020 +2 y_lkt030 -2 x_it00 -5 x_it10 -3 x_it20 -6 x_it30 -2 x_it40
-  -4 x_it50 -2 x_it60 -4 x_it70 -2 x_it80 -2 x_it90 -2 x_it100 -5 x_it110 -2 x_it120 -2 x_it130 -4 x_it140
-  -2 x_it150 -2 x_it160 -6 x_it170 -8 x_it180 -6 x_it190 -2 x_it200 -4 x_it210 -2 x_it220 -6 x_it230 -2 x_it240
-  -2 x_it250 -4 x_it260 -4 x_it270 -2 x_it280 -3 x_it290 = +0
- cons_9: +2 y_lkt001 +2 y_lkt011 +2 y_lkt021 +2 y_lkt031 +5 y_lkt101 +5 y_lkt111 +5 y_lkt121 +5 y_lkt131
-  -2 x_it01 -5 x_it11 -3 x_it21 -6 x_it31 -2 x_it41 -4 x_it51 -2 x_it61 -4 x_it71 -2 x_it81 -2 x_it91
-  -2 x_it101 -5 x_it111 -2 x_it121 -2 x_it131 -4 x_it141 -2 x_it151 -2 x_it161 -6 x_it171 -8 x_it181 -6 x_it191
-  -2 x_it201 -4 x_it211 -2 x_it221 -6 x_it231 -2 x_it241 -2 x_it251 -4 x_it261 -4 x_it271 -2 x_it281 -3 x_it291
+ cons_9: +2 y_lkt0,0,0 +2 y_lkt0,1,0 +2 y_lkt0,2,0 +2 y_lkt0,3,0 -2 x_it9,0 = +0
+ cons_9: +2 y_lkt0,0,1 +2 y_lkt0,1,1 +2 y_lkt0,2,1 +2 y_lkt0,3,1 +5 y_lkt1,0,1 +5 y_lkt1,1,1 +5 y_lkt1,2,1
+  +5 y_lkt1,3,1 -2 x_it9,1 -3 x_it29,1 = +0
+ cons_9: +2 y_lkt0,0,2 +2 y_lkt0,1,2 +2 y_lkt0,2,2 +2 y_lkt0,3,2 +5 y_lkt1,0,2 +5 y_lkt1,1,2 +5 y_lkt1,2,2
+  +5 y_lkt1,3,2 +11 y_lkt2,0,2 +11 y_lkt2,1,2 +11 y_lkt2,2,2 +11 y_lkt2,3,2 -2 x_it6,2 -2 x_it9,2 -4 x_it14,2
+  -3 x_it29,2 = +0
+ cons_9: +2 y_lkt0,0,3 +2 y_lkt0,1,3 +2 y_lkt0,2,3 +2 y_lkt0,3,3 +5 y_lkt1,0,3 +5 y_lkt1,1,3 +5 y_lkt1,2,3
+  +5 y_lkt1,3,3 +11 y_lkt2,0,3 +11 y_lkt2,1,3 +11 y_lkt2,2,3 +11 y_lkt2,3,3 +12 y_lkt3,0,3 +12 y_lkt3,1,3
+  +12 y_lkt3,2,3 +12 y_lkt3,3,3 -2 x_it6,3 -2 x_it9,3 -2 x_it12,3 -4 x_it14,3 -2 x_it20,3 -3 x_it29,3
   = +0
- cons_9: +2 y_lkt002 +2 y_lkt012 +2 y_lkt022 +2 y_lkt032 +5 y_lkt102 +5 y_lkt112 +5 y_lkt122 +5 y_lkt132
-  +11 y_lkt202 +11 y_lkt212 +11 y_lkt222 +11 y_lkt232 -2 x_it02 -5 x_it12 -3 x_it22 -6 x_it32 -2 x_it42
-  -4 x_it52 -2 x_it62 -4 x_it72 -2 x_it82 -2 x_it92 -2 x_it102 -5 x_it112 -2 x_it122 -2 x_it132 -4 x_it142
-  -2 x_it152 -2 x_it162 -6 x_it172 -8 x_it182 -6 x_it192 -2 x_it202 -4 x_it212 -2 x_it222 -6 x_it232 -2 x_it242
-  -2 x_it252 -4 x_it262 -4 x_it272 -2 x_it282 -3 x_it292 = +0
- cons_9: +2 y_lkt003 +2 y_lkt013 +2 y_lkt023 +2 y_lkt033 +5 y_lkt103 +5 y_lkt113 +5 y_lkt123 +5 y_lkt133
-  +11 y_lkt203 +11 y_lkt213 +11 y_lkt223 +11 y_lkt233 +12 y_lkt303 +12 y_lkt313 +12 y_lkt323 +12 y_lkt333
-  -2 x_it03 -5 x_it13 -3 x_it23 -6 x_it33 -2 x_it43 -4 x_it53 -2 x_it63 -4 x_it73 -2 x_it83 -2 x_it93
-  -2 x_it103 -5 x_it113 -2 x_it123 -2 x_it133 -4 x_it143 -2 x_it153 -2 x_it163 -6 x_it173 -8 x_it183 -6 x_it193
-  -2 x_it203 -4 x_it213 -2 x_it223 -6 x_it233 -2 x_it243 -2 x_it253 -4 x_it263 -4 x_it273 -2 x_it283 -3 x_it293
+ cons_9: +2 y_lkt0,0,4 +2 y_lkt0,1,4 +2 y_lkt0,2,4 +2 y_lkt0,3,4 +5 y_lkt1,0,4 +5 y_lkt1,1,4 +5 y_lkt1,2,4
+  +5 y_lkt1,3,4 +11 y_lkt2,0,4 +11 y_lkt2,1,4 +11 y_lkt2,2,4 +11 y_lkt2,3,4 +12 y_lkt3,0,4 +12 y_lkt3,1,4
+  +12 y_lkt3,2,4 +12 y_lkt3,3,4 +24 y_lkt4,0,4 +24 y_lkt4,1,4 +24 y_lkt4,2,4 +24 y_lkt4,3,4 -6 x_it3,4
+  -4 x_it5,4 -2 x_it6,4 -2 x_it9,4 -2 x_it12,4 -4 x_it14,4 -2 x_it20,4 -6 x_it23,4 -2 x_it28,4 -3 x_it29,4
   = +0
- cons_9: +2 y_lkt004 +2 y_lkt014 +2 y_lkt024 +2 y_lkt034 +5 y_lkt104 +5 y_lkt114 +5 y_lkt124 +5 y_lkt134
-  +11 y_lkt204 +11 y_lkt214 +11 y_lkt224 +11 y_lkt234 +12 y_lkt304 +12 y_lkt314 +12 y_lkt324 +12 y_lkt334
-  +24 y_lkt404 +24 y_lkt414 +24 y_lkt424 +24 y_lkt434 -2 x_it04 -5 x_it14 -3 x_it24 -6 x_it34 -2 x_it44
-  -4 x_it54 -2 x_it64 -4 x_it74 -2 x_it84 -2 x_it94 -2 x_it104 -5 x_it114 -2 x_it124 -2 x_it134 -4 x_it144
-  -2 x_it154 -2 x_it164 -6 x_it174 -8 x_it184 -6 x_it194 -2 x_it204 -4 x_it214 -2 x_it224 -6 x_it234 -2 x_it244
-  -2 x_it254 -4 x_it264 -4 x_it274 -2 x_it284 -3 x_it294 = +0
- cons_9: +2 y_lkt005 +2 y_lkt015 +2 y_lkt025 +2 y_lkt035 +12 y_lkt305 +12 y_lkt315 +12 y_lkt325 +12 y_lkt335
-  +24 y_lkt405 +24 y_lkt415 +24 y_lkt425 +24 y_lkt435 +21 y_lkt505 +21 y_lkt515 +21 y_lkt525 +21 y_lkt535
-  -2 x_it05 -5 x_it15 -3 x_it25 -6 x_it35 -2 x_it45 -4 x_it55 -2 x_it65 -4 x_it75 -2 x_it85 -2 x_it95
-  -2 x_it105 -5 x_it115 -2 x_it125 -2 x_it135 -4 x_it145 -2 x_it155 -2 x_it165 -6 x_it175 -8 x_it185 -6 x_it195
-  -2 x_it205 -4 x_it215 -2 x_it225 -6 x_it235 -2 x_it245 -2 x_it255 -4 x_it265 -4 x_it275 -2 x_it285 -3 x_it295
+ cons_9: +2 y_lkt0,0,5 +2 y_lkt0,1,5 +2 y_lkt0,2,5 +2 y_lkt0,3,5 +12 y_lkt3,0,5 +12 y_lkt3,1,5 +12 y_lkt3,2,5
+  +12 y_lkt3,3,5 +24 y_lkt4,0,5 +24 y_lkt4,1,5 +24 y_lkt4,2,5 +24 y_lkt4,3,5 +21 y_lkt5,0,5 +21 y_lkt5,1,5
+  +21 y_lkt5,2,5 +21 y_lkt5,3,5 -6 x_it3,5 -4 x_it5,5 -2 x_it6,5 -2 x_it9,5 -5 x_it11,5 -2 x_it12,5 -4 x_it14,5
+  -2 x_it20,5 -6 x_it23,5 -2 x_it28,5 = +0
+ cons_9: +2 y_lkt0,0,6 +2 y_lkt0,1,6 +2 y_lkt0,2,6 +2 y_lkt0,3,6 +12 y_lkt3,0,6 +12 y_lkt3,1,6 +12 y_lkt3,2,6
+  +12 y_lkt3,3,6 +21 y_lkt5,0,6 +21 y_lkt5,1,6 +21 y_lkt5,2,6 +21 y_lkt5,3,6 +13 y_lkt6,0,6 +13 y_lkt6,1,6
+  +13 y_lkt6,2,6 +13 y_lkt6,3,6 +4 y_lkt7,0,6 +4 y_lkt7,1,6 +4 y_lkt7,2,6 +4 y_lkt7,3,6 -6 x_it3,6 -4 x_it5,6
+  -2 x_it6,6 -2 x_it9,6 -5 x_it11,6 -2 x_it12,6 -4 x_it14,6 -2 x_it20,6 -4 x_it26,6 -2 x_it28,6 = +0
+ cons_9: +2 y_lkt0,0,7 +2 y_lkt0,1,7 +2 y_lkt0,2,7 +2 y_lkt0,3,7 +21 y_lkt5,0,7 +21 y_lkt5,1,7 +21 y_lkt5,2,7
+  +21 y_lkt5,3,7 +13 y_lkt6,0,7 +13 y_lkt6,1,7 +13 y_lkt6,2,7 +13 y_lkt6,3,7 +4 y_lkt7,0,7 +4 y_lkt7,1,7
+  +4 y_lkt7,2,7 +4 y_lkt7,3,7 -6 x_it3,7 -4 x_it5,7 -2 x_it6,7 -2 x_it9,7 -5 x_it11,7 -2 x_it12,7 -2 x_it20,7
+  -4 x_it26,7 -2 x_it28,7 = +0
+ cons_9: +2 y_lkt0,0,8 +2 y_lkt0,1,8 +2 y_lkt0,2,8 +2 y_lkt0,3,8 +13 y_lkt6,0,8 +13 y_lkt6,1,8 +13 y_lkt6,2,8
+  +13 y_lkt6,3,8 +4 y_lkt7,0,8 +4 y_lkt7,1,8 +4 y_lkt7,2,8 +4 y_lkt7,3,8 +10 y_lkt8,0,8 +10 y_lkt8,1,8
+  +10 y_lkt8,2,8 +10 y_lkt8,3,8 -2 x_it4,8 -2 x_it6,8 -2 x_it9,8 -5 x_it11,8 -2 x_it12,8 -8 x_it18,8 -2 x_it20,8
+  -4 x_it26,8 -2 x_it28,8 = +0
+ cons_9: +13 y_lkt6,0,9 +13 y_lkt6,1,9 +13 y_lkt6,2,9 +13 y_lkt6,3,9 +4 y_lkt7,0,9 +4 y_lkt7,1,9 +4 y_lkt7,2,9
+  +4 y_lkt7,3,9 +10 y_lkt8,0,9 +10 y_lkt8,1,9 +10 y_lkt8,2,9 +10 y_lkt8,3,9 +6 y_lkt9,0,9 +6 y_lkt9,1,9
+  +6 y_lkt9,2,9 +6 y_lkt9,3,9 -2 x_it4,9 -2 x_it6,9 -5 x_it11,9 -2 x_it12,9 -2 x_it13,9 -8 x_it18,9 -2 x_it20,9
+  -2 x_it24,9 -4 x_it26,9 -2 x_it28,9 = +0
+ cons_9: +4 y_lkt7,0,10 +4 y_lkt7,1,10 +4 y_lkt7,2,10 +4 y_lkt7,3,10 +6 y_lkt9,0,10 +6 y_lkt9,1,10 +6 y_lkt9,2,10
+  +6 y_lkt9,3,10 +10 y_lkt10,0,10 +10 y_lkt10,1,10 +10 y_lkt10,2,10 +10 y_lkt10,3,10 +6 y_lkt11,0,10 +6 y_lkt11,1,10
+  +6 y_lkt11,2,10 +6 y_lkt11,3,10 -2 x_it0,10 -2 x_it4,10 -2 x_it6,10 -2 x_it13,10 -2 x_it20,10 -2 x_it24,10
+  -2 x_it25,10 -4 x_it26,10 -2 x_it28,10 = +0
+ cons_9: +6 y_lkt9,0,11 +6 y_lkt9,1,11 +6 y_lkt9,2,11 +6 y_lkt9,3,11 +10 y_lkt10,0,11 +10 y_lkt10,1,11
+  +10 y_lkt10,2,11 +10 y_lkt10,3,11 +6 y_lkt11,0,11 +6 y_lkt11,1,11 +6 y_lkt11,2,11 +6 y_lkt11,3,11 -2 x_it0,11
+  -2 x_it4,11 -2 x_it6,11 -2 x_it13,11 -2 x_it20,11 -2 x_it24,11 -2 x_it25,11 -2 x_it28,11 = +0
+ cons_9: +6 y_lkt9,0,12 +6 y_lkt9,1,12 +6 y_lkt9,2,12 +6 y_lkt9,3,12 +10 y_lkt10,0,12 +10 y_lkt10,1,12
+  +10 y_lkt10,2,12 +10 y_lkt10,3,12 +6 y_lkt11,0,12 +6 y_lkt11,1,12 +6 y_lkt11,2,12 +6 y_lkt11,3,12 +21 y_lkt12,0,12
+  +21 y_lkt12,1,12 +21 y_lkt12,2,12 +21 y_lkt12,3,12 -2 x_it0,12 -5 x_it1,12 -2 x_it4,12 -2 x_it13,12
+  -6 x_it17,12 -2 x_it20,12 -4 x_it21,12 -2 x_it24,12 -2 x_it25,12 -2 x_it28,12 = +0
+ cons_9: +6 y_lkt9,0,13 +6 y_lkt9,1,13 +6 y_lkt9,2,13 +6 y_lkt9,3,13 +10 y_lkt10,0,13 +10 y_lkt10,1,13
+  +10 y_lkt10,2,13 +10 y_lkt10,3,13 +6 y_lkt11,0,13 +6 y_lkt11,1,13 +6 y_lkt11,2,13 +6 y_lkt11,3,13 +21 y_lkt12,0,13
+  +21 y_lkt12,1,13 +21 y_lkt12,2,13 +21 y_lkt12,3,13 +17 y_lkt13,0,13 +17 y_lkt13,1,13 +17 y_lkt13,2,13
+  +17 y_lkt13,3,13 -2 x_it0,13 -5 x_it1,13 -2 x_it4,13 -2 x_it13,13 -2 x_it15,13 -6 x_it17,13 -2 x_it20,13
+  -4 x_it21,13 -2 x_it22,13 -2 x_it24,13 -2 x_it25,13 -2 x_it28,13 = +0
+ cons_9: +6 y_lkt9,0,14 +6 y_lkt9,1,14 +6 y_lkt9,2,14 +6 y_lkt9,3,14 +10 y_lkt10,0,14 +10 y_lkt10,1,14
+  +10 y_lkt10,2,14 +10 y_lkt10,3,14 +6 y_lkt11,0,14 +6 y_lkt11,1,14 +6 y_lkt11,2,14 +6 y_lkt11,3,14 +17 y_lkt13,0,14
+  +17 y_lkt13,1,14 +17 y_lkt13,2,14 +17 y_lkt13,3,14 +8 y_lkt14,0,14 +8 y_lkt14,1,14 +8 y_lkt14,2,14 +8 y_lkt14,3,14
+  -2 x_it0,14 -5 x_it1,14 -2 x_it4,14 -2 x_it13,14 -2 x_it15,14 -2 x_it20,14 -4 x_it21,14 -2 x_it22,14
+  -2 x_it24,14 -2 x_it25,14 -4 x_it27,14 -2 x_it28,14 = +0
+ cons_9: +6 y_lkt11,0,15 +6 y_lkt11,1,15 +6 y_lkt11,2,15 +6 y_lkt11,3,15 +17 y_lkt13,0,15 +17 y_lkt13,1,15
+  +17 y_lkt13,2,15 +17 y_lkt13,3,15 +8 y_lkt14,0,15 +8 y_lkt14,1,15 +8 y_lkt14,2,15 +8 y_lkt14,3,15 +18 y_lkt15,0,15
+  +18 y_lkt15,1,15 +18 y_lkt15,2,15 +18 y_lkt15,3,15 -2 x_it0,15 -5 x_it1,15 -2 x_it4,15 -2 x_it8,15 -2 x_it13,15
+  -2 x_it15,15 -2 x_it16,15 -6 x_it19,15 -4 x_it21,15 -2 x_it22,15 -2 x_it25,15 -4 x_it27,15 = +0
+ cons_9: +6 y_lkt11,0,16 +6 y_lkt11,1,16 +6 y_lkt11,2,16 +6 y_lkt11,3,16 +8 y_lkt14,0,16 +8 y_lkt14,1,16
+  +8 y_lkt14,2,16 +8 y_lkt14,3,16 +18 y_lkt15,0,16 +18 y_lkt15,1,16 +18 y_lkt15,2,16 +18 y_lkt15,3,16
+  +16 y_lkt16,0,16 +16 y_lkt16,1,16 +16 y_lkt16,2,16 +16 y_lkt16,3,16 -2 x_it0,16 -5 x_it1,16 -2 x_it4,16
+  -2 x_it8,16 -2 x_it10,16 -2 x_it13,16 -2 x_it15,16 -2 x_it16,16 -6 x_it19,16 -2 x_it22,16 -2 x_it25,16
+  -4 x_it27,16 = +0
+ cons_9: +8 y_lkt14,0,17 +8 y_lkt14,1,17 +8 y_lkt14,2,17 +8 y_lkt14,3,17 +18 y_lkt15,0,17 +18 y_lkt15,1,17
+  +18 y_lkt15,2,17 +18 y_lkt15,3,17 +16 y_lkt16,0,17 +16 y_lkt16,1,17 +16 y_lkt16,2,17 +16 y_lkt16,3,17
+  +11 y_lkt17,0,17 +11 y_lkt17,1,17 +11 y_lkt17,2,17 +11 y_lkt17,3,17 +7 y_lkt18,0,17 +7 y_lkt18,1,17
+  +7 y_lkt18,2,17 +7 y_lkt18,3,17 -2 x_it0,17 -3 x_it2,17 -2 x_it4,17 -4 x_it7,17 -2 x_it8,17 -2 x_it10,17
+  -2 x_it15,17 -2 x_it16,17 -6 x_it19,17 -2 x_it22,17 -2 x_it25,17 -4 x_it27,17 = +0
+ cons_9: +8 y_lkt14,0,18 +8 y_lkt14,1,18 +8 y_lkt14,2,18 +8 y_lkt14,3,18 +18 y_lkt15,0,18 +18 y_lkt15,1,18
+  +18 y_lkt15,2,18 +18 y_lkt15,3,18 +16 y_lkt16,0,18 +16 y_lkt16,1,18 +16 y_lkt16,2,18 +16 y_lkt16,3,18
+  +11 y_lkt17,0,18 +11 y_lkt17,1,18 +11 y_lkt17,2,18 +11 y_lkt17,3,18 +7 y_lkt18,0,18 +7 y_lkt18,1,18
+  +7 y_lkt18,2,18 +7 y_lkt18,3,18 -2 x_it0,18 -3 x_it2,18 -2 x_it4,18 -4 x_it7,18 -2 x_it8,18 -2 x_it10,18
+  -2 x_it15,18 -2 x_it16,18 -6 x_it19,18 -2 x_it22,18 -4 x_it27,18 = +0
+ cons_9: +11 y_lkt17,0,19 +11 y_lkt17,1,19 +11 y_lkt17,2,19 +11 y_lkt17,3,19 +7 y_lkt18,0,19 +7 y_lkt18,1,19
+  +7 y_lkt18,2,19 +7 y_lkt18,3,19 -3 x_it2,19 -4 x_it7,19 -2 x_it10,19 -2 x_it15,19 -2 x_it16,19 -2 x_it22,19
   = +0
- cons_9: +2 y_lkt006 +2 y_lkt016 +2 y_lkt026 +2 y_lkt036 +12 y_lkt306 +12 y_lkt316 +12 y_lkt326 +12 y_lkt336
-  +21 y_lkt506 +21 y_lkt516 +21 y_lkt526 +21 y_lkt536 +13 y_lkt606 +13 y_lkt616 +13 y_lkt626 +13 y_lkt636
-  +4 y_lkt706 +4 y_lkt716 +4 y_lkt726 +4 y_lkt736 -2 x_it06 -5 x_it16 -3 x_it26 -6 x_it36 -2 x_it46 -4 x_it56
-  -2 x_it66 -4 x_it76 -2 x_it86 -2 x_it96 -2 x_it106 -5 x_it116 -2 x_it126 -2 x_it136 -4 x_it146 -2 x_it156
-  -2 x_it166 -6 x_it176 -8 x_it186 -6 x_it196 -2 x_it206 -4 x_it216 -2 x_it226 -6 x_it236 -2 x_it246 -2 x_it256
-  -4 x_it266 -4 x_it276 -2 x_it286 -3 x_it296 = +0
- cons_9: +2 y_lkt007 +2 y_lkt017 +2 y_lkt027 +2 y_lkt037 +21 y_lkt507 +21 y_lkt517 +21 y_lkt527 +21 y_lkt537
-  +13 y_lkt607 +13 y_lkt617 +13 y_lkt627 +13 y_lkt637 +4 y_lkt707 +4 y_lkt717 +4 y_lkt727 +4 y_lkt737
-  -2 x_it07 -5 x_it17 -3 x_it27 -6 x_it37 -2 x_it47 -4 x_it57 -2 x_it67 -4 x_it77 -2 x_it87 -2 x_it97
-  -2 x_it107 -5 x_it117 -2 x_it127 -2 x_it137 -4 x_it147 -2 x_it157 -2 x_it167 -6 x_it177 -8 x_it187 -6 x_it197
-  -2 x_it207 -4 x_it217 -2 x_it227 -6 x_it237 -2 x_it247 -2 x_it257 -4 x_it267 -4 x_it277 -2 x_it287 -3 x_it297
-  = +0
- cons_9: +2 y_lkt008 +2 y_lkt018 +2 y_lkt028 +2 y_lkt038 +13 y_lkt608 +13 y_lkt618 +13 y_lkt628 +13 y_lkt638
-  +4 y_lkt708 +4 y_lkt718 +4 y_lkt728 +4 y_lkt738 +10 y_lkt808 +10 y_lkt818 +10 y_lkt828 +10 y_lkt838
-  -2 x_it08 -5 x_it18 -3 x_it28 -6 x_it38 -2 x_it48 -4 x_it58 -2 x_it68 -4 x_it78 -2 x_it88 -2 x_it98
-  -2 x_it108 -5 x_it118 -2 x_it128 -2 x_it138 -4 x_it148 -2 x_it158 -2 x_it168 -6 x_it178 -8 x_it188 -6 x_it198
-  -2 x_it208 -4 x_it218 -2 x_it228 -6 x_it238 -2 x_it248 -2 x_it258 -4 x_it268 -4 x_it278 -2 x_it288 -3 x_it298
-  = +0
- cons_9: +13 y_lkt609 +13 y_lkt619 +13 y_lkt629 +13 y_lkt639 +4 y_lkt709 +4 y_lkt719 +4 y_lkt729 +4 y_lkt739
-  +10 y_lkt809 +10 y_lkt819 +10 y_lkt829 +10 y_lkt839 +6 y_lkt909 +6 y_lkt919 +6 y_lkt929 +6 y_lkt939
-  -2 x_it09 -5 x_it19 -3 x_it29 -6 x_it39 -2 x_it49 -4 x_it59 -2 x_it69 -4 x_it79 -2 x_it89 -2 x_it99
-  -2 x_it109 -5 x_it119 -2 x_it129 -2 x_it139 -4 x_it149 -2 x_it159 -2 x_it169 -6 x_it179 -8 x_it189 -6 x_it199
-  -2 x_it209 -4 x_it219 -2 x_it229 -6 x_it239 -2 x_it249 -2 x_it259 -4 x_it269 -4 x_it279 -2 x_it289 -3 x_it299
-  = +0
- cons_9: +4 y_lkt7010 +4 y_lkt7110 +4 y_lkt7210 +4 y_lkt7310 +6 y_lkt9010 +6 y_lkt9110 +6 y_lkt9210 +6 y_lkt9310
-  +10 y_lkt10010 +10 y_lkt10110 +10 y_lkt10210 +10 y_lkt10310 +6 y_lkt11010 +6 y_lkt11110 +6 y_lkt11210
-  +6 y_lkt11310 -2 x_it010 -5 x_it110 -3 x_it210 -6 x_it310 -2 x_it410 -4 x_it510 -2 x_it610 -4 x_it710
-  -2 x_it810 -2 x_it910 -2 x_it1010 -5 x_it1110 -2 x_it1210 -2 x_it1310 -4 x_it1410 -2 x_it1510 -2 x_it1610
-  -6 x_it1710 -8 x_it1810 -6 x_it1910 -2 x_it2010 -4 x_it2110 -2 x_it2210 -6 x_it2310 -2 x_it2410 -2 x_it2510
-  -4 x_it2610 -4 x_it2710 -2 x_it2810 -3 x_it2910 = +0
- cons_9: +6 y_lkt9011 +6 y_lkt9111 +6 y_lkt9211 +6 y_lkt9311 +10 y_lkt10011 +10 y_lkt10111 +10 y_lkt10211
-  +10 y_lkt10311 +6 y_lkt11011 +6 y_lkt11111 +6 y_lkt11211 +6 y_lkt11311 -2 x_it011 -5 x_it111 -3 x_it211
-  -6 x_it311 -2 x_it411 -4 x_it511 -2 x_it611 -4 x_it711 -2 x_it811 -2 x_it911 -2 x_it1011 -5 x_it1111
-  -2 x_it1211 -2 x_it1311 -4 x_it1411 -2 x_it1511 -2 x_it1611 -6 x_it1711 -8 x_it1811 -6 x_it1911 -2 x_it2011
-  -4 x_it2111 -2 x_it2211 -6 x_it2311 -2 x_it2411 -2 x_it2511 -4 x_it2611 -4 x_it2711 -2 x_it2811 -3 x_it2911
-  = +0
- cons_9: +6 y_lkt9012 +6 y_lkt9112 +6 y_lkt9212 +6 y_lkt9312 +10 y_lkt10012 +10 y_lkt10112 +10 y_lkt10212
-  +10 y_lkt10312 +6 y_lkt11012 +6 y_lkt11112 +6 y_lkt11212 +6 y_lkt11312 +21 y_lkt12012 +21 y_lkt12112
-  +21 y_lkt12212 +21 y_lkt12312 -2 x_it012 -5 x_it112 -3 x_it212 -6 x_it312 -2 x_it412 -4 x_it512 -2 x_it612
-  -4 x_it712 -2 x_it812 -2 x_it912 -2 x_it1012 -5 x_it1112 -2 x_it1212 -2 x_it1312 -4 x_it1412 -2 x_it1512
-  -2 x_it1612 -6 x_it1712 -8 x_it1812 -6 x_it1912 -2 x_it2012 -4 x_it2112 -2 x_it2212 -6 x_it2312 -2 x_it2412
-  -2 x_it2512 -4 x_it2612 -4 x_it2712 -2 x_it2812 -3 x_it2912 = +0
- cons_9: +6 y_lkt9013 +6 y_lkt9113 +6 y_lkt9213 +6 y_lkt9313 +10 y_lkt10013 +10 y_lkt10113 +10 y_lkt10213
-  +10 y_lkt10313 +6 y_lkt11013 +6 y_lkt11113 +6 y_lkt11213 +6 y_lkt11313 +21 y_lkt12013 +21 y_lkt12113
-  +21 y_lkt12213 +21 y_lkt12313 +17 y_lkt13013 +17 y_lkt13113 +17 y_lkt13213 +17 y_lkt13313 -2 x_it013
-  -5 x_it113 -3 x_it213 -6 x_it313 -2 x_it413 -4 x_it513 -2 x_it613 -4 x_it713 -2 x_it813 -2 x_it913 -2 x_it1013
-  -5 x_it1113 -2 x_it1213 -2 x_it1313 -4 x_it1413 -2 x_it1513 -2 x_it1613 -6 x_it1713 -8 x_it1813 -6 x_it1913
-  -2 x_it2013 -4 x_it2113 -2 x_it2213 -6 x_it2313 -2 x_it2413 -2 x_it2513 -4 x_it2613 -4 x_it2713 -2 x_it2813
-  -3 x_it2913 = +0
- cons_9: +6 y_lkt9014 +6 y_lkt9114 +6 y_lkt9214 +6 y_lkt9314 +10 y_lkt10014 +10 y_lkt10114 +10 y_lkt10214
-  +10 y_lkt10314 +6 y_lkt11014 +6 y_lkt11114 +6 y_lkt11214 +6 y_lkt11314 +17 y_lkt13014 +17 y_lkt13114
-  +17 y_lkt13214 +17 y_lkt13314 +8 y_lkt14014 +8 y_lkt14114 +8 y_lkt14214 +8 y_lkt14314 -2 x_it014 -5 x_it114
-  -3 x_it214 -6 x_it314 -2 x_it414 -4 x_it514 -2 x_it614 -4 x_it714 -2 x_it814 -2 x_it914 -2 x_it1014
-  -5 x_it1114 -2 x_it1214 -2 x_it1314 -4 x_it1414 -2 x_it1514 -2 x_it1614 -6 x_it1714 -8 x_it1814 -6 x_it1914
-  -2 x_it2014 -4 x_it2114 -2 x_it2214 -6 x_it2314 -2 x_it2414 -2 x_it2514 -4 x_it2614 -4 x_it2714 -2 x_it2814
-  -3 x_it2914 = +0
- cons_9: +6 y_lkt11015 +6 y_lkt11115 +6 y_lkt11215 +6 y_lkt11315 +17 y_lkt13015 +17 y_lkt13115 +17 y_lkt13215
-  +17 y_lkt13315 +8 y_lkt14015 +8 y_lkt14115 +8 y_lkt14215 +8 y_lkt14315 +18 y_lkt15015 +18 y_lkt15115
-  +18 y_lkt15215 +18 y_lkt15315 -2 x_it015 -5 x_it115 -3 x_it215 -6 x_it315 -2 x_it415 -4 x_it515 -2 x_it615
-  -4 x_it715 -2 x_it815 -2 x_it915 -2 x_it1015 -5 x_it1115 -2 x_it1215 -2 x_it1315 -4 x_it1415 -2 x_it1515
-  -2 x_it1615 -6 x_it1715 -8 x_it1815 -6 x_it1915 -2 x_it2015 -4 x_it2115 -2 x_it2215 -6 x_it2315 -2 x_it2415
-  -2 x_it2515 -4 x_it2615 -4 x_it2715 -2 x_it2815 -3 x_it2915 = +0
- cons_9: +6 y_lkt11016 +6 y_lkt11116 +6 y_lkt11216 +6 y_lkt11316 +8 y_lkt14016 +8 y_lkt14116 +8 y_lkt14216
-  +8 y_lkt14316 +18 y_lkt15016 +18 y_lkt15116 +18 y_lkt15216 +18 y_lkt15316 +16 y_lkt16016 +16 y_lkt16116
-  +16 y_lkt16216 +16 y_lkt16316 -2 x_it016 -5 x_it116 -3 x_it216 -6 x_it316 -2 x_it416 -4 x_it516 -2 x_it616
-  -4 x_it716 -2 x_it816 -2 x_it916 -2 x_it1016 -5 x_it1116 -2 x_it1216 -2 x_it1316 -4 x_it1416 -2 x_it1516
-  -2 x_it1616 -6 x_it1716 -8 x_it1816 -6 x_it1916 -2 x_it2016 -4 x_it2116 -2 x_it2216 -6 x_it2316 -2 x_it2416
-  -2 x_it2516 -4 x_it2616 -4 x_it2716 -2 x_it2816 -3 x_it2916 = +0
- cons_9: +8 y_lkt14017 +8 y_lkt14117 +8 y_lkt14217 +8 y_lkt14317 +18 y_lkt15017 +18 y_lkt15117 +18 y_lkt15217
-  +18 y_lkt15317 +16 y_lkt16017 +16 y_lkt16117 +16 y_lkt16217 +16 y_lkt16317 +11 y_lkt17017 +11 y_lkt17117
-  +11 y_lkt17217 +11 y_lkt17317 +7 y_lkt18017 +7 y_lkt18117 +7 y_lkt18217 +7 y_lkt18317 -2 x_it017 -5 x_it117
-  -3 x_it217 -6 x_it317 -2 x_it417 -4 x_it517 -2 x_it617 -4 x_it717 -2 x_it817 -2 x_it917 -2 x_it1017
-  -5 x_it1117 -2 x_it1217 -2 x_it1317 -4 x_it1417 -2 x_it1517 -2 x_it1617 -6 x_it1717 -8 x_it1817 -6 x_it1917
-  -2 x_it2017 -4 x_it2117 -2 x_it2217 -6 x_it2317 -2 x_it2417 -2 x_it2517 -4 x_it2617 -4 x_it2717 -2 x_it2817
-  -3 x_it2917 = +0
- cons_9: +8 y_lkt14018 +8 y_lkt14118 +8 y_lkt14218 +8 y_lkt14318 +18 y_lkt15018 +18 y_lkt15118 +18 y_lkt15218
-  +18 y_lkt15318 +16 y_lkt16018 +16 y_lkt16118 +16 y_lkt16218 +16 y_lkt16318 +11 y_lkt17018 +11 y_lkt17118
-  +11 y_lkt17218 +11 y_lkt17318 +7 y_lkt18018 +7 y_lkt18118 +7 y_lkt18218 +7 y_lkt18318 -2 x_it018 -5 x_it118
-  -3 x_it218 -6 x_it318 -2 x_it418 -4 x_it518 -2 x_it618 -4 x_it718 -2 x_it818 -2 x_it918 -2 x_it1018
-  -5 x_it1118 -2 x_it1218 -2 x_it1318 -4 x_it1418 -2 x_it1518 -2 x_it1618 -6 x_it1718 -8 x_it1818 -6 x_it1918
-  -2 x_it2018 -4 x_it2118 -2 x_it2218 -6 x_it2318 -2 x_it2418 -2 x_it2518 -4 x_it2618 -4 x_it2718 -2 x_it2818
-  -3 x_it2918 = +0
- cons_9: +11 y_lkt17019 +11 y_lkt17119 +11 y_lkt17219 +11 y_lkt17319 +7 y_lkt18019 +7 y_lkt18119 +7 y_lkt18219
-  +7 y_lkt18319 -2 x_it019 -5 x_it119 -3 x_it219 -6 x_it319 -2 x_it419 -4 x_it519 -2 x_it619 -4 x_it719
-  -2 x_it819 -2 x_it919 -2 x_it1019 -5 x_it1119 -2 x_it1219 -2 x_it1319 -4 x_it1419 -2 x_it1519 -2 x_it1619
-  -6 x_it1719 -8 x_it1819 -6 x_it1919 -2 x_it2019 -4 x_it2119 -2 x_it2219 -6 x_it2319 -2 x_it2419 -2 x_it2519
-  -4 x_it2619 -4 x_it2719 -2 x_it2819 -3 x_it2919 = +0
- cons_9: +7 y_lkt18020 +7 y_lkt18120 +7 y_lkt18220 +7 y_lkt18320 -2 x_it020 -5 x_it120 -3 x_it220 -6 x_it320
-  -2 x_it420 -4 x_it520 -2 x_it620 -4 x_it720 -2 x_it820 -2 x_it920 -2 x_it1020 -5 x_it1120 -2 x_it1220
-  -2 x_it1320 -4 x_it1420 -2 x_it1520 -2 x_it1620 -6 x_it1720 -8 x_it1820 -6 x_it1920 -2 x_it2020 -4 x_it2120
-  -2 x_it2220 -6 x_it2320 -2 x_it2420 -2 x_it2520 -4 x_it2620 -4 x_it2720 -2 x_it2820 -3 x_it2920 = +0
- cons_9: -2 x_it021 -5 x_it121 -3 x_it221 -6 x_it321 -2 x_it421 -4 x_it521 -2 x_it621 -4 x_it721 -2 x_it821
-  -2 x_it921 -2 x_it1021 -5 x_it1121 -2 x_it1221 -2 x_it1321 -4 x_it1421 -2 x_it1521 -2 x_it1621 -6 x_it1721
-  -8 x_it1821 -6 x_it1921 -2 x_it2021 -4 x_it2121 -2 x_it2221 -6 x_it2321 -2 x_it2421 -2 x_it2521 -4 x_it2621
-  -4 x_it2721 -2 x_it2821 -3 x_it2921 = +0
- cons_9: -2 x_it022 -5 x_it122 -3 x_it222 -6 x_it322 -2 x_it422 -4 x_it522 -2 x_it622 -4 x_it722 -2 x_it822
-  -2 x_it922 -2 x_it1022 -5 x_it1122 -2 x_it1222 -2 x_it1322 -4 x_it1422 -2 x_it1522 -2 x_it1622 -6 x_it1722
-  -8 x_it1822 -6 x_it1922 -2 x_it2022 -4 x_it2122 -2 x_it2222 -6 x_it2322 -2 x_it2422 -2 x_it2522 -4 x_it2622
-  -4 x_it2722 -2 x_it2822 -3 x_it2922 = +0
- cons_9: -2 x_it023 -5 x_it123 -3 x_it223 -6 x_it323 -2 x_it423 -4 x_it523 -2 x_it623 -4 x_it723 -2 x_it823
-  -2 x_it923 -2 x_it1023 -5 x_it1123 -2 x_it1223 -2 x_it1323 -4 x_it1423 -2 x_it1523 -2 x_it1623 -6 x_it1723
-  -8 x_it1823 -6 x_it1923 -2 x_it2023 -4 x_it2123 -2 x_it2223 -6 x_it2323 -2 x_it2423 -2 x_it2523 -4 x_it2623
-  -4 x_it2723 -2 x_it2823 -3 x_it2923 = +0
- cons_9: -2 x_it024 -5 x_it124 -3 x_it224 -6 x_it324 -2 x_it424 -4 x_it524 -2 x_it624 -4 x_it724 -2 x_it824
-  -2 x_it924 -2 x_it1024 -5 x_it1124 -2 x_it1224 -2 x_it1324 -4 x_it1424 -2 x_it1524 -2 x_it1624 -6 x_it1724
-  -8 x_it1824 -6 x_it1924 -2 x_it2024 -4 x_it2124 -2 x_it2224 -6 x_it2324 -2 x_it2424 -2 x_it2524 -4 x_it2624
-  -4 x_it2724 -2 x_it2824 -3 x_it2924 = +0
- cons_9: -2 x_it025 -5 x_it125 -3 x_it225 -6 x_it325 -2 x_it425 -4 x_it525 -2 x_it625 -4 x_it725 -2 x_it825
-  -2 x_it925 -2 x_it1025 -5 x_it1125 -2 x_it1225 -2 x_it1325 -4 x_it1425 -2 x_it1525 -2 x_it1625 -6 x_it1725
-  -8 x_it1825 -6 x_it1925 -2 x_it2025 -4 x_it2125 -2 x_it2225 -6 x_it2325 -2 x_it2425 -2 x_it2525 -4 x_it2625
-  -4 x_it2725 -2 x_it2825 -3 x_it2925 = +0
+ cons_9: +7 y_lkt18,0,20 +7 y_lkt18,1,20 +7 y_lkt18,2,20 +7 y_lkt18,3,20 -3 x_it2,20 -4 x_it7,20 -2 x_it15,20
+  -2 x_it16,20 -2 x_it22,20 = +0
+ cons_9: -4 x_it7,21 -2 x_it15,21 -2 x_it16,21 = +0
+ cons_9: -2 x_it15,22 = +0
+ cons_9: -2 x_it15,23 = +0
+ cons_9: -2 x_it15,24 = +0
+ cons_9: = +0
 Bounds
- 0 <= x_it00 <= 1
- 0 <= x_it01 <= 1
- 0 <= x_it02 <= 1
- 0 <= x_it03 <= 1
- 0 <= x_it04 <= 1
- 0 <= x_it05 <= 1
- 0 <= x_it06 <= 1
- 0 <= x_it07 <= 1
- 0 <= x_it08 <= 1
- 0 <= x_it09 <= 1
- 0 <= x_it010 <= 1
- 0 <= x_it011 <= 1
- 0 <= x_it012 <= 1
- 0 <= x_it013 <= 1
- 0 <= x_it014 <= 1
- 0 <= x_it015 <= 1
- 0 <= x_it016 <= 1
- 0 <= x_it017 <= 1
- 0 <= x_it018 <= 1
- 0 <= x_it019 <= 1
- 0 <= x_it020 <= 1
- 0 <= x_it021 <= 1
- 0 <= x_it022 <= 1
- 0 <= x_it023 <= 1
- 0 <= x_it024 <= 1
- 0 <= x_it025 <= 1
- 0 <= x_it10 <= 1
- 0 <= x_it11 <= 1
- 0 <= x_it12 <= 1
- 0 <= x_it13 <= 1
- 0 <= x_it14 <= 1
- 0 <= x_it15 <= 1
- 0 <= x_it16 <= 1
- 0 <= x_it17 <= 1
- 0 <= x_it18 <= 1
- 0 <= x_it19 <= 1
- 0 <= x_it110 <= 1
- 0 <= x_it111 <= 1
- 0 <= x_it112 <= 1
- 0 <= x_it113 <= 1
- 0 <= x_it114 <= 1
- 0 <= x_it115 <= 1
- 0 <= x_it116 <= 1
- 0 <= x_it117 <= 1
- 0 <= x_it118 <= 1
- 0 <= x_it119 <= 1
- 0 <= x_it120 <= 1
- 0 <= x_it121 <= 1
- 0 <= x_it122 <= 1
- 0 <= x_it123 <= 1
- 0 <= x_it124 <= 1
- 0 <= x_it125 <= 1
- 0 <= x_it20 <= 1
- 0 <= x_it21 <= 1
- 0 <= x_it22 <= 1
- 0 <= x_it23 <= 1
- 0 <= x_it24 <= 1
- 0 <= x_it25 <= 1
- 0 <= x_it26 <= 1
- 0 <= x_it27 <= 1
- 0 <= x_it28 <= 1
- 0 <= x_it29 <= 1
- 0 <= x_it210 <= 1
- 0 <= x_it211 <= 1
- 0 <= x_it212 <= 1
- 0 <= x_it213 <= 1
- 0 <= x_it214 <= 1
- 0 <= x_it215 <= 1
- 0 <= x_it216 <= 1
- 0 <= x_it217 <= 1
- 0 <= x_it218 <= 1
- 0 <= x_it219 <= 1
- 0 <= x_it220 <= 1
- 0 <= x_it221 <= 1
- 0 <= x_it222 <= 1
- 0 <= x_it223 <= 1
- 0 <= x_it224 <= 1
- 0 <= x_it225 <= 1
- 0 <= x_it30 <= 1
- 0 <= x_it31 <= 1
- 0 <= x_it32 <= 1
- 0 <= x_it33 <= 1
- 0 <= x_it34 <= 1
- 0 <= x_it35 <= 1
- 0 <= x_it36 <= 1
- 0 <= x_it37 <= 1
- 0 <= x_it38 <= 1
- 0 <= x_it39 <= 1
- 0 <= x_it310 <= 1
- 0 <= x_it311 <= 1
- 0 <= x_it312 <= 1
- 0 <= x_it313 <= 1
- 0 <= x_it314 <= 1
- 0 <= x_it315 <= 1
- 0 <= x_it316 <= 1
- 0 <= x_it317 <= 1
- 0 <= x_it318 <= 1
- 0 <= x_it319 <= 1
- 0 <= x_it320 <= 1
- 0 <= x_it321 <= 1
- 0 <= x_it322 <= 1
- 0 <= x_it323 <= 1
- 0 <= x_it324 <= 1
- 0 <= x_it325 <= 1
- 0 <= x_it40 <= 1
- 0 <= x_it41 <= 1
- 0 <= x_it42 <= 1
- 0 <= x_it43 <= 1
- 0 <= x_it44 <= 1
- 0 <= x_it45 <= 1
- 0 <= x_it46 <= 1
- 0 <= x_it47 <= 1
- 0 <= x_it48 <= 1
- 0 <= x_it49 <= 1
- 0 <= x_it410 <= 1
- 0 <= x_it411 <= 1
- 0 <= x_it412 <= 1
- 0 <= x_it413 <= 1
- 0 <= x_it414 <= 1
- 0 <= x_it415 <= 1
- 0 <= x_it416 <= 1
- 0 <= x_it417 <= 1
- 0 <= x_it418 <= 1
- 0 <= x_it419 <= 1
- 0 <= x_it420 <= 1
- 0 <= x_it421 <= 1
- 0 <= x_it422 <= 1
- 0 <= x_it423 <= 1
- 0 <= x_it424 <= 1
- 0 <= x_it425 <= 1
- 0 <= x_it50 <= 1
- 0 <= x_it51 <= 1
- 0 <= x_it52 <= 1
- 0 <= x_it53 <= 1
- 0 <= x_it54 <= 1
- 0 <= x_it55 <= 1
- 0 <= x_it56 <= 1
- 0 <= x_it57 <= 1
- 0 <= x_it58 <= 1
- 0 <= x_it59 <= 1
- 0 <= x_it510 <= 1
- 0 <= x_it511 <= 1
- 0 <= x_it512 <= 1
- 0 <= x_it513 <= 1
- 0 <= x_it514 <= 1
- 0 <= x_it515 <= 1
- 0 <= x_it516 <= 1
- 0 <= x_it517 <= 1
- 0 <= x_it518 <= 1
- 0 <= x_it519 <= 1
- 0 <= x_it520 <= 1
- 0 <= x_it521 <= 1
- 0 <= x_it522 <= 1
- 0 <= x_it523 <= 1
- 0 <= x_it524 <= 1
- 0 <= x_it525 <= 1
- 0 <= x_it60 <= 1
- 0 <= x_it61 <= 1
- 0 <= x_it62 <= 1
- 0 <= x_it63 <= 1
- 0 <= x_it64 <= 1
- 0 <= x_it65 <= 1
- 0 <= x_it66 <= 1
- 0 <= x_it67 <= 1
- 0 <= x_it68 <= 1
- 0 <= x_it69 <= 1
- 0 <= x_it610 <= 1
- 0 <= x_it611 <= 1
- 0 <= x_it612 <= 1
- 0 <= x_it613 <= 1
- 0 <= x_it614 <= 1
- 0 <= x_it615 <= 1
- 0 <= x_it616 <= 1
- 0 <= x_it617 <= 1
- 0 <= x_it618 <= 1
- 0 <= x_it619 <= 1
- 0 <= x_it620 <= 1
- 0 <= x_it621 <= 1
- 0 <= x_it622 <= 1
- 0 <= x_it623 <= 1
- 0 <= x_it624 <= 1
- 0 <= x_it625 <= 1
- 0 <= x_it70 <= 1
- 0 <= x_it71 <= 1
- 0 <= x_it72 <= 1
- 0 <= x_it73 <= 1
- 0 <= x_it74 <= 1
- 0 <= x_it75 <= 1
- 0 <= x_it76 <= 1
- 0 <= x_it77 <= 1
- 0 <= x_it78 <= 1
- 0 <= x_it79 <= 1
- 0 <= x_it710 <= 1
- 0 <= x_it711 <= 1
- 0 <= x_it712 <= 1
- 0 <= x_it713 <= 1
- 0 <= x_it714 <= 1
- 0 <= x_it715 <= 1
- 0 <= x_it716 <= 1
- 0 <= x_it717 <= 1
- 0 <= x_it718 <= 1
- 0 <= x_it719 <= 1
- 0 <= x_it720 <= 1
- 0 <= x_it721 <= 1
- 0 <= x_it722 <= 1
- 0 <= x_it723 <= 1
- 0 <= x_it724 <= 1
- 0 <= x_it725 <= 1
- 0 <= x_it80 <= 1
- 0 <= x_it81 <= 1
- 0 <= x_it82 <= 1
- 0 <= x_it83 <= 1
- 0 <= x_it84 <= 1
- 0 <= x_it85 <= 1
- 0 <= x_it86 <= 1
- 0 <= x_it87 <= 1
- 0 <= x_it88 <= 1
- 0 <= x_it89 <= 1
- 0 <= x_it810 <= 1
- 0 <= x_it811 <= 1
- 0 <= x_it812 <= 1
- 0 <= x_it813 <= 1
- 0 <= x_it814 <= 1
- 0 <= x_it815 <= 1
- 0 <= x_it816 <= 1
- 0 <= x_it817 <= 1
- 0 <= x_it818 <= 1
- 0 <= x_it819 <= 1
- 0 <= x_it820 <= 1
- 0 <= x_it821 <= 1
- 0 <= x_it822 <= 1
- 0 <= x_it823 <= 1
- 0 <= x_it824 <= 1
- 0 <= x_it825 <= 1
- 0 <= x_it90 <= 1
- 0 <= x_it91 <= 1
- 0 <= x_it92 <= 1
- 0 <= x_it93 <= 1
- 0 <= x_it94 <= 1
- 0 <= x_it95 <= 1
- 0 <= x_it96 <= 1
- 0 <= x_it97 <= 1
- 0 <= x_it98 <= 1
- 0 <= x_it99 <= 1
- 0 <= x_it910 <= 1
- 0 <= x_it911 <= 1
- 0 <= x_it912 <= 1
- 0 <= x_it913 <= 1
- 0 <= x_it914 <= 1
- 0 <= x_it915 <= 1
- 0 <= x_it916 <= 1
- 0 <= x_it917 <= 1
- 0 <= x_it918 <= 1
- 0 <= x_it919 <= 1
- 0 <= x_it920 <= 1
- 0 <= x_it921 <= 1
- 0 <= x_it922 <= 1
- 0 <= x_it923 <= 1
- 0 <= x_it924 <= 1
- 0 <= x_it925 <= 1
- 0 <= x_it100 <= 1
- 0 <= x_it101 <= 1
- 0 <= x_it102 <= 1
- 0 <= x_it103 <= 1
- 0 <= x_it104 <= 1
- 0 <= x_it105 <= 1
- 0 <= x_it106 <= 1
- 0 <= x_it107 <= 1
- 0 <= x_it108 <= 1
- 0 <= x_it109 <= 1
- 0 <= x_it1010 <= 1
- 0 <= x_it1011 <= 1
- 0 <= x_it1012 <= 1
- 0 <= x_it1013 <= 1
- 0 <= x_it1014 <= 1
- 0 <= x_it1015 <= 1
- 0 <= x_it1016 <= 1
- 0 <= x_it1017 <= 1
- 0 <= x_it1018 <= 1
- 0 <= x_it1019 <= 1
- 0 <= x_it1020 <= 1
- 0 <= x_it1021 <= 1
- 0 <= x_it1022 <= 1
- 0 <= x_it1023 <= 1
- 0 <= x_it1024 <= 1
- 0 <= x_it1025 <= 1
- 0 <= x_it110 <= 1
- 0 <= x_it111 <= 1
- 0 <= x_it112 <= 1
- 0 <= x_it113 <= 1
- 0 <= x_it114 <= 1
- 0 <= x_it115 <= 1
- 0 <= x_it116 <= 1
- 0 <= x_it117 <= 1
- 0 <= x_it118 <= 1
- 0 <= x_it119 <= 1
- 0 <= x_it1110 <= 1
- 0 <= x_it1111 <= 1
- 0 <= x_it1112 <= 1
- 0 <= x_it1113 <= 1
- 0 <= x_it1114 <= 1
- 0 <= x_it1115 <= 1
- 0 <= x_it1116 <= 1
- 0 <= x_it1117 <= 1
- 0 <= x_it1118 <= 1
- 0 <= x_it1119 <= 1
- 0 <= x_it1120 <= 1
- 0 <= x_it1121 <= 1
- 0 <= x_it1122 <= 1
- 0 <= x_it1123 <= 1
- 0 <= x_it1124 <= 1
- 0 <= x_it1125 <= 1
- 0 <= x_it120 <= 1
- 0 <= x_it121 <= 1
- 0 <= x_it122 <= 1
- 0 <= x_it123 <= 1
- 0 <= x_it124 <= 1
- 0 <= x_it125 <= 1
- 0 <= x_it126 <= 1
- 0 <= x_it127 <= 1
- 0 <= x_it128 <= 1
- 0 <= x_it129 <= 1
- 0 <= x_it1210 <= 1
- 0 <= x_it1211 <= 1
- 0 <= x_it1212 <= 1
- 0 <= x_it1213 <= 1
- 0 <= x_it1214 <= 1
- 0 <= x_it1215 <= 1
- 0 <= x_it1216 <= 1
- 0 <= x_it1217 <= 1
- 0 <= x_it1218 <= 1
- 0 <= x_it1219 <= 1
- 0 <= x_it1220 <= 1
- 0 <= x_it1221 <= 1
- 0 <= x_it1222 <= 1
- 0 <= x_it1223 <= 1
- 0 <= x_it1224 <= 1
- 0 <= x_it1225 <= 1
- 0 <= x_it130 <= 1
- 0 <= x_it131 <= 1
- 0 <= x_it132 <= 1
- 0 <= x_it133 <= 1
- 0 <= x_it134 <= 1
- 0 <= x_it135 <= 1
- 0 <= x_it136 <= 1
- 0 <= x_it137 <= 1
- 0 <= x_it138 <= 1
- 0 <= x_it139 <= 1
- 0 <= x_it1310 <= 1
- 0 <= x_it1311 <= 1
- 0 <= x_it1312 <= 1
- 0 <= x_it1313 <= 1
- 0 <= x_it1314 <= 1
- 0 <= x_it1315 <= 1
- 0 <= x_it1316 <= 1
- 0 <= x_it1317 <= 1
- 0 <= x_it1318 <= 1
- 0 <= x_it1319 <= 1
- 0 <= x_it1320 <= 1
- 0 <= x_it1321 <= 1
- 0 <= x_it1322 <= 1
- 0 <= x_it1323 <= 1
- 0 <= x_it1324 <= 1
- 0 <= x_it1325 <= 1
- 0 <= x_it140 <= 1
- 0 <= x_it141 <= 1
- 0 <= x_it142 <= 1
- 0 <= x_it143 <= 1
- 0 <= x_it144 <= 1
- 0 <= x_it145 <= 1
- 0 <= x_it146 <= 1
- 0 <= x_it147 <= 1
- 0 <= x_it148 <= 1
- 0 <= x_it149 <= 1
- 0 <= x_it1410 <= 1
- 0 <= x_it1411 <= 1
- 0 <= x_it1412 <= 1
- 0 <= x_it1413 <= 1
- 0 <= x_it1414 <= 1
- 0 <= x_it1415 <= 1
- 0 <= x_it1416 <= 1
- 0 <= x_it1417 <= 1
- 0 <= x_it1418 <= 1
- 0 <= x_it1419 <= 1
- 0 <= x_it1420 <= 1
- 0 <= x_it1421 <= 1
- 0 <= x_it1422 <= 1
- 0 <= x_it1423 <= 1
- 0 <= x_it1424 <= 1
- 0 <= x_it1425 <= 1
- 0 <= x_it150 <= 1
- 0 <= x_it151 <= 1
- 0 <= x_it152 <= 1
- 0 <= x_it153 <= 1
- 0 <= x_it154 <= 1
- 0 <= x_it155 <= 1
- 0 <= x_it156 <= 1
- 0 <= x_it157 <= 1
- 0 <= x_it158 <= 1
- 0 <= x_it159 <= 1
- 0 <= x_it1510 <= 1
- 0 <= x_it1511 <= 1
- 0 <= x_it1512 <= 1
- 0 <= x_it1513 <= 1
- 0 <= x_it1514 <= 1
- 0 <= x_it1515 <= 1
- 0 <= x_it1516 <= 1
- 0 <= x_it1517 <= 1
- 0 <= x_it1518 <= 1
- 0 <= x_it1519 <= 1
- 0 <= x_it1520 <= 1
- 0 <= x_it1521 <= 1
- 0 <= x_it1522 <= 1
- 0 <= x_it1523 <= 1
- 0 <= x_it1524 <= 1
- 0 <= x_it1525 <= 1
- 0 <= x_it160 <= 1
- 0 <= x_it161 <= 1
- 0 <= x_it162 <= 1
- 0 <= x_it163 <= 1
- 0 <= x_it164 <= 1
- 0 <= x_it165 <= 1
- 0 <= x_it166 <= 1
- 0 <= x_it167 <= 1
- 0 <= x_it168 <= 1
- 0 <= x_it169 <= 1
- 0 <= x_it1610 <= 1
- 0 <= x_it1611 <= 1
- 0 <= x_it1612 <= 1
- 0 <= x_it1613 <= 1
- 0 <= x_it1614 <= 1
- 0 <= x_it1615 <= 1
- 0 <= x_it1616 <= 1
- 0 <= x_it1617 <= 1
- 0 <= x_it1618 <= 1
- 0 <= x_it1619 <= 1
- 0 <= x_it1620 <= 1
- 0 <= x_it1621 <= 1
- 0 <= x_it1622 <= 1
- 0 <= x_it1623 <= 1
- 0 <= x_it1624 <= 1
- 0 <= x_it1625 <= 1
- 0 <= x_it170 <= 1
- 0 <= x_it171 <= 1
- 0 <= x_it172 <= 1
- 0 <= x_it173 <= 1
- 0 <= x_it174 <= 1
- 0 <= x_it175 <= 1
- 0 <= x_it176 <= 1
- 0 <= x_it177 <= 1
- 0 <= x_it178 <= 1
- 0 <= x_it179 <= 1
- 0 <= x_it1710 <= 1
- 0 <= x_it1711 <= 1
- 0 <= x_it1712 <= 1
- 0 <= x_it1713 <= 1
- 0 <= x_it1714 <= 1
- 0 <= x_it1715 <= 1
- 0 <= x_it1716 <= 1
- 0 <= x_it1717 <= 1
- 0 <= x_it1718 <= 1
- 0 <= x_it1719 <= 1
- 0 <= x_it1720 <= 1
- 0 <= x_it1721 <= 1
- 0 <= x_it1722 <= 1
- 0 <= x_it1723 <= 1
- 0 <= x_it1724 <= 1
- 0 <= x_it1725 <= 1
- 0 <= x_it180 <= 1
- 0 <= x_it181 <= 1
- 0 <= x_it182 <= 1
- 0 <= x_it183 <= 1
- 0 <= x_it184 <= 1
- 0 <= x_it185 <= 1
- 0 <= x_it186 <= 1
- 0 <= x_it187 <= 1
- 0 <= x_it188 <= 1
- 0 <= x_it189 <= 1
- 0 <= x_it1810 <= 1
- 0 <= x_it1811 <= 1
- 0 <= x_it1812 <= 1
- 0 <= x_it1813 <= 1
- 0 <= x_it1814 <= 1
- 0 <= x_it1815 <= 1
- 0 <= x_it1816 <= 1
- 0 <= x_it1817 <= 1
- 0 <= x_it1818 <= 1
- 0 <= x_it1819 <= 1
- 0 <= x_it1820 <= 1
- 0 <= x_it1821 <= 1
- 0 <= x_it1822 <= 1
- 0 <= x_it1823 <= 1
- 0 <= x_it1824 <= 1
- 0 <= x_it1825 <= 1
- 0 <= x_it190 <= 1
- 0 <= x_it191 <= 1
- 0 <= x_it192 <= 1
- 0 <= x_it193 <= 1
- 0 <= x_it194 <= 1
- 0 <= x_it195 <= 1
- 0 <= x_it196 <= 1
- 0 <= x_it197 <= 1
- 0 <= x_it198 <= 1
- 0 <= x_it199 <= 1
- 0 <= x_it1910 <= 1
- 0 <= x_it1911 <= 1
- 0 <= x_it1912 <= 1
- 0 <= x_it1913 <= 1
- 0 <= x_it1914 <= 1
- 0 <= x_it1915 <= 1
- 0 <= x_it1916 <= 1
- 0 <= x_it1917 <= 1
- 0 <= x_it1918 <= 1
- 0 <= x_it1919 <= 1
- 0 <= x_it1920 <= 1
- 0 <= x_it1921 <= 1
- 0 <= x_it1922 <= 1
- 0 <= x_it1923 <= 1
- 0 <= x_it1924 <= 1
- 0 <= x_it1925 <= 1
- 0 <= x_it200 <= 1
- 0 <= x_it201 <= 1
- 0 <= x_it202 <= 1
- 0 <= x_it203 <= 1
- 0 <= x_it204 <= 1
- 0 <= x_it205 <= 1
- 0 <= x_it206 <= 1
- 0 <= x_it207 <= 1
- 0 <= x_it208 <= 1
- 0 <= x_it209 <= 1
- 0 <= x_it2010 <= 1
- 0 <= x_it2011 <= 1
- 0 <= x_it2012 <= 1
- 0 <= x_it2013 <= 1
- 0 <= x_it2014 <= 1
- 0 <= x_it2015 <= 1
- 0 <= x_it2016 <= 1
- 0 <= x_it2017 <= 1
- 0 <= x_it2018 <= 1
- 0 <= x_it2019 <= 1
- 0 <= x_it2020 <= 1
- 0 <= x_it2021 <= 1
- 0 <= x_it2022 <= 1
- 0 <= x_it2023 <= 1
- 0 <= x_it2024 <= 1
- 0 <= x_it2025 <= 1
- 0 <= x_it210 <= 1
- 0 <= x_it211 <= 1
- 0 <= x_it212 <= 1
- 0 <= x_it213 <= 1
- 0 <= x_it214 <= 1
- 0 <= x_it215 <= 1
- 0 <= x_it216 <= 1
- 0 <= x_it217 <= 1
- 0 <= x_it218 <= 1
- 0 <= x_it219 <= 1
- 0 <= x_it2110 <= 1
- 0 <= x_it2111 <= 1
- 0 <= x_it2112 <= 1
- 0 <= x_it2113 <= 1
- 0 <= x_it2114 <= 1
- 0 <= x_it2115 <= 1
- 0 <= x_it2116 <= 1
- 0 <= x_it2117 <= 1
- 0 <= x_it2118 <= 1
- 0 <= x_it2119 <= 1
- 0 <= x_it2120 <= 1
- 0 <= x_it2121 <= 1
- 0 <= x_it2122 <= 1
- 0 <= x_it2123 <= 1
- 0 <= x_it2124 <= 1
- 0 <= x_it2125 <= 1
- 0 <= x_it220 <= 1
- 0 <= x_it221 <= 1
- 0 <= x_it222 <= 1
- 0 <= x_it223 <= 1
- 0 <= x_it224 <= 1
- 0 <= x_it225 <= 1
- 0 <= x_it226 <= 1
- 0 <= x_it227 <= 1
- 0 <= x_it228 <= 1
- 0 <= x_it229 <= 1
- 0 <= x_it2210 <= 1
- 0 <= x_it2211 <= 1
- 0 <= x_it2212 <= 1
- 0 <= x_it2213 <= 1
- 0 <= x_it2214 <= 1
- 0 <= x_it2215 <= 1
- 0 <= x_it2216 <= 1
- 0 <= x_it2217 <= 1
- 0 <= x_it2218 <= 1
- 0 <= x_it2219 <= 1
- 0 <= x_it2220 <= 1
- 0 <= x_it2221 <= 1
- 0 <= x_it2222 <= 1
- 0 <= x_it2223 <= 1
- 0 <= x_it2224 <= 1
- 0 <= x_it2225 <= 1
- 0 <= x_it230 <= 1
- 0 <= x_it231 <= 1
- 0 <= x_it232 <= 1
- 0 <= x_it233 <= 1
- 0 <= x_it234 <= 1
- 0 <= x_it235 <= 1
- 0 <= x_it236 <= 1
- 0 <= x_it237 <= 1
- 0 <= x_it238 <= 1
- 0 <= x_it239 <= 1
- 0 <= x_it2310 <= 1
- 0 <= x_it2311 <= 1
- 0 <= x_it2312 <= 1
- 0 <= x_it2313 <= 1
- 0 <= x_it2314 <= 1
- 0 <= x_it2315 <= 1
- 0 <= x_it2316 <= 1
- 0 <= x_it2317 <= 1
- 0 <= x_it2318 <= 1
- 0 <= x_it2319 <= 1
- 0 <= x_it2320 <= 1
- 0 <= x_it2321 <= 1
- 0 <= x_it2322 <= 1
- 0 <= x_it2323 <= 1
- 0 <= x_it2324 <= 1
- 0 <= x_it2325 <= 1
- 0 <= x_it240 <= 1
- 0 <= x_it241 <= 1
- 0 <= x_it242 <= 1
- 0 <= x_it243 <= 1
- 0 <= x_it244 <= 1
- 0 <= x_it245 <= 1
- 0 <= x_it246 <= 1
- 0 <= x_it247 <= 1
- 0 <= x_it248 <= 1
- 0 <= x_it249 <= 1
- 0 <= x_it2410 <= 1
- 0 <= x_it2411 <= 1
- 0 <= x_it2412 <= 1
- 0 <= x_it2413 <= 1
- 0 <= x_it2414 <= 1
- 0 <= x_it2415 <= 1
- 0 <= x_it2416 <= 1
- 0 <= x_it2417 <= 1
- 0 <= x_it2418 <= 1
- 0 <= x_it2419 <= 1
- 0 <= x_it2420 <= 1
- 0 <= x_it2421 <= 1
- 0 <= x_it2422 <= 1
- 0 <= x_it2423 <= 1
- 0 <= x_it2424 <= 1
- 0 <= x_it2425 <= 1
- 0 <= x_it250 <= 1
- 0 <= x_it251 <= 1
- 0 <= x_it252 <= 1
- 0 <= x_it253 <= 1
- 0 <= x_it254 <= 1
- 0 <= x_it255 <= 1
- 0 <= x_it256 <= 1
- 0 <= x_it257 <= 1
- 0 <= x_it258 <= 1
- 0 <= x_it259 <= 1
- 0 <= x_it2510 <= 1
- 0 <= x_it2511 <= 1
- 0 <= x_it2512 <= 1
- 0 <= x_it2513 <= 1
- 0 <= x_it2514 <= 1
- 0 <= x_it2515 <= 1
- 0 <= x_it2516 <= 1
- 0 <= x_it2517 <= 1
- 0 <= x_it2518 <= 1
- 0 <= x_it2519 <= 1
- 0 <= x_it2520 <= 1
- 0 <= x_it2521 <= 1
- 0 <= x_it2522 <= 1
- 0 <= x_it2523 <= 1
- 0 <= x_it2524 <= 1
- 0 <= x_it2525 <= 1
- 0 <= x_it260 <= 1
- 0 <= x_it261 <= 1
- 0 <= x_it262 <= 1
- 0 <= x_it263 <= 1
- 0 <= x_it264 <= 1
- 0 <= x_it265 <= 1
- 0 <= x_it266 <= 1
- 0 <= x_it267 <= 1
- 0 <= x_it268 <= 1
- 0 <= x_it269 <= 1
- 0 <= x_it2610 <= 1
- 0 <= x_it2611 <= 1
- 0 <= x_it2612 <= 1
- 0 <= x_it2613 <= 1
- 0 <= x_it2614 <= 1
- 0 <= x_it2615 <= 1
- 0 <= x_it2616 <= 1
- 0 <= x_it2617 <= 1
- 0 <= x_it2618 <= 1
- 0 <= x_it2619 <= 1
- 0 <= x_it2620 <= 1
- 0 <= x_it2621 <= 1
- 0 <= x_it2622 <= 1
- 0 <= x_it2623 <= 1
- 0 <= x_it2624 <= 1
- 0 <= x_it2625 <= 1
- 0 <= x_it270 <= 1
- 0 <= x_it271 <= 1
- 0 <= x_it272 <= 1
- 0 <= x_it273 <= 1
- 0 <= x_it274 <= 1
- 0 <= x_it275 <= 1
- 0 <= x_it276 <= 1
- 0 <= x_it277 <= 1
- 0 <= x_it278 <= 1
- 0 <= x_it279 <= 1
- 0 <= x_it2710 <= 1
- 0 <= x_it2711 <= 1
- 0 <= x_it2712 <= 1
- 0 <= x_it2713 <= 1
- 0 <= x_it2714 <= 1
- 0 <= x_it2715 <= 1
- 0 <= x_it2716 <= 1
- 0 <= x_it2717 <= 1
- 0 <= x_it2718 <= 1
- 0 <= x_it2719 <= 1
- 0 <= x_it2720 <= 1
- 0 <= x_it2721 <= 1
- 0 <= x_it2722 <= 1
- 0 <= x_it2723 <= 1
- 0 <= x_it2724 <= 1
- 0 <= x_it2725 <= 1
- 0 <= x_it280 <= 1
- 0 <= x_it281 <= 1
- 0 <= x_it282 <= 1
- 0 <= x_it283 <= 1
- 0 <= x_it284 <= 1
- 0 <= x_it285 <= 1
- 0 <= x_it286 <= 1
- 0 <= x_it287 <= 1
- 0 <= x_it288 <= 1
- 0 <= x_it289 <= 1
- 0 <= x_it2810 <= 1
- 0 <= x_it2811 <= 1
- 0 <= x_it2812 <= 1
- 0 <= x_it2813 <= 1
- 0 <= x_it2814 <= 1
- 0 <= x_it2815 <= 1
- 0 <= x_it2816 <= 1
- 0 <= x_it2817 <= 1
- 0 <= x_it2818 <= 1
- 0 <= x_it2819 <= 1
- 0 <= x_it2820 <= 1
- 0 <= x_it2821 <= 1
- 0 <= x_it2822 <= 1
- 0 <= x_it2823 <= 1
- 0 <= x_it2824 <= 1
- 0 <= x_it2825 <= 1
- 0 <= x_it290 <= 1
- 0 <= x_it291 <= 1
- 0 <= x_it292 <= 1
- 0 <= x_it293 <= 1
- 0 <= x_it294 <= 1
- 0 <= x_it295 <= 1
- 0 <= x_it296 <= 1
- 0 <= x_it297 <= 1
- 0 <= x_it298 <= 1
- 0 <= x_it299 <= 1
- 0 <= x_it2910 <= 1
- 0 <= x_it2911 <= 1
- 0 <= x_it2912 <= 1
- 0 <= x_it2913 <= 1
- 0 <= x_it2914 <= 1
- 0 <= x_it2915 <= 1
- 0 <= x_it2916 <= 1
- 0 <= x_it2917 <= 1
- 0 <= x_it2918 <= 1
- 0 <= x_it2919 <= 1
- 0 <= x_it2920 <= 1
- 0 <= x_it2921 <= 1
- 0 <= x_it2922 <= 1
- 0 <= x_it2923 <= 1
- 0 <= x_it2924 <= 1
- 0 <= x_it2925 <= 1
- 0 <= z_pt00 <= 1
- 0 <= z0_pt00 <= 1
- 0 <= z_pt01 <= 1
- 0 <= z0_pt01 <= 1
- 0 <= z_pt02 <= 1
- 0 <= z0_pt02 <= 1
- 0 <= z_pt03 <= 1
- 0 <= z0_pt03 <= 1
- 0 <= z_pt04 <= 1
- 0 <= z0_pt04 <= 1
- 0 <= z_pt05 <= 1
- 0 <= z0_pt05 <= 1
- 0 <= z_pt06 <= 1
- 0 <= z0_pt06 <= 1
- 0 <= z_pt07 <= 1
- 0 <= z0_pt07 <= 1
- 0 <= z_pt08 <= 1
- 0 <= z0_pt08 <= 1
- 0 <= z_pt09 <= 1
- 0 <= z0_pt09 <= 1
- 0 <= z_pt010 <= 1
- 0 <= z0_pt010 <= 1
- 0 <= z_pt011 <= 1
- 0 <= z0_pt011 <= 1
- 0 <= z_pt012 <= 1
- 0 <= z0_pt012 <= 1
- 0 <= z_pt013 <= 1
- 0 <= z0_pt013 <= 1
- 0 <= z_pt014 <= 1
- 0 <= z0_pt014 <= 1
- 0 <= z_pt015 <= 1
- 0 <= z0_pt015 <= 1
- 0 <= z_pt016 <= 1
- 0 <= z0_pt016 <= 1
- 0 <= z_pt017 <= 1
- 0 <= z0_pt017 <= 1
- 0 <= z_pt018 <= 1
- 0 <= z0_pt018 <= 1
- 0 <= z_pt019 <= 1
- 0 <= z0_pt019 <= 1
- 0 <= z_pt020 <= 1
- 0 <= z0_pt020 <= 1
- 0 <= z_pt021 <= 1
- 0 <= z0_pt021 <= 1
- 0 <= z_pt022 <= 1
- 0 <= z0_pt022 <= 1
- 0 <= z_pt023 <= 1
- 0 <= z0_pt023 <= 1
- 0 <= z_pt024 <= 1
- 0 <= z0_pt024 <= 1
- 0 <= z_pt025 <= 1
- 0 <= z0_pt025 <= 1
- 0 <= z_pt10 <= 1
- 0 <= z0_pt10 <= 1
- 0 <= z_pt11 <= 1
- 0 <= z0_pt11 <= 1
- 0 <= z_pt12 <= 1
- 0 <= z0_pt12 <= 1
- 0 <= z_pt13 <= 1
- 0 <= z0_pt13 <= 1
- 0 <= z_pt14 <= 1
- 0 <= z0_pt14 <= 1
- 0 <= z_pt15 <= 1
- 0 <= z0_pt15 <= 1
- 0 <= z_pt16 <= 1
- 0 <= z0_pt16 <= 1
- 0 <= z_pt17 <= 1
- 0 <= z0_pt17 <= 1
- 0 <= z_pt18 <= 1
- 0 <= z0_pt18 <= 1
- 0 <= z_pt19 <= 1
- 0 <= z0_pt19 <= 1
- 0 <= z_pt110 <= 1
- 0 <= z0_pt110 <= 1
- 0 <= z_pt111 <= 1
- 0 <= z0_pt111 <= 1
- 0 <= z_pt112 <= 1
- 0 <= z0_pt112 <= 1
- 0 <= z_pt113 <= 1
- 0 <= z0_pt113 <= 1
- 0 <= z_pt114 <= 1
- 0 <= z0_pt114 <= 1
- 0 <= z_pt115 <= 1
- 0 <= z0_pt115 <= 1
- 0 <= z_pt116 <= 1
- 0 <= z0_pt116 <= 1
- 0 <= z_pt117 <= 1
- 0 <= z0_pt117 <= 1
- 0 <= z_pt118 <= 1
- 0 <= z0_pt118 <= 1
- 0 <= z_pt119 <= 1
- 0 <= z0_pt119 <= 1
- 0 <= z_pt120 <= 1
- 0 <= z0_pt120 <= 1
- 0 <= z_pt121 <= 1
- 0 <= z0_pt121 <= 1
- 0 <= z_pt122 <= 1
- 0 <= z0_pt122 <= 1
- 0 <= z_pt123 <= 1
- 0 <= z0_pt123 <= 1
- 0 <= z_pt124 <= 1
- 0 <= z0_pt124 <= 1
- 0 <= z_pt125 <= 1
- 0 <= z0_pt125 <= 1
- 0 <= z_pt20 <= 1
- 0 <= z0_pt20 <= 1
- 0 <= z_pt21 <= 1
- 0 <= z0_pt21 <= 1
- 0 <= z_pt22 <= 1
- 0 <= z0_pt22 <= 1
- 0 <= z_pt23 <= 1
- 0 <= z0_pt23 <= 1
- 0 <= z_pt24 <= 1
- 0 <= z0_pt24 <= 1
- 0 <= z_pt25 <= 1
- 0 <= z0_pt25 <= 1
- 0 <= z_pt26 <= 1
- 0 <= z0_pt26 <= 1
- 0 <= z_pt27 <= 1
- 0 <= z0_pt27 <= 1
- 0 <= z_pt28 <= 1
- 0 <= z0_pt28 <= 1
- 0 <= z_pt29 <= 1
- 0 <= z0_pt29 <= 1
- 0 <= z_pt210 <= 1
- 0 <= z0_pt210 <= 1
- 0 <= z_pt211 <= 1
- 0 <= z0_pt211 <= 1
- 0 <= z_pt212 <= 1
- 0 <= z0_pt212 <= 1
- 0 <= z_pt213 <= 1
- 0 <= z0_pt213 <= 1
- 0 <= z_pt214 <= 1
- 0 <= z0_pt214 <= 1
- 0 <= z_pt215 <= 1
- 0 <= z0_pt215 <= 1
- 0 <= z_pt216 <= 1
- 0 <= z0_pt216 <= 1
- 0 <= z_pt217 <= 1
- 0 <= z0_pt217 <= 1
- 0 <= z_pt218 <= 1
- 0 <= z0_pt218 <= 1
- 0 <= z_pt219 <= 1
- 0 <= z0_pt219 <= 1
- 0 <= z_pt220 <= 1
- 0 <= z0_pt220 <= 1
- 0 <= z_pt221 <= 1
- 0 <= z0_pt221 <= 1
- 0 <= z_pt222 <= 1
- 0 <= z0_pt222 <= 1
- 0 <= z_pt223 <= 1
- 0 <= z0_pt223 <= 1
- 0 <= z_pt224 <= 1
- 0 <= z0_pt224 <= 1
- 0 <= z_pt225 <= 1
- 0 <= z0_pt225 <= 1
- 0 <= z_pt30 <= 1
- 0 <= z0_pt30 <= 1
- 0 <= z_pt31 <= 1
- 0 <= z0_pt31 <= 1
- 0 <= z_pt32 <= 1
- 0 <= z0_pt32 <= 1
- 0 <= z_pt33 <= 1
- 0 <= z0_pt33 <= 1
- 0 <= z_pt34 <= 1
- 0 <= z0_pt34 <= 1
- 0 <= z_pt35 <= 1
- 0 <= z0_pt35 <= 1
- 0 <= z_pt36 <= 1
- 0 <= z0_pt36 <= 1
- 0 <= z_pt37 <= 1
- 0 <= z0_pt37 <= 1
- 0 <= z_pt38 <= 1
- 0 <= z0_pt38 <= 1
- 0 <= z_pt39 <= 1
- 0 <= z0_pt39 <= 1
- 0 <= z_pt310 <= 1
- 0 <= z0_pt310 <= 1
- 0 <= z_pt311 <= 1
- 0 <= z0_pt311 <= 1
- 0 <= z_pt312 <= 1
- 0 <= z0_pt312 <= 1
- 0 <= z_pt313 <= 1
- 0 <= z0_pt313 <= 1
- 0 <= z_pt314 <= 1
- 0 <= z0_pt314 <= 1
- 0 <= z_pt315 <= 1
- 0 <= z0_pt315 <= 1
- 0 <= z_pt316 <= 1
- 0 <= z0_pt316 <= 1
- 0 <= z_pt317 <= 1
- 0 <= z0_pt317 <= 1
- 0 <= z_pt318 <= 1
- 0 <= z0_pt318 <= 1
- 0 <= z_pt319 <= 1
- 0 <= z0_pt319 <= 1
- 0 <= z_pt320 <= 1
- 0 <= z0_pt320 <= 1
- 0 <= z_pt321 <= 1
- 0 <= z0_pt321 <= 1
- 0 <= z_pt322 <= 1
- 0 <= z0_pt322 <= 1
- 0 <= z_pt323 <= 1
- 0 <= z0_pt323 <= 1
- 0 <= z_pt324 <= 1
- 0 <= z0_pt324 <= 1
- 0 <= z_pt325 <= 1
- 0 <= z0_pt325 <= 1
+ 0 <= x_it0,10 <= 1
+ 0 <= x_it0,11 <= 1
+ 0 <= x_it0,12 <= 1
+ 0 <= x_it0,13 <= 1
+ 0 <= x_it0,14 <= 1
+ 0 <= x_it0,15 <= 1
+ 0 <= x_it0,16 <= 1
+ 0 <= x_it0,17 <= 1
+ 0 <= x_it0,18 <= 1
+ 0 <= x_it1,12 <= 1
+ 0 <= x_it1,13 <= 1
+ 0 <= x_it1,14 <= 1
+ 0 <= x_it1,15 <= 1
+ 0 <= x_it1,16 <= 1
+ 0 <= x_it2,17 <= 1
+ 0 <= x_it2,18 <= 1
+ 0 <= x_it2,19 <= 1
+ 0 <= x_it2,20 <= 1
+ 0 <= x_it3,4 <= 1
+ 0 <= x_it3,5 <= 1
+ 0 <= x_it3,6 <= 1
+ 0 <= x_it3,7 <= 1
+ 0 <= x_it4,8 <= 1
+ 0 <= x_it4,9 <= 1
+ 0 <= x_it4,10 <= 1
+ 0 <= x_it4,11 <= 1
+ 0 <= x_it4,12 <= 1
+ 0 <= x_it4,13 <= 1
+ 0 <= x_it4,14 <= 1
+ 0 <= x_it4,15 <= 1
+ 0 <= x_it4,16 <= 1
+ 0 <= x_it4,17 <= 1
+ 0 <= x_it4,18 <= 1
+ 0 <= x_it5,4 <= 1
+ 0 <= x_it5,5 <= 1
+ 0 <= x_it5,6 <= 1
+ 0 <= x_it5,7 <= 1
+ 0 <= x_it6,2 <= 1
+ 0 <= x_it6,3 <= 1
+ 0 <= x_it6,4 <= 1
+ 0 <= x_it6,5 <= 1
+ 0 <= x_it6,6 <= 1
+ 0 <= x_it6,7 <= 1
+ 0 <= x_it6,8 <= 1
+ 0 <= x_it6,9 <= 1
+ 0 <= x_it6,10 <= 1
+ 0 <= x_it6,11 <= 1
+ 0 <= x_it7,17 <= 1
+ 0 <= x_it7,18 <= 1
+ 0 <= x_it7,19 <= 1
+ 0 <= x_it7,20 <= 1
+ 0 <= x_it7,21 <= 1
+ 0 <= x_it8,15 <= 1
+ 0 <= x_it8,16 <= 1
+ 0 <= x_it8,17 <= 1
+ 0 <= x_it8,18 <= 1
+ 0 <= x_it9,0 <= 1
+ 0 <= x_it9,1 <= 1
+ 0 <= x_it9,2 <= 1
+ 0 <= x_it9,3 <= 1
+ 0 <= x_it9,4 <= 1
+ 0 <= x_it9,5 <= 1
+ 0 <= x_it9,6 <= 1
+ 0 <= x_it9,7 <= 1
+ 0 <= x_it9,8 <= 1
+ 0 <= x_it10,16 <= 1
+ 0 <= x_it10,17 <= 1
+ 0 <= x_it10,18 <= 1
+ 0 <= x_it10,19 <= 1
+ 0 <= x_it11,5 <= 1
+ 0 <= x_it11,6 <= 1
+ 0 <= x_it11,7 <= 1
+ 0 <= x_it11,8 <= 1
+ 0 <= x_it11,9 <= 1
+ 0 <= x_it12,3 <= 1
+ 0 <= x_it12,4 <= 1
+ 0 <= x_it12,5 <= 1
+ 0 <= x_it12,6 <= 1
+ 0 <= x_it12,7 <= 1
+ 0 <= x_it12,8 <= 1
+ 0 <= x_it12,9 <= 1
+ 0 <= x_it13,9 <= 1
+ 0 <= x_it13,10 <= 1
+ 0 <= x_it13,11 <= 1
+ 0 <= x_it13,12 <= 1
+ 0 <= x_it13,13 <= 1
+ 0 <= x_it13,14 <= 1
+ 0 <= x_it13,15 <= 1
+ 0 <= x_it13,16 <= 1
+ 0 <= x_it14,2 <= 1
+ 0 <= x_it14,3 <= 1
+ 0 <= x_it14,4 <= 1
+ 0 <= x_it14,5 <= 1
+ 0 <= x_it14,6 <= 1
+ 0 <= x_it15,13 <= 1
+ 0 <= x_it15,14 <= 1
+ 0 <= x_it15,15 <= 1
+ 0 <= x_it15,16 <= 1
+ 0 <= x_it15,17 <= 1
+ 0 <= x_it15,18 <= 1
+ 0 <= x_it15,19 <= 1
+ 0 <= x_it15,20 <= 1
+ 0 <= x_it15,21 <= 1
+ 0 <= x_it15,22 <= 1
+ 0 <= x_it15,23 <= 1
+ 0 <= x_it15,24 <= 1
+ 0 <= x_it16,15 <= 1
+ 0 <= x_it16,16 <= 1
+ 0 <= x_it16,17 <= 1
+ 0 <= x_it16,18 <= 1
+ 0 <= x_it16,19 <= 1
+ 0 <= x_it16,20 <= 1
+ 0 <= x_it16,21 <= 1
+ 0 <= x_it17,12 <= 1
+ 0 <= x_it17,13 <= 1
+ 0 <= x_it18,8 <= 1
+ 0 <= x_it18,9 <= 1
+ 0 <= x_it19,15 <= 1
+ 0 <= x_it19,16 <= 1
+ 0 <= x_it19,17 <= 1
+ 0 <= x_it19,18 <= 1
+ 0 <= x_it20,3 <= 1
+ 0 <= x_it20,4 <= 1
+ 0 <= x_it20,5 <= 1
+ 0 <= x_it20,6 <= 1
+ 0 <= x_it20,7 <= 1
+ 0 <= x_it20,8 <= 1
+ 0 <= x_it20,9 <= 1
+ 0 <= x_it20,10 <= 1
+ 0 <= x_it20,11 <= 1
+ 0 <= x_it20,12 <= 1
+ 0 <= x_it20,13 <= 1
+ 0 <= x_it20,14 <= 1
+ 0 <= x_it21,12 <= 1
+ 0 <= x_it21,13 <= 1
+ 0 <= x_it21,14 <= 1
+ 0 <= x_it21,15 <= 1
+ 0 <= x_it22,13 <= 1
+ 0 <= x_it22,14 <= 1
+ 0 <= x_it22,15 <= 1
+ 0 <= x_it22,16 <= 1
+ 0 <= x_it22,17 <= 1
+ 0 <= x_it22,18 <= 1
+ 0 <= x_it22,19 <= 1
+ 0 <= x_it22,20 <= 1
+ 0 <= x_it23,4 <= 1
+ 0 <= x_it23,5 <= 1
+ 0 <= x_it24,9 <= 1
+ 0 <= x_it24,10 <= 1
+ 0 <= x_it24,11 <= 1
+ 0 <= x_it24,12 <= 1
+ 0 <= x_it24,13 <= 1
+ 0 <= x_it24,14 <= 1
+ 0 <= x_it25,10 <= 1
+ 0 <= x_it25,11 <= 1
+ 0 <= x_it25,12 <= 1
+ 0 <= x_it25,13 <= 1
+ 0 <= x_it25,14 <= 1
+ 0 <= x_it25,15 <= 1
+ 0 <= x_it25,16 <= 1
+ 0 <= x_it25,17 <= 1
+ 0 <= x_it26,6 <= 1
+ 0 <= x_it26,7 <= 1
+ 0 <= x_it26,8 <= 1
+ 0 <= x_it26,9 <= 1
+ 0 <= x_it26,10 <= 1
+ 0 <= x_it27,14 <= 1
+ 0 <= x_it27,15 <= 1
+ 0 <= x_it27,16 <= 1
+ 0 <= x_it27,17 <= 1
+ 0 <= x_it27,18 <= 1
+ 0 <= x_it28,4 <= 1
+ 0 <= x_it28,5 <= 1
+ 0 <= x_it28,6 <= 1
+ 0 <= x_it28,7 <= 1
+ 0 <= x_it28,8 <= 1
+ 0 <= x_it28,9 <= 1
+ 0 <= x_it28,10 <= 1
+ 0 <= x_it28,11 <= 1
+ 0 <= x_it28,12 <= 1
+ 0 <= x_it28,13 <= 1
+ 0 <= x_it28,14 <= 1
+ 0 <= x_it29,1 <= 1
+ 0 <= x_it29,2 <= 1
+ 0 <= x_it29,3 <= 1
+ 0 <= x_it29,4 <= 1
+ 0 <= z_pt0,0 <= 1
+ 0 <= z0_pt0,0 <= 1
+ 0 <= z_pt0,1 <= 1
+ 0 <= z0_pt0,1 <= 1
+ 0 <= z_pt0,2 <= 1
+ 0 <= z0_pt0,2 <= 1
+ 0 <= z_pt0,3 <= 1
+ 0 <= z0_pt0,3 <= 1
+ 0 <= z_pt0,4 <= 1
+ 0 <= z0_pt0,4 <= 1
+ 0 <= z_pt0,5 <= 1
+ 0 <= z0_pt0,5 <= 1
+ 0 <= z_pt0,6 <= 1
+ 0 <= z0_pt0,6 <= 1
+ 0 <= z_pt0,7 <= 1
+ 0 <= z0_pt0,7 <= 1
+ 0 <= z_pt0,8 <= 1
+ 0 <= z0_pt0,8 <= 1
+ 0 <= z_pt0,9 <= 1
+ 0 <= z0_pt0,9 <= 1
+ 0 <= z_pt0,10 <= 1
+ 0 <= z0_pt0,10 <= 1
+ 0 <= z_pt0,11 <= 1
+ 0 <= z0_pt0,11 <= 1
+ 0 <= z_pt0,12 <= 1
+ 0 <= z0_pt0,12 <= 1
+ 0 <= z_pt0,13 <= 1
+ 0 <= z0_pt0,13 <= 1
+ 0 <= z_pt0,14 <= 1
+ 0 <= z0_pt0,14 <= 1
+ 0 <= z_pt0,15 <= 1
+ 0 <= z0_pt0,15 <= 1
+ 0 <= z_pt0,16 <= 1
+ 0 <= z0_pt0,16 <= 1
+ 0 <= z_pt0,17 <= 1
+ 0 <= z0_pt0,17 <= 1
+ 0 <= z_pt0,18 <= 1
+ 0 <= z0_pt0,18 <= 1
+ 0 <= z_pt0,19 <= 1
+ 0 <= z0_pt0,19 <= 1
+ 0 <= z_pt0,20 <= 1
+ 0 <= z0_pt0,20 <= 1
+ 0 <= z_pt0,21 <= 1
+ 0 <= z0_pt0,21 <= 1
+ 0 <= z_pt0,22 <= 1
+ 0 <= z0_pt0,22 <= 1
+ 0 <= z_pt0,23 <= 1
+ 0 <= z0_pt0,23 <= 1
+ 0 <= z_pt0,24 <= 1
+ 0 <= z0_pt0,24 <= 1
+ 0 <= z_pt0,25 <= 1
+ 0 <= z0_pt0,25 <= 1
+ 0 <= z_pt1,0 <= 1
+ 0 <= z0_pt1,0 <= 1
+ 0 <= z_pt1,1 <= 1
+ 0 <= z0_pt1,1 <= 1
+ 0 <= z_pt1,2 <= 1
+ 0 <= z0_pt1,2 <= 1
+ 0 <= z_pt1,3 <= 1
+ 0 <= z0_pt1,3 <= 1
+ 0 <= z_pt1,4 <= 1
+ 0 <= z0_pt1,4 <= 1
+ 0 <= z_pt1,5 <= 1
+ 0 <= z0_pt1,5 <= 1
+ 0 <= z_pt1,6 <= 1
+ 0 <= z0_pt1,6 <= 1
+ 0 <= z_pt1,7 <= 1
+ 0 <= z0_pt1,7 <= 1
+ 0 <= z_pt1,8 <= 1
+ 0 <= z0_pt1,8 <= 1
+ 0 <= z_pt1,9 <= 1
+ 0 <= z0_pt1,9 <= 1
+ 0 <= z_pt1,10 <= 1
+ 0 <= z0_pt1,10 <= 1
+ 0 <= z_pt1,11 <= 1
+ 0 <= z0_pt1,11 <= 1
+ 0 <= z_pt1,12 <= 1
+ 0 <= z0_pt1,12 <= 1
+ 0 <= z_pt1,13 <= 1
+ 0 <= z0_pt1,13 <= 1
+ 0 <= z_pt1,14 <= 1
+ 0 <= z0_pt1,14 <= 1
+ 0 <= z_pt1,15 <= 1
+ 0 <= z0_pt1,15 <= 1
+ 0 <= z_pt1,16 <= 1
+ 0 <= z0_pt1,16 <= 1
+ 0 <= z_pt1,17 <= 1
+ 0 <= z0_pt1,17 <= 1
+ 0 <= z_pt1,18 <= 1
+ 0 <= z0_pt1,18 <= 1
+ 0 <= z_pt1,19 <= 1
+ 0 <= z0_pt1,19 <= 1
+ 0 <= z_pt1,20 <= 1
+ 0 <= z0_pt1,20 <= 1
+ 0 <= z_pt1,21 <= 1
+ 0 <= z0_pt1,21 <= 1
+ 0 <= z_pt1,22 <= 1
+ 0 <= z0_pt1,22 <= 1
+ 0 <= z_pt1,23 <= 1
+ 0 <= z0_pt1,23 <= 1
+ 0 <= z_pt1,24 <= 1
+ 0 <= z0_pt1,24 <= 1
+ 0 <= z_pt1,25 <= 1
+ 0 <= z0_pt1,25 <= 1
+ 0 <= z_pt2,0 <= 1
+ 0 <= z0_pt2,0 <= 1
+ 0 <= z_pt2,1 <= 1
+ 0 <= z0_pt2,1 <= 1
+ 0 <= z_pt2,2 <= 1
+ 0 <= z0_pt2,2 <= 1
+ 0 <= z_pt2,3 <= 1
+ 0 <= z0_pt2,3 <= 1
+ 0 <= z_pt2,4 <= 1
+ 0 <= z0_pt2,4 <= 1
+ 0 <= z_pt2,5 <= 1
+ 0 <= z0_pt2,5 <= 1
+ 0 <= z_pt2,6 <= 1
+ 0 <= z0_pt2,6 <= 1
+ 0 <= z_pt2,7 <= 1
+ 0 <= z0_pt2,7 <= 1
+ 0 <= z_pt2,8 <= 1
+ 0 <= z0_pt2,8 <= 1
+ 0 <= z_pt2,9 <= 1
+ 0 <= z0_pt2,9 <= 1
+ 0 <= z_pt2,10 <= 1
+ 0 <= z0_pt2,10 <= 1
+ 0 <= z_pt2,11 <= 1
+ 0 <= z0_pt2,11 <= 1
+ 0 <= z_pt2,12 <= 1
+ 0 <= z0_pt2,12 <= 1
+ 0 <= z_pt2,13 <= 1
+ 0 <= z0_pt2,13 <= 1
+ 0 <= z_pt2,14 <= 1
+ 0 <= z0_pt2,14 <= 1
+ 0 <= z_pt2,15 <= 1
+ 0 <= z0_pt2,15 <= 1
+ 0 <= z_pt2,16 <= 1
+ 0 <= z0_pt2,16 <= 1
+ 0 <= z_pt2,17 <= 1
+ 0 <= z0_pt2,17 <= 1
+ 0 <= z_pt2,18 <= 1
+ 0 <= z0_pt2,18 <= 1
+ 0 <= z_pt2,19 <= 1
+ 0 <= z0_pt2,19 <= 1
+ 0 <= z_pt2,20 <= 1
+ 0 <= z0_pt2,20 <= 1
+ 0 <= z_pt2,21 <= 1
+ 0 <= z0_pt2,21 <= 1
+ 0 <= z_pt2,22 <= 1
+ 0 <= z0_pt2,22 <= 1
+ 0 <= z_pt2,23 <= 1
+ 0 <= z0_pt2,23 <= 1
+ 0 <= z_pt2,24 <= 1
+ 0 <= z0_pt2,24 <= 1
+ 0 <= z_pt2,25 <= 1
+ 0 <= z0_pt2,25 <= 1
+ 0 <= z_pt3,0 <= 1
+ 0 <= z0_pt3,0 <= 1
+ 0 <= z_pt3,1 <= 1
+ 0 <= z0_pt3,1 <= 1
+ 0 <= z_pt3,2 <= 1
+ 0 <= z0_pt3,2 <= 1
+ 0 <= z_pt3,3 <= 1
+ 0 <= z0_pt3,3 <= 1
+ 0 <= z_pt3,4 <= 1
+ 0 <= z0_pt3,4 <= 1
+ 0 <= z_pt3,5 <= 1
+ 0 <= z0_pt3,5 <= 1
+ 0 <= z_pt3,6 <= 1
+ 0 <= z0_pt3,6 <= 1
+ 0 <= z_pt3,7 <= 1
+ 0 <= z0_pt3,7 <= 1
+ 0 <= z_pt3,8 <= 1
+ 0 <= z0_pt3,8 <= 1
+ 0 <= z_pt3,9 <= 1
+ 0 <= z0_pt3,9 <= 1
+ 0 <= z_pt3,10 <= 1
+ 0 <= z0_pt3,10 <= 1
+ 0 <= z_pt3,11 <= 1
+ 0 <= z0_pt3,11 <= 1
+ 0 <= z_pt3,12 <= 1
+ 0 <= z0_pt3,12 <= 1
+ 0 <= z_pt3,13 <= 1
+ 0 <= z0_pt3,13 <= 1
+ 0 <= z_pt3,14 <= 1
+ 0 <= z0_pt3,14 <= 1
+ 0 <= z_pt3,15 <= 1
+ 0 <= z0_pt3,15 <= 1
+ 0 <= z_pt3,16 <= 1
+ 0 <= z0_pt3,16 <= 1
+ 0 <= z_pt3,17 <= 1
+ 0 <= z0_pt3,17 <= 1
+ 0 <= z_pt3,18 <= 1
+ 0 <= z0_pt3,18 <= 1
+ 0 <= z_pt3,19 <= 1
+ 0 <= z0_pt3,19 <= 1
+ 0 <= z_pt3,20 <= 1
+ 0 <= z0_pt3,20 <= 1
+ 0 <= z_pt3,21 <= 1
+ 0 <= z0_pt3,21 <= 1
+ 0 <= z_pt3,22 <= 1
+ 0 <= z0_pt3,22 <= 1
+ 0 <= z_pt3,23 <= 1
+ 0 <= z0_pt3,23 <= 1
+ 0 <= z_pt3,24 <= 1
+ 0 <= z0_pt3,24 <= 1
+ 0 <= z_pt3,25 <= 1
+ 0 <= z0_pt3,25 <= 1
  0 <= q_t0 <= 20
  0 <= q_t1 <= 20
  0 <= q_t2 <= 20
@@ -2479,82 +1278,39 @@ Bounds
  0 <= q_t24 <= 20
  0 <= q_t25 <= 20
 Binaries
- x_it00 x_it01 x_it02 x_it03 x_it04 x_it05 x_it06 x_it07 x_it08 x_it09 x_it010 x_it011 x_it012 x_it013
- x_it014 x_it015 x_it016 x_it017 x_it018 x_it019 x_it020 x_it021 x_it022 x_it023 x_it024 x_it025 x_it10
- x_it11 x_it12 x_it13 x_it14 x_it15 x_it16 x_it17 x_it18 x_it19 x_it110 x_it111 x_it112 x_it113 x_it114
- x_it115 x_it116 x_it117 x_it118 x_it119 x_it120 x_it121 x_it122 x_it123 x_it124 x_it125 x_it20 x_it21
- x_it22 x_it23 x_it24 x_it25 x_it26 x_it27 x_it28 x_it29 x_it210 x_it211 x_it212 x_it213 x_it214 x_it215
- x_it216 x_it217 x_it218 x_it219 x_it220 x_it221 x_it222 x_it223 x_it224 x_it225 x_it30 x_it31 x_it32
- x_it33 x_it34 x_it35 x_it36 x_it37 x_it38 x_it39 x_it310 x_it311 x_it312 x_it313 x_it314 x_it315 x_it316
- x_it317 x_it318 x_it319 x_it320 x_it321 x_it322 x_it323 x_it324 x_it325 x_it40 x_it41 x_it42 x_it43 x_it44
- x_it45 x_it46 x_it47 x_it48 x_it49 x_it410 x_it411 x_it412 x_it413 x_it414 x_it415 x_it416 x_it417 x_it418
- x_it419 x_it420 x_it421 x_it422 x_it423 x_it424 x_it425 x_it50 x_it51 x_it52 x_it53 x_it54 x_it55 x_it56
- x_it57 x_it58 x_it59 x_it510 x_it511 x_it512 x_it513 x_it514 x_it515 x_it516 x_it517 x_it518 x_it519
- x_it520 x_it521 x_it522 x_it523 x_it524 x_it525 x_it60 x_it61 x_it62 x_it63 x_it64 x_it65 x_it66 x_it67
- x_it68 x_it69 x_it610 x_it611 x_it612 x_it613 x_it614 x_it615 x_it616 x_it617 x_it618 x_it619 x_it620
- x_it621 x_it622 x_it623 x_it624 x_it625 x_it70 x_it71 x_it72 x_it73 x_it74 x_it75 x_it76 x_it77 x_it78
- x_it79 x_it710 x_it711 x_it712 x_it713 x_it714 x_it715 x_it716 x_it717 x_it718 x_it719 x_it720 x_it721
- x_it722 x_it723 x_it724 x_it725 x_it80 x_it81 x_it82 x_it83 x_it84 x_it85 x_it86 x_it87 x_it88 x_it89
- x_it810 x_it811 x_it812 x_it813 x_it814 x_it815 x_it816 x_it817 x_it818 x_it819 x_it820 x_it821 x_it822
- x_it823 x_it824 x_it825 x_it90 x_it91 x_it92 x_it93 x_it94 x_it95 x_it96 x_it97 x_it98 x_it99 x_it910
- x_it911 x_it912 x_it913 x_it914 x_it915 x_it916 x_it917 x_it918 x_it919 x_it920 x_it921 x_it922 x_it923
- x_it924 x_it925 x_it100 x_it101 x_it102 x_it103 x_it104 x_it105 x_it106 x_it107 x_it108 x_it109 x_it1010
- x_it1011 x_it1012 x_it1013 x_it1014 x_it1015 x_it1016 x_it1017 x_it1018 x_it1019 x_it1020 x_it1021 x_it1022
- x_it1023 x_it1024 x_it1025 x_it110 x_it111 x_it112 x_it113 x_it114 x_it115 x_it116 x_it117 x_it118 x_it119
- x_it1110 x_it1111 x_it1112 x_it1113 x_it1114 x_it1115 x_it1116 x_it1117 x_it1118 x_it1119 x_it1120 x_it1121
- x_it1122 x_it1123 x_it1124 x_it1125 x_it120 x_it121 x_it122 x_it123 x_it124 x_it125 x_it126 x_it127 x_it128
- x_it129 x_it1210 x_it1211 x_it1212 x_it1213 x_it1214 x_it1215 x_it1216 x_it1217 x_it1218 x_it1219 x_it1220
- x_it1221 x_it1222 x_it1223 x_it1224 x_it1225 x_it130 x_it131 x_it132 x_it133 x_it134 x_it135 x_it136
- x_it137 x_it138 x_it139 x_it1310 x_it1311 x_it1312 x_it1313 x_it1314 x_it1315 x_it1316 x_it1317 x_it1318
- x_it1319 x_it1320 x_it1321 x_it1322 x_it1323 x_it1324 x_it1325 x_it140 x_it141 x_it142 x_it143 x_it144
- x_it145 x_it146 x_it147 x_it148 x_it149 x_it1410 x_it1411 x_it1412 x_it1413 x_it1414 x_it1415 x_it1416
- x_it1417 x_it1418 x_it1419 x_it1420 x_it1421 x_it1422 x_it1423 x_it1424 x_it1425 x_it150 x_it151 x_it152
- x_it153 x_it154 x_it155 x_it156 x_it157 x_it158 x_it159 x_it1510 x_it1511 x_it1512 x_it1513 x_it1514
- x_it1515 x_it1516 x_it1517 x_it1518 x_it1519 x_it1520 x_it1521 x_it1522 x_it1523 x_it1524 x_it1525 x_it160
- x_it161 x_it162 x_it163 x_it164 x_it165 x_it166 x_it167 x_it168 x_it169 x_it1610 x_it1611 x_it1612 x_it1613
- x_it1614 x_it1615 x_it1616 x_it1617 x_it1618 x_it1619 x_it1620 x_it1621 x_it1622 x_it1623 x_it1624 x_it1625
- x_it170 x_it171 x_it172 x_it173 x_it174 x_it175 x_it176 x_it177 x_it178 x_it179 x_it1710 x_it1711 x_it1712
- x_it1713 x_it1714 x_it1715 x_it1716 x_it1717 x_it1718 x_it1719 x_it1720 x_it1721 x_it1722 x_it1723 x_it1724
- x_it1725 x_it180 x_it181 x_it182 x_it183 x_it184 x_it185 x_it186 x_it187 x_it188 x_it189 x_it1810 x_it1811
- x_it1812 x_it1813 x_it1814 x_it1815 x_it1816 x_it1817 x_it1818 x_it1819 x_it1820 x_it1821 x_it1822 x_it1823
- x_it1824 x_it1825 x_it190 x_it191 x_it192 x_it193 x_it194 x_it195 x_it196 x_it197 x_it198 x_it199 x_it1910
- x_it1911 x_it1912 x_it1913 x_it1914 x_it1915 x_it1916 x_it1917 x_it1918 x_it1919 x_it1920 x_it1921 x_it1922
- x_it1923 x_it1924 x_it1925 x_it200 x_it201 x_it202 x_it203 x_it204 x_it205 x_it206 x_it207 x_it208 x_it209
- x_it2010 x_it2011 x_it2012 x_it2013 x_it2014 x_it2015 x_it2016 x_it2017 x_it2018 x_it2019 x_it2020 x_it2021
- x_it2022 x_it2023 x_it2024 x_it2025 x_it210 x_it211 x_it212 x_it213 x_it214 x_it215 x_it216 x_it217 x_it218
- x_it219 x_it2110 x_it2111 x_it2112 x_it2113 x_it2114 x_it2115 x_it2116 x_it2117 x_it2118 x_it2119 x_it2120
- x_it2121 x_it2122 x_it2123 x_it2124 x_it2125 x_it220 x_it221 x_it222 x_it223 x_it224 x_it225 x_it226
- x_it227 x_it228 x_it229 x_it2210 x_it2211 x_it2212 x_it2213 x_it2214 x_it2215 x_it2216 x_it2217 x_it2218
- x_it2219 x_it2220 x_it2221 x_it2222 x_it2223 x_it2224 x_it2225 x_it230 x_it231 x_it232 x_it233 x_it234
- x_it235 x_it236 x_it237 x_it238 x_it239 x_it2310 x_it2311 x_it2312 x_it2313 x_it2314 x_it2315 x_it2316
- x_it2317 x_it2318 x_it2319 x_it2320 x_it2321 x_it2322 x_it2323 x_it2324 x_it2325 x_it240 x_it241 x_it242
- x_it243 x_it244 x_it245 x_it246 x_it247 x_it248 x_it249 x_it2410 x_it2411 x_it2412 x_it2413 x_it2414
- x_it2415 x_it2416 x_it2417 x_it2418 x_it2419 x_it2420 x_it2421 x_it2422 x_it2423 x_it2424 x_it2425 x_it250
- x_it251 x_it252 x_it253 x_it254 x_it255 x_it256 x_it257 x_it258 x_it259 x_it2510 x_it2511 x_it2512 x_it2513
- x_it2514 x_it2515 x_it2516 x_it2517 x_it2518 x_it2519 x_it2520 x_it2521 x_it2522 x_it2523 x_it2524 x_it2525
- x_it260 x_it261 x_it262 x_it263 x_it264 x_it265 x_it266 x_it267 x_it268 x_it269 x_it2610 x_it2611 x_it2612
- x_it2613 x_it2614 x_it2615 x_it2616 x_it2617 x_it2618 x_it2619 x_it2620 x_it2621 x_it2622 x_it2623 x_it2624
- x_it2625 x_it270 x_it271 x_it272 x_it273 x_it274 x_it275 x_it276 x_it277 x_it278 x_it279 x_it2710 x_it2711
- x_it2712 x_it2713 x_it2714 x_it2715 x_it2716 x_it2717 x_it2718 x_it2719 x_it2720 x_it2721 x_it2722 x_it2723
- x_it2724 x_it2725 x_it280 x_it281 x_it282 x_it283 x_it284 x_it285 x_it286 x_it287 x_it288 x_it289 x_it2810
- x_it2811 x_it2812 x_it2813 x_it2814 x_it2815 x_it2816 x_it2817 x_it2818 x_it2819 x_it2820 x_it2821 x_it2822
- x_it2823 x_it2824 x_it2825 x_it290 x_it291 x_it292 x_it293 x_it294 x_it295 x_it296 x_it297 x_it298 x_it299
- x_it2910 x_it2911 x_it2912 x_it2913 x_it2914 x_it2915 x_it2916 x_it2917 x_it2918 x_it2919 x_it2920 x_it2921
- x_it2922 x_it2923 x_it2924 x_it2925 z_pt00 z0_pt00 z_pt01 z0_pt01 z_pt02 z0_pt02 z_pt03 z0_pt03 z_pt04
- z0_pt04 z_pt05 z0_pt05 z_pt06 z0_pt06 z_pt07 z0_pt07 z_pt08 z0_pt08 z_pt09 z0_pt09 z_pt010 z0_pt010 z_pt011
- z0_pt011 z_pt012 z0_pt012 z_pt013 z0_pt013 z_pt014 z0_pt014 z_pt015 z0_pt015 z_pt016 z0_pt016 z_pt017
- z0_pt017 z_pt018 z0_pt018 z_pt019 z0_pt019 z_pt020 z0_pt020 z_pt021 z0_pt021 z_pt022 z0_pt022 z_pt023
- z0_pt023 z_pt024 z0_pt024 z_pt025 z0_pt025 z_pt10 z0_pt10 z_pt11 z0_pt11 z_pt12 z0_pt12 z_pt13 z0_pt13
- z_pt14 z0_pt14 z_pt15 z0_pt15 z_pt16 z0_pt16 z_pt17 z0_pt17 z_pt18 z0_pt18 z_pt19 z0_pt19 z_pt110 z0_pt110
- z_pt111 z0_pt111 z_pt112 z0_pt112 z_pt113 z0_pt113 z_pt114 z0_pt114 z_pt115 z0_pt115 z_pt116 z0_pt116
- z_pt117 z0_pt117 z_pt118 z0_pt118 z_pt119 z0_pt119 z_pt120 z0_pt120 z_pt121 z0_pt121 z_pt122 z0_pt122
- z_pt123 z0_pt123 z_pt124 z0_pt124 z_pt125 z0_pt125 z_pt20 z0_pt20 z_pt21 z0_pt21 z_pt22 z0_pt22 z_pt23
- z0_pt23 z_pt24 z0_pt24 z_pt25 z0_pt25 z_pt26 z0_pt26 z_pt27 z0_pt27 z_pt28 z0_pt28 z_pt29 z0_pt29 z_pt210
- z0_pt210 z_pt211 z0_pt211 z_pt212 z0_pt212 z_pt213 z0_pt213 z_pt214 z0_pt214 z_pt215 z0_pt215 z_pt216
- z0_pt216 z_pt217 z0_pt217 z_pt218 z0_pt218 z_pt219 z0_pt219 z_pt220 z0_pt220 z_pt221 z0_pt221 z_pt222
- z0_pt222 z_pt223 z0_pt223 z_pt224 z0_pt224 z_pt225 z0_pt225 z_pt30 z0_pt30 z_pt31 z0_pt31 z_pt32 z0_pt32
- z_pt33 z0_pt33 z_pt34 z0_pt34 z_pt35 z0_pt35 z_pt36 z0_pt36 z_pt37 z0_pt37 z_pt38 z0_pt38 z_pt39 z0_pt39
- z_pt310 z0_pt310 z_pt311 z0_pt311 z_pt312 z0_pt312 z_pt313 z0_pt313 z_pt314 z0_pt314 z_pt315 z0_pt315
- z_pt316 z0_pt316 z_pt317 z0_pt317 z_pt318 z0_pt318 z_pt319 z0_pt319 z_pt320 z0_pt320 z_pt321 z0_pt321
- z_pt322 z0_pt322 z_pt323 z0_pt323 z_pt324 z0_pt324 z_pt325 z0_pt325
+ x_it0,10 x_it0,11 x_it0,12 x_it0,13 x_it0,14 x_it0,15 x_it0,16 x_it0,17 x_it0,18 x_it1,12 x_it1,13 x_it1,14
+ x_it1,15 x_it1,16 x_it2,17 x_it2,18 x_it2,19 x_it2,20 x_it3,4 x_it3,5 x_it3,6 x_it3,7 x_it4,8 x_it4,9
+ x_it4,10 x_it4,11 x_it4,12 x_it4,13 x_it4,14 x_it4,15 x_it4,16 x_it4,17 x_it4,18 x_it5,4 x_it5,5 x_it5,6
+ x_it5,7 x_it6,2 x_it6,3 x_it6,4 x_it6,5 x_it6,6 x_it6,7 x_it6,8 x_it6,9 x_it6,10 x_it6,11 x_it7,17 x_it7,18
+ x_it7,19 x_it7,20 x_it7,21 x_it8,15 x_it8,16 x_it8,17 x_it8,18 x_it9,0 x_it9,1 x_it9,2 x_it9,3 x_it9,4
+ x_it9,5 x_it9,6 x_it9,7 x_it9,8 x_it10,16 x_it10,17 x_it10,18 x_it10,19 x_it11,5 x_it11,6 x_it11,7 x_it11,8
+ x_it11,9 x_it12,3 x_it12,4 x_it12,5 x_it12,6 x_it12,7 x_it12,8 x_it12,9 x_it13,9 x_it13,10 x_it13,11
+ x_it13,12 x_it13,13 x_it13,14 x_it13,15 x_it13,16 x_it14,2 x_it14,3 x_it14,4 x_it14,5 x_it14,6 x_it15,13
+ x_it15,14 x_it15,15 x_it15,16 x_it15,17 x_it15,18 x_it15,19 x_it15,20 x_it15,21 x_it15,22 x_it15,23 x_it15,24
+ x_it16,15 x_it16,16 x_it16,17 x_it16,18 x_it16,19 x_it16,20 x_it16,21 x_it17,12 x_it17,13 x_it18,8 x_it18,9
+ x_it19,15 x_it19,16 x_it19,17 x_it19,18 x_it20,3 x_it20,4 x_it20,5 x_it20,6 x_it20,7 x_it20,8 x_it20,9
+ x_it20,10 x_it20,11 x_it20,12 x_it20,13 x_it20,14 x_it21,12 x_it21,13 x_it21,14 x_it21,15 x_it22,13 x_it22,14
+ x_it22,15 x_it22,16 x_it22,17 x_it22,18 x_it22,19 x_it22,20 x_it23,4 x_it23,5 x_it24,9 x_it24,10 x_it24,11
+ x_it24,12 x_it24,13 x_it24,14 x_it25,10 x_it25,11 x_it25,12 x_it25,13 x_it25,14 x_it25,15 x_it25,16 x_it25,17
+ x_it26,6 x_it26,7 x_it26,8 x_it26,9 x_it26,10 x_it27,14 x_it27,15 x_it27,16 x_it27,17 x_it27,18 x_it28,4
+ x_it28,5 x_it28,6 x_it28,7 x_it28,8 x_it28,9 x_it28,10 x_it28,11 x_it28,12 x_it28,13 x_it28,14 x_it29,1
+ x_it29,2 x_it29,3 x_it29,4 z_pt0,0 z0_pt0,0 z_pt0,1 z0_pt0,1 z_pt0,2 z0_pt0,2 z_pt0,3 z0_pt0,3 z_pt0,4
+ z0_pt0,4 z_pt0,5 z0_pt0,5 z_pt0,6 z0_pt0,6 z_pt0,7 z0_pt0,7 z_pt0,8 z0_pt0,8 z_pt0,9 z0_pt0,9 z_pt0,10
+ z0_pt0,10 z_pt0,11 z0_pt0,11 z_pt0,12 z0_pt0,12 z_pt0,13 z0_pt0,13 z_pt0,14 z0_pt0,14 z_pt0,15 z0_pt0,15
+ z_pt0,16 z0_pt0,16 z_pt0,17 z0_pt0,17 z_pt0,18 z0_pt0,18 z_pt0,19 z0_pt0,19 z_pt0,20 z0_pt0,20 z_pt0,21
+ z0_pt0,21 z_pt0,22 z0_pt0,22 z_pt0,23 z0_pt0,23 z_pt0,24 z0_pt0,24 z_pt0,25 z0_pt0,25 z_pt1,0 z0_pt1,0
+ z_pt1,1 z0_pt1,1 z_pt1,2 z0_pt1,2 z_pt1,3 z0_pt1,3 z_pt1,4 z0_pt1,4 z_pt1,5 z0_pt1,5 z_pt1,6 z0_pt1,6
+ z_pt1,7 z0_pt1,7 z_pt1,8 z0_pt1,8 z_pt1,9 z0_pt1,9 z_pt1,10 z0_pt1,10 z_pt1,11 z0_pt1,11 z_pt1,12 z0_pt1,12
+ z_pt1,13 z0_pt1,13 z_pt1,14 z0_pt1,14 z_pt1,15 z0_pt1,15 z_pt1,16 z0_pt1,16 z_pt1,17 z0_pt1,17 z_pt1,18
+ z0_pt1,18 z_pt1,19 z0_pt1,19 z_pt1,20 z0_pt1,20 z_pt1,21 z0_pt1,21 z_pt1,22 z0_pt1,22 z_pt1,23 z0_pt1,23
+ z_pt1,24 z0_pt1,24 z_pt1,25 z0_pt1,25 z_pt2,0 z0_pt2,0 z_pt2,1 z0_pt2,1 z_pt2,2 z0_pt2,2 z_pt2,3 z0_pt2,3
+ z_pt2,4 z0_pt2,4 z_pt2,5 z0_pt2,5 z_pt2,6 z0_pt2,6 z_pt2,7 z0_pt2,7 z_pt2,8 z0_pt2,8 z_pt2,9 z0_pt2,9
+ z_pt2,10 z0_pt2,10 z_pt2,11 z0_pt2,11 z_pt2,12 z0_pt2,12 z_pt2,13 z0_pt2,13 z_pt2,14 z0_pt2,14 z_pt2,15
+ z0_pt2,15 z_pt2,16 z0_pt2,16 z_pt2,17 z0_pt2,17 z_pt2,18 z0_pt2,18 z_pt2,19 z0_pt2,19 z_pt2,20 z0_pt2,20
+ z_pt2,21 z0_pt2,21 z_pt2,22 z0_pt2,22 z_pt2,23 z0_pt2,23 z_pt2,24 z0_pt2,24 z_pt2,25 z0_pt2,25 z_pt3,0
+ z0_pt3,0 z_pt3,1 z0_pt3,1 z_pt3,2 z0_pt3,2 z_pt3,3 z0_pt3,3 z_pt3,4 z0_pt3,4 z_pt3,5 z0_pt3,5 z_pt3,6
+ z0_pt3,6 z_pt3,7 z0_pt3,7 z_pt3,8 z0_pt3,8 z_pt3,9 z0_pt3,9 z_pt3,10 z0_pt3,10 z_pt3,11 z0_pt3,11 z_pt3,12
+ z0_pt3,12 z_pt3,13 z0_pt3,13 z_pt3,14 z0_pt3,14 z_pt3,15 z0_pt3,15 z_pt3,16 z0_pt3,16 z_pt3,17 z0_pt3,17
+ z_pt3,18 z0_pt3,18 z_pt3,19 z0_pt3,19 z_pt3,20 z0_pt3,20 z_pt3,21 z0_pt3,21 z_pt3,22 z0_pt3,22 z_pt3,23
+ z0_pt3,23 z_pt3,24 z0_pt3,24 z_pt3,25 z0_pt3,25
 End

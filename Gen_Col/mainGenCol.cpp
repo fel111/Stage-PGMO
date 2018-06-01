@@ -227,11 +227,11 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
 
     cout << "verif : "<<verifSol(sGC) << endl; 
 
-    /*for(int j=0; j<sGC.d.cardJ; ++j){
-        for(int t=0; t<sGC.d.cardT;++t){
+    for(int j=0; j<sGC.d.cardJ; ++j){
+        for(int t=sGC.d.rj[j]; t<sGC.d.dj[j]; ++t){
             if(SCIPgetSolVal(sGC.scip,sGC.sol,sGC.varX_it[j][t]) == 1) cout <<"tache "<<j<<" réalisée au temps "<<t<<endl;
         }
-    }*/
+    }
     //cout<<"... End solve"<<endl;
     /*
     printf("\nstart solution export ...\n");

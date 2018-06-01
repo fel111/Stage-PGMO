@@ -36,16 +36,22 @@ struct structGenCol{
     vector<vector<vector<SCIP_VAR *> > > varY_lkt;
     vector<vector<SCIP_VAR *> > varY0_kt;
     vector<vector<SCIP_VAR *> > varX_it;
-    //vector<vector<SCIP_VAR *> > varZ_pt;
-    //vector<vector<SCIP_VAR *> > varZ0_pt;
 
     //contraintes pour generation colonnes
     vector<vector<SCIP_CONS *> > cons_1;
     vector<SCIP_CONS *> cons_2;
     vector<vector<SCIP_CONS *> > cons_3;
-    //vector<vector<SCIP_CONS *> > cons_4;
     vector<SCIP_CONS *> cons_8;
     vector<SCIP_CONS *> cons_9;
+
+    //variables duales
+    vector<vector<SCIP_Real *> > alpha_it;
+    vector<SCIP_Real *> beta_i;
+    vector<vector<SCIP_Real *> > gamma_pt;
+    vector<SCIP_Real *> delta_t;
+    vector<SCIP_Real *> phi_t;
+
+    int time;
 
     SCIP_SOL * sol;
 
