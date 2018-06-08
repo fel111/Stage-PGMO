@@ -61,7 +61,8 @@ OBJ= Gen_Col/mainGenCol.o \
 	Lecteur_Fichiers/lecteur_taches.o \
 	Lecteur_Fichiers/lecteur_param.o \
 	struct.o \
-	Gen_Col/pricer.o
+	Gen_Col/pricer.o \
+	Gen_Col/struct_gencol.o
 
 
 

@@ -45,11 +45,11 @@ struct structGenCol{
     vector<SCIP_CONS *> cons_9;
 
     //variables duales
-    vector<vector<SCIP_Real *> > alpha_it;
-    vector<SCIP_Real *> beta_i;
-    vector<vector<SCIP_Real *> > gamma_pt;
-    vector<SCIP_Real *> delta_t;
-    vector<SCIP_Real *> phi_t;
+    vector<vector<double> > alpha_it;
+    vector<double> beta_i;
+    vector<vector<double> > gamma_pt;
+    vector<double> delta_t;
+    vector<double> phi_t;
 
     int time;
 
@@ -60,7 +60,13 @@ struct structGenCol{
 
 
 float cl(int k, int l, structGenCol const& sGC);
-
+void addL_t(feasibleSet const& l, structGenCol & sGC);
+void addA_il(feasibleSet const& l, structGenCol & sGC);
+void addSetK_l(feasibleSet const& l, structGenCol & sGC);
+bool checkSet(feasibleSet const& l, structGenCol const& sGC);
+void affAllSet(structGenCol const& sGC);
+void affL_t(structGenCol const& sGC);
+void affK_l(structGenCol const& sGC);
 
 
 #endif

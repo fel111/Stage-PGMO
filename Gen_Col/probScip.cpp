@@ -12,6 +12,7 @@
 #include "scip/scipdefplugins.h"
 #include "../struct.h"
 #include "struct_gencol.h"
+#include "pricer.h"
 
 SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 {
@@ -25,7 +26,7 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
     SCIP_CALL( SCIPincludeDefaultPlugins(sGC.scip) );
     
     /** project plugins */
-    //SCIP_CALL( SCIPincludePricerVRPTF (pU->scip, pU));
+    SCIP_CALL( includePricer(sGC) );
     
     probdata = (SCIP_PROBDATA*) &sGC;
     
@@ -80,7 +81,7 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 			y_lkt[l].push_back(var);
 			for(int t=sGC.L[l].releaseTime; t<sGC.L[l].deadLine; ++t){
 				SCIP_VAR * varr;
-				SCIPcreateVarBasic(sGC.scip, &varr, ("y_lkt"+to_string(l)+','+to_string(k)+','+to_string(t)).c_str(), 0.0, SCIP_REAL_MAX, sGC.d.valbpt[0][k], SCIP_VARTYPE_CONTINUOUS);
+				SCIPcreateVarBasic(sGC.scip, &varr, ("y_lkt"+to_string(l)+','+to_string(k)+','+to_string(t)).c_str(), 0.0, SCIPinfinity(sGC.scip), sGC.d.valbpt[0][k], SCIP_VARTYPE_CONTINUOUS);
 				SCIPaddVar(sGC.scip,varr);
 				y_lkt[l][k][t] = varr;
 			}
@@ -96,7 +97,7 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 		y0_kt.push_back(v);
 		for(int t=0; t<sGC.d.cardT; ++t){
 			SCIP_VAR * var;
-			SCIPcreateVarBasic(sGC.scip, &var, ("y0_kt"+to_string(k)+','+to_string(t)).c_str(), 0, SCIP_REAL_MAX, sGC.d.valbpt[0][k], SCIP_VARTYPE_CONTINUOUS);
+			SCIPcreateVarBasic(sGC.scip, &var, ("y0_kt"+to_string(k)+','+to_string(t)).c_str(), 0, SCIPinfinity(sGC.scip), sGC.d.valbpt[0][k], SCIP_VARTYPE_CONTINUOUS);
 			SCIPaddVar(sGC.scip,var);	
 			y0_kt[k].push_back(var);	
 		}	
