@@ -151,6 +151,8 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 			SCIPaddCons(sGC.scip, ct);
 			cons_1[i].push_back(ct);
 		}
+		vector<double> vd (sGC.d.dj[i]-sGC.d.rj[i],0.0);
+		sGC.alpha_it.push_back(vd);
 	}
 	sGC.cons_1 = cons_1;
 	cout<<"cons_1 ok"<<endl;
@@ -171,6 +173,8 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 		SCIPaddCons(sGC.scip, c);
 		cons_2.push_back(c);
 	}
+	vector<double> vdj (sGC.d.cardJ,0.0);
+	sGC.beta_i = vdj;
 	sGC.cons_2 = cons_2;
 	cout<<"cons_2 ok"<<endl;
 
@@ -190,6 +194,8 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 			SCIPaddCons(sGC.scip, ct);
 			cons_3[p].push_back(ct);
 		}
+		vector<double> vd (sGC.d.cardT,0.0);
+		sGC.gamma_pt.push_back(vd);
 	}
 	sGC.cons_3 = cons_3;
 	cout<<"cons_3 ok"<<endl;
@@ -256,6 +262,8 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 		SCIPaddCons(sGC.scip, c);
 		cons_8.push_back(c);
 	}
+	vector<double> vdt (sGC.d.cardT,0.0);
+	sGC.delta_t = vdt;
 	/*int t = sGC.d.cardT-1;
 	SCIP_CONS * c;
 	cons_8.push_back(c);
@@ -287,6 +295,7 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 		SCIPaddCons(sGC.scip, c);
 		cons_9.push_back(c);
 	}
+	sGC.phi_t = vdt;
 	sGC.cons_9 = cons_9;
 	cout<<"cons_9 ok"<<endl;
 

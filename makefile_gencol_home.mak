@@ -9,7 +9,7 @@ INCLUDES_PATH= \
 	-I/usr/include \
 	-I/mnt/d/Téléchargements/scipoptsuite-5.0.1/scip/src \
 	-I/opt/ibm/ILOG/CPLEX_Studio1271/cplex/include \
-	-I/opt/ibm/ILOG/CPLEX_Studio1271/concert/include/ilconcert
+	-I/opt/ibm/ILOG/CPLEX_Studio1271/concert/include \
 
 
 # Les librairies que l'on va utiliser
@@ -24,6 +24,7 @@ LIBS= \
 	-lm \
 	-lilocplex \
 	-lcplex \
+	-lconcert \
 	-lgmp \
 	-lz \
 	-lstdc++
@@ -33,9 +34,10 @@ LIBS_PATH= \
 	-L/usr/lib \
 	-L/usr/local/lib \
 	-L/opt/local/lib \
-	-L/mnt/d/Téléchargements/scipoptsuite-5.0.1/scip/lib \
+	-L/mnt/d/Téléchargements/scipoptsuite-5.0.1/scip/lib/static \
 	-L/mnt/d/Téléchargements/scipoptsuite-5.0.1/soplex/lib \
-	-L/opt/ibm/ILOG/CPLEX_Studio1271/cplex/lib/x86-64_linux/static_pic
+	-L/opt/ibm/ILOG/CPLEX_Studio1271/cplex/lib/x86-64_linux/static_pic \
+	-L/opt/ibm/ILOG/CPLEX_Studio1271/concert/lib/x86-64_linux/static_pic
 
 # Le compilateur que nous utiliserons
 COMPILO=g++
@@ -60,7 +62,9 @@ FLAGS= -W -Wall -DIL_STD -std=c++11 -g
 OBJ= Gen_Col/mainGenCol.o \
 	Lecteur_Fichiers/lecteur_taches.o \
 	Lecteur_Fichiers/lecteur_param.o \
-	struct.o
+	struct.o \
+	Gen_Col/pricer.o \
+	Gen_Col/struct_gencol.o
 
 
 

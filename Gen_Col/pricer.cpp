@@ -160,6 +160,7 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
         IloExpr sum_i1(env);
         IloExpr sum_i2(env);
         for(int i=0; i<sGC.d.cardJ;++i){
+			//cout << i << "    " << sGC.d.rj[i] << " <= " << sGC.time<<" && "<< sGC.time<<" < " <<sGC.d.dj[i]<<endl;
             if((sGC.d.rj[i]<=sGC.time)&&(sGC.time<sGC.d.dj[i])){
                 sum_i1 += sGC.d.Djk[i][0]*u_i[i];
                 sum_i2 += u_i[i] * (sGC.beta_i[i]
@@ -171,18 +172,20 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
             else model.add(u_i[i] <= 0);
         }
         IloExpr sum_k1(env);
-        for(int k=0; k<sGC.d.nb_bp[0]-2; ++k){
+        /*for(int k=0; k<sGC.d.nb_bp[0]-2; ++k){
             if(k%2==0) sum_k1 += sGC.d.bpt[0][k+3]*v_k[k];
             else sum_k1 += sGC.d.bpt[0][k+2]*v_k[k];
-        }
+        }*/
         IloExpr sum_k2(env);
-        for(int k=2; k<sGC.d.nb_bp[0]; ++k){
+        /*for(int k=2; k<sGC.d.nb_bp[0]; ++k){
             if(k%2==0) sum_k2 += sGC.d.bpt[0][k-1]*v_k[k];
             else sum_k2 += sGC.d.bpt[0][k-2]*v_k[k];
-        }
+        }*/
         IloExpr sum_k3(env);
         IloExpr sum_k4(env);
         for(int k=0; k<sGC.d.nb_bp[0]; ++k){
+			if(k%2==0) sum_k1 += sGC.d.bpt[0][k+1]*v_k[k];
+            else sum_k2 += sGC.d.bpt[0][k-1]*v_k[k];
             sum_k3 += v_k[k];
             sum_k4 += (sGC.d.valbpt[0][k] + sGC.gamma_pt[k/2][sGC.time] + sGC.d.bpt[0][k]*sGC.delta_t[sGC.time])*v_k[k];
         }
@@ -191,10 +194,12 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
         obj = sum_i2 - sum_k4;
 
         model.add(sum_i1 - sum_k1 <= sGC.p.qmax);
-        model.add(sum_i1 - sum_k2 >= sGC.p.qmax);
+        model.add(sum_i1 - sum_k2 >= -sGC.p.qmax);
         model.add(sum_k3 == 1);
         model.add(IloMaximize(env, obj));
         
+		cplex.exportModel("cplexmodele.lp");
+		
         if (!cplex.solve()){
             cout << "Failed to optimize LP." << endl;
             cout << cplex.getStatus() << endl;
@@ -283,8 +288,8 @@ SCIP_DECL_PRICERREDCOST(pricerRedcost)
     for(int i=0; i<pbdata->d.cardJ; ++i){
         pbdata->beta_i[i] = SCIPgetDualsolLinear(scip,pbdata->cons_2[i]);
 		for(int t=0; t<pbdata->d.cardT; ++t){
-            if((t<=pbdata->d.rj[i])&&(t<pbdata->d.dj[i])){
-                pbdata->alpha_it[i][t] = SCIPgetDualsolLinear(scip,pbdata->cons_1[i][t]);
+            if((pbdata->d.rj[i]<=t)&&(t<pbdata->d.dj[i])){
+                pbdata->alpha_it[i][t-pbdata->d.rj[i]] = SCIPgetDualsolLinear(scip,pbdata->cons_1[i][t-pbdata->d.rj[i]]);
             }
             if(fois==0){
                 for(int p=0; p<(pbdata->d.nb_bp[0]/2); ++p){
@@ -374,7 +379,7 @@ SCIP_DECL_PRICERINITSOL(pricerInitsolSP)
         
 		for(int t=0; t<pbdata->d.cardT; ++t){
             if((pbdata->d.rj[i]<=t)&&(t<pbdata->d.dj[i])){
-                SCIPgetTransformedCons(scip,pbdata->cons_1[i][t],&(pbdata->cons_1[i][t]));
+                SCIPgetTransformedCons(scip,pbdata->cons_1[i][t-pbdata->d.rj[i]],&(pbdata->cons_1[i][t-pbdata->d.rj[i]]));
                 //assert(pbdata->tabConsNbSets[j] != NULL);
             }
             if(fois==0){
