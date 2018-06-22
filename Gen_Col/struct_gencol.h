@@ -20,6 +20,8 @@ struct feasibleSet{
 };
 
 struct structGenCol{
+    int todelete;
+
     data d;
     param p;
     SCIP *scip;
@@ -41,6 +43,7 @@ struct structGenCol{
     vector<vector<SCIP_CONS *> > cons_1;
     vector<SCIP_CONS *> cons_2;
     vector<vector<SCIP_CONS *> > cons_3;
+    vector<vector<SCIP_CONS *> > cons_4;
     vector<SCIP_CONS *> cons_8;
     vector<SCIP_CONS *> cons_9;
 
@@ -63,10 +66,11 @@ float cl(int k, int l, structGenCol const& sGC);
 void addL_t(feasibleSet const& l, structGenCol & sGC);
 void addA_il(feasibleSet const& l, structGenCol & sGC);
 void addSetK_l(feasibleSet const& l, structGenCol & sGC);
-bool checkSet(feasibleSet const& l, structGenCol const& sGC);
+int checkSet(feasibleSet const& l, structGenCol const& sGC);
 void affAllSet(structGenCol const& sGC);
 void affL_t(structGenCol const& sGC);
 void affK_l(structGenCol const& sGC);
+void modifPwlCplex(structGenCol & sGC);
 
 
 #endif

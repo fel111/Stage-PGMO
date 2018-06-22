@@ -62,6 +62,7 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,IloNumA
 	//vector<Task> listeTask;
 	vector<int> taskList;
     feasibleSet l;
+    bool stop=false;
     
 	// Creation de la nouvelle colonne
 	for(int i = 0 ; i < sGC.d.cardJ ; i++){
@@ -80,46 +81,79 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,IloNumA
             }
         }
     }
-    if(taskList.size() > 0){
-        l.id = sGC.L.size();
-        l.timeGen = 0; 
-        l.tasksList = taskList;
-        //if(checkSet(l,sGC)){
-        sGC.L.push_back(l);
-        sGC.cardL = sGC.L.size();
-        addSetK_l(l,sGC);
-        addA_il(l,sGC);
-        addL_t(l,sGC);
-        //cptId++;
-        //}else cout << "l deja present " << l.id << endl;
-	}
+    
     int k = 0 ;
     while( SCIPisEQ(sGC.scip, valVk[k], 0.0) ) ++k;
 
-	
-	// Creation de la nouvelle variable pour le moment t obtenu a l issu du sous probleme
-    string name = "y_lkt"+to_string(sGC.L.size()-1)+","+to_string(k)+","+to_string(sGC.time);
 
-	SCIP_VAR * var;
-	SCIPcreateVarBasic(sGC.scip, &var, name.c_str() ,0,SCIPinfinity(sGC.scip),sGC.d.valbpt[0][k],SCIP_VARTYPE_CONTINUOUS);
-	for(const auto& j : taskList){
-		//Mise a jour cons1
-		SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_1[j][sGC.time],var,-1));
-		// Mise a jour cons2
-		SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_2[j],var,1));
-	}
-	// Mise a jour cons3
-	SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_3[k/2][sGC.time],var,-1));
-    // Mise a jour cons8
-    SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_8[sGC.time],var,l.energyDemand-sGC.d.bpt[0][k]));
-    // Mise a jour cons9
-    SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_9[sGC.time],var,l.energyDemand));
-	SCIP_CALL(status = SCIPaddPricedVar(sGC.scip, var, 1.0));
-	vector<vector<SCIP_VAR*> > tab (sGC.d.nb_bp[0], vector<SCIP_VAR*> (sGC.d.cardT, NULL));
-	tab[k][sGC.time] = var;
-	sGC.varY_lkt.push_back(tab);
-	//sGC.time++;
-	return status;
+    if(taskList.size() > 0){
+        l.id = sGC.L.size();
+        l.timeGen = sGC.time; 
+        l.tasksList = taskList;
+        int testPres = checkSet(l,sGC);
+        int id;
+        if(testPres == -1){
+            sGC.L.push_back(l);
+            sGC.cardL = sGC.L.size();
+            addSetK_l(l,sGC);
+            addA_il(l,sGC);
+            addL_t(l,sGC);
+            id = sGC.L.size()-1;
+        }
+        else id = testPres;
+        // Creation de la nouvelle variable pour le moment t obtenu a l issu du sous probleme
+        string name = "y_lkt"+to_string(id)+","+to_string(k)+","+to_string(sGC.time);
+
+        SCIP_VAR * var;
+        SCIPcreateVarBasic(sGC.scip, &var, name.c_str() ,0,SCIPinfinity(sGC.scip),sGC.d.valbpt[0][k],SCIP_VARTYPE_CONTINUOUS);
+        for(const auto& j : taskList){
+            //Mise a jour cons1
+            //cout<<"j : "<<j<<" time : "<<sGC.time<<" rj : "<<sGC.d.rj[j] << " dj : "endl;
+            //SCIPprintCons(sGC.scip,sGC.cons_1[j][sGC.time-sGC.d.rj[j]],NULL);
+            SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_1[j][sGC.time-sGC.d.rj[j]],var,-1));
+            // Mise a jour cons2
+            SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_2[j],var,1));
+        }
+        // Mise a jour cons3
+        SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_3[k/2][sGC.time],var,-1));
+        // Mise a jour cons8
+        SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_8[sGC.time],var,l.energyDemand-sGC.d.bpt[0][k]));
+        // Mise a jour cons9
+        SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_9[sGC.time],var,l.energyDemand));
+        SCIP_CALL(status = SCIPaddPricedVar(sGC.scip, var, 1.0));
+        // ???????????? START
+        cout << "cout reduit de colonne ajoutee : "<<SCIPgetVarRedcost(sGC.scip,var)<<endl;
+        // ??????????? END
+        if(testPres==-1){
+            vector<vector<SCIP_VAR*> > tab (sGC.d.nb_bp[0], vector<SCIP_VAR*> (sGC.d.cardT, NULL));
+            tab[k][sGC.time] = var;
+            sGC.varY_lkt.push_back(tab);
+        }
+        else{
+            sGC.varY_lkt[id][k][sGC.time] = var;
+        }
+        //sGC.time++;
+        return status;
+    }
+    else{ //cas pas de tâches donc variable y0_kt
+        // Creation de la nouvelle variable pour le moment t obtenu a l issu du sous probleme
+        string name = "y0_kt"+to_string(k)+","+to_string(sGC.time);
+
+        SCIP_VAR * var;
+        SCIPcreateVarBasic(sGC.scip, &var, name.c_str() ,0,SCIPinfinity(sGC.scip),sGC.d.valbpt[0][k],SCIP_VARTYPE_CONTINUOUS);
+
+        // Mise a jour cons4
+        SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_4[k/2][sGC.time],var,-1));
+        // Mise a jour cons8
+        SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_8[sGC.time],var,-sGC.d.bpt[0][k]));
+        SCIP_CALL(status = SCIPaddPricedVar(sGC.scip, var, 1.0));
+        sGC.varY0_kt[k][sGC.time] = var;
+        //sGC.time++;
+        return status;
+    }
+
+        //}else cout << "l deja present " << l.id << endl;
+	//}
 }
 
 
@@ -146,6 +180,8 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
         IloEnv env;
         IloModel model(env);
         IloCplex cplex(model);
+        cplex.setOut(env.getNullStream());
+        cplex.setParam(IloCplex::Threads,1);
 
         //ajout variables u_i
         IloNumVarArray u_i (env,sGC.d.cardJ,0.0,1.0,ILOBOOL);
@@ -162,9 +198,12 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
         for(int i=0; i<sGC.d.cardJ;++i){
 			//cout << i << "    " << sGC.d.rj[i] << " <= " << sGC.time<<" && "<< sGC.time<<" < " <<sGC.d.dj[i]<<endl;
             if((sGC.d.rj[i]<=sGC.time)&&(sGC.time<sGC.d.dj[i])){
-                sum_i1 += sGC.d.Djk[i][0]*u_i[i];
-                sum_i2 += u_i[i] * (sGC.beta_i[i]
-                    - sGC.alpha_it[i][sGC.time] 
+                sum_i1 += sGC.d.Djk[i][0]*u_i[i]; //sum bi ui
+                //???
+                //cout << "alpha : "<<sGC.alpha_it[i] << endl;
+                //cout << "time" << sGC.time << endl;
+                sum_i2 += u_i[i] * (sGC.beta_i[i] //sum_i obj
+                    - sGC.alpha_it[i][sGC.time-sGC.d.rj[i]] 
                     + sGC.d.Djk[i][0] 
                         * (sGC.delta_t[sGC.time]
                            + sGC.phi_t[sGC.time]));
@@ -184,8 +223,14 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
         IloExpr sum_k3(env);
         IloExpr sum_k4(env);
         for(int k=0; k<sGC.d.nb_bp[0]; ++k){
-			if(k%2==0) sum_k1 += sGC.d.bpt[0][k+1]*v_k[k];
-            else sum_k2 += sGC.d.bpt[0][k-1]*v_k[k];
+			if(k%2==0){ 
+                sum_k1 += sGC.d.bpt[0][k]*v_k[k];
+                sum_k2 += sGC.d.bpt[0][k+1]*v_k[k];
+            }
+            else{
+                sum_k1 += sGC.d.bpt[0][k-1]*v_k[k];
+                sum_k2 += sGC.d.bpt[0][k]*v_k[k];
+            }
             sum_k3 += v_k[k];
             sum_k4 += (sGC.d.valbpt[0][k] + sGC.gamma_pt[k/2][sGC.time] + sGC.d.bpt[0][k]*sGC.delta_t[sGC.time])*v_k[k];
         }
@@ -193,8 +238,8 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
         IloExpr obj(env);
         obj = sum_i2 - sum_k4;
 
-        model.add(sum_i1 - sum_k1 <= sGC.p.qmax);
-        model.add(sum_i1 - sum_k2 >= -sGC.p.qmax);
+        model.add(sum_k1 - sum_i1 <= sGC.p.qmax);
+        model.add(sum_i1 - sum_k2 <= sGC.p.qmax);
         model.add(sum_k3 == 1);
         model.add(IloMaximize(env, obj));
         
@@ -202,11 +247,12 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
 		
         if (!cplex.solve()){
             cout << "Failed to optimize LP." << endl;
+            statusint = -1;
             cout << cplex.getStatus() << endl;
             cout << cplex.getCplexStatus() << endl;
             cout <<	cplex.getCplexSubStatus() << endl;
         }
-        if(cplex.getStatus() !=IloAlgorithm::Optimal){
+        if(cplex.getStatus() != IloAlgorithm::Optimal){
             cerr << "Cplex did not find the optimal solution for the subproblem !!!!!!!!!! " << endl;
             cout << "elapsed time=" << SCIPgetSolvingTime(sGC.scip) << endl;
             cout << cplex.getStatus() << endl;
@@ -220,8 +266,8 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
             cplex.getValues(valUi,u_i);
             cplex.getValues(valVk,v_k);
             //if(pbdata.Params.CHOIX_AFFICHAGE==1){
-                cout << "Solution status = " << cplex.getStatus() << endl;
-                cout << "Solution value = " << cplex.getObjValue() << endl;
+                //cout << "Solution status = " << cplex.getStatus() << endl;
+                //cout << "Solution value = " << cplex.getObjValue() << endl;
                 //cout << "Values alpha = " << valX << endl;
             //}
         }
@@ -231,7 +277,14 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
                 //inittime = sGC.time;
                 // set result pointer
                 colgen=true;
-                //status = SCIP_SUCCESS;
+                /*for(int i=0; i<valUi.getSize(); i++){
+                    cout << "u["<<i<<"] = "<<valUi[i] << endl;
+                }
+                for(int k=0; k<valVk.getSize(); k++){
+                    cout << "v["<<k<<"] = "<<valVk[k] << endl;
+                }
+                cout<<"time = "<<sGC.time<<endl;*/
+                status = SCIP_SUCCESS;
                 status1 = addObjectColumnInModel(sGC,valUi,valVk,objfctvalue);
                 assert(status1==1);
                 sGC.time++;
@@ -240,7 +293,8 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
                 //if(pbdata.Params.MULTIPLE_ENSEMBLE==0)
                 stop = true;
             }else
-            {
+            {   
+                cout << "Cout reduit non négatif au temps "<<sGC.time<< endl;
                 status = SCIP_SUCCESS;
                 sGC.time++;
                 //cpteur = cpteur + 1;
@@ -254,7 +308,24 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
 
         env.end();
     }
+    // ??????????????? START SECTION TO DELETE
+    if((!colgen)&&(sGC.todelete == 0)){
+        IloEnv env;
+        IloNumArray valUi(env, 4, 0., 0., 1.,0.);
+        IloNumArray valVk(env, 4, 0., 0., 1.,0.);
+        cout << "------------------ ADD COLONNE "<<end;
+        sGC.time = 0;
+        addObjectColumnInModel(sGC,valUi,valVk,0);
+        sGC.todelete = 1;
+    }
+    
  
+
+
+
+
+    // ???????????????? END
+
 	return status;
 }
 
@@ -363,6 +434,12 @@ SCIP_DECL_PRICERINITSOL(pricerInitsolSP)
 		}
 	}
 
+    for(int k=0; k<pbdata->d.nb_bp[0]; ++k){
+		for(int t=0; t<pbdata->d.cardT; ++t){
+            SCIPgetTransformedVar(scip, pbdata->varY0_kt[k][t],&(pbdata->varY0_kt[k][t]));
+        }
+    }
+
 	for(int i=0; i<pbdata->d.cardJ; i++){
 		for(int t = pbdata->d.rj[i] ; t < pbdata->d.dj[i] ; t++){
 			SCIPgetTransformedVar(scip, pbdata->varX_it[i][t],&(pbdata->varX_it[i][t]));
@@ -385,6 +462,7 @@ SCIP_DECL_PRICERINITSOL(pricerInitsolSP)
             if(fois==0){
                 for(int p=0; p<(pbdata->d.nb_bp[0]/2); ++p){
                     SCIPgetTransformedCons(scip,pbdata->cons_3[p][t],&(pbdata->cons_3[p][t]));
+                    SCIPgetTransformedCons(scip,pbdata->cons_4[p][t],&(pbdata->cons_4[p][t]));
                 }
                 if(t<pbdata->d.cardT-1) SCIPgetTransformedCons(scip,pbdata->cons_8[t],&(pbdata->cons_8[t]));
                 SCIPgetTransformedCons(scip,pbdata->cons_9[t],&(pbdata->cons_9[t]));

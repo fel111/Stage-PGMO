@@ -6,7 +6,7 @@
 #include <limits>
 //#include <math.h>
 //#include <algorithm>
-//#include <chrono>
+#include <chrono>
 //#include <deque>
 #include "scip/scip.h"
 #include "scip/scipdefplugins.h"
@@ -16,6 +16,7 @@
 #include "../Lecteur_Fichiers/lecteur_param.h"
 #include "probScip.cpp"
 #include "pricer.h"
+#include "../Modele_compact/modele_entier_cplex.h"
 
 using namespace std;
 float infini = numeric_limits<float>::max();
@@ -71,7 +72,7 @@ int initData(structGenCol & sGC){
     string param = "param1.txt";
     string instance = "inst_test";
 	if(lecteur_param("Param/"+param,p) == 0) return 0;
-	
+	d.Q = 20;
 	p.qmax = 20;
 	p.qmin = 0;
 	p.qinit = 0;
@@ -81,10 +82,11 @@ int initData(structGenCol & sGC){
 	initCap(d,p);
 
     for(int i=0;i<d.cardT;++i){
-        //vector<float> temp_pente = {1.0,0.0,0.5,0.0,2.0,0.0,1.5};
+        
 		/*vector<float> temp_bpt = {0.0,4.0,4.0,8.0,8.0,100.0,100.0,infini};
-		vector<float> temp_valbpt = {0.0,4.0,4.0,6.0,6.0,190.0,190.0};
+		vector<float> temp_valbpt = {0.0,4.0,4.0,6.0,6.0,190.0};
 		vector<float> temp_pente = {1.0,0.5,2.0,1.5};*/
+
 		//vector<float> temp_bpt = {0.0,4.0,8.0,100.0,infini};
 		//vector<float> temp_valbpt = {0.0,4.0,6.0,190.0};
 		vector<float> temp_bpt = {0.0,5.0,5.0,1000.0};
@@ -123,6 +125,7 @@ int initData(structGenCol & sGC){
 
 
 SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
+    
 	int tmp;
     SCIP_RETCODE status;
     SCIP_STATUS solstatus;
@@ -134,8 +137,16 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
 	
 	//affK_l(sGC);
 	//affL_t(sGC);
-	affAllSet(sGC);
+	//affAllSet(sGC);
 	
+
+
+    // TO DELETE
+    sGC.todelete = 0;
+
+
+
+
     // Load and build model
     SCIP_CALL (status = Load_Original_Model(sGC));
     
@@ -148,36 +159,61 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
     
     // SOLVE
     //cout << "Start solve..."<<endl;
+    auto start_time = chrono::steady_clock::now();
     SCIP_CALL( status = SCIPsolve(sGC.scip) );
+    auto end_time = chrono::steady_clock::now();
+    float tpsgencol = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
 
 
     sGC.sol = SCIPgetBestSol(sGC.scip);
 
     cout << "verif : "<<verifSol(sGC) << endl; 
 
+
+    cout << "obj : "<< SCIPgetSolOrigObj(sGC.scip,sGC.sol) << endl;
     for(int j=0; j<sGC.d.cardJ; ++j){
         for(int t=sGC.d.rj[j]; t<sGC.d.dj[j]; ++t){
             if(SCIPgetSolVal(sGC.scip,sGC.sol,sGC.varX_it[j][t]) == 1) cout <<"tache "<<j<<" réalisée au temps "<<t<<endl;
         }
     }
-    //cout<<"... End solve"<<endl;
-    /*
-    printf("\nstart solution export ...\n");
+    
+    // export modele dernier PMR
+    /*FILE * filed;
+	filed = fopen("lastPMR", "a+");
+	SCIPprintTransProblem(sGC.scip, NULL, "lp", 0);
+    fclose(filed);*/
+
+
+    cout << "------sol SCIP------"<<endl;
+    // aff solution
+    SCIPprintSol(sGC.scip, sGC.sol, NULL, 0);
+
     // Get the current scip solving time in seconds.
-    (*pU).ScipResolutionTime = SCIPgetSolvingTime ((*pU).scip);
+    //cout << "temps scip : "<<SCIPgetSolvingTime(sGC.scip) <<endl;
+    cout << "temps gencol : "<<tpsgencol<<endl;
     
-    // Get solution
-    (*pU).Solution = SCIPgetBestSol((*pU).scip);
-    assert( (*pU).Solution != NULL);
-    
-    // Print results in log and summary files
-    solstatus = SCIPgetStatus((*pU).scip) ;
-    SCIP_CALL(status = PrintColGenResults (pU, solstatus));
-    printf("\n...end solution export\n");
-    
-    // Free memory
-    assert(tmp == 0);
-    */
+    affAllSet(sGC);
+
+    cout << "---------" << endl;
+
+    for(int l=0; l<sGC.L.size(); ++l){
+        for(const auto& k : sGC.K_l[l]){
+		    for(int t=sGC.L[l].releaseTime; t<sGC.L[l].deadLine; ++t){
+	            if(sGC.varY_lkt[l][k][t] != NULL){
+                    if(SCIPgetSolVal(sGC.scip, sGC.sol,sGC.varY_lkt[l][k][t])>0) cout << "y"<<l<<","<<k<<","<<t<<" = "<<SCIPgetSolVal(sGC.scip, sGC.sol,sGC.varY_lkt[l][k][t])<<endl;
+			    }
+            }
+		}
+	}
+    cout << "---------" << endl;
+    for(int k=0; k<sGC.d.nb_bp[0]; ++k){
+		for(int t=0; t<sGC.d.cardT; ++t){
+            if(SCIPgetSolVal(sGC.scip, sGC.sol,sGC.varY0_kt[k][t])>0) cout << "y0,"<<k<<","<<t<<" = "<<SCIPgetSolVal(sGC.scip, sGC.sol,sGC.varY0_kt[k][t])<<endl;
+        }
+    }
+
+    cout << "nb node : " <<SCIPgetNTotalNodes(sGC.scip)<<endl;
+
     return status;
 }
 
@@ -186,8 +222,13 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
 
 int main(){
     structGenCol sGC;
-
     ColGen_Scip(sGC);
+
+    modifPwlCplex(sGC);
+    float ftemp;
+    string stemp;
+    //float solCompactCPX = modele_entier_cplex(sGC.d,sGC.p,ftemp,ftemp,stemp);
+    //cout << "sol compact : " << solCompactCPX << endl;
 
     return 0;
 }

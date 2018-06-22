@@ -42,7 +42,7 @@
                 "/home/fgoupil/CPLEX_Studio1271/cplex/include",
                 "/home/fgoupil/CPLEX_Studio1271/concert/include"
             ],
-            "defines": [],
+            "defines": ["IL_STD"],
             "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [

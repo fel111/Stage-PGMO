@@ -1,8 +1,9 @@
 #include <vector>
 #include <iostream>
+#include <limits>
 #include "struct_gencol.h"
 using namespace std;
-
+float infinif = numeric_limits<float>::max();
 
 float cl(int k, int l, structGenCol const& sGC){
     return sGC.d.valbpt[0][k];
@@ -41,16 +42,57 @@ void affAllSet(structGenCol const& sGC){
 	}
 }
 
-// renvoie vrai si l'ensemble l n'est pas déjà présent, faux sinon
-bool checkSet(feasibleSet const& l, structGenCol const& sGC){
+// renvoie l'id de l'ensemble si deja present, -1 sinon
+int checkSet(feasibleSet const& l, structGenCol const& sGC){
     for(int i=0; i<sGC.L.size(); ++i){
         if(sGC.L[i].tasksList.size() == l.tasksList.size()){
             int cpt = 0;
-            while((sGC.L[i].tasksList[cpt] == l.tasksList[cpt])&&(cpt<l.tasksList.size())) ++cpt;
-            if(cpt == l.tasksList.size()) return false;
+			/*cout << "1:"<<sGC.L[i].tasksList[cpt] << endl;
+			cout << "2:"<<l.tasksList[cpt] << endl;
+			cout << "3:"<<l.tasksList.size() << endl;
+			bool suite = false;
+			if((sGC.L[i].tasksList[cpt] == l.tasksList[cpt])){
+				if(cpt<l.tasksList.size()){
+					suite = true;
+				}
+			}*/
+			bool stop = true;
+			if(cpt<l.tasksList.size()){
+				if((sGC.L[i].tasksList[cpt] == l.tasksList[cpt])){
+					stop = false;
+				}
+			}
+			while(!stop){
+				++cpt;
+				if(cpt>=l.tasksList.size()){
+					stop = true;
+				}
+				else if((sGC.L[i].tasksList[cpt] != l.tasksList[cpt])){
+						stop = true;
+				}
+			}
+			
+            	//while((sGC.L[i].tasksList[cpt] == l.tasksList[cpt])&&(cpt<l.tasksList.size())){
+				//++cpt;
+
+				//cout << "cpt : "<<cpt<<endl;
+			
+			/*while(suite){	
+				++cpt;
+				cout << "cpt : "<<cpt<<endl;
+				//cout << "1:"<<sGC.L[i].tasksList[cpt] << endl;
+				//cout << "2:"<<l.tasksList[cpt] << endl;
+				//cout << "3:"<<l.tasksList.size() << endl;
+				if((sGC.L[i].tasksList[cpt] == l.tasksList[cpt])){
+				if(cpt<l.tasksList.size()){
+					suite = true;
+				}
+			}
+			}*/
+            if(cpt == l.tasksList.size()) return i;
         }
     }
-    return true;
+    return -1;
 }
 
 void addSetK_l(feasibleSet const& l, structGenCol & sGC){
@@ -75,5 +117,16 @@ void addA_il(feasibleSet const& l, structGenCol & sGC){
 void addL_t(feasibleSet const& l, structGenCol & sGC){
 	for(int t=0; t<sGC.d.cardT; ++t){
 		if((l.releaseTime<=t)&&(t<l.deadLine)) sGC.L_t[t].push_back(l.id);
+	}
+}
+
+void modifPwlCplex(structGenCol & sGC){ // a rendre generique selon les pwl
+
+	for(int i=0;i<sGC.d.cardT;++i){
+		sGC.d.bpt[i] = {0.0,5.0,1000.0};
+		sGC.d.valbpt[i] = {0.0,10.0,3000.0};
+		sGC.d.pente[i] = {2.0,2.1};
+		sGC.d.nb_bp.push_back(2);
+
 	}
 }

@@ -157,27 +157,14 @@ if(p.taches_avec_fenetre_temps == 1){
 	}
 
     model.add(st[d.cardT-1]-d.s0 >= 0);
-
+	model.add(st[0] == 0);
 
 	auto start_time = chrono::steady_clock::now();
     cplex.solve();
 	auto end_time = chrono::steady_clock::now();
 	tps = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
 
-	/*for(int t=0; t<d.cardT; ++t){
-		cout << "xt" << t << ": " <<cplex.getValue(xt[t]) << endl;
-		cout << "ct" << t << ": " <<cplex.getValue(ct[t]) << endl;
-		cout << "st" << t << ": " <<cplex.getValue(st[t]) << endl;
-		for(int k=0; k<d.cardM; ++k){
-			cout << "zkt" << k << t << ": " <<cplex.getValue(z_kt[k][t]) << endl;
-			for(int j=0; j<d.cardJ; ++j){
-			
-			
-				cout << "yjkt" << j << k<<t << ": " <<cplex.getValue(y_jkt[j][k][t]) << endl;
-			}
-		}
 	
-	}*/
 	float sol;
 	if(cplex.getStatus() == IloAlgorithm::Feasible){
 		status = "Feasible";
@@ -188,6 +175,20 @@ if(p.taches_avec_fenetre_temps == 1){
 		status = "Optimal";
 		borneinf = cplex.getBestObjValue();
 		sol = cplex.getObjValue();
+		/*cout << "------------ CPLEX SOL ----------"<<endl;
+		for(int t=0; t<d.cardT; ++t){
+			cout << "xt" << t << ": " <<cplex.getValue(xt[t]) << endl;
+			cout << "ct" << t << ": " <<cplex.getValue(ct[t]) << endl;
+			cout << "st" << t << ": " <<cplex.getValue(st[t]) << endl;
+			for(int k=0; k<d.cardM; ++k){
+				cout << "zkt" << k << t << ": " <<cplex.getValue(z_kt[k][t]) << endl;
+				for(int j=0; j<d.cardJ; ++j){
+					cout << "yjkt" << j << k<<t << ": " <<cplex.getValue(y_jkt[j][k][t]) << endl;
+				}
+			}
+		}*/
+
+
 	}
 	else{
 		status = "Unknown";

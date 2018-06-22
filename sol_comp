@@ -11,66 +11,65 @@ Minimize
       +10 y0_kt1,3 +10 y0_kt1,4 +10 y0_kt2,0 +10 y0_kt2,1 +10 y0_kt2,2 +10 y0_kt2,3 +10 y0_kt2,4 +3000 y0_kt3,0
       +3000 y0_kt3,1 +3000 y0_kt3,2 +3000 y0_kt3,3 +3000 y0_kt3,4
 Subject to
- cons_1: +1 x_it0,0 -1 y_lkt0,0,0 -1 y_lkt0,1,0 -1 y_lkt0,2,0 -1 y_lkt0,3,0 = +0
- cons_1: +1 x_it0,1 -1 y_lkt0,0,1 -1 y_lkt0,1,1 -1 y_lkt0,2,1 -1 y_lkt0,3,1 = +0
- cons_1: +1 x_it1,1 -1 y_lkt1,0,1 -1 y_lkt1,1,1 -1 y_lkt1,2,1 -1 y_lkt1,3,1 = +0
- cons_1: +1 x_it1,2 -1 y_lkt1,0,2 -1 y_lkt1,1,2 -1 y_lkt1,2,2 -1 y_lkt1,3,2 = +0
- cons_1: +1 x_it2,0 -1 y_lkt0,0,0 -1 y_lkt0,1,0 -1 y_lkt0,2,0 -1 y_lkt0,3,0 = +0
- cons_1: +1 x_it2,1 -1 y_lkt0,0,1 -1 y_lkt0,1,1 -1 y_lkt0,2,1 -1 y_lkt0,3,1 -1 y_lkt1,0,1 -1 y_lkt1,1,1
+ cons_1,0,0: +1 x_it0,0 -1 y_lkt0,0,0 -1 y_lkt0,1,0 -1 y_lkt0,2,0 -1 y_lkt0,3,0 = +0
+ cons_1,0,1: +1 x_it0,1 -1 y_lkt0,0,1 -1 y_lkt0,1,1 -1 y_lkt0,2,1 -1 y_lkt0,3,1 = +0
+ cons_1,1,1: +1 x_it1,1 -1 y_lkt1,0,1 -1 y_lkt1,1,1 -1 y_lkt1,2,1 -1 y_lkt1,3,1 = +0
+ cons_1,1,2: +1 x_it1,2 -1 y_lkt1,0,2 -1 y_lkt1,1,2 -1 y_lkt1,2,2 -1 y_lkt1,3,2 = +0
+ cons_1,2,0: +1 x_it2,0 -1 y_lkt0,0,0 -1 y_lkt0,1,0 -1 y_lkt0,2,0 -1 y_lkt0,3,0 = +0
+ cons_1,2,1: +1 x_it2,1 -1 y_lkt0,0,1 -1 y_lkt0,1,1 -1 y_lkt0,2,1 -1 y_lkt0,3,1 -1 y_lkt1,0,1 -1 y_lkt1,1,1
   -1 y_lkt1,2,1 -1 y_lkt1,3,1 = +0
- cons_1: +1 x_it2,2 -1 y_lkt1,0,2 -1 y_lkt1,1,2 -1 y_lkt1,2,2 -1 y_lkt1,3,2 = +0
- cons_1: +1 x_it3,2 -1 y_lkt2,0,2 -1 y_lkt2,1,2 -1 y_lkt2,2,2 -1 y_lkt2,3,2 = +0
- cons_1: +1 x_it3,3 -1 y_lkt2,0,3 -1 y_lkt2,1,3 -1 y_lkt2,2,3 -1 y_lkt2,3,3 = +0
- cons_2: +1 y_lkt0,0,0 +1 y_lkt0,1,0 +1 y_lkt0,2,0 +1 y_lkt0,3,0 +1 y_lkt0,0,1 +1 y_lkt0,1,1 +1 y_lkt0,2,1
+ cons_1,2,2: +1 x_it2,2 -1 y_lkt1,0,2 -1 y_lkt1,1,2 -1 y_lkt1,2,2 -1 y_lkt1,3,2 = +0
+ cons_1,3,2: +1 x_it3,2 -1 y_lkt2,0,2 -1 y_lkt2,1,2 -1 y_lkt2,2,2 -1 y_lkt2,3,2 = +0
+ cons_1,3,3: +1 x_it3,3 -1 y_lkt2,0,3 -1 y_lkt2,1,3 -1 y_lkt2,2,3 -1 y_lkt2,3,3 = +0
+ cons_2,0: +1 y_lkt0,0,0 +1 y_lkt0,1,0 +1 y_lkt0,2,0 +1 y_lkt0,3,0 +1 y_lkt0,0,1 +1 y_lkt0,1,1 +1 y_lkt0,2,1
   +1 y_lkt0,3,1 >= +1
- cons_2: +1 y_lkt1,0,1 +1 y_lkt1,1,1 +1 y_lkt1,2,1 +1 y_lkt1,3,1 +1 y_lkt1,0,2 +1 y_lkt1,1,2 +1 y_lkt1,2,2
+ cons_2,1: +1 y_lkt1,0,1 +1 y_lkt1,1,1 +1 y_lkt1,2,1 +1 y_lkt1,3,1 +1 y_lkt1,0,2 +1 y_lkt1,1,2 +1 y_lkt1,2,2
   +1 y_lkt1,3,2 >= +1
- cons_2: +1 y_lkt0,0,0 +1 y_lkt0,1,0 +1 y_lkt0,2,0 +1 y_lkt0,3,0 +1 y_lkt0,0,1 +1 y_lkt0,1,1 +1 y_lkt0,2,1
+ cons_2,2: +1 y_lkt0,0,0 +1 y_lkt0,1,0 +1 y_lkt0,2,0 +1 y_lkt0,3,0 +1 y_lkt0,0,1 +1 y_lkt0,1,1 +1 y_lkt0,2,1
   +1 y_lkt0,3,1 +1 y_lkt1,0,1 +1 y_lkt1,1,1 +1 y_lkt1,2,1 +1 y_lkt1,3,1 +1 y_lkt1,0,2 +1 y_lkt1,1,2 +1 y_lkt1,2,2
   +1 y_lkt1,3,2 >= +2
- cons_2: +1 y_lkt2,0,2 +1 y_lkt2,1,2 +1 y_lkt2,2,2 +1 y_lkt2,3,2 +1 y_lkt2,0,3 +1 y_lkt2,1,3 +1 y_lkt2,2,3
+ cons_2,3: +1 y_lkt2,0,2 +1 y_lkt2,1,2 +1 y_lkt2,2,2 +1 y_lkt2,3,2 +1 y_lkt2,0,3 +1 y_lkt2,1,3 +1 y_lkt2,2,3
   +1 y_lkt2,3,3 >= +1
- cons_3: +1 z_pt0,0 -1 y_lkt0,0,0 -1 y_lkt0,1,0 = +0
- cons_3: +1 z_pt0,1 -1 y_lkt0,0,1 -1 y_lkt0,1,1 -1 y_lkt1,0,1 -1 y_lkt1,1,1 = +0
- cons_3: +1 z_pt0,2 -1 y_lkt1,0,2 -1 y_lkt1,1,2 -1 y_lkt2,0,2 -1 y_lkt2,1,2 = +0
- cons_3: +1 z_pt0,3 -1 y_lkt2,0,3 -1 y_lkt2,1,3 = +0
- cons_3: +1 z_pt0,4 = +0
- cons_3: +1 z_pt1,0 -1 y_lkt0,2,0 -1 y_lkt0,3,0 = +0
- cons_3: +1 z_pt1,1 -1 y_lkt0,2,1 -1 y_lkt0,3,1 -1 y_lkt1,2,1 -1 y_lkt1,3,1 = +0
- cons_3: +1 z_pt1,2 -1 y_lkt1,2,2 -1 y_lkt1,3,2 -1 y_lkt2,2,2 -1 y_lkt2,3,2 = +0
- cons_3: +1 z_pt1,3 -1 y_lkt2,2,3 -1 y_lkt2,3,3 = +0
- cons_3: +1 z_pt1,4 = +0
- cons_4: +1 z0_pt0,0 -1 y0_kt0,0 -1 y0_kt1,0 = +0
- cons_4: +1 z0_pt0,1 -1 y0_kt0,1 -1 y0_kt1,1 = +0
- cons_4: +1 z0_pt0,2 -1 y0_kt0,2 -1 y0_kt1,2 = +0
- cons_4: +1 z0_pt0,3 -1 y0_kt0,3 -1 y0_kt1,3 = +0
- cons_4: +1 z0_pt0,4 -1 y0_kt0,4 -1 y0_kt1,4 = +0
- cons_4: +1 z0_pt1,0 -1 y0_kt2,0 -1 y0_kt3,0 = +0
- cons_4: +1 z0_pt1,1 -1 y0_kt2,1 -1 y0_kt3,1 = +0
- cons_4: +1 z0_pt1,2 -1 y0_kt2,2 -1 y0_kt3,2 = +0
- cons_4: +1 z0_pt1,3 -1 y0_kt2,3 -1 y0_kt3,3 = +0
- cons_4: +1 z0_pt1,4 -1 y0_kt2,4 -1 y0_kt3,4 = +0
- cons_5: +1 z_pt0,0 +1 z0_pt0,0 +1 z_pt1,0 +1 z0_pt1,0 <= +1
- cons_5: +1 z_pt0,1 +1 z0_pt0,1 +1 z_pt1,1 +1 z0_pt1,1 <= +1
- cons_5: +1 z_pt0,2 +1 z0_pt0,2 +1 z_pt1,2 +1 z0_pt1,2 <= +1
- cons_5: +1 z_pt0,3 +1 z0_pt0,3 +1 z_pt1,3 +1 z0_pt1,3 <= +1
- cons_5: +1 z_pt0,4 +1 z0_pt0,4 +1 z_pt1,4 +1 z0_pt1,4 <= +1
+ cons_3,0,0: +1 z_pt0,0 -1 y_lkt0,0,0 -1 y_lkt0,1,0 = +0
+ cons_3,0,1: +1 z_pt0,1 -1 y_lkt0,0,1 -1 y_lkt0,1,1 -1 y_lkt1,0,1 -1 y_lkt1,1,1 = +0
+ cons_3,0,2: +1 z_pt0,2 -1 y_lkt1,0,2 -1 y_lkt1,1,2 -1 y_lkt2,0,2 -1 y_lkt2,1,2 = +0
+ cons_3,0,3: +1 z_pt0,3 -1 y_lkt2,0,3 -1 y_lkt2,1,3 = +0
+ cons_3,0,4: +1 z_pt0,4 = +0
+ cons_3,1,0: +1 z_pt1,0 -1 y_lkt0,2,0 -1 y_lkt0,3,0 = +0
+ cons_3,1,1: +1 z_pt1,1 -1 y_lkt0,2,1 -1 y_lkt0,3,1 -1 y_lkt1,2,1 -1 y_lkt1,3,1 = +0
+ cons_3,1,2: +1 z_pt1,2 -1 y_lkt1,2,2 -1 y_lkt1,3,2 -1 y_lkt2,2,2 -1 y_lkt2,3,2 = +0
+ cons_3,1,3: +1 z_pt1,3 -1 y_lkt2,2,3 -1 y_lkt2,3,3 = +0
+ cons_3,1,4: +1 z_pt1,4 = +0
+ cons_4,0,0: +1 z0_pt0,0 = +0
+ cons_4,0,1: +1 z0_pt0,1 = +0
+ cons_4,0,2: +1 z0_pt0,2 = +0
+ cons_4,0,3: +1 z0_pt0,3 = +0
+ cons_4,0,4: +1 z0_pt0,4 = +0
+ cons_4,1,0: +1 z0_pt1,0 = +0
+ cons_4,1,1: +1 z0_pt1,1 = +0
+ cons_4,1,2: +1 z0_pt1,2 = +0
+ cons_4,1,3: +1 z0_pt1,3 = +0
+ cons_4,1,4: +1 z0_pt1,4 = +0
+ cons_5,0: +1 z_pt0,0 +1 z0_pt0,0 +1 z_pt1,0 +1 z0_pt1,0 <= +1
+ cons_5,1: +1 z_pt0,1 +1 z0_pt0,1 +1 z_pt1,1 +1 z0_pt1,1 <= +1
+ cons_5,2: +1 z_pt0,2 +1 z0_pt0,2 +1 z_pt1,2 +1 z0_pt1,2 <= +1
+ cons_5,3: +1 z_pt0,3 +1 z0_pt0,3 +1 z_pt1,3 +1 z0_pt1,3 <= +1
+ cons_5,4: +1 z_pt0,4 +1 z0_pt0,4 +1 z_pt1,4 +1 z0_pt1,4 <= +1
  cons_6: +1 q_t0 = +0
  cons_7: +1 q_t4 -1 q_t0 >= +0
- cons_8: +1 q_t1 -1 q_t0 +8 y_lkt0,0,0 +3 y_lkt0,1,0 +3 y_lkt0,2,0 -992 y_lkt0,3,0 -992 y0_kt3,0 = +0
- cons_8: +1 q_t2 -1 q_t1 +8 y_lkt0,0,1 +3 y_lkt0,1,1 +3 y_lkt0,2,1 -992 y_lkt0,3,1 -992 y0_kt3,1 +10 y_lkt1,0,1
-  +5 y_lkt1,1,1 +5 y_lkt1,2,1 -990 y_lkt1,3,1 -990 y0_kt3,1 = +0
- cons_8: +1 q_t3 -1 q_t2 +10 y_lkt1,0,2 +5 y_lkt1,1,2 +5 y_lkt1,2,2 -990 y_lkt1,3,2 -990 y0_kt3,2 +4 y_lkt2,0,2
-  -1 y_lkt2,1,2 -1 y0_kt1,2 -1 y_lkt2,2,2 -1 y0_kt2,2 -996 y_lkt2,3,2 -996 y0_kt3,2 = +0
- cons_8: +1 q_t4 -1 q_t3 +4 y_lkt2,0,3 -1 y_lkt2,1,3 -1 y0_kt1,3 -1 y_lkt2,2,3 -1 y0_kt2,3 -996 y_lkt2,3,3
-  -996 y0_kt3,3 = +0
- cons_9: +8 y_lkt0,0,0 +8 y_lkt0,1,0 +8 y_lkt0,2,0 +8 y_lkt0,3,0 -2 x_it0,0 -6 x_it2,0 = +0
- cons_9: +8 y_lkt0,0,1 +8 y_lkt0,1,1 +8 y_lkt0,2,1 +8 y_lkt0,3,1 +10 y_lkt1,0,1 +10 y_lkt1,1,1 +10 y_lkt1,2,1
+ cons_8,0: +1 q_t1 -1 q_t0 +8 y_lkt0,0,0 +3 y_lkt0,1,0 +3 y_lkt0,2,0 -992 y_lkt0,3,0 = +0
+ cons_8,1: +1 q_t2 -1 q_t1 +8 y_lkt0,0,1 +3 y_lkt0,1,1 +3 y_lkt0,2,1 -992 y_lkt0,3,1 +10 y_lkt1,0,1 +5 y_lkt1,1,1
+  +5 y_lkt1,2,1 -990 y_lkt1,3,1 = +0
+ cons_8,2: +1 q_t3 -1 q_t2 +10 y_lkt1,0,2 +5 y_lkt1,1,2 +5 y_lkt1,2,2 -990 y_lkt1,3,2 +4 y_lkt2,0,2 -1 y_lkt2,1,2
+  -1 y_lkt2,2,2 -996 y_lkt2,3,2 = +0
+ cons_8,3: +1 q_t4 -1 q_t3 +4 y_lkt2,0,3 -1 y_lkt2,1,3 -1 y_lkt2,2,3 -996 y_lkt2,3,3 = +0
+ cons_9,0: +8 y_lkt0,0,0 +8 y_lkt0,1,0 +8 y_lkt0,2,0 +8 y_lkt0,3,0 -2 x_it0,0 -6 x_it2,0 = +0
+ cons_9,1: +8 y_lkt0,0,1 +8 y_lkt0,1,1 +8 y_lkt0,2,1 +8 y_lkt0,3,1 +10 y_lkt1,0,1 +10 y_lkt1,1,1 +10 y_lkt1,2,1
   +10 y_lkt1,3,1 -2 x_it0,1 -4 x_it1,1 -6 x_it2,1 = +0
- cons_9: +10 y_lkt1,0,2 +10 y_lkt1,1,2 +10 y_lkt1,2,2 +10 y_lkt1,3,2 +4 y_lkt2,0,2 +4 y_lkt2,1,2 +4 y_lkt2,2,2
+ cons_9,2: +10 y_lkt1,0,2 +10 y_lkt1,1,2 +10 y_lkt1,2,2 +10 y_lkt1,3,2 +4 y_lkt2,0,2 +4 y_lkt2,1,2 +4 y_lkt2,2,2
   +4 y_lkt2,3,2 -4 x_it1,2 -6 x_it2,2 -4 x_it3,2 = +0
- cons_9: +4 y_lkt2,0,3 +4 y_lkt2,1,3 +4 y_lkt2,2,3 +4 y_lkt2,3,3 -4 x_it3,3 = +0
- cons_9: = +0
+ cons_9,3: +4 y_lkt2,0,3 +4 y_lkt2,1,3 +4 y_lkt2,2,3 +4 y_lkt2,3,3 -4 x_it3,3 = +0
+ cons_9,4: = +0
 Bounds
  0 <= x_it0,0 <= 1
  0 <= x_it0,1 <= 1
