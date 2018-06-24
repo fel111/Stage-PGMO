@@ -7,7 +7,7 @@
 #include <chrono>
 //#include "scip/scip.h"
 //#include "scip/scipdefplugins.h"
-#include "struct.h"
+#include "../struct.h"
 //#include "compact.h"
 #include <ilcplex/ilocplex.h>
 //#define SCIP_DEBUG
@@ -157,8 +157,11 @@ if(p.taches_avec_fenetre_temps == 1){
 	}
 
     model.add(st[d.cardT-1]-d.s0 >= 0);
-	model.add(st[0] == 0);
+	//model.add(st[0] == 0);
 
+
+	cout << "s0 = "<<d.s0<<endl;
+	cout << "qmax = "<<d.Q<<endl;
 	auto start_time = chrono::steady_clock::now();
     cplex.solve();
 	auto end_time = chrono::steady_clock::now();
@@ -197,6 +200,7 @@ if(p.taches_avec_fenetre_temps == 1){
 	}
 
     env.end();
+
     return sol;
 }
 

@@ -48,7 +48,7 @@ void firstSol(structGenCol & sGC){
             l.id = cptId;
             l.timeGen = t; 
             l.tasksList = taskList;
-            if(checkSet(l,sGC)){
+            if(checkSet(l,sGC)==-1){
                 sGC.L.push_back(l);
                 sGC.cardL = sGC.L.size();
                 addSetK_l(l,sGC);
@@ -70,7 +70,7 @@ int initData(structGenCol & sGC){
 	d.s0 = 0;
 	d.cardM = 1;
     string param = "param1.txt";
-    string instance = "inst_test";
+    string instance = "inst_test2";
 	if(lecteur_param("Param/"+param,p) == 0) return 0;
 	d.Q = 20;
 	p.qmax = 20;
@@ -78,8 +78,6 @@ int initData(structGenCol & sGC){
 	p.qinit = 0;
 	
 	lecteur_taches_EnergSchedInst("Donnees/dataSchedulingInstances_newname/"+instance,d);
-
-	initCap(d,p);
 
     for(int i=0;i<d.cardT;++i){
         
@@ -89,9 +87,9 @@ int initData(structGenCol & sGC){
 
 		//vector<float> temp_bpt = {0.0,4.0,8.0,100.0,infini};
 		//vector<float> temp_valbpt = {0.0,4.0,6.0,190.0};
-		vector<float> temp_bpt = {0.0,5.0,5.0,1000.0};
-		vector<float> temp_valbpt = {0.0,10.0,10.0,3000.0};
-		vector<float> temp_pente = {2.0,0.5,2.0};
+		vector<float> temp_bpt = {0.0,5.0,5.0,100.0};
+		vector<float> temp_valbpt = {0.0,10.0,10.0,152.5};
+		vector<float> temp_pente = {2.0,1.5};
 		d.pente.push_back(temp_pente);
 		d.bpt.push_back(temp_bpt);
 		d.valbpt.push_back(temp_valbpt);
@@ -121,6 +119,9 @@ int initData(structGenCol & sGC){
         sGC.a_il.push_back(ailtemp);
     }
 
+    //initialisatin P_0
+    addP_0(sGC);
+
 }
 
 
@@ -135,9 +136,9 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
 	firstSol(sGC);
 	//cout <<"firstSol OK ! "<<endl;
 	
-	//affK_l(sGC);
-	//affL_t(sGC);
-	//affAllSet(sGC);
+	affK_l(sGC);
+	affL_t(sGC);
+	affAllSet(sGC);
 	
 
 
@@ -178,15 +179,15 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
     }
     
     // export modele dernier PMR
-    /*FILE * filed;
-	filed = fopen("lastPMR", "a+");
+    //FILE * filed;
+	//filed = fopen("lastPMR", "a+");
 	SCIPprintTransProblem(sGC.scip, NULL, "lp", 0);
-    fclose(filed);*/
+    //fclose(filed);
 
 
     cout << "------sol SCIP------"<<endl;
     // aff solution
-    SCIPprintSol(sGC.scip, sGC.sol, NULL, 0);
+    SCIPprintSol(sGC.scip, sGC.sol, NULL, 1);
 
     // Get the current scip solving time in seconds.
     //cout << "temps scip : "<<SCIPgetSolvingTime(sGC.scip) <<endl;
@@ -227,8 +228,8 @@ int main(){
     modifPwlCplex(sGC);
     float ftemp;
     string stemp;
-    //float solCompactCPX = modele_entier_cplex(sGC.d,sGC.p,ftemp,ftemp,stemp);
-    //cout << "sol compact : " << solCompactCPX << endl;
+    float solCompactCPX = modele_entier_cplex(sGC.d,sGC.p,ftemp,ftemp,stemp);
+    cout << "sol compact : " << solCompactCPX << endl;
 
     return 0;
 }

@@ -1,4 +1,3 @@
 *.o
 slurmouts_relax/
 slurmouts_sansrelax/
-Donnees/

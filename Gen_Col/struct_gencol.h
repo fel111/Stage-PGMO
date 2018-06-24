@@ -33,7 +33,11 @@ struct structGenCol{
 
     vector<vector<int> > K_l;
 
+    vector<vector<int> > P_l;
+
     vector<vector<int> > a_il;
+
+    vector<int> P_0;
     // variables pour generation colonnes
     vector<vector<vector<SCIP_VAR *> > > varY_lkt;
     vector<vector<SCIP_VAR *> > varY0_kt;
@@ -63,9 +67,11 @@ struct structGenCol{
 
 
 float cl(int k, int l, structGenCol const& sGC);
+void addP_0(structGenCol & sGC);
 void addL_t(feasibleSet const& l, structGenCol & sGC);
 void addA_il(feasibleSet const& l, structGenCol & sGC);
 void addSetK_l(feasibleSet const& l, structGenCol & sGC);
+void addP_l(feasibleSet const& l, structGenCol & sGC);
 int checkSet(feasibleSet const& l, structGenCol const& sGC);
 void affAllSet(structGenCol const& sGC);
 void affL_t(structGenCol const& sGC);

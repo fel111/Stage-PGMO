@@ -95,14 +95,31 @@ int checkSet(feasibleSet const& l, structGenCol const& sGC){
     return -1;
 }
 
-void addSetK_l(feasibleSet const& l, structGenCol & sGC){
+/*void addSetK_l(feasibleSet const& l, structGenCol & sGC){
     vector<int> k;
     for(int p=0; p<(sGC.d.nb_bp[0]/2); ++p){
         if((sGC.d.bpt[0][p*2+1] - l.energyDemand) >= -sGC.p.qmax) k.push_back(p*2);
         if(sGC.d.bpt[0][p*2] - l.energyDemand <= sGC.p.qmax) k.push_back(p*2+1);
     }
     sGC.K_l.push_back(k);
+}*/
+
+// correction 
+void addSetK_l(feasibleSet const& l, structGenCol & sGC){
+    vector<int> k;
+	vector<int> pl;
+    for(int p=0; p<(sGC.d.nb_bp[0]/2); ++p){
+		if((sGC.d.bpt[0][p*2] - l.energyDemand <= sGC.p.qmax)&&(l.energyDemand - sGC.d.bpt[0][p*2+1] <= sGC.p.qmax)){
+			k.push_back(p*2);
+			k.push_back(p*2+1);
+			pl.push_back(1);
+		}
+		else pl.push_back(0);
+    }
+    sGC.K_l.push_back(k);
+	sGC.P_l.push_back(pl);
 }
+
 
 void addA_il(feasibleSet const& l, structGenCol & sGC){
     for(int j=0; j<sGC.d.cardJ; ++j){
@@ -120,13 +137,22 @@ void addL_t(feasibleSet const& l, structGenCol & sGC){
 	}
 }
 
-void modifPwlCplex(structGenCol & sGC){ // a rendre generique selon les pwl
-
-	for(int i=0;i<sGC.d.cardT;++i){
-		sGC.d.bpt[i] = {0.0,5.0,1000.0};
-		sGC.d.valbpt[i] = {0.0,10.0,3000.0};
-		sGC.d.pente[i] = {2.0,2.1};
-		sGC.d.nb_bp.push_back(2);
-
+void addP_0(structGenCol & sGC){
+	vector<int> p0;
+	for(int p=0; p<(sGC.d.nb_bp[0]/2); ++p){
+		if(sGC.d.bpt[0][p*2] <= sGC.p.qmax) p0.push_back(1);
+		else p0.push_back(0);
 	}
+	sGC.P_0 = p0;
+}
+
+void modifPwlCplex(structGenCol & sGC){ // a rendre generique selon les pwl
+	vector<int> nbtemp;
+	for(int i=0;i<sGC.d.cardT;++i){
+		sGC.d.bpt[i] = {0.0,5.0,100.0};
+		sGC.d.valbpt[i] = {0.0,10.0,152.5};
+		sGC.d.pente[i] = {2.0,1.5};
+		nbtemp.push_back(2);
+	}
+	sGC.d.nb_bp = nbtemp;
 }
