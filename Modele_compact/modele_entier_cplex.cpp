@@ -33,7 +33,7 @@ float modele_entier_cplex(data const& d, param const& p, float &tps, float &born
 	IloNumVarArray xt (env,d.cardT,0,IloInfinity,ILOFLOAT);
 
     //ajout variables st de stock
-    IloNumVarArray st (env,d.cardT,0.0,d.Q,ILOFLOAT);
+    IloNumVarArray st (env,d.cardT+1,0.0,d.Q,ILOFLOAT);
 
 
 	//ajout variables y_jkt binaires
@@ -139,7 +139,7 @@ if(p.taches_avec_fenetre_temps == 1){
 	}
 
 	// xt -st +st-1 - sum_j sum_k Djk*yjkt - sum_k Dk*zkt = 0
-	
+	/*
     
     for(int t=0; t<d.cardT; ++t){
 		IloExpr sum1(env);
@@ -154,10 +154,28 @@ if(p.taches_avec_fenetre_temps == 1){
 		}
         if(t!=0) model.add(xt[t]-st[t]+st[t-1]-sum1-sum2 == 0);
         else model.add(xt[t]-st[t]+d.s0-sum1-sum2 == 0);
+	}*/
+
+	// st+1 - st - xt + conso
+	for(int t=0; t<d.cardT; ++t){
+		IloExpr sum1(env);
+        for(int j=0; j<d.cardJ; ++j){
+			for(int k=0; k<d.cardM; ++k){
+				sum1 += d.Djk[j][k]*y_jkt[j][k][t];
+			}
+		}
+        IloExpr sum2(env);
+		for(int k=0; k<d.cardM; ++k){
+			sum2 += d.Dk[k]*z_kt[k][t];
+		}
+        //if(t!=0) model.add(xt[t]-st[t]+st[t-1]-sum1-sum2 == 0);
+        //else model.add(xt[t]-st[t]+d.s0-sum1-sum2 == 0);
+		model.add(st[t+1]-st[t]-xt[t]+sum1+sum2 == 0);
 	}
 
-    model.add(st[d.cardT-1]-d.s0 >= 0);
-	//model.add(st[0] == 0);
+	model.add(st[0] == d.s0);
+    model.add(st[d.cardT]-st[0] >= 0);
+	//
 
 
 	cout << "s0 = "<<d.s0<<endl;
@@ -178,8 +196,19 @@ if(p.taches_avec_fenetre_temps == 1){
 		status = "Optimal";
 		borneinf = cplex.getBestObjValue();
 		sol = cplex.getObjValue();
-		/*cout << "------------ CPLEX SOL ----------"<<endl;
-		for(int t=0; t<d.cardT; ++t){
+		//cout << "------------ CPLEX SOL ----------"<<endl;
+		/*for(int t=0; t<d.cardT; ++t){
+			if(cplex.getValue(xt[t])> 0) cout << "xt" << t << ": " <<cplex.getValue(xt[t]) << endl;
+			if(cplex.getValue(ct[t]) > 0) cout << "ct" << t << ": " <<cplex.getValue(ct[t]) << endl;
+			if(cplex.getValue(st[t]) > 0 ) cout << "st" << t << ": " <<cplex.getValue(st[t]) << endl;
+			for(int k=0; k<d.cardM; ++k){
+				if(cplex.getValue(z_kt[k][t]) > 0.5) cout << "zkt" << k << t << ": " <<cplex.getValue(z_kt[k][t]) << endl;
+				for(int j=0; j<d.cardJ; ++j){
+					if(cplex.getValue(y_jkt[j][k][t]) > 0.5) cout << "yjkt" << j << k<<t << ": " <<cplex.getValue(y_jkt[j][k][t]) << endl;
+				}
+			}
+		}*/
+		/*for(int t=6; t<8; ++t){
 			cout << "xt" << t << ": " <<cplex.getValue(xt[t]) << endl;
 			cout << "ct" << t << ": " <<cplex.getValue(ct[t]) << endl;
 			cout << "st" << t << ": " <<cplex.getValue(st[t]) << endl;
@@ -199,6 +228,7 @@ if(p.taches_avec_fenetre_temps == 1){
 		sol = -1.0;
 	}
 
+	cplex.exportModel("cplexmodelecompact.lp");
     env.end();
 
     return sol;

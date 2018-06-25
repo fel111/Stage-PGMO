@@ -22,10 +22,15 @@ struct feasibleSet{
 struct structGenCol{
     int todelete;
 
+    float tpsSP= 0.0;
+    float tpsPM= 0.0;
+    float tpsPricer=0.0;
+
     data d;
     param p;
     SCIP *scip;
-    int nbconstmodele, nbvarmodele, nbcolgenerated;
+    int nbcolgenerated=0;
+    int cptPricer=0;
     vector<feasibleSet> L;
     int cardL;
 
@@ -58,7 +63,7 @@ struct structGenCol{
     vector<double> delta_t;
     vector<double> phi_t;
 
-    int time;
+    //int time;
 
     SCIP_SOL * sol;
 

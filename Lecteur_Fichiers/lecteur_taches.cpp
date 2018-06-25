@@ -71,8 +71,9 @@ void lecteur_taches_EnergSchedInst(string file, data &d){ //bool precise si l'on
         getline(fichier,ligne);
         istringstream iss1 (ligne);
         iss1 >> cardJ;
+        int cpt=0;
         vector<vector<float> > cjr (cardJ, vector<float> (2,1.0));
-		while(getline(fichier,ligne)){ // tant que l'on peut lire une ligne
+		while((getline(fichier,ligne))&&(cpt<cardJ)){ // tant que l'on peut lire une ligne
 			istringstream iss2 (ligne);
 			iss2 >> conso >> duree >> releasedate >> duedate;
             if(duedate > cardT) cardT = duedate;
@@ -84,6 +85,7 @@ void lecteur_taches_EnergSchedInst(string file, data &d){ //bool precise si l'on
             pj.push_back(duree);
             rj.push_back(releasedate);
             dj.push_back(duedate);
+            ++cpt;
 		}
 		d.Djk = Djk;
         d.cjr = cjr;

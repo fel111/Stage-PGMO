@@ -6,7 +6,7 @@
 //#include <limits>
 //#include <math.h>
 //#include <algorithm>
-//#include <chrono>
+#include <chrono>
 //#include <deque>
 #include "scip/scip.h"
 #include "scip/scipdefplugins.h"
@@ -57,7 +57,7 @@ bool verifSol(structGenCol const& sGC){
  *
  * \return status: a variable of type SCIP_RETCODE, equal to SCIP_OKAY if everything went well
  */
-SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,IloNumArray valVk,int time){
+SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,IloNumArray valVk,int timedd){
 	SCIP_RETCODE status = SCIP_ERROR; // devrait etre modifie lors de l ajout d une colonne, sinon erreur
 	//vector<Task> listeTask;
 	vector<int> taskList;
@@ -88,7 +88,7 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,IloNumA
 
     if(taskList.size() > 0){
         l.id = sGC.L.size();
-        l.timeGen = time; 
+        l.timeGen = timedd; 
         l.tasksList = taskList;
         int testPres = checkSet(l,sGC);
         int id;
@@ -102,40 +102,41 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,IloNumA
         }
         else id = testPres;
         // Creation de la nouvelle variable pour le moment t obtenu a l issu du sous probleme
-        string name = "y_lkt"+to_string(id)+","+to_string(k)+","+to_string(time);
-        cout <<"ajout variable "+name<<endl;
+        string name = "y_lkt"+to_string(id)+","+to_string(k)+","+to_string(timedd);
+        //cout <<"ajout variable "+name<<endl;
         SCIP_VAR * var;
         SCIPcreateVarBasic(sGC.scip, &var, name.c_str() ,0,SCIPinfinity(sGC.scip),sGC.d.valbpt[0][k],SCIP_VARTYPE_CONTINUOUS);
         for(const auto& j : taskList){
             //Mise a jour cons1
-            //cout<<"j : "<<j<<" time : "<<sGC.time<<" rj : "<<sGC.d.rj[j] << " dj : "endl;
+            //cout<<"j : "<<j<<" timedd : "<<sGC.timedd<<" rj : "<<sGC.d.rj[j] << " dj : "endl;
             //SCIPprintCons(sGC.scip,sGC.cons_1[j][sGC.time-sGC.d.rj[j]],NULL);
-            SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_1[j][time-sGC.d.rj[j]],var,-1));
+            SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_1[j][timedd-sGC.d.rj[j]],var,-1));
             // Mise a jour cons2
             SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_2[j],var,1));
         }
         // Mise a jour cons3
-        SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_3[k/2][time],var,-1));
+        SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_3[k/2][timedd],var,-1));
         // Mise a jour cons8
         //cout<<"contrainte 8 : l.energyDemand-sGC.d.bpt[0][k] = "<<l.energyDemand-sGC.d.bpt[0][k]<<endl;
-        SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_8[time],var,l.energyDemand-sGC.d.bpt[0][k]));
+        SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_8[timedd],var,l.energyDemand-sGC.d.bpt[0][k]));
         // Mise a jour cons9
-        SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_9[time],var,l.energyDemand));
+        SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_9[timedd],var,l.energyDemand));
         SCIP_CALL(status = SCIPaddPricedVar(sGC.scip, var, 1.0));
         // ???????????? START
-        cout << "cout reduit de colonne ajoutee : "<<SCIPgetVarRedcost(sGC.scip,var)<<endl;
+        //assert( SCIPisLT(sGC.scip,SCIPgetVarRedcost(sGC.scip,var),0) );
         // ??????????? END
         if(testPres==-1){
             vector<vector<SCIP_VAR*> > tab (sGC.d.nb_bp[0], vector<SCIP_VAR*> (sGC.d.cardT, NULL));
-            tab[k][time] = var;
+            tab[k][timedd] = var;
             sGC.varY_lkt.push_back(tab);
         }
         else{
-            sGC.varY_lkt[id][k][time] = var;
+            sGC.varY_lkt[id][k][timedd] = var;
         }
+        sGC.nbcolgenerated++;
 
         // PARTIE AJOUT COLONNE Y_LHT, AVEC H LE BREAKPOINT VOISIN DE K
-        int k2;
+        /*int k2;
         if(k%2==0) k2=k+1;
         else k2=k-1; 
         if((testPres==-1)||((testPres!=-1)&&(sGC.varY_lkt[id][k2][time]==NULL))){
@@ -158,9 +159,10 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,IloNumA
             // Mise a jour cons9
             SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_9[time],var2,l.energyDemand));
             SCIP_CALL(status = SCIPaddPricedVar(sGC.scip, var2, 1.0));
+            sGC.nbcolgenerated++;
             // ???????????? START
-            cout << "cout reduit de colonne ajoutee : "<<SCIPgetVarRedcost(sGC.scip,var2)<<endl;
-        }
+            //cout << "cout reduit de colonne ajoutee : "<<SCIPgetVarRedcost(sGC.scip,var2)<<endl;
+        }*/
         return status;
     }
     /*else{ //cas pas de tâches donc variable y0_kt
@@ -197,7 +199,7 @@ Then the column (subset of tasks) is added to the restricted master problem with
  */
 SCIP_RESULT Pr_SP1(structGenCol &sGC){
 	
-    sGC.time = 0;
+    int timedd = 0;
     double objfctvalue = 0.0;
     int statusint = 0;
     bool colgen = false;
@@ -205,7 +207,7 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
     SCIP_RESULT status = SCIP_SUCCESS;
 	SCIP_RETCODE status1 = SCIP_ERROR;
     
-    while((sGC.time<sGC.d.cardT)&&(!stop)){
+    while((timedd<sGC.d.cardT)&&(!stop)){
 
         IloEnv env;
         IloModel model(env);
@@ -226,17 +228,17 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
         IloExpr sum_i1(env);
         IloExpr sum_i2(env);
         for(int i=0; i<sGC.d.cardJ;++i){
-			//cout << i << "    " << sGC.d.rj[i] << " <= " << sGC.time<<" && "<< sGC.time<<" < " <<sGC.d.dj[i]<<endl;
-            if((sGC.d.rj[i]<=sGC.time)&&(sGC.time<sGC.d.dj[i])){
+			//cout << i << "    " << sGC.d.rj[i] << " <= " << timedd<<" && "<< timedd<<" < " <<sGC.d.dj[i]<<endl;
+            if((sGC.d.rj[i]<=timedd)&&(timedd<sGC.d.dj[i])){
                 sum_i1 += sGC.d.Djk[i][0]*u_i[i]; //sum bi ui
                 //???
                 //cout << "alpha : "<<sGC.alpha_it[i] << endl;
-                //cout << "time" << sGC.time << endl;
+                //cout << "time" << timedd << endl;
                 sum_i2 += u_i[i] * (sGC.beta_i[i] //sum_i obj
-                    - sGC.alpha_it[i][sGC.time-sGC.d.rj[i]] 
+                    - sGC.alpha_it[i][timedd-sGC.d.rj[i]] 
                     + sGC.d.Djk[i][0] 
-                        * (sGC.delta_t[sGC.time]
-                           + sGC.phi_t[sGC.time]));
+                        * (sGC.delta_t[timedd]
+                           + sGC.phi_t[timedd]));
             }
             else model.add(u_i[i] <= 0);
         }
@@ -262,7 +264,7 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
                 sum_k2 += sGC.d.bpt[0][k]*v_k[k];
             }
             sum_k3 += v_k[k];
-            sum_k4 += (sGC.d.valbpt[0][k] + sGC.gamma_pt[k/2][sGC.time] + sGC.d.bpt[0][k]*sGC.delta_t[sGC.time])*v_k[k];
+            sum_k4 += (sGC.d.valbpt[0][k] + sGC.gamma_pt[k/2][timedd] + sGC.d.bpt[0][k]*sGC.delta_t[timedd])*v_k[k];
         }
 
         IloExpr obj(env);
@@ -273,8 +275,11 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
         model.add(sum_k3 == 1);
         model.add(IloMaximize(env, obj));
         
-		cplex.exportModel("cplexmodele.lp");
+		//cplex.exportModel("cplexmodele.lp");
 		
+        // cout << "after model creation to delete" << endl;
+
+        auto start_time = chrono::steady_clock::now();
         if (!cplex.solve()){
             cout << "Failed to optimize LP." << endl;
             statusint = -1;
@@ -282,6 +287,11 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
             cout << cplex.getCplexStatus() << endl;
             cout <<	cplex.getCplexSubStatus() << endl;
         }
+
+        // cout << "after model solve to delete" << endl;
+
+        auto end_time = chrono::steady_clock::now();
+        sGC.tpsSP += chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
         if(cplex.getStatus() != IloAlgorithm::Optimal){
             cerr << "Cplex did not find the optimal solution for the subproblem !!!!!!!!!! " << endl;
             cout << "elapsed time=" << SCIPgetSolvingTime(sGC.scip) << endl;
@@ -315,19 +325,19 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
                 }
                 cout<<"time = "<<sGC.time<<endl;*/
                 status = SCIP_SUCCESS;
-                cout << "cout reduit SP CPLEX : " << objfctvalue << endl;
-                status1 = addObjectColumnInModel(sGC,valUi,valVk,sGC.time);
+                //cout << "cout reduit SP CPLEX : " << objfctvalue << endl;
+                status1 = addObjectColumnInModel(sGC,valUi,valVk,timedd);
                 assert(status1==1);
-                sGC.time++;
+                timedd++;
                 //assert(pbdata.time - inittime >= 0);
                 //cpteur = cpteur + (pbdata.time - inittime);
                 //if(pbdata.Params.MULTIPLE_ENSEMBLE==0)
                 stop = true;
             }else
             {   
-                cout << "Cout reduit non négatif au temps "<<sGC.time<< endl;
+                //cout << "Cout reduit non négatif au temps "<<timedd<< endl;
                 status = SCIP_SUCCESS;
-                sGC.time++;
+                timedd++;
                 //cpteur = cpteur + 1;
             }
         }
@@ -336,32 +346,51 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
             else status = SCIP_SUCCESS;
             stop = true;
         }
-
         env.end();
     }
+    //if((!colgen)&&(sGC.todelete == 0)){
     // ??????????????? START SECTION TO DELETE
-    /*if((!colgen)&&(sGC.todelete == 0)){
+    if((!colgen)&&(sGC.todelete == 0)){
         IloEnv env;
 
         //ajout y320
-        IloNumArray valUi3(env, 4, 0., 0., 1.,0.);
-        IloNumArray valVk2(env, 4, 0., 0., 1.,0.);
+        IloNumArray valUi1(env, 10, 1, 1, 0,1,0,1,0,1,0,0);
+        IloNumArray valUi2(env, 10, 1,0,0,0,0,0,0,1,1,0);
+        IloNumArray valUi3(env, 10, 1,0,0,0,1,1,0,0,1,1);
+        IloNumArray valUi4(env, 10, 1,0,0,0,0,0,0,0,0,0);
+        IloNumArray valUi5(env, 10, 0,0,1,0,0,1,1,0,0,0);
+        IloNumArray valUi6(env, 10, 1,0,1,0,0,1,1,0,1,1);
+        IloNumArray valUi7(env, 10, 1,0,1,0,0,0,0,0,0,0);
+        IloNumArray valUi8(env, 10, 0,0,1,0,0,0,1,0,0,0);
+        IloNumArray valUi9(env, 10, 0,0,1,0,0,0,0,0,0,0);
+        IloNumArray valVk1(env, 4, 1., 0., 0.,0.);
+        IloNumArray valVk2(env, 4, 0., 1., 0.,0.);
+        IloNumArray valVk3(env, 4, 0., 0., 1.,0.);
+        IloNumArray valVk4(env, 4, 0., 0., 0.,1.);
         cout << "------------------ ADD COLONNE "<<endl;
-        addObjectColumnInModel(sGC,valUi3,valVk2,0);
-        
-        //ajout y421
-        IloNumArray valUi4(env, 4, 1., 1., 0.,0.);
-        cout << "------------------ ADD COLONNE "<<endl;
-        addObjectColumnInModel(sGC,valUi4,valVk2,1);
-        
-        //ajout y322 y332
-        IloNumArray valVk3(env, 4, 0., 0., 0.,1.);
-        cout << "------------------ ADD COLONNE "<<endl;
-        addObjectColumnInModel(sGC,valUi3,valVk3,2);
+        addObjectColumnInModel(sGC,valUi1,valVk3,1);
+        addObjectColumnInModel(sGC,valUi1,valVk4,1);
+        //addObjectColumnInModel(sGC,valUi2,valVk3,2);
+        //addObjectColumnInModel(sGC,valUi2,valVk4,2);
+        //addObjectColumnInModel(sGC,valUi3,valVk3,3);
+        //addObjectColumnInModel(sGC,valUi3,valVk4,3);
+        //addObjectColumnInModel(sGC,valUi4,valVk3,4);
+        //addObjectColumnInModel(sGC,valUi4,valVk4,4);
+        addObjectColumnInModel(sGC,valUi5,valVk3,5);
+        addObjectColumnInModel(sGC,valUi5,valVk4,5);
+        addObjectColumnInModel(sGC,valUi6,valVk3,6);
+        addObjectColumnInModel(sGC,valUi6,valVk4,6);
+        addObjectColumnInModel(sGC,valUi7,valVk1,7);
+        addObjectColumnInModel(sGC,valUi7,valVk2,7);
+        /*addObjectColumnInModel(sGC,valUi8,valVk3,8);
+        addObjectColumnInModel(sGC,valUi8,valVk4,8);
+        addObjectColumnInModel(sGC,valUi9,valVk3,9);
+        addObjectColumnInModel(sGC,valUi9,valVk4,9);*/
+
 
         sGC.todelete = 1;
         env.end();
-    }*/
+    }
     
  
 
@@ -391,13 +420,14 @@ SCIP_DECL_PRICERREDCOST(pricerRedcost)
 	assert(pricer != NULL);
 	probdata = SCIPgetProbData(scip);
 	pbdata = (structGenCol*) probdata;
-	//pbdata->tempsPricer -= (double) clock()/CLOCKS_PER_SEC;
+	auto start_time = chrono::steady_clock::now();
 	//int duration = pbdata->instance.getDeadLine()-pbdata->instance.getReleaseTime();
 
 	/*if(pbdata->Params.ACTIVATE_VERIF==1){
 		assert(Pr_VerifSol(*pbdata,duration)==true);
 	}*/
-	//pbdata->attemptPrice = pbdata->attemptPrice + 1;
+	pbdata->cptPricer++;
+    cout << " nb pricer vars : "<< SCIPgetNPricevarsFound(scip) << "   nbcolgen :" << pbdata->nbcolgenerated << endl;
 	// --------------------------------------   recuperation des variables duales
     int fois = 0;
     for(int i=0; i<pbdata->d.cardJ; ++i){
@@ -448,8 +478,10 @@ SCIP_DECL_PRICERREDCOST(pricerRedcost)
 		sprintf(path1, "%s%s",pbdata->Params.PATH_PROBLEM,"NodeOfColumnGen.lp");
 		SCIP_CALL(status = SCIPwriteTransProblem(scip, path1, "lp", FALSE));
 	}
-	assert(status==1);
-	pbdata->tempsPricer += (double) clock()/CLOCKS_PER_SEC;*/
+	assert(status==1);*/
+	auto end_time = chrono::steady_clock::now();
+    pbdata->tpsPricer += chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
+
 	return SCIP_OKAY;
 }
 

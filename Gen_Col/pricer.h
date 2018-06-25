@@ -11,7 +11,7 @@ using namespace std;
 
 bool verifSol(structGenCol const& sGC);
 
-SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,IloNumArray valVk,int time);
+SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,IloNumArray valVk,int timedd);
 SCIP_RESULT Pr_SP1(structGenCol &sGC);
 static SCIP_DECL_PRICERREDCOST(pricerRedcost);
 static SCIP_DECL_PRICERINITSOL(pricerInitsolSP);

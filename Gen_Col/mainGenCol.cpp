@@ -70,7 +70,7 @@ int initData(structGenCol & sGC){
 	d.s0 = 0;
 	d.cardM = 1;
     string param = "param1.txt";
-    string instance = "inst_test2";
+    string instance = "inst_test3";
 	if(lecteur_param("Param/"+param,p) == 0) return 0;
 	d.Q = 20;
 	p.qmax = 20;
@@ -136,9 +136,9 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
 	firstSol(sGC);
 	//cout <<"firstSol OK ! "<<endl;
 	
-	affK_l(sGC);
-	affL_t(sGC);
-	affAllSet(sGC);
+	//affK_l(sGC);
+	//affL_t(sGC);
+	//affAllSet(sGC);
 	
 
 
@@ -177,6 +177,8 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
             if(SCIPgetSolVal(sGC.scip,sGC.sol,sGC.varX_it[j][t]) == 1) cout <<"tache "<<j<<" réalisée au temps "<<t<<endl;
         }
     }
+
+    
     
     // export modele dernier PMR
     //FILE * filed;
@@ -185,24 +187,25 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
     //fclose(filed);
 
 
-    cout << "------sol SCIP------"<<endl;
+    //cout << "------sol SCIP------"<<endl;
     // aff solution
-    SCIPprintSol(sGC.scip, sGC.sol, NULL, 1);
+    //SCIPprintSol(sGC.scip, sGC.sol, NULL, 1);
 
     // Get the current scip solving time in seconds.
     //cout << "temps scip : "<<SCIPgetSolvingTime(sGC.scip) <<endl;
-    cout << "temps gencol : "<<tpsgencol<<endl;
     
-    affAllSet(sGC);
+    
+    //affAllSet(sGC);
 
-    cout << "---------" << endl;
+    //cout << "---------" << endl;
 
-    for(int l=0; l<sGC.L.size(); ++l){
+    /*for(int l=0; l<sGC.L.size(); ++l){
         for(const auto& k : sGC.K_l[l]){
 		    for(int t=sGC.L[l].releaseTime; t<sGC.L[l].deadLine; ++t){
 	            if(sGC.varY_lkt[l][k][t] != NULL){
-                    if(SCIPgetSolVal(sGC.scip, sGC.sol,sGC.varY_lkt[l][k][t])>0) cout << "y"<<l<<","<<k<<","<<t<<" = "<<SCIPgetSolVal(sGC.scip, sGC.sol,sGC.varY_lkt[l][k][t])<<endl;
-			    }
+                    //if(SCIPisGT(sGC.scip,SCIPgetSolVal(sGC.scip, sGC.sol,sGC.varY_lkt[l][k][t]),0) ) cout << "y"<<l<<","<<k<<","<<t<<" = "<<SCIPgetSolVal(sGC.scip, sGC.sol,sGC.varY_lkt[l][k][t])<<endl;
+                    cout << "y"<<l<<","<<k<<","<<t<<" = "<<SCIPgetSolVal(sGC.scip, sGC.sol,sGC.varY_lkt[l][k][t])<<endl;
+                }
             }
 		}
 	}
@@ -211,9 +214,22 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
 		for(int t=0; t<sGC.d.cardT; ++t){
             if(SCIPgetSolVal(sGC.scip, sGC.sol,sGC.varY0_kt[k][t])>0) cout << "y0,"<<k<<","<<t<<" = "<<SCIPgetSolVal(sGC.scip, sGC.sol,sGC.varY0_kt[k][t])<<endl;
         }
-    }
+    }*/
+
+    cout << "dual bound : " << SCIPgetDualbound(sGC.scip);
+    cout << "primal bound : " << SCIPgetPrimalbound(sGC.scip);
+    cout << "scip time : " << SCIPgetSolvingTime(sGC.scip);
+    cout << "npricevar : " << SCIPgetNPricevarsFound(sGC.scip);
+
+
 
     cout << "nb node : " <<SCIPgetNTotalNodes(sGC.scip)<<endl;
+    cout << "nb col gen : " << sGC.nbcolgenerated << endl;
+    cout << "cptPricer : "<<sGC.cptPricer<<endl;
+    cout << "temps gencol : "<<tpsgencol<<endl;
+    cout << "temps scip : "<<SCIPgetSolvingTime(sGC.scip) <<endl;
+    cout << "temps pricer : "<<sGC.tpsPricer<<endl;
+    cout << "temps SP : "<<sGC.tpsSP<<endl;
 
     return status;
 }

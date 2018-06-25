@@ -24,9 +24,11 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
     
     /* Load plugin */
     SCIP_CALL( SCIPincludeDefaultPlugins(sGC.scip) );
-    //SCIPsetMessagehdlr(sGC.scip,NULL);
+    SCIPsetMessagehdlr(sGC.scip,NULL);
 	SCIP_CALL( SCIPchgRealParam(sGC.scip,SCIPgetParam(sGC.scip,"numerics/epsilon"),0.0001) );
-    /** project plugins */
+    SCIP_CALL( SCIPchgIntParam(sGC.scip,SCIPgetParam(sGC.scip,"lp/colagelimit"),-1) ); // permet de limite le nombre de noeuds
+	
+	/** project plugins */
     SCIP_CALL( includePricer(sGC) );
     
     probdata = (SCIP_PROBDATA*) &sGC;
@@ -335,14 +337,14 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 	sGC.cons_9 = cons_9;
 	//cout<<"cons_9 ok"<<endl;
 
-	sGC.nbconstmodele = SCIPgetNConss(sGC.scip);
-	sGC.nbvarmodele = SCIPgetNVars(sGC.scip);
-    sGC.nbcolgenerated = 0;
+	//sGC.nbconstmodele = SCIPgetNConss(sGC.scip);
+	//sGC.nbvarmodele = SCIPgetNVars(sGC.scip);
+    //sGC.nbcolgenerated = 0;
     
 	
-	FILE * filed;
-	filed = fopen("sol_comp", "w");
-	SCIPprintOrigProblem(sGC.scip, filed, "lp", false);
+	//FILE * filed;
+	//filed = fopen("sol_comp", "w");
+	//SCIPprintOrigProblem(sGC.scip, filed, "lp", false);
 	
     return SCIP_OKAY;
 	
