@@ -427,7 +427,7 @@ SCIP_DECL_PRICERREDCOST(pricerRedcost)
 		assert(Pr_VerifSol(*pbdata,duration)==true);
 	}*/
 	pbdata->cptPricer++;
-    cout << " nb pricer vars : "<< SCIPgetNPricevarsFound(scip) << "   nbcolgen :" << pbdata->nbcolgenerated << endl;
+    //cout << " nb pricer vars : "<< SCIPgetNPricevarsFound(scip) << "   nbcolgen :" << pbdata->nbcolgenerated << endl;
 	// --------------------------------------   recuperation des variables duales
     int fois = 0;
     for(int i=0; i<pbdata->d.cardJ; ++i){

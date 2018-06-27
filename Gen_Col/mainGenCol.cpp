@@ -216,6 +216,8 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
         }
     }*/
 
+    SCIPprintStatistics(sGC.scip,NULL);
+
     cout << "dual bound : " << SCIPgetDualbound(sGC.scip);
     cout << "primal bound : " << SCIPgetPrimalbound(sGC.scip);
     cout << "scip time : " << SCIPgetSolvingTime(sGC.scip);

@@ -24,9 +24,9 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
     
     /* Load plugin */
     SCIP_CALL( SCIPincludeDefaultPlugins(sGC.scip) );
-    SCIPsetMessagehdlr(sGC.scip,NULL);
-	SCIP_CALL( SCIPchgRealParam(sGC.scip,SCIPgetParam(sGC.scip,"numerics/epsilon"),0.0001) );
-    SCIP_CALL( SCIPchgIntParam(sGC.scip,SCIPgetParam(sGC.scip,"lp/colagelimit"),-1) ); // permet de limite le nombre de noeuds
+    //SCIPsetMessagehdlr(sGC.scip,NULL);
+	//SCIP_CALL( SCIPchgRealParam(sGC.scip,SCIPgetParam(sGC.scip,"numerics/epsilon"),0.0001) );
+    SCIP_CALL( SCIPchgIntParam(sGC.scip,SCIPgetParam(sGC.scip,"lp/colagelimit"),-1) ); // permet d'empecher aging (marche pas)
 	
 	/** project plugins */
     SCIP_CALL( includePricer(sGC) );
