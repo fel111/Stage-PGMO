@@ -1,0 +1,2 @@
+instance=inst_189 parametre=param1.txt nbPeriodes=201 nbTaches=60 nbMachines=1 borneBatterie=8 ratioDemandeTot/Capacite=0.0484848 limiteNbBoucles=-1 limiteTpsOrdo=300 limiteThreads=1
+BOUCLE Dyn  tpsBoucle=1209.16 tpsOrdo=1204.91 tpsLS=0.004377 bornesup=644 nbBoucle=5 statutDernierOrdo=Optimal

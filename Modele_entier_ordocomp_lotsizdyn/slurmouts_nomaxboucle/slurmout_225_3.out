@@ -1,0 +1,1 @@
+instance=inst_225 parametre=param3.txt nbPeriodes=659 nbTaches=60 nbMachines=1 borneBatterie=43 ratioDemandeTot/Capacite=0.14726 limiteNbBoucles=-1 limiteTpsOrdo=300 limiteThreads=1

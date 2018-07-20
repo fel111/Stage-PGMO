@@ -23,6 +23,8 @@ float modele_entier_cplex(data const& d, param const& p, float &tps, float &born
     if (p.aff_log_compact_cplex==0) cplex.setOut(env.getNullStream());
     cplex.setParam(IloCplex::Threads,p.nb_threads_cplex);
     cplex.setParam(IloCplex::TiLim,p.time_limit_compact);
+	//cplex.setParam(IloCplex::NodeLim,0);
+	//cplex.setParam(IloCplex::Param::Preprocessing::Presolve,0);
 
 
 	//VARIABLES
@@ -178,8 +180,8 @@ if(p.taches_avec_fenetre_temps == 1){
 	//
 
 
-	cout << "s0 = "<<d.s0<<endl;
-	cout << "qmax = "<<d.Q<<endl;
+	//cout << "s0 = "<<d.s0<<endl;
+	//cout << "qmax = "<<d.Q<<endl;
 	auto start_time = chrono::steady_clock::now();
     cplex.solve();
 	auto end_time = chrono::steady_clock::now();
@@ -228,8 +230,10 @@ if(p.taches_avec_fenetre_temps == 1){
 		sol = -1.0;
 	}
 
-	cplex.exportModel("cplexmodelecompact.lp");
-    env.end();
+	//cplex.exportModel("cplexmodelecompact.lp");
+	//cout << "borne inf cplex : " << cplex.getObjValue() <<endl;
+    cout << "nb noeuds cplex (compact) : " << cplex.getNnodes() << endl;
+	env.end();
 
     return sol;
 }
@@ -253,7 +257,8 @@ float relaxation_modele_entier_cplex(data const& d,vector<float>& relax, param c
     cplex.setOut(env.getNullStream());
     cplex.setParam(IloCplex::Threads,p.nb_threads_cplex);
     cplex.setParam(IloCplex::TiLim,p.time_limit_relax);
-	//cplex.setParam(IloCplex::NodeLim,1);
+	//cplex.setParam(IloCplex::NodeLim,0);
+	//cplex.setParam(IloCplex::Param::Preprocessing::Presolve,0);
 	//cplex.setParam(IloCplex::IntSolLim,1);
 
 
@@ -277,7 +282,7 @@ float relaxation_modele_entier_cplex(data const& d,vector<float>& relax, param c
 	//ajout variables binaires pwd
 	vector<IloNumVarArray>  pwd;
 	for(int i=0; i<d.cardT; ++i){
-		IloNumVarArray var (env,d.nb_bp[i],0.0,1.0,ILOFLOAT);
+		IloNumVarArray var (env,d.nb_bp[i],0.0,1.0,ILOBOOL);
 		pwd.push_back(var);
 	}
 
@@ -287,7 +292,7 @@ float relaxation_modele_entier_cplex(data const& d,vector<float>& relax, param c
 		vector<IloNumVarArray> v;
 		y_jkt.push_back(v);
 		for(int k=0; k<d.cardM; ++k){
-			IloNumVarArray var (env,d.cardT,0.0,1.0,ILOFLOAT);
+			IloNumVarArray var (env,d.cardT,0.0,1.0,ILOBOOL);
 			y_jkt[j].push_back(var);
 		}	
 	}
@@ -295,7 +300,7 @@ float relaxation_modele_entier_cplex(data const& d,vector<float>& relax, param c
 	//ajout variables z_kt binaires
 	vector<IloNumVarArray> z_kt;
 	for(int k=0; k<d.cardM; ++k){
-		IloNumVarArray var (env,d.cardT,0.0,1.0,ILOFLOAT);
+		IloNumVarArray var (env,d.cardT,0.0,1.0,ILOBOOL);
 		z_kt.push_back(var);
 	}
 

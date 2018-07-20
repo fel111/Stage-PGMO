@@ -149,8 +149,8 @@ void addP_0(structGenCol & sGC){
 void modifPwlCplex(structGenCol & sGC){ // a rendre generique selon les pwl
 	vector<int> nbtemp;
 	for(int i=0;i<sGC.d.cardT;++i){
-		sGC.d.bpt[i] = {0.0,5.0,100.0};
-		sGC.d.valbpt[i] = {0.0,10.0,152.5};
+		sGC.d.bpt[i] = {0.0,5.0,200.0};
+		sGC.d.valbpt[i] = {0.0,10.0,302.5};
 		sGC.d.pente[i] = {2.0,1.5};
 		nbtemp.push_back(2);
 	}

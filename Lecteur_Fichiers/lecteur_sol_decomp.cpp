@@ -29,8 +29,8 @@ void lecteur_sol(int taille){
     bool first = true;
     vector<int> capacite = {5,10,15,25};
 
-    ofstream f("sol_dec_"+to_string(taille)+".csv", ios::out | ios::app);
-    f << "capBatt,nbConv,nbBoucleMoy,tpsMoyDec,tpsMoyOrdo,tpsMoyLS,gap,nbConv,nbBoucleMoy,tpsMoyDec,tpsMoyOrdo,tpsMoyLS,gap,nbConv,nbBoucleMoy,tpsMoyDec,tpsMoyOrdo,tpsMoyLS,gap,tpsMoyCPLEX,nbOpt"<<endl;
+    ofstream f("sol_dec_"+to_string(taille)+"_relax.csv", ios::out | ios::app);
+    f << "capBatt,nbConv,nbBoucleMoy,tpsMoyDec,tpsMoyOrdo,tpsMoyLS,gap,nbConv,nbBoucleMoy,tpsMoyDec,tpsMoyOrdo,tpsMoyLS,gap,nbConv,nbBoucleMoy,tpsMoyDec,tpsMoyOrdo,tpsMoyLS,gap,tpsMoyCPLEX,nbOpt,ecartMoyBinfsupCPLEX,ecartMoyBinfsupCPLEXnonopt"<<endl;
 
     for(const auto& cap : capacite){
 
@@ -59,6 +59,8 @@ void lecteur_sol(int taille){
         float tpsmoyls10=0.0;
         float tpsmoycpx=0.0;
         bool firstcpx=true;
+        float ecartmoycpx=0.0;
+        float ecartmoynonoptcpx=0.0;
 
         vector<int> fichierparam;
         if(cap==5) fichierparam = {1,5,9};
@@ -69,7 +71,7 @@ void lecteur_sol(int taille){
         for(const auto& f : fichierparam){
             
             for(int i=1; i<=288; ++i){
-                ifstream fichier("../slurmouts_sansrelax/slurmout_"+to_string(i)+"_"+to_string(f)+".out", ios::in); //ouverture du fichier
+                ifstream fichier("../Modele_entier_ordocomp_lotsizdyn/slurmouts_relax/slurmout_"+to_string(i)+"_"+to_string(f)+".out", ios::in); //ouverture du fichier
                 if(fichier){  // si l'ouverture fonctionne
                     int nbligne=0;
                     string ligne;
@@ -97,6 +99,7 @@ void lecteur_sol(int taille){
                         string statutdecpl;
                         string nbboucledecpl;
                         string nbtaches;
+                        string binfcpx;
                         //reinit pour getline
                         fichier.clear();
                         fichier.seekg(0, ios::beg);
@@ -106,7 +109,7 @@ void lecteur_sol(int taille){
                         iss4 >> inut >> inut >> inut >> nbtaches;
                         getline(fichier,ligne);
                         istringstream iss (ligne);
-                        iss >> inut >> tpscpx >> statuscpx >> bsupcpx;
+                        iss >> inut >> tpscpx >> statuscpx >> bsupcpx >> binfcpx;
                         getline(fichier,ligne);
                         getline(fichier,ligne);
                         istringstream iss2 (ligne);
@@ -128,6 +131,7 @@ void lecteur_sol(int taille){
                         bsupdecpl.erase(0,9);
                         nbboucledecpl.erase(0,9);
                         nbboucledec.erase(0,9);
+                        binfcpx.erase(0,9);
 
                         //if(((f-1)/4 == 0)&&(cap == 15)) cout << "cplex bsup : " << bsupcpx << "   dec bsup : " << bsupdec << "  cplex statut : " << statuscpx << endl;
                         //cout << tpscpx << tpsdec << tpsordo << tpsls << bsupcpx << bsupdec << tpsdecpl << tpsordopl << bsupdecpl << nbboucledec << nbboucledecpl << endl;
@@ -139,6 +143,8 @@ void lecteur_sol(int taille){
                                 if(statuscpx != "statut=Unknown"){
                                     tpsmoycpx+=stof(tpscpx,0);
                                     nbfichiersokcpx++;
+                                    ecartmoycpx+=(stof(bsupcpx,0)-stof(binfcpx,0))/stof(binfcpx,0);
+                                    if(statuscpx == "statut=Feasible") ecartmoynonoptcpx+=(stof(bsupcpx,0)-stof(binfcpx,0))/stof(binfcpx,0);
                                 }
                             }
 
@@ -206,13 +212,15 @@ void lecteur_sol(int taille){
         nbboucleconv3 = nbboucleconv3/nbconv3;
         nbboucleconv5 = nbboucleconv5/nbconv5;
         nbboucleconv10 = nbboucleconv10/nbconv10;
+        ecartmoycpx = (ecartmoycpx/nbfichiersokcpx)*100;
+        ecartmoynonoptcpx = (ecartmoycpx/(nbfichiersokcpx-nboptcpx))*100;
         //cout << "nbok 3,5,10 : " << nbfichiersok3 << " " << nbfichiersok5 << " " << nbfichiersok10 << endl;
         
-        f << cap << "," << nbconv3 << "," << nbboucleconv3 << "," << tpsmoy3 << "," <<tpsmoyordo3<<","<<tpsmoyls3<<","<<gapmoy3 << "," << nbconv5 << "," << nbboucleconv5 << ","<<  tpsmoy5 << "," <<tpsmoyordo5<<","<<tpsmoyls5<<","<< gapmoy5 << "," << nbconv10 << "," << nbboucleconv10 << "," <<  tpsmoy10 << "," <<tpsmoyordo10<<","<<tpsmoyls10<<"," << gapmoy10 << "," << tpsmoycpx << "," << nboptcpx << endl;
+        f << cap << "," << nbconv3 << "," << nbboucleconv3 << "," << tpsmoy3 << "," <<tpsmoyordo3<<","<<tpsmoyls3<<","<<gapmoy3 << "," << nbconv5 << "," << nbboucleconv5 << ","<<  tpsmoy5 << "," <<tpsmoyordo5<<","<<tpsmoyls5<<","<< gapmoy5 << "," << nbconv10 << "," << nbboucleconv10 << "," <<  tpsmoy10 << "," <<tpsmoyordo10<<","<<tpsmoyls10<<"," << gapmoy10 << "," << tpsmoycpx << "," << nboptcpx << "," << ecartmoycpx << "," << ecartmoynonoptcpx << endl;
     }
 }
 
 int main(int argc, char *argv[]){
     
-    lecteur_sol(60);
+    lecteur_sol(30);
 }

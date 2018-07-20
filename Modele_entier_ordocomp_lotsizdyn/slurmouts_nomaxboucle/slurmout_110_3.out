@@ -1,0 +1,1 @@
+instance=inst_110 parametre=param3.txt nbPeriodes=800 nbTaches=30 nbMachines=1 borneBatterie=46 ratioDemandeTot/Capacite=0.149837 limiteNbBoucles=-1 limiteTpsOrdo=300 limiteThreads=1

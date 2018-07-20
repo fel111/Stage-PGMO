@@ -21,6 +21,8 @@ struct feasibleSet{
 
 struct structGenCol{
     int todelete;
+    int todelete2=0;
+    double todelete3=0.0;
 
     float tpsSP= 0.0;
     float tpsPM= 0.0;
@@ -31,6 +33,7 @@ struct structGenCol{
     SCIP *scip;
     int nbcolgenerated=0;
     int cptPricer=0;
+    int cptFarkas=0;
     vector<feasibleSet> L;
     int cardL;
 
@@ -62,6 +65,13 @@ struct structGenCol{
     vector<vector<double> > gamma_pt;
     vector<double> delta_t;
     vector<double> phi_t;
+
+    //farkas
+    vector<vector<double> > farkas1_it;
+    vector<double> farkas2_i;
+    vector<vector<double> > farkas3_pt;
+    vector<double> farkas8_t;
+    vector<double> farkas9_t;
 
     //int time;
 

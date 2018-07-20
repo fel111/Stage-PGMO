@@ -1,0 +1,2 @@
+instance=inst_38 parametre=param4.txt nbPeriodes=106 nbTaches=30 nbMachines=1 borneBatterie=23 ratioDemandeTot/Capacite=0.247312 limiteNbBoucles=-1 limiteTpsOrdo=300 limiteThreads=1
+BOUCLE Dyn  tpsBoucle=302.576 tpsOrdo=301.032 tpsLS=0.001621 bornesup=300 nbBoucle=2 statutDernierOrdo=Optimal

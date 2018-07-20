@@ -1,0 +1,1 @@
+/var/spool/slurmd/job933680/slurm_script: line 13: 18658 Segmentation fault      (core dumped) ./modele_entier inst_${SLURM_ARRAY_TASK_ID} param4.txt

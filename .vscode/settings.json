@@ -9,6 +9,7 @@
         "vector": "cpp",
         "istream": "cpp",
         "limits": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "functional": "cpp"
     }
 }

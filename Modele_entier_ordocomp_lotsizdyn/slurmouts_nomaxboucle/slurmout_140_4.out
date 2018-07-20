@@ -1,0 +1,1 @@
+instance=inst_140 parametre=param4.txt nbPeriodes=2133 nbTaches=30 nbMachines=1 borneBatterie=119 ratioDemandeTot/Capacite=0.248954 limiteNbBoucles=-1 limiteTpsOrdo=300 limiteThreads=1

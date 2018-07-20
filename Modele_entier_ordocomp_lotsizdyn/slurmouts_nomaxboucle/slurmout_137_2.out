@@ -1,0 +1,2 @@
+instance=inst_137 parametre=param2.txt nbPeriodes=2067 nbTaches=30 nbMachines=1 borneBatterie=6 ratioDemandeTot/Capacite=0.0967742 limiteNbBoucles=-1 limiteTpsOrdo=300 limiteThreads=1
+BOUCLE Dyn  tpsBoucle=122.219 tpsOrdo=121.855 tpsLS=0.00875 bornesup=5598 nbBoucle=1 statutDernierOrdo=Optimal
