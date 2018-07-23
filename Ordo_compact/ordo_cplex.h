@@ -2,7 +2,7 @@
 #define ORDO_CPLEX_H
 
 //#include <vector>
-#include "struct.h"
+#include "../struct.h"
 //using namespace std;
 
 float ordo_cplex(data &d,param const& p, float &tps, string &status);

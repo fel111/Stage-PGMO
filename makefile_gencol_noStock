@@ -63,7 +63,7 @@ OBJ= Gen_Col_noStock/mainGenCol.o \
 	struct.o \
 	Gen_Col_noStock/pricer.o \
 	Gen_Col_noStock/struct_gencol.o \
-	Modele_compact/modele_entier_cplex.o
+	Ordo_compact/ordo_comp.o
 
 
 

@@ -1,0 +1,46 @@
+\ SCIP STATISTICS
+\   Problem name     : t_Problem_to_Solve_for_Test
+\   Variables        : 19 (9 binary, 0 integer, 0 implicit integer, 10 continuous)
+\   Constraints      : 18
+\   Obj. scale       : 1
+\   Obj. offset      : 0
+Minimize
+ Obj: +14.5 t_y_lt0,0 +14.5 t_y_lt0,1 +17.5 t_y_lt1,1 +17.5 t_y_lt1,2 +8 t_y_lt2,2 +8 t_y_lt2,3 +11.5 y_lt3,0
+      +17.5 y_lt4,2 +4 y_lt5,0 +20.5 y_lt6,1
+Subject to
+ cons_1,0,0: +1 t_x_it0,0 -1 t_y_lt0,0 -1 y_lt5,0 = +0
+ cons_1,0,1: +1 t_x_it0,1 -1 t_y_lt0,1 -1 y_lt6,1 = +0
+ cons_1,1,1: +1 t_x_it1,1 -1 t_y_lt1,1 -1 y_lt6,1 = +0
+ cons_1,1,2: +1 t_x_it1,2 -1 t_y_lt1,2 = +0
+ cons_1,2,0: +1 t_x_it2,0 -1 t_y_lt0,0 -1 y_lt3,0 = +0
+ cons_1,2,1: +1 t_x_it2,1 -1 t_y_lt0,1 -1 t_y_lt1,1 -1 y_lt6,1 = +0
+ cons_1,2,2: +1 t_x_it2,2 -1 t_y_lt1,2 -1 y_lt4,2 = +0
+ cons_1,3,2: +1 t_x_it3,2 -1 t_y_lt2,2 -1 y_lt4,2 = +0
+ cons_1,3,3: +1 t_x_it3,3 -1 t_y_lt2,3 = +0
+ cons_2,0: +1 t_y_lt0,0 +1 t_y_lt0,1 +1 y_lt5,0 +1 y_lt6,1 >= +1
+ cons_2,1: +1 t_y_lt1,1 +1 t_y_lt1,2 +1 y_lt6,1 >= +1
+ cons_2,2: +1 t_y_lt0,0 +1 t_y_lt0,1 +1 t_y_lt1,1 +1 t_y_lt1,2 +1 y_lt3,0 +1 y_lt4,2 +1 y_lt6,1 >= +2
+ cons_2,3: +1 t_y_lt2,2 +1 t_y_lt2,3 +1 y_lt4,2 >= +1
+ cons_3,0_lhs: +1 t_y_lt0,0 +1 y_lt3,0 +1 y_lt5,0 >= +0
+ cons_3,0_rhs: +1 t_y_lt0,0 +1 y_lt3,0 +1 y_lt5,0 <= +1
+ cons_3,1_lhs: +1 t_y_lt0,1 +1 t_y_lt1,1 +1 y_lt6,1 >= +0
+ cons_3,1_rhs: +1 t_y_lt0,1 +1 t_y_lt1,1 +1 y_lt6,1 <= +1
+ cons_3,2_lhs: +1 t_y_lt1,2 +1 t_y_lt2,2 +1 y_lt4,2 >= +0
+ cons_3,2_rhs: +1 t_y_lt1,2 +1 t_y_lt2,2 +1 y_lt4,2 <= +1
+ cons_3,3_lhs: +1 t_y_lt2,3 >= +0
+ cons_3,3_rhs: +1 t_y_lt2,3 <= +1
+ cons_3,4_lhs: >= +0
+ cons_3,4_rhs: <= +1
+Bounds
+ 0 <= t_x_it0,0 <= 1
+ 0 <= t_x_it0,1 <= 1
+ 0 <= t_x_it1,1 <= 1
+ 0 <= t_x_it1,2 <= 1
+ 0 <= t_x_it2,0 <= 1
+ 0 <= t_x_it2,1 <= 1
+ 0 <= t_x_it2,2 <= 1
+ 0 <= t_x_it3,2 <= 1
+ 0 <= t_x_it3,3 <= 1
+Binaries
+ t_x_it0,0 t_x_it0,1 t_x_it1,1 t_x_it1,2 t_x_it2,0 t_x_it2,1 t_x_it2,2 t_x_it3,2 t_x_it3,3
+End

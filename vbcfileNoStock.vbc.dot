@@ -1,0 +1,6 @@
+digraph finite_state_machine {
+	rankdir=TB;
+	size="11,17" node [shape = circle];
+        1 [ label = "1\n1.0e+20\n40.0", color = "red" ];
+        1 [ style = "filled", fillcolor = "palegreen" ];
+}

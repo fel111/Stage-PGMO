@@ -72,23 +72,6 @@ int checkSet(feasibleSet const& l, structGenCol const& sGC){
 				}
 			}
 			
-            	//while((sGC.L[i].tasksList[cpt] == l.tasksList[cpt])&&(cpt<l.tasksList.size())){
-				//++cpt;
-
-				//cout << "cpt : "<<cpt<<endl;
-			
-			/*while(suite){	
-				++cpt;
-				cout << "cpt : "<<cpt<<endl;
-				//cout << "1:"<<sGC.L[i].tasksList[cpt] << endl;
-				//cout << "2:"<<l.tasksList[cpt] << endl;
-				//cout << "3:"<<l.tasksList.size() << endl;
-				if((sGC.L[i].tasksList[cpt] == l.tasksList[cpt])){
-				if(cpt<l.tasksList.size()){
-					suite = true;
-				}
-			}
-			}*/
             if(cpt == l.tasksList.size()) return i;
         }
     }
@@ -155,4 +138,19 @@ void modifPwlCplex(structGenCol & sGC){ // a rendre generique selon les pwl
 		nbtemp.push_back(2);
 	}
 	sGC.d.nb_bp = nbtemp;
+}
+
+float p_t(int t, float x, structGenCol const& sGC){
+	//cout << "x: "<<x<<endl;	
+	if (x<=sGC.d.bpt[t][0]) return 0.0;	
+	for (int i=0; i<sGC.d.nb_bp[t]; ++i){
+		//cout<<bpt[t][i]<<"<"<<x<<"<="<<bpt[t][i+1]<<endl;
+		if((sGC.d.bpt[t][i]<x)&&(x<=sGC.d.bpt[t][i+1])){
+			//cout << bpt[t][i] << endl;
+			//cout << "valreel" <<  pente[t][i]*x+valbpt[t][i]<<endl;
+			return sGC.d.pente[t][i]*(x-sGC.d.bpt[t][i])+sGC.d.valbpt[t][i];
+			//return pente[t][i]*x+valbpt[t][i];
+		}	
+	}
+	return infinif;
 }

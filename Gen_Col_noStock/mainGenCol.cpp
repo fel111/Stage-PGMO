@@ -17,6 +17,7 @@
 #include "probScip.cpp"
 #include "pricer.h"
 #include "../Modele_compact/modele_entier_cplex.h"
+#include "../Ordo_compact/ordo_cplex.h"
 
 using namespace std;
 float infini = numeric_limits<float>::max();
@@ -46,12 +47,14 @@ void firstSol(structGenCol & sGC){
         }
         if(taskList.size() > 0){
             l.id = cptId;
-            l.timeGen = t; 
+            //l.timeGen = t; 
             l.tasksList = taskList;
             if(checkSet(l,sGC)==-1){
+                l.cost = p_t(t,l.energyDemand,sGC);
+                //cout << "l, cout : " << l.id <<"  "<<l.cost << endl;
                 sGC.L.push_back(l);
                 sGC.cardL = sGC.L.size();
-                addSetK_l(l,sGC);
+                //addSetK_l(l,sGC);
                 addA_il(l,sGC);
                 addL_t(l,sGC);
                 cptId++;
@@ -87,13 +90,13 @@ int initData(structGenCol & sGC){
 
 		//vector<float> temp_bpt = {0.0,4.0,8.0,100.0,infini};
 		//vector<float> temp_valbpt = {0.0,4.0,6.0,190.0};
-		vector<float> temp_bpt = {0.0,5.0,5.0,100.0};
-		vector<float> temp_valbpt = {0.0,10.0,10.0,152.5};
+		vector<float> temp_bpt = {0.0,5.0,infini};
+		vector<float> temp_valbpt = {0.0,10.0};
 		vector<float> temp_pente = {2.0,1.5};
 		d.pente.push_back(temp_pente);
 		d.bpt.push_back(temp_bpt);
 		d.valbpt.push_back(temp_valbpt);
-		d.nb_bp.push_back(4);
+		d.nb_bp.push_back(2);
 
         //initialisation L_t
         vector<int> lt_temp;
@@ -120,7 +123,7 @@ int initData(structGenCol & sGC){
     }
 
     //initialisatin P_0
-    addP_0(sGC);
+    //addP_0(sGC);
 
 }
 
@@ -168,28 +171,29 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
 
     sGC.sol = SCIPgetBestSol(sGC.scip);
 
-    cout << "verif : "<<verifSol(sGC) << endl; 
+    //cout << "verif : "<<verifSol(sGC) << endl; 
 
 
     cout << "obj : "<< SCIPgetSolOrigObj(sGC.scip,sGC.sol) << endl;
-    for(int j=0; j<sGC.d.cardJ; ++j){
+    /*for(int j=0; j<sGC.d.cardJ; ++j){
         for(int t=sGC.d.rj[j]; t<sGC.d.dj[j]; ++t){
-            if(SCIPgetSolVal(sGC.scip,sGC.sol,sGC.varX_it[j][t]) == 1) cout <<"tache "<<j<<" réalisée au temps "<<t<<endl;
+            if(SCIPgetSolVal(sGC.scip,sGC.sol,sGC.varX_it[j][t]) >= 0.9) cout <<"tache "<<j<<" réalisée au temps "<<t<<endl;
         }
-    }
+    }*/
 
     
     
     // export modele dernier PMR
+    //SCIPwriteTransProblem(sGC.scip,"lastPMRNoStock","lp",0);
     /*FILE * filed;
 	filed = fopen("afterCol", "a+");
 	SCIPprintTransProblem(sGC.scip, NULL, "lp", 0);
     fclose(filed);*/
 
 
-    cout << "------sol SCIP------"<<endl;
+    //cout << "------sol SCIP------"<<endl;
     // aff solution
-    SCIPprintSol(sGC.scip, sGC.sol, NULL, 1);
+    SCIPprintSol(sGC.scip, sGC.sol, NULL, 0);
 
     // Get the current scip solving time in seconds.
     //cout << "temps scip : "<<SCIPgetSolvingTime(sGC.scip) <<endl;
@@ -198,10 +202,10 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
     affAllSet(sGC);
 
     // export du dernier pb maitre
-    FILE * filed;
+    /*FILE * filed;
     filed = fopen("lastPM","w");
     SCIPprintTransProblem(sGC.scip, filed, NULL, 0);
-    fclose(filed);
+    fclose(filed);*/
 
     //cout << "---------" << endl;
 
@@ -253,11 +257,12 @@ int main(){
     structGenCol sGC;
     ColGen_Scip(sGC);
 
-    modifPwlCplex(sGC);
+    //modifPwlCplex(sGC);
     float ftemp;
     string stemp;
-    float solCompactCPX = modele_entier_cplex(sGC.d,sGC.p,ftemp,ftemp,stemp);
-    cout << "sol compact : " << solCompactCPX << endl;
+    float solOrdoCPX = ordo_cplex(sGC.d,sGC.p,tps,stemp);
+    cout << "sol compact : " << solOrdoCPX << endl;
+    cout << "temps compact : " << tps << endl;
     //float solRelax = relaxation_modele_entier_cplex(sGC.d,temp,sGC.p,tps,binf,statut);
 
 

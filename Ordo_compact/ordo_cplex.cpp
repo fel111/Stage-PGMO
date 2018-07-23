@@ -7,7 +7,7 @@
 //#include <limits>
 //#include "scip/scip.h"
 //#include "scip/scipdefplugins.h"
-#include "struct.h"
+#include "../struct.h"
 //#include "lotsizcontcom.h"
 #include <ilcplex/ilocplex.h>
 #include "ordo_cplex.h"
@@ -181,14 +181,26 @@ if(p.taches_avec_fenetre_temps == 1){
 		status = "Optimal";
 		vector<float> prod;
 		//cout << "demande : ";	
-		for(int i=0; i<d.cardT; ++i){
+		//for(int i=0; i<d.cardT; ++i){
 			//cout << SCIPgetSolVal(scip,sol,xt[i]) << ", ";
 			//prod.push_back(static_cast<int>(ceil(SCIPgetSolVal(scip,sol,xt[i]))));
 			//prod.push_back(roundd(SCIPgetSolVal(scip,sol,xt[i])));
 			//prod.push_back(roundd(cplex.getValue(xt[i]),5));
-			prod.push_back(cplex.getValue(xt[i]));
+			//  prod.push_back(cplex.getValue(xt[i]));
 			//cout << prod[i] << " ";
-		}
+			//cout << "------------ CPLEX SOL ----------"<<endl;
+			for(int t=0; t<d.cardT; ++t){
+				//if(cplex.getValue(xt[t])> 0) cout << "xt" << t << ": " <<cplex.getValue(xt[t]) << endl;
+				//if(cplex.getValue(ct[t]) > 0) cout << "ct" << t << ": " <<cplex.getValue(ct[t]) << endl;
+				//if(cplex.getValue(st[t]) > 0 ) cout << "st" << t << ": " <<cplex.getValue(st[t]) << endl;
+				for(int k=0; k<d.cardM; ++k){
+					//if(cplex.getValue(z_kt[k][t]) > 0.5) cout << "zkt" << k << t << ": " <<cplex.getValue(z_kt[k][t]) << endl;
+					for(int j=0; j<d.cardJ; ++j){
+						if(cplex.getValue(y_jkt[j][k][t]) > 0.9) cout << "yjkt" << j << k<<t << ": " <<cplex.getValue(y_jkt[j][k][t]) << endl;
+					}
+				}
+			}
+		//}
 		d.dt = prod;
 		sol = cplex.getObjValue();
 	}

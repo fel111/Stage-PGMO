@@ -57,7 +57,7 @@ bool verifSol(structGenCol const& sGC){
  *
  * \return status: a variable of type SCIP_RETCODE, equal to SCIP_OKAY if everything went well
  */
-SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,IloNumArray valVk,int timedd){
+SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,int timedd){
 	SCIP_RETCODE status = SCIP_OKAY; // devrait etre modifie lors de l ajout d une colonne, sinon erreur
 	//vector<Task> listeTask;
 	vector<int> taskList;
@@ -66,7 +66,7 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,IloNumA
     
 	// Creation de la nouvelle colonne
 	for(int i = 0 ; i < sGC.d.cardJ ; i++){
-		//cout << "tache i=" << i << " valX="<< valX[i] << endl;
+		//cout << "tache i=" << i << " valX="<< valUi[i] << endl;
 		if( SCIPisEQ(sGC.scip, valUi[i], 1.0) ){
             taskList.push_back(i);
             if(taskList.size() == 1){
@@ -81,22 +81,18 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,IloNumA
             }
         }
     }
-    
-    int k = 0 ;
-    while( SCIPisEQ(sGC.scip, valVk[k], 0.0) ) ++k;
-
 
     if(taskList.size() > 0){
         l.id = sGC.L.size();
-        l.timeGen = timedd; 
         l.tasksList = taskList;
+        l.cost = p_t(timedd,l.energyDemand,sGC);
+        //cout << "l, cout : " << l.id <<"  "<<l.cost << endl;
         int testPres = checkSet(l,sGC);
         int id;
         bool createOk = false;
         if(testPres == -1){
             sGC.L.push_back(l);
             sGC.cardL = sGC.L.size();
-            addSetK_l(l,sGC);
             addA_il(l,sGC);
             addL_t(l,sGC);
             id = sGC.L.size()-1;
@@ -104,14 +100,14 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,IloNumA
         }
         else{
             id = testPres;
-            if(sGC.varY_lkt[id][k][timedd] == NULL) createOk = true;
+            if(sGC.varY_lt[id][timedd] == NULL) createOk = true;
         }
         if(createOk){
             // Creation de la nouvelle variable pour le moment t obtenu a l issu du sous probleme
-            string name = "y_lkt"+to_string(id)+","+to_string(k)+","+to_string(timedd);
+            string name = "y_lt"+to_string(id)+","+to_string(timedd);
             //cout <<"ajout variable "+name<<endl;
             SCIP_VAR * var;
-            SCIPcreateVarBasic(sGC.scip, &var, name.c_str() ,0,SCIPinfinity(sGC.scip),sGC.d.valbpt[0][k],SCIP_VARTYPE_CONTINUOUS);
+            SCIPcreateVarBasic(sGC.scip, &var, name.c_str() ,0,SCIPinfinity(sGC.scip),sGC.L[id].cost,SCIP_VARTYPE_CONTINUOUS);
             for(const auto& j : taskList){
                 //Mise a jour cons1
                 //cout<<"j : "<<j<<" timedd : "<<sGC.timedd<<" rj : "<<sGC.d.rj[j] << " dj : "endl;
@@ -121,23 +117,17 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,IloNumA
                 SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_2[j],var,1));
             }
             // Mise a jour cons3
-            SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_3[k/2][timedd],var,-1));
-            // Mise a jour cons8
-            //cout<<"contrainte 8 : l.energyDemand-sGC.d.bpt[0][k] = "<<l.energyDemand-sGC.d.bpt[0][k]<<endl;
-            SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_8[timedd],var,l.energyDemand-sGC.d.bpt[0][k]));
-            // Mise a jour cons9
-            SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_9[timedd],var,l.energyDemand));
+            SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_3[timedd],var,1));
             SCIP_CALL(status = SCIPaddPricedVar(sGC.scip, var, 1.0));
-            //if(sGC.todelete == 0) cout << "cout red : " << SCIPgetVarRedcost(sGC.scip,var) <<endl;
-            //assert( SCIPisLT(sGC.scip,SCIPgetVarRedcost(sGC.scip,var),0) );
+            cout << "cout reduit scip : " << SCIPgetVarRedcost(sGC.scip,var) << endl;
 
             if(testPres==-1){
-                vector<vector<SCIP_VAR*> > tab (sGC.d.nb_bp[0], vector<SCIP_VAR*> (sGC.d.cardT, NULL));
-                tab[k][timedd] = var;
-                sGC.varY_lkt.push_back(tab);
+                vector<SCIP_VAR*> tab (sGC.d.cardT, NULL);
+                tab[timedd] = var;
+                sGC.varY_lt.push_back(tab);
             }
             else{
-                sGC.varY_lkt[id][k][timedd] = var;
+                sGC.varY_lt[id][timedd] = var;
             }
             sGC.nbcolgenerated++;
         }
@@ -213,6 +203,7 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
     bool stop = false;
     SCIP_RESULT status = SCIP_SUCCESS;
 	SCIP_RETCODE status1 = SCIP_ERROR;
+    int decal; // 1 -> d.bpt[i][0] > 0   , 2 -> sinon
     
     while((timedd<sGC.d.cardT)&&(!stop)){
 
@@ -222,68 +213,68 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
         cplex.setOut(env.getNullStream());
         cplex.setParam(IloCplex::Threads,1);
 
+        //donnees pwl
+
+        /*for(int i=0; i<d.cardT; ++i){
+            if(d.bpt[i][0] > 0){
+                IloNumArray pente(env, d.nb_bp[i]+1);
+                IloNumArray bpt(env, d.nb_bp[i]);
+                pente[0] = 0.0;
+                bpt[0] = d.bpt[i][0];
+                for(int j=1; j<d.nb_bp[i]+1;++j){
+                    pente[j] = d.pente[i][j-1];
+                    if (j<d.nb_bp[i]) bpt[j] = d.bpt[i][j];
+                }
+                decal = 1;
+                //model.add(ct[i] == IloPiecewiseLinear(xt[i],bpt,pente,0, 0));
+            }
+            else{
+                IloNumArray pente(env, d.nb_bp[i]);
+                IloNumArray bpt(env, d.nb_bp[i]-1);
+                for(int j=0; j<d.nb_bp[i];++j){
+                    pente[j] = d.pente[i][j];
+                    if(j<d.nb_bp[i]-1) bpt[j] = d.bpt[i][j+1];
+                }
+                decal = 2;
+                //model.add(ct[i] == IloPiecewiseLinear(xt[i],bpt,pente,d.bpt[i][0], d.valbpt[i][0]));
+            }
+	    }*/
+        IloNumArray bpt(env, sGC.d.nb_bp[0]-1);
+        for(int i=0; i<(sGC.d.nb_bp[0]-1);++i){
+            bpt[i] = sGC.d.bpt[0][i+1];
+        }
+
+        IloNumArray pente(env, sGC.d.nb_bp[0]);
+        for(int i=0; i<sGC.d.nb_bp[0];++i){
+            pente[i] = sGC.d.pente[0][i];
+        }
+
         //ajout variables u_i
-        IloNumVarArray u_i (env,sGC.d.cardJ,0.0,1.0,ILOBOOL);
+        IloNumVarArray alpha_i (env,sGC.d.cardJ,0.0,1.0,ILOBOOL);
         
-        //ajout variables v_k
-        IloNumVarArray v_k (env,sGC.d.nb_bp[0],0.0,1.0,ILOBOOL);
-        
-        IloNumArray valUi(env);
-        IloNumArray valVk(env);
+        IloNumArray valAlphai(env);
 
         //contrainte sum_i bi*ui - sum_k o_k2(pk+1)*vk <= qmax
         IloExpr sum_i1(env);
         IloExpr sum_i2(env);
         for(int i=0; i<sGC.d.cardJ;++i){
-			//cout << i << "    " << sGC.d.rj[i] << " <= " << timedd<<" && "<< timedd<<" < " <<sGC.d.dj[i]<<endl;
             if((sGC.d.rj[i]<=timedd)&&(timedd<sGC.d.dj[i])){
-                sum_i1 += sGC.d.Djk[i][0]*u_i[i]; //sum bi ui
-                //???
-                //cout << "alpha : "<<sGC.alpha_it[i] << endl;
-                //cout << "time" << timedd << endl;
-                sum_i2 += u_i[i] * (sGC.beta_i[i] //sum_i obj
-                    - sGC.alpha_it[i][timedd-sGC.d.rj[i]] 
-                    + sGC.d.Djk[i][0] 
-                        * (sGC.delta_t[timedd]
-                           + sGC.phi_t[timedd]));
+                sum_i1 += alpha_i[i] * (sGC.u_i[i] - sGC.w_it[i][timedd-sGC.d.rj[i]]);
+                sum_i2 += alpha_i[i] * sGC.d.Djk[i][0];
             }
-            else model.add(u_i[i] <= 0);
+            else model.add(alpha_i[i] <= 0);
         }
-        IloExpr sum_k1(env);
-        /*for(int k=0; k<sGC.d.nb_bp[0]-2; ++k){
-            if(k%2==0) sum_k1 += sGC.d.bpt[0][k+3]*v_k[k];
-            else sum_k1 += sGC.d.bpt[0][k+2]*v_k[k];
-        }*/
-        IloExpr sum_k2(env);
-        /*for(int k=2; k<sGC.d.nb_bp[0]; ++k){
-            if(k%2==0) sum_k2 += sGC.d.bpt[0][k-1]*v_k[k];
-            else sum_k2 += sGC.d.bpt[0][k-2]*v_k[k];
-        }*/
-        IloExpr sum_k3(env);
-        IloExpr sum_k4(env);
-        for(int k=0; k<sGC.d.nb_bp[0]; ++k){
-			if(k%2==0){ 
-                sum_k1 += sGC.d.bpt[0][k]*v_k[k];
-                sum_k2 += sGC.d.bpt[0][k+1]*v_k[k];
-            }
-            else{
-                sum_k1 += sGC.d.bpt[0][k-1]*v_k[k];
-                sum_k2 += sGC.d.bpt[0][k]*v_k[k];
-            }
-            sum_k3 += v_k[k];
-            sum_k4 += (sGC.d.valbpt[0][k] + sGC.gamma_pt[k/2][timedd] + sGC.d.bpt[0][k]*sGC.delta_t[timedd])*v_k[k];
-        }
+
+
 
         IloExpr obj(env);
-        obj = sum_i2 - sum_k4;
-
-        model.add(sum_k1 - sum_i1 <= sGC.p.qmax);
-        model.add(sum_i1 - sum_k2 <= sGC.p.qmax);
-        model.add(sum_k3 == 1);
+        obj = sum_i1 - sGC.v_t[timedd] - IloPiecewiseLinear(sum_i2,bpt,pente,sGC.d.bpt[0][0],0.0);
+        //if(decal==1) obj = sum_i1 - sGC.v_t[timedd] - IloPiecewiseLinear(sum_i2,bpt,pente,0.0,0.0);
+        //else obj = sum_i1 - sGC.v_t[timedd] - IloPiecewiseLinear(sum_i2,bpt,pented.bpt[i][0], d.valbpt[i][0]);
         model.add(IloMaximize(env, obj));
+        obj.end();
         
-		//cplex.exportModel("cplexmodele.lp");
-		
+			
         // cout << "after model creation to delete" << endl;
 
         auto start_time = chrono::steady_clock::now();
@@ -310,8 +301,7 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
         }
         else{
             objfctvalue = cplex.getObjValue();
-            cplex.getValues(valUi,u_i);
-            cplex.getValues(valVk,v_k);
+            cplex.getValues(valAlphai,alpha_i);
             //if(pbdata.Params.CHOIX_AFFICHAGE==1){
                 //cout << "Solution status = " << cplex.getStatus() << endl;
                 //cout << "Solution value = " << cplex.getObjValue() << endl;
@@ -321,6 +311,8 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
         if(statusint==0){
             if (SCIPisGT(sGC.scip,objfctvalue,0))
             {
+                //cout << "temps export : " << timedd << endl;
+                //cplex.exportModel("SPNoStock.lp");
                 //inittime = sGC.time;
                 // set result pointer
                 colgen=true;
@@ -332,9 +324,11 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
                 }
                 cout<<"time = "<<sGC.time<<endl;*/
                 status = SCIP_SUCCESS;
+                cout << "cout reduit cplex : " << -objfctvalue << endl;
                 //cout << "cout reduit SP CPLEX : " << objfctvalue << endl;
-                status1 = addObjectColumnInModel(sGC,valUi,valVk,timedd);
+                status1 = addObjectColumnInModel(sGC,valAlphai,timedd);
                 assert(status1==1);
+                
                 timedd++;
                 //assert(pbdata.time - inittime >= 0);
                 //cpteur = cpteur + (pbdata.time - inittime);
@@ -356,73 +350,7 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
         env.end();
     }
     //if((!colgen)&&(sGC.todelete == 0)){
-    // ??????????????? START SECTION TO DELETE
-
-
     
-
-
-    /*if((!colgen)&&(sGC.todelete == 0)){
-        //FILE * filed;
-        //filed = fopen("beforeCol", "a+");
-        //cout << " BEFORE COL ------------------------- " << endl;
-        //SCIPprintTransProblem(sGC.scip, NULL, "lp", 0);
-        //fclose(filed);
-
-        IloEnv env;
-
-        //ajout y320
-        IloNumArray valUi1(env, 10, 1, 1, 0,1,0,1,0,1,0,0);
-        IloNumArray valUi2(env, 10, 1,0,0,0,0,0,0,1,1,0);
-        IloNumArray valUi3(env, 10, 1,0,0,0,1,1,0,0,1,1);
-        IloNumArray valUi4(env, 10, 1,0,0,0,0,0,0,0,0,0);
-        IloNumArray valUi5(env, 10, 0,0,1,0,0,1,1,0,0,0);
-        IloNumArray valUi6(env, 10, 1,0,1,0,0,1,1,0,1,1);
-        IloNumArray valUi7(env, 10, 1,0,1,0,0,0,0,0,0,0);
-        IloNumArray valUi8(env, 10, 0,0,1,0,0,0,1,0,0,0);
-        IloNumArray valUi9(env, 10, 0,0,1,0,0,0,0,0,0,0);
-        IloNumArray valVk1(env, 4, 1., 0., 0.,0.);
-        IloNumArray valVk2(env, 4, 0., 1., 0.,0.);
-        IloNumArray valVk3(env, 4, 0., 0., 1.,0.);
-        IloNumArray valVk4(env, 4, 0., 0., 0.,1.);
-        cout << "------------------ ADD COLONNE "<<endl;
-        /*addObjectColumnInModel(sGC,valUi1,valVk3,1);
-        addObjectColumnInModel(sGC,valUi1,valVk4,1);* /
-        addObjectColumnInModel(sGC,valUi2,valVk1,2);
-        addObjectColumnInModel(sGC,valUi2,valVk2,2);
-        /*addObjectColumnInModel(sGC,valUi3,valVk3,3);
-        addObjectColumnInModel(sGC,valUi3,valVk4,3);
-        addObjectColumnInModel(sGC,valUi4,valVk1,4);
-        addObjectColumnInModel(sGC,valUi4,valVk2,4);
-        addObjectColumnInModel(sGC,valUi5,valVk1,5);
-        addObjectColumnInModel(sGC,valUi5,valVk2,5);
-        addObjectColumnInModel(sGC,valUi6,valVk3,6);
-        addObjectColumnInModel(sGC,valUi6,valVk4,6);
-        addObjectColumnInModel(sGC,valUi7,valVk1,7);
-        addObjectColumnInModel(sGC,valUi7,valVk2,7);
-        addObjectColumnInModel(sGC,valUi8,valVk1,8);
-        addObjectColumnInModel(sGC,valUi8,valVk2,8);
-        addObjectColumnInModel(sGC,valUi9,valVk1,9);
-        addObjectColumnInModel(sGC,valUi9,valVk2,9);* /
-
-
-        sGC.todelete = 1;
-        env.end();
-        /*
-        //cout << " AFTER COL ------------------------- " << endl;
-        FILE * filed;
-        filed = fopen("modeleAfterCol","w");
-        SCIPprintTransProblem(sGC.scip, filed, NULL, 0);
-        fclose(filed);* /
-    }*/
-    
- 
-
-
-
-
-    // ???????????????? END
-
 	return status;
 }
 
@@ -455,18 +383,13 @@ SCIP_DECL_PRICERREDCOST(pricerRedcost)
 	// --------------------------------------   recuperation des variables duales
     int fois = 0;
     for(int i=0; i<pbdata->d.cardJ; ++i){
-        pbdata->beta_i[i] = SCIPgetDualsolLinear(scip,pbdata->cons_2[i]);
+        pbdata->u_i[i] = SCIPgetDualsolLinear(scip,pbdata->cons_2[i]);
 		for(int t=0; t<pbdata->d.cardT; ++t){
             if((pbdata->d.rj[i]<=t)&&(t<pbdata->d.dj[i])){
-                pbdata->alpha_it[i][t-pbdata->d.rj[i]] = SCIPgetDualsolLinear(scip,pbdata->cons_1[i][t-pbdata->d.rj[i]]);
+                pbdata->w_it[i][t-pbdata->d.rj[i]] = SCIPgetDualsolLinear(scip,pbdata->cons_1[i][t-pbdata->d.rj[i]]);
             }
             if(fois==0){
-                for(int p=0; p<(pbdata->d.nb_bp[0]/2); ++p){
-                    pbdata->gamma_pt[p][t] = SCIPgetDualsolLinear(scip,pbdata->cons_3[p][t]);
-                }
-                //if(t<pbdata->d.cardT-1) pbdata->delta_t[t] = SCIPgetDualsolLinear(scip,pbdata->cons_8[t]);
-                pbdata->delta_t[t] = SCIPgetDualsolLinear(scip,pbdata->cons_8[t]);
-                pbdata->phi_t[t] = SCIPgetDualsolLinear(scip,pbdata->cons_9[t]);
+                pbdata->v_t[t] = SCIPgetDualsolLinear(scip,pbdata->cons_3[t]);
             }
         }
         ++fois;
@@ -527,19 +450,11 @@ SCIP_DECL_PRICERINITSOL(pricerInitsolSP)
 	pbdata = (structGenCol *) probdata;
 	// get transformed variables
     for(int l=0; l<pbdata->L.size(); ++l){
-        for(const auto& k : pbdata->K_l[l]){
-		    for(int t=pbdata->L[l].releaseTime; t<pbdata->L[l].deadLine; ++t){
-	            SCIPgetTransformedVar(scip, pbdata->varY_lkt[l][k][t],&(pbdata->varY_lkt[l][k][t]));
-			    //assert(pbdata->varY_lkt[l][k][t] != NULL);
-            }
-		}
-	}
-
-    for(int k=0; k<pbdata->d.nb_bp[0]; ++k){
-		for(int t=0; t<pbdata->d.cardT; ++t){
-            SCIPgetTransformedVar(scip, pbdata->varY0_kt[k][t],&(pbdata->varY0_kt[k][t]));
+        for(int t=pbdata->L[l].releaseTime; t<pbdata->L[l].deadLine; ++t){
+            SCIPgetTransformedVar(scip, pbdata->varY_lt[l][t],&(pbdata->varY_lt[l][t]));
+            //assert(pbdata->varY_lkt[l][k][t] != NULL);
         }
-    }
+	}
 
 	for(int i=0; i<pbdata->d.cardJ; i++){
 		for(int t = pbdata->d.rj[i] ; t < pbdata->d.dj[i] ; t++){
@@ -561,13 +476,7 @@ SCIP_DECL_PRICERINITSOL(pricerInitsolSP)
                 //assert(pbdata->tabConsNbSets[j] != NULL);
             }
             if(fois==0){
-                for(int p=0; p<(pbdata->d.nb_bp[0]/2); ++p){
-                    SCIPgetTransformedCons(scip,pbdata->cons_3[p][t],&(pbdata->cons_3[p][t]));
-                    SCIPgetTransformedCons(scip,pbdata->cons_4[p][t],&(pbdata->cons_4[p][t]));
-                }
-                //if(t<pbdata->d.cardT-1) 
-                SCIPgetTransformedCons(scip,pbdata->cons_8[t],&(pbdata->cons_8[t]));
-                SCIPgetTransformedCons(scip,pbdata->cons_9[t],&(pbdata->cons_9[t]));
+                SCIPgetTransformedCons(scip,pbdata->cons_3[t],&(pbdata->cons_3[t]));
             }
         }
         ++fois;

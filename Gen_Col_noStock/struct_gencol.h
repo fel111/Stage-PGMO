@@ -16,7 +16,7 @@ struct feasibleSet{
 	float energyDemand;
 	float cost;
 	vector<int> tasksList;
-	int timeGen;
+	//int timeGen;
 };
 
 struct structGenCol{
@@ -77,6 +77,7 @@ void affAllSet(structGenCol const& sGC);
 void affL_t(structGenCol const& sGC);
 void affK_l(structGenCol const& sGC);
 void modifPwlCplex(structGenCol & sGC);
+float p_t(int t, float x, structGenCol const& sGC);
 
 
 #endif
