@@ -10,8 +10,9 @@
 using namespace std;
 
 bool verifSol(structGenCol const& sGC);
-
-SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,int timedd);
+double verifCoutReduit(structGenCol const& sGC, IloNumArray ui, int t);
+double verifCoutReduit(structGenCol const& sGC, vector<int> ui, int t);
+SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray const& valUi,int timedd, double objvalue);
 SCIP_RESULT Pr_SP1(structGenCol &sGC);
 static SCIP_DECL_PRICERREDCOST(pricerRedcost);
 static SCIP_DECL_PRICERINITSOL(pricerInitsolSP);

@@ -17,6 +17,7 @@
 #include "probScip.cpp"
 #include "pricer.h"
 #include "../Modele_compact/modele_entier_cplex.h"
+#include "../Modele_compact/compact.h"
 
 using namespace std;
 float infini = numeric_limits<float>::max();
@@ -199,7 +200,7 @@ int initData(structGenCol & sGC){
 	d.s0 = 0;
 	d.cardM = 1;
     string param = "param1.txt";
-    string instance = "inst_test3";
+    string instance = "inst_3";
 	if(lecteur_param("Param/"+param,p) == 0) return 0;
 	d.Q = 20;
 	p.qmax = 20;
@@ -262,7 +263,7 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
     initData(sGC);
     //cout <<"initData OK ! "<<endl;
 	
-	firstSol(sGC);
+	/*firstSol(sGC);
 	//cout <<"firstSol OK ! "<<endl;
 	
 	//affK_l(sGC);
@@ -350,7 +351,7 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
 		for(int t=0; t<sGC.d.cardT; ++t){
             if(SCIPgetSolVal(sGC.scip, sGC.sol,sGC.varY0_kt[k][t])>0) cout << "y0,"<<k<<","<<t<<" = "<<SCIPgetSolVal(sGC.scip, sGC.sol,sGC.varY0_kt[k][t])<<endl;
         }
-    }*/
+    }* /
 
     //SCIPprintStatistics(sGC.scip,NULL);
 
@@ -371,7 +372,7 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
     //cout << "temps SP : "<<sGC.tpsSP<<endl;
 
     //cout << "cout reduit colonne 1 : " << sGC.todelete3 << endl;
-
+    */
     return status;
 }
 
@@ -379,7 +380,8 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
 
 
 int main(){
-    float tps;
+    float tpscplex;
+    float tpsscip;
     float binf;
     vector<float> temp;
     string statut;
@@ -389,11 +391,13 @@ int main(){
     modifPwlCplex(sGC);
     float ftemp;
     string stemp;
-    float solCompactCPX = modele_entier_cplex(sGC.d,sGC.p,tps,ftemp,stemp);
-    cout << "sol compact : " << solCompactCPX << endl;
-    cout << "tps compact : " << tps << endl;
+    float solCompactCPX = modele_entier_cplex(sGC.d,sGC.p,tpscplex,ftemp,stemp);
+    cout << "sol compact cplex : " << solCompactCPX << endl;
+    cout << "tps compact cplex : " << tpscplex << endl;
     //float solRelax = relaxation_modele_entier_cplex(sGC.d,temp,sGC.p,tps,binf,statut);
-
+    float solCompactSCIP = modele_entier_compact(sGC.d,tpsscip);
+    cout << "sol compact scip : " << solCompactSCIP << endl;
+    cout << "tps compact scip : " << tpsscip << endl; 
 
     return 0;
 }

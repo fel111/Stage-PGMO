@@ -53,26 +53,26 @@ float ordo_cplex(data &d,param const& p, float &tps, string &status){
 	// CONTRAINTES
 
 	//contraintes sur ct
-	for(int i=0; i<d.cardT; ++i){
-		if(d.bpt[i][0] > 0){
-			IloNumArray pente(env, d.nb_bp[i]+1);
-			IloNumArray bpt(env, d.nb_bp[i]);
+	for(int t=0; t<d.cardT; ++t){
+		if(d.bpt[t][0] > 0){
+			IloNumArray pente(env, d.nb_bp[t]+1);
+			IloNumArray bpt(env, d.nb_bp[t]);
 			pente[0] = 0.0;
-			bpt[0] = d.bpt[i][0];
-			for(int j=1; j<d.nb_bp[i]+1;++j){
-        		pente[j] = d.pente[i][j-1];
-				if (j<d.nb_bp[i]) bpt[j] = d.bpt[i][j];
+			bpt[0] = d.bpt[t][0];
+			for(int j=1; j<d.nb_bp[t]+1;++j){
+        		pente[j] = d.pente[t][j-1];
+				if (j<d.nb_bp[t]) bpt[j] = d.bpt[t][j];
     		}
-			model.add(ct[i] == IloPiecewiseLinear(xt[i],bpt,pente,0, 0));
+			model.add(ct[t] == IloPiecewiseLinear(xt[t],bpt,pente,0, 0));
 		}
 		else{
-			IloNumArray pente(env, d.nb_bp[i]);
-			IloNumArray bpt(env, d.nb_bp[i]-1);
-			for(int j=0; j<d.nb_bp[i];++j){
-       			pente[j] = d.pente[i][j];
-				if(j<d.nb_bp[i]-1) bpt[j] = d.bpt[i][j+1];
+			IloNumArray pente(env, d.nb_bp[t]);
+			IloNumArray bpt(env, d.nb_bp[t]-1);
+			for(int j=0; j<d.nb_bp[t];++j){
+       			pente[j] = d.pente[t][j];
+				if(j<d.nb_bp[t]-1) bpt[j] = d.bpt[t][j+1];
     		}
-			model.add(ct[i] == IloPiecewiseLinear(xt[i],bpt,pente,d.bpt[i][0], d.valbpt[i][0]));
+			model.add(ct[t] == IloPiecewiseLinear(xt[t],bpt,pente,d.bpt[t][0], d.valbpt[t][0]));
 		}
 	}
 
@@ -180,7 +180,7 @@ if(p.taches_avec_fenetre_temps == 1){
 	else if(cplex.getStatus() == IloAlgorithm::Optimal){
 		status = "Optimal";
 		vector<float> prod;
-		//cout << "demande : ";	
+		/*//cout << "demande : ";	
 		//for(int i=0; i<d.cardT; ++i){
 			//cout << SCIPgetSolVal(scip,sol,xt[i]) << ", ";
 			//prod.push_back(static_cast<int>(ceil(SCIPgetSolVal(scip,sol,xt[i]))));
@@ -200,9 +200,10 @@ if(p.taches_avec_fenetre_temps == 1){
 					}
 				}
 			}
-		//}
+		//} */
 		d.dt = prod;
 		sol = cplex.getObjValue();
+		cout << "nb noeuds cplex : " << cplex.getNnodes() << endl;
 	}
 	else{
 		status = "Unknown";

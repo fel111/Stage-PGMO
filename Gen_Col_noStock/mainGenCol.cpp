@@ -73,7 +73,7 @@ int initData(structGenCol & sGC){
 	d.s0 = 0;
 	d.cardM = 1;
     string param = "param1.txt";
-    string instance = "inst_test3";
+    string instance = "inst_4";
 	if(lecteur_param("Param/"+param,p) == 0) return 0;
 	d.Q = 20;
 	p.qmax = 20;
@@ -184,7 +184,7 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
     
     
     // export modele dernier PMR
-    //SCIPwriteTransProblem(sGC.scip,"lastPMRNoStock","lp",0);
+    //SCIPwriteTransProblem(sGC.scip,"lastPMRNoStock.lp","lp",0);
     /*FILE * filed;
 	filed = fopen("afterCol", "a+");
 	SCIPprintTransProblem(sGC.scip, NULL, "lp", 0);
@@ -193,13 +193,13 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
 
     //cout << "------sol SCIP------"<<endl;
     // aff solution
-    SCIPprintSol(sGC.scip, sGC.sol, NULL, 0);
+    //SCIPprintSol(sGC.scip, sGC.sol, NULL, 0);
 
     // Get the current scip solving time in seconds.
     //cout << "temps scip : "<<SCIPgetSolvingTime(sGC.scip) <<endl;
     
     
-    affAllSet(sGC);
+    //affAllSet(sGC);
 
     // export du dernier pb maitre
     /*FILE * filed;

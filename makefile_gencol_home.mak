@@ -65,7 +65,8 @@ OBJ= Gen_Col/mainGenCol.o \
 	struct.o \
 	Gen_Col/pricer.o \
 	Gen_Col/struct_gencol.o \
-	Modele_compact/modele_entier_cplex.o
+	Modele_compact/modele_entier_cplex.o \
+	Modele_compact/compact.o
 
 
 
@@ -126,6 +127,7 @@ clean :
 	rm Gen_Col/pricer.o;
 	rm Gen_Col/struct_gencol.o;
 	rm Modele_compact/modele_entier_cplex.o; 
+	rm Modele_compact/compact.o;
 #rm -f *.o *~ 
  
 # Taper 'make clear' fait un 'make clean' puis efface en plus l'ex�cutable.

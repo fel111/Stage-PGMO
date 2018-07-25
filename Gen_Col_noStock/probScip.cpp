@@ -24,7 +24,7 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
     
     /* Load plugin */
     SCIP_CALL( SCIPincludeDefaultPlugins(sGC.scip) );
-    //SCIPsetMessagehdlr(sGC.scip,NULL);
+    SCIPsetMessagehdlr(sGC.scip,NULL);
 	//SCIP_CALL( SCIPchgRealParam(sGC.scip,SCIPgetParam(sGC.scip,"numerics/epsilon"),0.0001) );
     //SCIP_CALL( SCIPchgIntParam(sGC.scip,SCIPgetParam(sGC.scip,"lp/colagelimit"),-1) ); // permet d'empecher aging (marche pas)
 	//SCIP_CALL( SCIPchgLongintParam(sGC.scip,SCIPgetParam(sGC.scip,"limits/totalnodes"),1) );
@@ -114,13 +114,13 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 	sGC.cons_2 = cons_2;
 	//cout<<"cons_2 ok"<<endl;
 
-	// sum_l ylt <= 1
+	// sum_l -ylt >= -1
 	vector<SCIP_CONS *> cons_3;
 	for(int t=0; t<sGC.d.cardT; ++t){
 		SCIP_CONS * ct;
-		SCIPcreateConsLinear(sGC.scip, &ct, ("cons_3,"+to_string(t)).c_str(), 0, 0, 0, 0, 1, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE);  	
+		SCIPcreateConsLinear(sGC.scip, &ct, ("cons_3,"+to_string(t)).c_str(), 0, 0, 0, -1, SCIPinfinity(sGC.scip), TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE);  	
 		for(const auto& l : sGC.L_t[t]){
-			SCIPaddCoefLinear(sGC.scip, ct, sGC.varY_lt[l][t],1);		
+			SCIPaddCoefLinear(sGC.scip, ct, sGC.varY_lt[l][t],-1);		
 		}
 		SCIPaddCons(sGC.scip, ct);
 		cons_3.push_back(ct);

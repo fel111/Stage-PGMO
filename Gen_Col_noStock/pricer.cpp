@@ -43,7 +43,29 @@ bool verifSol(structGenCol const& sGC){
     return true;
 }
 
+double verifCoutReduit(structGenCol const& sGC, IloNumArray ui, int t){
+    double cr = 0.0;
+    float sumi = 0.0;
+    for(int i=0; i<ui.getSize(); ++i){
+        if(SCIPisEQ(sGC.scip, ui[i], 1.0)){
+            cr += (sGC.u_i[i] - sGC.w_it[i][t-sGC.d.rj[i]]);
+            sumi += sGC.d.Djk[i][0];
+        }
+    }
+    cr += -sGC.v_t[t] - p_t(t,sumi,sGC);
+    return -cr;
+}
 
+double verifCoutReduit(structGenCol const& sGC, vector<int> ui, int t){
+    double cr = 0.0;
+    float sumi = 0.0;
+    for(auto const& i : ui){
+        cr += (sGC.u_i[i] - sGC.w_it[i][t-sGC.d.rj[i]]);
+        sumi += sGC.d.Djk[i][0];
+    }
+    cr += -sGC.v_t[t] - p_t(t,sumi,sGC);
+    return -cr;
+}
 
 /*! \brief Method generating the new column found by the subproblem. It creates a new instance of FeasibleSet object
  This version only adds the column for the specified time
@@ -57,7 +79,7 @@ bool verifSol(structGenCol const& sGC){
  *
  * \return status: a variable of type SCIP_RETCODE, equal to SCIP_OKAY if everything went well
  */
-SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,int timedd){
+SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray const& valUi,int timedd,double objvalue){
 	SCIP_RETCODE status = SCIP_OKAY; // devrait etre modifie lors de l ajout d une colonne, sinon erreur
 	//vector<Task> listeTask;
 	vector<int> taskList;
@@ -68,6 +90,7 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,int tim
 	for(int i = 0 ; i < sGC.d.cardJ ; i++){
 		//cout << "tache i=" << i << " valX="<< valUi[i] << endl;
 		if( SCIPisEQ(sGC.scip, valUi[i], 1.0) ){
+            //cout << "ok" << endl;
             taskList.push_back(i);
             if(taskList.size() == 1){
                 l.energyDemand = sGC.d.Djk[i][0];
@@ -103,6 +126,9 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,int tim
             if(sGC.varY_lt[id][timedd] == NULL) createOk = true;
         }
         if(createOk){
+            //vector<double> valduales;
+            //vector<double> valdualesrecup;
+            //vector<double> coefduales;
             // Creation de la nouvelle variable pour le moment t obtenu a l issu du sous probleme
             string name = "y_lt"+to_string(id)+","+to_string(timedd);
             //cout <<"ajout variable "+name<<endl;
@@ -113,14 +139,28 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,int tim
                 //cout<<"j : "<<j<<" timedd : "<<sGC.timedd<<" rj : "<<sGC.d.rj[j] << " dj : "endl;
                 //SCIPprintCons(sGC.scip,sGC.cons_1[j][sGC.time-sGC.d.rj[j]],NULL);
                 SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_1[j][timedd-sGC.d.rj[j]],var,-1));
+                //valduales.push_back(SCIPgetDualsolLinear(sGC.scip,sGC.cons_1[j][timedd-sGC.d.rj[j]]));
+                //valdualesrecup.push_back(sGC.w_it[j][timedd-sGC.d.rj[j]]);
+                //coefduales.push_back(-1);
                 // Mise a jour cons2
                 SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_2[j],var,1));
+                //valduales.push_back(SCIPgetDualsolLinear(sGC.scip,sGC.cons_2[j]));
+                //valdualesrecup.push_back(sGC.u_i[j]);
+                //coefduales.push_back(1);
             }
             // Mise a jour cons3
-            SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_3[timedd],var,1));
+            SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_3[timedd],var,-1));
+            //valduales.push_back(SCIPgetDualsolLinear(sGC.scip,sGC.cons_3[timedd]));
+            //valdualesrecup.push_back(sGC.v_t[timedd]);
+            //coefduales.push_back(-1);
             SCIP_CALL(status = SCIPaddPricedVar(sGC.scip, var, 1.0));
-            cout << "cout reduit scip : " << SCIPgetVarRedcost(sGC.scip,var) << endl;
-
+            /*cout << "cout reduit scip : " << SCIPgetVarRedcost(sGC.scip,var) << endl;
+            cout << "cout reduit 'a la main' : " << verifCoutReduit(sGC,taskList,timedd) << endl;
+            if(!SCIPisEQ(sGC.scip,objvalue,SCIPgetVarRedcost(sGC.scip,var))){
+                cout << "cost : " << sGC.L[id].cost << endl;
+                for(int v=0; v<valduales.size(); ++v) cout << v << " :     valduale : " << valduales[v] <<" valdualerecup : " << valdualesrecup[v] << "   coeff  : " << coefduales[v] << endl;
+            }*/
+            assert(SCIPisEQ(sGC.scip,objvalue,SCIPgetVarRedcost(sGC.scip,var)));
             if(testPres==-1){
                 vector<SCIP_VAR*> tab (sGC.d.cardT, NULL);
                 tab[timedd] = var;
@@ -324,9 +364,9 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
                 }
                 cout<<"time = "<<sGC.time<<endl;*/
                 status = SCIP_SUCCESS;
-                cout << "cout reduit cplex : " << -objfctvalue << endl;
+                //cout << "cout reduit cplex : " << -objfctvalue << endl;
                 //cout << "cout reduit SP CPLEX : " << objfctvalue << endl;
-                status1 = addObjectColumnInModel(sGC,valAlphai,timedd);
+                status1 = addObjectColumnInModel(sGC,valAlphai,timedd,-objfctvalue);
                 assert(status1==1);
                 
                 timedd++;

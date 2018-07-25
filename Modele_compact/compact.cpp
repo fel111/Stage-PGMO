@@ -6,15 +6,16 @@
 #include <limits>
 #include "scip/scip.h"
 #include "scip/scipdefplugins.h"
-#include "struct.h"
+#include "../struct.h"
 #include "compact.h"
+#include <chrono>
 //#include <ilcplex/cplex.h>
 //#define SCIP_DEBUG
 using namespace std;
 //int infini_int = numeric_limits<int>::max();
 
 
-void modele_entier_compact(data d){
+float modele_entier_compact(data d,float& tps){
 
 	// DONNEES
 
@@ -65,7 +66,7 @@ void modele_entier_compact(data d){
 	for(int i=0; i<d.cardT; ++i){
 		SCIP_VAR * var;
 		ct.push_back(var);
-		SCIPcreateVarBasic(scip, &ct[i], ("ct"+to_string(i)).c_str(), 0, SCIP_REAL_MAX, 1.0, SCIP_VARTYPE_CONTINUOUS);
+		SCIPcreateVarBasic(scip, &ct[i], ("ct"+to_string(i)).c_str(), 0, SCIPinfinity(scip), 1.0, SCIP_VARTYPE_CONTINUOUS);
 		SCIPaddVar(scip,ct[i]);
 	}
 
@@ -77,7 +78,7 @@ void modele_entier_compact(data d){
 		for(int j=0; j<d.nb_bp[i]; ++j){
 			SCIP_VAR * var;
 			xtij[i].push_back(var);
-			SCIPcreateVarBasic(scip, &(xtij[i][j]), ("xtij"+to_string(i)+to_string(j)).c_str(), 0, SCIP_REAL_MAX, 0.0, SCIP_VARTYPE_CONTINUOUS);
+			SCIPcreateVarBasic(scip, &(xtij[i][j]), ("xtij"+to_string(i)+to_string(j)).c_str(), 0, SCIPinfinity(scip), 0.0, SCIP_VARTYPE_CONTINUOUS);
 			SCIPaddVar(scip,xtij[i][j]);		
 		}	
 	}
@@ -125,7 +126,7 @@ void modele_entier_compact(data d){
 	for(int i=0; i<d.cardT; ++i){
 		SCIP_VAR * var;
 		xt.push_back(var);
-		SCIPcreateVarBasic(scip, &xt[i], ("xt"+to_string(i)).c_str(), 0, SCIP_REAL_MAX, 0, SCIP_VARTYPE_CONTINUOUS);
+		SCIPcreateVarBasic(scip, &xt[i], ("xt"+to_string(i)).c_str(), 0, SCIPinfinity(scip), 0, SCIP_VARTYPE_CONTINUOUS);
 		SCIPaddVar(scip,xt[i]);
 	}
 
@@ -301,8 +302,25 @@ void modele_entier_compact(data d){
 		}
 	}
 
+	//fenetre de temps
+	for(int j=0; j<d.cardJ; ++j){
+		SCIP_CONS * co;
+		SCIPcreateConsLinear(scip, &co, ("cons_fenetretemps"+to_string(j)).c_str(), 0, 0, 0, 0, 0, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
+		for(int k=0; k<d.cardM; ++k){
+			for(int t=0; t<d.rj[j]; ++t){
+				SCIPaddCoefLinear(scip, co, y_jkt[j][k][t],1);
+			}
+			for(int t=d.dj[j]; t<d.cardT; ++t){
+				SCIPaddCoefLinear(scip, co, y_jkt[j][k][t],1);
+			}
+		}
+		SCIPaddCons(scip, co);	
+	}
+
+
+
 	// xt + st - st-1 - sum_j sum_k Djk*yjkt - sum_k d.Dk*zkt = 0
-	vector<SCIP_CONS *> cons_equil;
+	/*vector<SCIP_CONS *> cons_equil;
 	SCIP_CONS * c;
 	cons_equil.push_back(c);
 	SCIPcreateConsLinear(scip, &cons_equil[0], "cons_equil0", 0, 0, 0, d.s0, d.s0, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
@@ -333,12 +351,31 @@ void modele_entier_compact(data d){
 			SCIPaddCoefLinear(scip, cons_equil[t], z_kt[k][t],-d.Dk[k]);
 		}			
 		SCIPaddCons(scip, cons_equil[t]);
+	}*/
+
+	// st+1 - st - xt + sum_j sum_k Djk*yjkt + sum_k d.Dk*zkt = 0
+	for(int t=0; t<d.cardT; ++t){
+		SCIP_CONS * c;
+		SCIPcreateConsLinear(scip, &c, ("cons_equil"+to_string(t)).c_str(), 0, 0, 0, 0, 0, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
+		SCIPaddCoefLinear(scip, c, xt[t],-1);
+		SCIPaddCoefLinear(scip, c, st[t],-1);
+		SCIPaddCoefLinear(scip, c, st[t+1],1);		
+		for(int j=0; j<d.cardJ; ++j){
+			for(int k=0; k<d.cardM; ++k){
+				SCIPaddCoefLinear(scip, c, y_jkt[j][k][t],d.Djk[j][k]);
+			}
+		}
+		for(int k=0; k<d.cardM; ++k){
+			SCIPaddCoefLinear(scip, c, z_kt[k][t],d.Dk[k]);
+		}			
+		SCIPaddCons(scip, c);
 	}
+
 
 	//contrainte stmax - st0 >= 0
 	SCIP_CONS * cons_st;
 	SCIPcreateConsLinear(scip, &cons_st, "cons_st", 0, 0, 0, 0, SCIPinfinity(scip), TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
-	SCIPaddCoefLinear(scip, cons_st, st[d.cardT-1], 1);
+	SCIPaddCoefLinear(scip, cons_st, st[d.cardT], 1);
 	SCIPaddCoefLinear(scip, cons_st, st[0], -1);
 	SCIPaddCons(scip, cons_st);
 
@@ -353,10 +390,17 @@ void modele_entier_compact(data d){
 	//SCIPprintOrigProblem(scip, filed, "lp", false);
 	
 
-	SCIPsolve(scip);
+	auto start_time = chrono::steady_clock::now();
+    SCIPsolve(scip);
+	auto end_time = chrono::steady_clock::now();
+	tps = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
+
+	
 	//RECUPERATION
 	SCIP_SOL * sol = SCIPgetBestSol(scip);
-	cout << "obj = " << SCIPgetSolOrigObj(scip,sol) << endl << endl;
+	
+	cout << "nb noeuds SCIP COMPACT = " << SCIPgetNNodes(scip) << endl;
+	return SCIPgetSolOrigObj(scip,sol);
 	//SCIPprintBestSol(scip,filed,true); 	
 	//fclose(filed);
 	
