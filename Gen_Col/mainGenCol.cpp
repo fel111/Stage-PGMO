@@ -199,8 +199,8 @@ int initData(structGenCol & sGC){
     d.cardR = 2;
 	d.s0 = 0;
 	d.cardM = 1;
-    string param = "param1.txt";
-    string instance = "inst_3";
+    string param = "param_gencol.txt";
+    string instance = "inst_test3";
 	if(lecteur_param("Param/"+param,p) == 0) return 0;
 	d.Q = 20;
 	p.qmax = 20;
@@ -263,7 +263,7 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
     initData(sGC);
     //cout <<"initData OK ! "<<endl;
 	
-	/*firstSol(sGC);
+	firstSol(sGC);
 	//cout <<"firstSol OK ! "<<endl;
 	
 	//affK_l(sGC);
@@ -351,7 +351,7 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
 		for(int t=0; t<sGC.d.cardT; ++t){
             if(SCIPgetSolVal(sGC.scip, sGC.sol,sGC.varY0_kt[k][t])>0) cout << "y0,"<<k<<","<<t<<" = "<<SCIPgetSolVal(sGC.scip, sGC.sol,sGC.varY0_kt[k][t])<<endl;
         }
-    }* /
+    }*/
 
     //SCIPprintStatistics(sGC.scip,NULL);
 
@@ -372,7 +372,7 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
     //cout << "temps SP : "<<sGC.tpsSP<<endl;
 
     //cout << "cout reduit colonne 1 : " << sGC.todelete3 << endl;
-    */
+    
     return status;
 }
 
@@ -395,9 +395,9 @@ int main(){
     cout << "sol compact cplex : " << solCompactCPX << endl;
     cout << "tps compact cplex : " << tpscplex << endl;
     //float solRelax = relaxation_modele_entier_cplex(sGC.d,temp,sGC.p,tps,binf,statut);
-    float solCompactSCIP = modele_entier_compact(sGC.d,tpsscip);
+    /*float solCompactSCIP = modele_entier_compact(sGC.d,tpsscip);
     cout << "sol compact scip : " << solCompactSCIP << endl;
-    cout << "tps compact scip : " << tpsscip << endl; 
+    cout << "tps compact scip : " << tpsscip << endl; */
 
     return 0;
 }

@@ -58,7 +58,7 @@ void firstSol(structGenCol & sGC){
                 addA_il(l,sGC);
                 addL_t(l,sGC);
                 cptId++;
-            }else cout << "set deja present " << l.id << endl;
+            }//else cout << "set deja present " << l.id << endl;
         }
 	}
 
@@ -73,7 +73,7 @@ int initData(structGenCol & sGC){
 	d.s0 = 0;
 	d.cardM = 1;
     string param = "param1.txt";
-    string instance = "inst_4";
+    string instance = "inst_1";
 	if(lecteur_param("Param/"+param,p) == 0) return 0;
 	d.Q = 20;
 	p.qmax = 20;

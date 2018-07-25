@@ -40,6 +40,8 @@ int lecteur_param(string file, param &p){
             else if (par == "choix_dt_ls") { p.choix_dt_ls = stoi(t); }
             else if (par == "type_cap") { p.type_cap = stoi(t); }
             else if (par == "val_cap") { p.val_cap = stof(t); }
+            else if (par == "ensemble_multiple") p.ensemble_multiple = stoi(t);
+            else if (par == "ajout_breakpoint_voisin") p.ajout_breakpoint_voisin = stoi(t);
         }
         if((p.type_cap == 1)&&(p.val_cap <1)){
             cout << "type capacite : abs  mais capacite < 1   erreur"<<endl;

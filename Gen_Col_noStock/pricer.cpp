@@ -171,58 +171,8 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray const& valUi,
             }
             sGC.nbcolgenerated++;
         }
-        //else cout << "colonne existante !!!!!!!"  << endl;
-        // PARTIE AJOUT COLONNE Y_LHT, AVEC H LE BREAKPOINT VOISIN DE K
-        /*int k2;
-        if(k%2==0) k2=k+1;
-        else k2=k-1; 
-        if((testPres==-1)||((testPres!=-1)&&(sGC.varY_lkt[id][k2][time]==NULL))){
-            string name2 = "y_lkt"+to_string(id)+","+to_string(k2)+","+to_string(time);
-            SCIP_VAR * var2;
-            SCIPcreateVarBasic(sGC.scip, &var2, name2.c_str() ,0,SCIPinfinity(sGC.scip),sGC.d.valbpt[0][k2],SCIP_VARTYPE_CONTINUOUS);
-            for(const auto& j : taskList){
-                //Mise a jour cons1
-                //cout<<"j : "<<j<<" time : "<<sGC.time<<" rj : "<<sGC.d.rj[j] << " dj : "endl;
-                //SCIPprintCons(sGC.scip,sGC.cons_1[j][sGC.time-sGC.d.rj[j]],NULL);
-                SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_1[j][time-sGC.d.rj[j]],var2,-1));
-                // Mise a jour cons2
-                SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_2[j],var2,1));
-            }
-            // Mise a jour cons3
-            SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_3[k2/2][time],var2,-1));
-            // Mise a jour cons8
-            //cout<<"contrainte 8 : l.energyDemand-sGC.d.bpt[0][k] = "<<l.energyDemand-sGC.d.bpt[0][k]<<endl;
-            SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_8[time],var2,l.energyDemand-sGC.d.bpt[0][k2]));
-            // Mise a jour cons9
-            SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_9[time],var2,l.energyDemand));
-            SCIP_CALL(status = SCIPaddPricedVar(sGC.scip, var2, 1.0));
-            sGC.nbcolgenerated++;
-            // ???????????? START
-            //cout << "cout reduit de colonne ajoutee : "<<SCIPgetVarRedcost(sGC.scip,var2)<<endl;
-        }*/
-        //return status;
     }
-    /*else{ //cas pas de tâches donc variable y0_kt
-        // Creation de la nouvelle variable pour le moment t obtenu a l issu du sous probleme
-        string name = "y0_kt"+to_string(k)+","+to_string(time);
-
-        SCIP_VAR * var;
-        SCIPcreateVarBasic(sGC.scip, &var, name.c_str() ,0,SCIPinfinity(sGC.scip),sGC.d.valbpt[0][k],SCIP_VARTYPE_CONTINUOUS);
-
-        // Mise a jour cons4
-        //SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_4[k/2][time],var,-1));
-        // Mise a jour cons8
-        SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_8[time],var,-sGC.d.bpt[0][k]));
-        SCIP_CALL(status = SCIPaddPricedVar(sGC.scip, var, 1.0));
-        cout << "--------COLONNES AJOUTEE-------"<<endl;
-        cout << "cout reduit de colonne ajoutee : "<<SCIPgetVarRedcost(sGC.scip,var)<<endl;
-        sGC.varY0_kt[k][time] = var;
-        //time++;
-        return status;
-    }*/
     return status;
-        //}else cout << "l deja present " << l.id << endl;
-	//}
 }
 
 
@@ -372,8 +322,7 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
                 timedd++;
                 //assert(pbdata.time - inittime >= 0);
                 //cpteur = cpteur + (pbdata.time - inittime);
-                //if(pbdata.Params.MULTIPLE_ENSEMBLE==0)
-                stop = true;
+                if(sGC.p.ensemble_multiple==0) stop = true;
             }else
             {   
                 //cout << "Cout reduit non négatif au temps "<<timedd<< endl;

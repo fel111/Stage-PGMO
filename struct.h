@@ -27,6 +27,8 @@ struct data{
 };
 
 struct param{
+	int ajout_breakpoint_voisin;
+	int ensemble_multiple;
 	int taches_avec_fenetre_temps; // 1 si les taches ont des fenetres de temps a respecter
 	int boucle_relaxation; // 1 si on utilise la relaxation pour premiere solution ordo
 	int aff_log_ordo_cplex; // 1 si on souhaite afficher le deroulement cplex ordo

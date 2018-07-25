@@ -21,3 +21,5 @@ choix_dt_ls 1 // 1 si on prend l'entier superieur pour la demande en entree du L
 type_cap 2 // 1 si la capacité est absolue (>=1), 2 si elle est relative ({0,1})
 
 val_cap 0.05 // valeur de la capacité de batterie
+
+ensemble_multiple 1 // 0 si on arrete le pricing apres l'ajout d'une colonne, 1 si on continue pour tous les temps

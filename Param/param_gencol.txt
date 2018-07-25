@@ -1,0 +1,15 @@
+taches_avec_fenetre_temps 1 // 1 si les taches ont des fenetres de temps a respecter, 0 sinon
+
+aff_log_compact_cplex 0 // 1 si on souhaite afficher le deroulement cplex lotsizent, 0 sinon
+
+nb_threads_cplex 1 // nombre de threads pour cplex
+
+time_limit_compact 600
+
+type_cap 2 // 1 si la capacité est absolue (>=1), 2 si elle est relative ({0,1})
+
+val_cap 0.05 // valeur de la capacité de batterie
+
+ensemble_multiple 1 // 0 si on arrete le pricing apres l'ajout d'une colonne, 1 si on continue pour tous les temps
+
+ajout_breakpoint_voisin 0 // 1 si on ajoute le breakpoint de l'autre extremite du morceau, 0 sinon 

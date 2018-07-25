@@ -51,7 +51,7 @@ COMPILO=g++
 #    -ansi : Assure que le code C++ suit la norme ANSI, et est donc portable.
 #    -O2   : Lorsque votre programme est au point, l'option -O2 permet d'optimiser votre programme (le rendre plus rapide) 
 #FLAGS= -O3 -ansi
-FLAGS= -W -Wall -DIL_STD -std=c++11 -g -O3
+FLAGS= -W -Wall -DIL_STD -std=c++11 -O3
 #-m64 
 #-DNDEBUG deactivate assertions
 #FLAGS= -g -W -Wall -DIL_STD 
@@ -63,13 +63,13 @@ OBJ= Gen_Col_noStock/mainGenCol.o \
 	struct.o \
 	Gen_Col_noStock/pricer.o \
 	Gen_Col_noStock/struct_gencol.o \
-	Ordo_compact/ordo_comp.o
+	Ordo_compact/ordo_cplex.o
 
 
 
 # Liste des objets que l'on va obtenir, et qu'il faudra linker.
 # pour exe
-EXEC_NAME1 = mainGenCol
+EXEC_NAME1 = mainGenColNoStock
 #EXEC_NAME1 = example
 OBJ1= $(OBJ)
 
@@ -119,12 +119,13 @@ $(EXEC_NAME1) : $(OBJ1)
 # Taper 'make clean' provoque l'effacement de tous les .o, et des *~ laiss�s 
 # par emacs. Il n'y a pas de d�pendence pour cette cible.
 clean : 
-	rm Gen_Col/mainGenCol.o Lecteur_Fichiers/lecteur_taches.o;
+	rm Gen_Col_noStock/mainGenCol.o;
+	rm Lecteur_Fichiers/lecteur_taches.o;
 	rm Lecteur_Fichiers/lecteur_param.o;
 	rm struct.o;
-	rm Gen_Col/pricer.o;
-	rm Gen_Col/struct_gencol.o;
-	rm Modele_compact/modele_entier_cplex.o;
+	rm Gen_Col_noStock/pricer.o;
+	rm Gen_Col_noStock/struct_gencol.o;
+	rm Ordo_compact/ordo_cplex.o;
 
 #find . -name \*.o -type f -delete 
  
