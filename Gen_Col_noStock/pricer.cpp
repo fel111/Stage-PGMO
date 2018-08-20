@@ -160,7 +160,7 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray const& valUi,
                 cout << "cost : " << sGC.L[id].cost << endl;
                 for(int v=0; v<valduales.size(); ++v) cout << v << " :     valduale : " << valduales[v] <<" valdualerecup : " << valdualesrecup[v] << "   coeff  : " << coefduales[v] << endl;
             }*/
-            assert(SCIPisEQ(sGC.scip,objvalue,SCIPgetVarRedcost(sGC.scip,var)));
+            //assert(SCIPisEQ(sGC.scip,objvalue,SCIPgetVarRedcost(sGC.scip,var)));
             if(testPres==-1){
                 vector<SCIP_VAR*> tab (sGC.d.cardT, NULL);
                 tab[timedd] = var;
@@ -338,7 +338,6 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
         }
         env.end();
     }
-    //if((!colgen)&&(sGC.todelete == 0)){
     
 	return status;
 }

@@ -9,7 +9,7 @@ INCLUDES_PATH= \
 	-I/usr/include \
 	-I/mnt/d/Téléchargements/scipoptsuite-5.0.1/scip/src \
 	-I/opt/ibm/ILOG/CPLEX_Studio1271/cplex/include \
-	-I/opt/ibm/ILOG/CPLEX_Studio1271/concert/include \
+	-I/opt/ibm/ILOG/CPLEX_Studio1271/concert/include
 
 
 # Les librairies que l'on va utiliser

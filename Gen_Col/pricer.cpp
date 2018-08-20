@@ -325,8 +325,8 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
         IloExpr obj(env);
         obj = sum_i2 - sum_k4;
 
-        model.add(sum_k1 - sum_i1 <= sGC.p.qmax);
-        model.add(sum_i1 - sum_k2 <= sGC.p.qmax);
+        model.add(sum_k1 - sum_i1 <= sGC.d.Q);
+        model.add(sum_i1 - sum_k2 <= sGC.d.Q);
         model.add(sum_k3 == 1);
         model.add(IloMaximize(env, obj));
         
@@ -559,8 +559,8 @@ SCIP_RESULT Pr_farkas(structGenCol &sGC){
         IloExpr obj(env);
         obj = sum_i2 - sum_k4;
 
-        model.add(sum_k1 - sum_i1 <= sGC.p.qmax);
-        model.add(sum_i1 - sum_k2 <= sGC.p.qmax);
+        model.add(sum_k1 - sum_i1 <= sGC.d.Q);
+        model.add(sum_i1 - sum_k2 <= sGC.d.Q);
         model.add(sum_k3 == 1);
         model.add(IloMaximize(env, obj));
         
@@ -823,7 +823,7 @@ SCIP_DECL_PRICERINITSOL(pricerInitsolSP)
             if(fois==0){
                 for(int p=0; p<(pbdata->d.nb_bp[0]/2); ++p){
                     SCIPgetTransformedCons(scip,pbdata->cons_3[p][t],&(pbdata->cons_3[p][t]));
-                    SCIPgetTransformedCons(scip,pbdata->cons_4[p][t],&(pbdata->cons_4[p][t]));
+                    //SCIPgetTransformedCons(scip,pbdata->cons_4[p][t],&(pbdata->cons_4[p][t]));
                 }
                 //if(t<pbdata->d.cardT-1) 
                 SCIPgetTransformedCons(scip,pbdata->cons_8[t],&(pbdata->cons_8[t]));

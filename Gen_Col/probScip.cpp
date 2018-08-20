@@ -24,6 +24,7 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
     
     /* Load plugin */
     SCIP_CALL( SCIPincludeDefaultPlugins(sGC.scip) );
+	//SCIP_CALL( SCIPchgRealParam(sGC.scip,SCIPgetParam(sGC.scip,"limits/time"),sGC.p.time_limit_gencol) );
     SCIPsetMessagehdlr(sGC.scip,NULL);
 	//SCIP_CALL( SCIPchgRealParam(sGC.scip,SCIPgetParam(sGC.scip,"numerics/epsilon"),0.0001) );
     //SCIP_CALL( SCIPchgIntParam(sGC.scip,SCIPgetParam(sGC.scip,"lp/colagelimit"),-1) ); // permet d'empecher aging (marche pas)
@@ -38,7 +39,7 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
     probdata = (SCIP_PROBDATA*) &sGC;
     
     /* create empty problem */
-    SCIP_CALL( SCIPcreateProb(sGC.scip, "Problem_to_Solve_for_Test", 0, 0, 0, 0, 0, 0, probdata) );
+    SCIP_CALL( SCIPcreateProb(sGC.scip, "Probleme_ordo_avec_stockage_gen_col", 0, 0, 0, 0, 0, 0, probdata) );
     
     // variables x_it
 	vector<vector<SCIP_VAR *> > x_it;
@@ -142,7 +143,7 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 	for(int i=0; i<=sGC.d.cardT; ++i){
 		SCIP_VAR * var;
 		q_t.push_back(var);
-		SCIPcreateVarBasic(sGC.scip, &q_t[i], ("q_t"+to_string(i)).c_str(), sGC.p.qmin, sGC.p.qmax, 0.0, SCIP_VARTYPE_CONTINUOUS);
+		SCIPcreateVarBasic(sGC.scip, &q_t[i], ("q_t"+to_string(i)).c_str(), 0, sGC.d.Q, 0.0, SCIP_VARTYPE_CONTINUOUS);
 		SCIPaddVar(sGC.scip,q_t[i]);
 	}
 	//cout<<"q ok"<<endl;
@@ -238,10 +239,10 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 	//cout<<"cons_3 ok"<<endl;
 
 	// z0_pt - y0_k1,t - y0_k2,t = 0
-	vector<vector<SCIP_CONS *> > cons_4;
+	//vector<vector<SCIP_CONS *> > cons_4;
 	for(int p=0; p<(sGC.d.nb_bp[0]/2); ++p){
-		vector<SCIP_CONS *> c;
-		cons_4.push_back(c);
+		//vector<SCIP_CONS *> c;
+		//cons_4.push_back(c);
 		for(int t=0; t<sGC.d.cardT; ++t){
 			SCIP_CONS * ct;
 			SCIPcreateConsLinear(sGC.scip, &ct, ("cons_4,"+to_string(p)+","+to_string(t)).c_str(), 0, 0, 0, 0, 0, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
@@ -251,32 +252,34 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 				SCIPaddCoefLinear(sGC.scip, ct, sGC.varY0_kt[p*2+1][t],-1);
 			}
 			SCIPaddCons(sGC.scip, ct);
-			cons_4[p].push_back(ct);
+			SCIPreleaseCons(sGC.scip,&ct);
+			//cons_4[p].push_back(ct);
 		}
 	}
-	sGC.cons_4 = cons_4;
+	//sGC.cons_4 = cons_4;
 	//cout<<"cons_4 ok"<<endl;
 
 	// sum_p z_pt + z0_pt <= 1
-	vector<SCIP_CONS *> cons_5;
+	//vector<SCIP_CONS *> cons_5;
 	for(int t=0; t<sGC.d.cardT; ++t){
 		SCIP_CONS * c;
-		cons_5.push_back(c);
-		SCIPcreateConsLinear(sGC.scip, &cons_5[t], ("cons_5,"+to_string(t)).c_str(), 0, 0, 0, -SCIPinfinity(sGC.scip), 1, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
+		//cons_5.push_back(c);
+		SCIPcreateConsLinear(sGC.scip, &c, ("cons_5,"+to_string(t)).c_str(), 0, 0, 0, -SCIPinfinity(sGC.scip), 1, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
 		for(int p=0; p<(sGC.d.nb_bp[0]/2); ++p){
-			SCIPaddCoefLinear(sGC.scip, cons_5[t], z_pt[p][t],1);
-			SCIPaddCoefLinear(sGC.scip, cons_5[t], z0_pt[p][t],1);
+			SCIPaddCoefLinear(sGC.scip, c, z_pt[p][t],1);
+			SCIPaddCoefLinear(sGC.scip, c, z0_pt[p][t],1);
 		}
-		SCIPaddCons(sGC.scip, cons_5[t]);
+		SCIPaddCons(sGC.scip, c);
+		SCIPreleaseCons(sGC.scip,&c);
 	}
 	//cout<<"cons_5 ok"<<endl;
 
 	// q0 = qinit
 	SCIP_CONS * cons_6;
-	SCIPcreateConsLinear(sGC.scip, &cons_6, "cons_6", 0, 0, 0, sGC.p.qinit, sGC.p.qinit, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
+	SCIPcreateConsLinear(sGC.scip, &cons_6, "cons_6", 0, 0, 0, 0, 0, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
 	SCIPaddCoefLinear(sGC.scip, cons_6, q_t[0], 1);
 	SCIPaddCons(sGC.scip, cons_6);
-	//cout<<"cons_6 ok"<<endl;
+	SCIPreleaseCons(sGC.scip,&cons_6);
 
 	// q_max - q0 >= 0
 	SCIP_CONS * cons_7;
@@ -284,7 +287,7 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 	SCIPaddCoefLinear(sGC.scip, cons_7, q_t[sGC.d.cardT], 1);
 	SCIPaddCoefLinear(sGC.scip, cons_7, q_t[0], -1);
 	SCIPaddCons(sGC.scip, cons_7);
-	//cout<<"cons_7 ok"<<endl;
+	SCIPreleaseCons(sGC.scip,&cons_7);
 
 	// qt+1 - qt + sum_l sum_k (gout_lk - gin_lk)*y_lkt - gin_lk*y0_kt = 0
 	vector<SCIP_CONS *> cons_8;
@@ -347,117 +350,18 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 	sGC.cons_9 = cons_9;
 	//cout<<"cons_9 ok"<<endl;
 
-	//sGC.nbconstmodele = SCIPgetNConss(sGC.scip);
-	//sGC.nbvarmodele = SCIPgetNVars(sGC.scip);
-    //sGC.nbcolgenerated = 0;
-    
-	
-	//FILE * filed;
-	//filed = fopen("sol_comp", "w");
-	//SCIPprintOrigProblem(sGC.scip, filed, "lp", false);
-
-
-
-	/*SCIP_CONS * cdelete;
-	SCIPcreateConsLinear(sGC.scip, &cdelete, "delete", 0, 0, 0, 17, 17, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
-	SCIPaddCoefLinear(sGC.scip, cdelete, sGC.varX_it[0][1],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete, sGC.varX_it[0][2],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete, sGC.varX_it[0][3],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete, sGC.varX_it[0][6],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete, sGC.varX_it[1][1],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete, sGC.varX_it[2][5],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete, sGC.varX_it[2][6],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete, sGC.varX_it[2][7],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete, sGC.varX_it[2][8],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete, sGC.varX_it[5][1],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete, sGC.varX_it[5][6],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete, sGC.varX_it[6][6],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete, sGC.varX_it[6][8],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete, sGC.varX_it[7][1],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete, sGC.varX_it[8][2],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete, sGC.varX_it[8][6],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete, sGC.varX_it[9][6],1);
-	SCIPaddCons(sGC.scip, cdelete);
-	cout << "contrainte avec les x=1 ajoutée ! " << endl;*/
-
-	/*SCIP_CONS * cdelete2;
-	SCIPcreateConsLinear(sGC.scip, &cdelete2, "delete2", 0, 0, 0, 0, 0, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
-	//SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[0][8],1);
-	//SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[0][9],1);
-	//SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[0][10],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[1][0],1);
-	/*SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[1][2],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[1][3],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[1][4],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[1][5],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[1][6],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[1][7],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[1][8],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[1][9],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[1][10],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[2][0],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[2][1],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[2][2],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[2][3],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[2][10],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[3][0],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[3][4],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[3][4],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[3][5],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[3][6],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[3][7],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[3][8],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[3][9],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[3][10],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[4][0],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[4][1],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[4][4],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[4][5],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[4][6],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[4][7],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[4][8],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[4][9],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[4][10],1);* /
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[5][4],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[5][7],1);
-	/*SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[5][8],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[5][9],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[5][10],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[6][0],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[6][1],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[6][2],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[6][3],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[6][4],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[6][9],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[6][10],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[7][3],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[7][4],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[7][5],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[7][6],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[7][7],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[7][8],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[7][9],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[7][10],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[8][0],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[8][1],1);* /
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[8][3],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[8][4],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[8][5],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[8][7],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[8][8],1);
-	/*SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[8][10],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[9][0],1);* /
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[9][1],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[9][4],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[9][5],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[9][7],1);
-	/*SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[9][8],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[9][9],1);
-	SCIPaddCoefLinear(sGC.scip, cdelete2, sGC.varX_it[9][10],1);* /
-	SCIPaddCons(sGC.scip,cdelete2);
-	cout << "contrainte avec les x=0 ajoutée"<<endl;*/
-
-
+	// contraintes SOS1
+	//vector<SCIP_CONS *> cons_sos1;
+	for(int t=0; t<sGC.d.cardT; ++t){
+		SCIP_CONS * c;
+		SCIPcreateConsBasicSOS1(sGC.scip,&c,("cons_sos1_"+to_string(t)).c_str(),0,NULL,NULL);
+		for(int p=0; p<(sGC.d.nb_bp[0]/2); ++p){
+			SCIPaddVarSOS1(sGC.scip,c,z_pt[p][t],p+1);
+			//SCIPaddVarSOS1(sGC.scip,c,z0_pt[p][t],p+(sGC.d.nb_bp[0]/2)+1);
+		}
+		SCIPaddCons(sGC.scip,c);
+		SCIPreleaseCons(sGC.scip,&c);
+	}
 
 	
     return SCIP_OKAY;

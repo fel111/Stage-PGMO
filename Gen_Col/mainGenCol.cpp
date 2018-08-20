@@ -27,135 +27,6 @@ float infini = numeric_limits<float>::max();
 void firstSol(structGenCol & sGC){
     int cptId = 0;
     
-    // ??? to_delete
-    /*feasibleSet f_0_5_7;
-    vector<int> taskList = {0,5,7};
-    f_0_5_7.energyDemand = 18;
-    f_0_5_7.deadLine = 3;
-    f_0_5_7.releaseTime = 0;
-    f_0_5_7.id = cptId;
-    f_0_5_7.tasksList = taskList;
-    sGC.L.push_back(f_0_5_7);
-    sGC.cardL = sGC.L.size();
-    addSetK_l(f_0_5_7,sGC);
-    addA_il(f_0_5_7,sGC);
-    addL_t(f_0_5_7,sGC);
-    cptId++;
-
-    /*feasibleSet f_0_8;
-    vector<int> taskList2 = {0,8};
-    f_0_8.energyDemand = 14;
-    f_0_8.deadLine = 8;
-    f_0_8.releaseTime = 2;
-    f_0_8.id = cptId;
-    f_0_8.tasksList = taskList2;
-    sGC.L.push_back(f_0_8);
-    sGC.cardL = sGC.L.size();
-    addSetK_l(f_0_8,sGC);
-    addA_il(f_0_8,sGC);
-    addL_t(f_0_8,sGC);
-    cptId++;* /
-
-    feasibleSet f_0;
-    vector<int> taskList3 = {0};
-    f_0.energyDemand = 8;
-    f_0.deadLine = 8;
-    f_0.releaseTime = 0;
-    f_0.id = cptId;
-    f_0.tasksList = taskList3;
-    sGC.L.push_back(f_0);
-    sGC.cardL = sGC.L.size();
-    addSetK_l(f_0,sGC);
-    addA_il(f_0,sGC);
-    addL_t(f_0,sGC);
-    cptId++;
-
-    feasibleSet f_0_3_4_5_8_9;
-    vector<int> taskList4 = {0,3,4,5,8,9};
-    f_0_3_4_5_8_9.energyDemand = 33;
-    f_0_3_4_5_8_9.deadLine = 3;
-    f_0_3_4_5_8_9.releaseTime = 2;
-    f_0_3_4_5_8_9.id = cptId;
-    f_0_3_4_5_8_9.tasksList = taskList4;
-    sGC.L.push_back(f_0_3_4_5_8_9);
-    sGC.cardL = sGC.L.size();
-    addSetK_l(f_0_3_4_5_8_9,sGC);
-    addA_il(f_0_3_4_5_8_9,sGC);
-    addL_t(f_0_3_4_5_8_9,sGC);
-    cptId++;
-
-    /*feasibleSet f_0_4_5_7_8_9;
-    vector<int> taskList5 = {0,4,5,7,8,9};
-    f_0_4_5_7_8_9.energyDemand = 35;
-    f_0_4_5_7_8_9.deadLine = 3;
-    f_0_4_5_7_8_9.releaseTime = 2;
-    f_0_4_5_7_8_9.id = cptId;
-    f_0_4_5_7_8_9.tasksList = taskList5;
-    sGC.L.push_back(f_0_4_5_7_8_9);
-    sGC.cardL = sGC.L.size();
-    addSetK_l(f_0_4_5_7_8_9,sGC);
-    addA_il(f_0_4_5_7_8_9,sGC);
-    addL_t(f_0_4_5_7_8_9,sGC);
-    cptId++;* /
-
-    /*feasibleSet f_0_3;
-    vector<int> taskList6 = {0,3};
-    f_0_3.energyDemand = 12;
-    f_0_3.deadLine = 3;
-    f_0_3.releaseTime = 1;
-    f_0_3.id = cptId;
-    f_0_3.tasksList = taskList6;
-    sGC.L.push_back(f_0_3);
-    sGC.cardL = sGC.L.size();
-    addSetK_l(f_0_3,sGC);
-    addA_il(f_0_3,sGC);
-    addL_t(f_0_3,sGC);
-    cptId++;* /
-
-    feasibleSet f_0_2;
-    vector<int> taskList7 = {0,2};
-    f_0_2.energyDemand = 11;
-    f_0_2.deadLine = 8;
-    f_0_2.releaseTime = 4;
-    f_0_2.id = cptId;
-    f_0_2.tasksList = taskList7;
-    sGC.L.push_back(f_0_2);
-    sGC.cardL = sGC.L.size();
-    addSetK_l(f_0_2,sGC);
-    addA_il(f_0_2,sGC);
-    addL_t(f_0_2,sGC);
-    cptId++;
-
-    feasibleSet f_0_2_5_6_8_9;
-    vector<int> taskList8 = {0,2,5,6,8,9};
-    f_0_2_5_6_8_9.energyDemand = 33;
-    f_0_2_5_6_8_9.deadLine = 8;
-    f_0_2_5_6_8_9.releaseTime = 5;
-    f_0_2_5_6_8_9.id = cptId;
-    f_0_2_5_6_8_9.tasksList = taskList8;
-    sGC.L.push_back(f_0_2_5_6_8_9);
-    sGC.cardL = sGC.L.size();
-    addSetK_l(f_0_2_5_6_8_9,sGC);
-    addA_il(f_0_2_5_6_8_9,sGC);
-    addL_t(f_0_2_5_6_8_9,sGC);
-    cptId++;
-
-    feasibleSet f_8;
-    vector<int> taskList9 = {8};
-    f_8.energyDemand = 6;
-    f_8.deadLine = 10;
-    f_8.releaseTime = 2;
-    f_8.id = cptId;
-    f_8.tasksList = taskList9;
-    sGC.L.push_back(f_8);
-    sGC.cardL = sGC.L.size();
-    addSetK_l(f_8,sGC);
-    addA_il(f_8,sGC);
-    addL_t(f_8,sGC);
-    cptId++;*/
-
-    // ??? end to_delete
-
     for(int t=sGC.d.releaseDateMin; t<sGC.d.cardT; ++t){
         vector<int> taskList;
         feasibleSet l;
@@ -200,12 +71,12 @@ int initData(structGenCol & sGC){
 	d.s0 = 0;
 	d.cardM = 1;
     string param = "param_gencol.txt";
-    string instance = "inst_test3";
+    string instance = "inst_1";
 	if(lecteur_param("Param/"+param,p) == 0) return 0;
 	d.Q = 20;
 	p.qmax = 20;
-	p.qmin = 0;
-	p.qinit = 0;
+	//p.qmin = 0;
+	//p.qinit = 0;
 	
 	lecteur_taches_EnergSchedInst("Donnees/dataSchedulingInstances_newname/"+instance,d);
 
@@ -372,7 +243,7 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
     //cout << "temps SP : "<<sGC.tpsSP<<endl;
 
     //cout << "cout reduit colonne 1 : " << sGC.todelete3 << endl;
-    
+    SCIP_CALL( SCIPfree(&sGC.scip) );
     return status;
 }
 

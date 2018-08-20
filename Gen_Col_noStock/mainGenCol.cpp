@@ -24,8 +24,9 @@ float infini = numeric_limits<float>::max();
 
 
 
-void firstSol(structGenCol & sGC){
+float firstSol(structGenCol & sGC){
     int cptId = 0;
+    float upperbound = 0.0;
     
     for(int t=sGC.d.releaseDateMin; t<sGC.d.cardT; ++t){
         vector<int> taskList;
@@ -59,9 +60,10 @@ void firstSol(structGenCol & sGC){
                 addL_t(l,sGC);
                 cptId++;
             }//else cout << "set deja present " << l.id << endl;
+            upperbound += l.cost;
         }
 	}
-
+    return upperbound;
 }
 
 
@@ -72,31 +74,31 @@ int initData(structGenCol & sGC){
     d.cardR = 2;
 	d.s0 = 0;
 	d.cardM = 1;
-    string param = "param1.txt";
+    string param = "param_boucle_ordo_ls.txt";
     string instance = "inst_1";
 	if(lecteur_param("Param/"+param,p) == 0) return 0;
 	d.Q = 20;
-	p.qmax = 20;
-	p.qmin = 0;
-	p.qinit = 0;
+	//p.qmax = 20;
+	//p.qmin = 0;
+	//p.qinit = 0;
 	
 	lecteur_taches_EnergSchedInst("Donnees/dataSchedulingInstances_newname/"+instance,d);
 
     for(int i=0;i<d.cardT;++i){
         
 		/*vector<float> temp_bpt = {0.0,4.0,4.0,8.0,8.0,100.0,100.0,infini};
-		vector<float> temp_valbpt = {0.0,4.0,4.0,6.0,6.0,190.0};
-		vector<float> temp_pente = {1.0,0.5,2.0,1.5};*/
+		vector<float> temp_valbpt = {0.0,4.0,4.0,6.0,6.0,190.0};*/
+		vector<float> temp_pente = {1.0,0.5,2.0,1.5};
 
-		//vector<float> temp_bpt = {0.0,4.0,8.0,100.0,infini};
-		//vector<float> temp_valbpt = {0.0,4.0,6.0,190.0};
-		vector<float> temp_bpt = {0.0,5.0,infini};
-		vector<float> temp_valbpt = {0.0,10.0};
-		vector<float> temp_pente = {2.0,1.5};
+		vector<float> temp_bpt = {0.0,4.0,8.0,100.0,infini};
+		vector<float> temp_valbpt = {0.0,4.0,6.0,190.0};
+		//vector<float> temp_bpt = {0.0,5.0,infini};
+		//vector<float> temp_valbpt = {0.0,10.0};
+		//vector<float> temp_pente = {2.0,1.5};
 		d.pente.push_back(temp_pente);
 		d.bpt.push_back(temp_bpt);
 		d.valbpt.push_back(temp_valbpt);
-		d.nb_bp.push_back(2);
+		d.nb_bp.push_back(4);
 
         //initialisation L_t
         vector<int> lt_temp;
@@ -136,19 +138,14 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
     initData(sGC);
     //cout <<"initData OK ! "<<endl;
 	
-	firstSol(sGC);
+	float bsup = firstSol(sGC);
+    cout << "bsup firstSol : " << bsup << endl;
 	//cout <<"firstSol OK ! "<<endl;
 	
 	//affK_l(sGC);
 	//affL_t(sGC);
 	//affAllSet(sGC);
 	
-
-
-    // TO DELETE
-    sGC.todelete = 0;
-
-
 
 
     // Load and build model
@@ -161,6 +158,9 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
     // activate the pricer
     SCIP_CALL( SCIPactivatePricer(sGC.scip, SCIPfindPricer(sGC.scip, "generatetestnewobjects") ));
     
+    // ajout borne sup solution initiale
+    SCIPsetObjlimit(sGC.scip,bsup);
+
     // SOLVE
     //cout << "Start solve..."<<endl;
     auto start_time = chrono::steady_clock::now();
@@ -243,6 +243,27 @@ SCIP_RETCODE ColGen_Scip(structGenCol & sGC){
     cout << "temps pricer : "<<sGC.tpsPricer<<endl;
     cout << "temps SP : "<<sGC.tpsSP<<endl;
 
+
+    // release variables
+    /*int fois = 0;
+    for(int i=0; i<sGC.d.cardJ; ++i){
+        for(int t=0; t<sGC.d.cardT; ++t){
+            if((sGC.d.rj[i]<=t)&&(t<sGC.d.dj[i])){
+                SCIPreleaseVar(sGC.scip,&sGC.varX_it[i][t]);
+                SCIPreleaseCons(sGC.scip,&sGC.cons_1[i][t-sGC.d.rj[i]]);
+            }
+            if(fois==0) SCIPreleaseCons(sGC.scip,&sGC.cons_3[t]);
+        }
+        SCIPreleaseCons(sGC.scip,&sGC.cons_2[i]);
+        ++fois;
+    }
+    for(int l=0; l<sGC.L.size(); ++l){
+		for(int t=sGC.L[l].releaseTime; t<sGC.L[l].deadLine; ++t){
+            if(sGC.varY_lt[l][t] != NULL) SCIPreleaseVar(sGC.scip,&sGC.varY_lt[l][t]);
+        }
+    }*/
+
+    SCIP_CALL ( SCIPfree(&sGC.scip) );
     return status;
 }
 
