@@ -252,7 +252,7 @@ float ordo(data &d){
 		}
 	}
 
-	// xt - sum_j sum_k Djk*yjkt - sum_k Dk*zkt = 0
+	// xt - sum_j sum_k Dj*yjkt - sum_k Dk*zkt = 0
 	vector<SCIP_CONS *> cons_equil;
 	for(int t=0; t<d.cardT; ++t){
 		SCIP_CONS * c;
@@ -261,7 +261,7 @@ float ordo(data &d){
 		SCIPaddCoefLinear(scip, cons_equil[t], xt[t],1);		
 		for(int j=0; j<d.cardJ; ++j){
 			for(int k=0; k<d.cardM; ++k){
-				SCIPaddCoefLinear(scip, cons_equil[t], y_jkt[j][k][t],-d.Djk[j][k]);
+				SCIPaddCoefLinear(scip, cons_equil[t], y_jkt[j][k][t],-d.Dj[j][k]);
 			}
 		}
 		for(int k=0; k<d.cardM; ++k){

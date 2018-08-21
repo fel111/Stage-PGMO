@@ -25,10 +25,10 @@ int lecteur_param(string file, param &p, data &d){
             iss >> par >> t;
             if (par == "taches_avec_fenetre_temps") { p.taches_avec_fenetre_temps = stoi(t); }
             //else if (par == "boucle_relaxation") { p.boucle_relaxation = stoi(t); }
-            else if (par == "aff_log_ordo_cplex") { p.aff_log_ordo_cplex = stoi(t); } 
+            else if (par == "aff_log_ordo") { p.aff_log_ordo = stoi(t); } 
             //else if (par == "aff_log_lotsizingcont_cplex") { p.aff_log_lotsizingcont_cplex = stoi(t); }
             //else if (par == "aff_log_lotsizingent_cplex") { p.aff_log_lotsizingent_cplex = stoi(t); }
-            else if (par == "aff_log_compact_cplex") { p.aff_log_compact_cplex = stoi(t); }
+            else if (par == "aff_log_compact") { p.aff_log_compact = stoi(t); }
             else if (par == "nb_threads_cplex") { p.nb_threads_cplex = stoi(t); }
             else if (par == "time_limit_ordo") { p.time_limit_ordo = stoi(t); }
             //else if (par == "time_limit_lotsizingcont") { p.time_limit_lotsizingcont = stoi(t); }

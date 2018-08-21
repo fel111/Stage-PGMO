@@ -66,7 +66,7 @@ float ordo_cplex(data &d,param const& p, float &tps, string &status){
 	for(int t=0; t<d.cardT; ++t){
 		IloExpr SumDem(env);
 		for(int j=0; j<d.cardJ; ++j){
-			SumDem += y_jt[j][t]*d.Djk[j][0];
+			SumDem += y_jt[j][t]*d.Dj[i];
 		}
 		if(d.bpt[t][0] > 0){
 			IloNumArray pente(env, d.nb_bp[t]+1);
@@ -153,12 +153,12 @@ if(p.taches_avec_fenetre_temps == 1){
 		}
 	}
 
-	// xt - sum_j sum_k Djk*yjkt - sum_k Dk*zkt = 0
+	// xt - sum_j sum_k Dj*yjkt - sum_k Dk*zkt = 0
 	for(int t=0; t<d.cardT; ++t){
 		IloExpr sum1(env);
         for(int j=0; j<d.cardJ; ++j){
 			for(int k=0; k<d.cardM; ++k){
-				sum1 += d.Djk[j][k]*y_jkt[j][k][t];
+				sum1 += d.Dj[j][k]*y_jkt[j][k][t];
 			}
 		}
         IloExpr sum2(env);
@@ -186,7 +186,7 @@ if(p.taches_avec_fenetre_temps == 1){
 			//prod.push_back(roundd(SCIPgetSolVal(scip,sol,xt[i])));
 			//prod.push_back(roundd(cplex.getValue(xt[i]),5));
 			for(int j=0; j<d.cardJ; ++j){
-				dem += cplex.getValue(y_jt[j][t])*d.Djk[j][0];
+				dem += cplex.getValue(y_jt[j][t])*d.Dj[i];
 			}
 			prod.push_back(dem);
 			//cout << prod[i] << " ";
@@ -225,7 +225,7 @@ if(p.taches_avec_fenetre_temps == 1){
 			//prod.push_back(roundd(SCIPgetSolVal(scip,sol,xt[i])));
 			//prod.push_back(roundd(cplex.getValue(xt[i]),5));
 			for(int j=0; j<d.cardJ; ++j){
-				dem += cplex.getValue(y_jt[j][t])*d.Djk[j][0];
+				dem += cplex.getValue(y_jt[j][t])*d.Dj[i];
 			}
 			prod.push_back(dem);
 			//cout << prod[i] << " ";

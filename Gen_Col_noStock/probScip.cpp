@@ -24,9 +24,10 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
     
     /* Load plugin */
     SCIP_CALL( SCIPincludeDefaultPlugins(sGC.scip) );
-    SCIPsetMessagehdlr(sGC.scip,NULL);
+    if(sGC.p.aff_log_ordo == 0) SCIPsetMessagehdlr(sGC.scip,NULL);
+	SCIP_CALL( SCIPchgRealParam(sGC.scip,SCIPgetParam(sGC.scip,"limits/time"),sGC.p.time_limit_ordo) );
 	//SCIP_CALL( SCIPsetIntParam(sGC.scip, "presolving/maxrounds", 0));
-	SCIP_CALL( SCIPchgRealParam(sGC.scip,SCIPgetParam(sGC.scip,"numerics/epsilon"),0.0001) );
+	//SCIP_CALL( SCIPchgRealParam(sGC.scip,SCIPgetParam(sGC.scip,"numerics/epsilon"),0.0001) );
     //SCIP_CALL( SCIPchgIntParam(sGC.scip,SCIPgetParam(sGC.scip,"lp/colagelimit"),-1) ); // permet d'empecher aging (marche pas)
 	//SCIP_CALL( SCIPchgLongintParam(sGC.scip,SCIPgetParam(sGC.scip,"limits/totalnodes"),1) );
 	//SCIP_CALL( SCIPchgStringParam(sGC.scip,SCIPgetParam(sGC.scip,"visual/vbcfilename"),"vbcfileNoStock.vbc") );
@@ -39,7 +40,7 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
     probdata = (SCIP_PROBDATA*) &sGC;
     
     /* create empty problem */
-    SCIP_CALL( SCIPcreateProb(sGC.scip, "Problem_to_Solve_for_Test", 0, 0, 0, 0, 0, 0, probdata) );
+    SCIP_CALL( SCIPcreateProb(sGC.scip, "Problem_GenCol_NoStock", 0, 0, 0, 0, 0, 0, probdata) );
     
     // variables x_it
 	vector<vector<SCIP_VAR *> > x_it;
@@ -131,10 +132,6 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 	sGC.v_t = vdt; 
 	//cout<<"cons_3 ok"<<endl;
 
-	
-	//FILE * filed;
-	//filed = fopen("sol_comp", "w");
-	//SCIPprintOrigProblem(sGC.scip, filed, "lp", false);
 	
     return SCIP_OKAY;
 	

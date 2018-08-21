@@ -49,7 +49,7 @@ double verifCoutReduit(structGenCol const& sGC, IloNumArray ui, int t){
     for(int i=0; i<ui.getSize(); ++i){
         if(SCIPisEQ(sGC.scip, ui[i], 1.0)){
             cr += (sGC.u_i[i] - sGC.w_it[i][t-sGC.d.rj[i]]);
-            sumi += sGC.d.Djk[i][0];
+            sumi += sGC.d.Dj[i];
         }
     }
     cr += -sGC.v_t[t] - p_t(t,sumi,sGC);
@@ -61,7 +61,7 @@ double verifCoutReduit(structGenCol const& sGC, vector<int> ui, int t){
     float sumi = 0.0;
     for(auto const& i : ui){
         cr += (sGC.u_i[i] - sGC.w_it[i][t-sGC.d.rj[i]]);
-        sumi += sGC.d.Djk[i][0];
+        sumi += sGC.d.Dj[i];
     }
     cr += -sGC.v_t[t] - p_t(t,sumi,sGC);
     return -cr;
@@ -93,12 +93,12 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray const& valUi,
             //cout << "ok" << endl;
             taskList.push_back(i);
             if(taskList.size() == 1){
-                l.energyDemand = sGC.d.Djk[i][0];
+                l.energyDemand = sGC.d.Dj[i];
                 l.deadLine = sGC.d.dj[i];
                 l.releaseTime = sGC.d.rj[i];
             }
             else{
-                l.energyDemand += sGC.d.Djk[i][0];
+                l.energyDemand += sGC.d.Dj[i];
                 if(l.deadLine > sGC.d.dj[i]) l.deadLine = sGC.d.dj[i];
                 if(l.releaseTime < sGC.d.rj[i]) l.releaseTime = sGC.d.rj[i];
             }
@@ -200,7 +200,7 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
         IloEnv env;
         IloModel model(env);
         IloCplex cplex(model);
-        cplex.setOut(env.getNullStream());
+        if(sGC.p.aff_log_ordo == 0) cplex.setOut(env.getNullStream());
         cplex.setParam(IloCplex::Threads,1);
 
         //donnees pwl
@@ -229,14 +229,14 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
                 //model.add(ct[i] == IloPiecewiseLinear(xt[i],bpt,pente,d.bpt[i][0], d.valbpt[i][0]));
             }
 	    }*/
-        IloNumArray bpt(env, sGC.d.nb_bp[0]-1);
-        for(int i=0; i<(sGC.d.nb_bp[0]-1);++i){
-            bpt[i] = sGC.d.bpt[0][i+1];
+        IloNumArray bpt(env, sGC.d.nb_bp[timedd]-1);
+        for(int i=0; i<(sGC.d.nb_bp[timedd]-1);++i){
+            bpt[i] = sGC.d.bpt[timedd][i+1];
         }
 
-        IloNumArray pente(env, sGC.d.nb_bp[0]);
-        for(int i=0; i<sGC.d.nb_bp[0];++i){
-            pente[i] = sGC.d.pente[0][i];
+        IloNumArray pente(env, sGC.d.nb_bp[timedd]);
+        for(int i=0; i<sGC.d.nb_bp[timedd];++i){
+            pente[i] = sGC.d.pente[timedd][i];
         }
 
         //ajout variables u_i
@@ -250,7 +250,7 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
         for(int i=0; i<sGC.d.cardJ;++i){
             if((sGC.d.rj[i]<=timedd)&&(timedd<sGC.d.dj[i])){
                 sum_i1 += alpha_i[i] * (sGC.u_i[i] - sGC.w_it[i][timedd-sGC.d.rj[i]]);
-                sum_i2 += alpha_i[i] * sGC.d.Djk[i][0];
+                sum_i2 += alpha_i[i] * sGC.d.Dj[i];
             }
             else model.add(alpha_i[i] <= 0);
         }
@@ -258,7 +258,7 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
 
 
         IloExpr obj(env);
-        obj = sum_i1 - sGC.v_t[timedd] - IloPiecewiseLinear(sum_i2,bpt,pente,sGC.d.bpt[0][0],0.0);
+        obj = sum_i1 - sGC.v_t[timedd] - IloPiecewiseLinear(sum_i2,bpt,pente,sGC.d.bpt[timedd][0],0.0);
         //if(decal==1) obj = sum_i1 - sGC.v_t[timedd] - IloPiecewiseLinear(sum_i2,bpt,pente,0.0,0.0);
         //else obj = sum_i1 - sGC.v_t[timedd] - IloPiecewiseLinear(sum_i2,bpt,pented.bpt[i][0], d.valbpt[i][0]);
         model.add(IloMaximize(env, obj));

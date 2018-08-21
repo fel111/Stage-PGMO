@@ -11,50 +11,54 @@
 //#include "scip/scip.h"
 //#include "scip/scipdefplugins.h"
 #include "struct.h"
-#include "Ordo_compact/ordo_comp.h"
-#include "Ordo_compact/ordo_cplex.h"
+//#include "Ordo_compact/ordo_comp.h"
+//#include "Ordo_compact/ordo_cplex.h"
 #include "Lot_Sizing/Lot_Sizing_Dynamique/lotsizdyn2.h"
-#include "Lot_Sizing/Lot_Sizing_Compact/lotsizentCPX.h"
-#include "Lot_Sizing/Lot_Sizing_Compact/lotsizcontcom.h"
-#include "Lot_Sizing/Lot_Sizing_Compact/lotsizcontCPX.h"
-#include "Modele_compact/compact.h"
+//#include "Lot_Sizing/Lot_Sizing_Compact/lotsizentCPX.h"
+//#include "Lot_Sizing/Lot_Sizing_Compact/lotsizcontcom.h"
+//#include "Lot_Sizing/Lot_Sizing_Compact/lotsizcontCPX.h"
+//#include "Modele_compact/compact.h"
 #include "Modele_compact/modele_entier_cplex.h"
 #include "Lecteur_Fichiers/lecteur_taches.h"
-#include "Lecteur_Fichiers/lecteur_pwd.h"
+#include "Lecteur_Fichiers/lecteur_pwl.h"
 #include "Lecteur_Fichiers/lecteur_param.h"
+#include "Gen_Col_noStock/genColNoStock.h"
 //#include <ilcplex/cplex.h>
 //#define SCIP_DEBUG
 using namespace std;
-float infini = numeric_limits<float>::max();
+//float infini = numeric_limits<float>::max();
 
 
 int main(int argc, char* argv[]){
 	data d;
 	param p;
 	// init test
-	if(argc != 3){
-		cout << "erreur param : fichier instance, fichier parametre" << endl;
+	if(argc != 4){
+		cout << "erreur param : fichier instance_taches, fichier instance_pwl, fichier parametre" << endl;
 		return 0;
 	}
 	
-	string instance = argv[1];
-	string parametre = argv[2];
+	string instance_tache = argv[1];
+	string instance_pwl = argv[2];
+	string parametre = argv[3];
 
-	d.cardR = 2;
+	/*d.cardR = 2;
 	d.s0 = 0;
 	//d.Q = 100;
-	d.cardM = 1;
+	d.cardM = 1;*/
 
-	if(lecteur_param("../Param/"+parametre,p) == 0) return 0;
+	if(lecteur_param("Param/"+parametre,p,d) == 0) return 0;
 	
-	lecteur_taches_EnergSchedInst("../Donnees/dataSchedulingInstances_newname/"+instance,d);
+	lecteur_taches_EnergSchedInst("Donnees/dataSchedulingInstances_newname/"+instance_tache,d);
+
+	lecteur_pwl("Donnees/pwl/"+instance_pwl,d);
 
 	initCap(d,p);
 	//lecteur_taches_EnergSchedInst("../Donnees/dataSchedulingInstances/inst60-1_25-0_1-3_2-1.dat",d);
 
 	//cout << "cardT : " << d.cardT << endl;
 
-	for(int i=0;i<d.cardT;++i){
+	/*for(int i=0;i<d.cardT;++i){
 		vector<float> temp_pente = {1.0,0.5,2.0,1.5};
 		vector<float> temp_bpt = {0.0,4.0,8.0,100.0,infini};
 		vector<float> temp_valbpt = {0.0,4.0,6.0,190.0};
@@ -72,7 +76,7 @@ int main(int argc, char* argv[]){
 	}
 	d.Ckr = ress;
 	vector<float> Dk (d.cardM, 0.0); // ne converge pas avec != 0
-	d.Dk = Dk; 
+	d.Dk = Dk; */
 
 	//lecteur_taches("../Donnees/taches_"+to_string(d.cardT),d);
 	//lecteur_pwd("../Donnees/pwd_20_4_2000_4",d);
@@ -80,25 +84,25 @@ int main(int argc, char* argv[]){
 	data dinit = d;
 	float solOrdo, solLS, solComp, solMip, solPLNE, solDyn, tpsBoucleMip, tpsBouclePLNE, tpsBoucleDyn, tpsComp, tpsRelax, tpsLS, borneinfComp,borneinfRelax,borneinftemp;
 	string statusComp, statusRelax, statusOrdo, statusLS;
-	vector<float> rt;
+	vector<float> rt, demande;
 	int boucle;
 	vector<float> solrelax;
 	float tpsOrdo;
 	float tpsTotOrdo = 0.0;
 	float tpsTotLS = 0.0;
-	float timeBoucle = p.time_limit_compact / p.nb_iter_max_boucle;
+	//float timeBoucle = p.time_limit_compact / p.nb_iter_max_boucle;
 	float timeRab = 0.0;
 	float timeRabRelax = 0.0;
 	int cptBoucle = 0;
 
-	cout << "instance="<<instance<<" parametre="<<parametre<<" nbPeriodes="<<d.cardT<<" nbTaches="<<d.cardJ<<" nbMachines="<<d.cardM<<" borneBatterie="<<d.Q<<" ratioDemandeTot/Capacite="<<d.Q/d.consoTot<<" limiteNbBoucles=-1 limiteTpsOrdo=300 limiteThreads="<<p.nb_threads_cplex<<endl;
+	//cout << "instance="<<instance<<" parametre="<<parametre<<" nbPeriodes="<<d.cardT<<" nbTaches="<<d.cardJ<<" nbMachines="<<d.cardM<<" borneBatterie="<<d.Q<<" ratioDemandeTot/Capacite="<<d.Q/d.consoTot<<" limiteNbBoucles=-1 limiteTpsOrdo=300 limiteThreads="<<p.nb_threads_cplex<<endl;
 	// MODELE COMPACT CPLEX
-	//auto start_time = chrono::steady_clock::now();
-	//solComp = modele_entier_cplex(d,p,tpsComp,borneinfComp,statusComp);
-	//auto end_time = chrono::steady_clock::now();
-	//tpsComp = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
+	auto start_time = chrono::steady_clock::now();
+	solComp = modele_entier_cplex(d,p,tpsComp,borneinfComp,statusComp);
+	auto end_time = chrono::steady_clock::now();
+	tpsComp = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
 
-	//cout << "COMPACT tps=" << tpsComp << " statut=" << statusComp << " bornesup=" << solComp  << " borneinf=" << borneinfComp << endl;
+	cout << "COMPACT tps=" << tpsComp << " statut=" << statusComp << " bornesup=" << solComp  << " borneinf=" << borneinfComp << endl;
 
 	
 	/*if(p.boucle_relaxation==1){
@@ -172,75 +176,41 @@ int main(int argc, char* argv[]){
 	d = dinit;
 	tpsTotOrdo = 0.0;
 	tpsTotLS = 0.0;
-	cptBoucle = 0;
-
-
-
-	// BOUCLE ORDO + LOTSIZING PLNE
-	start_time = chrono::steady_clock::now();
-	if(p.boucle_relaxation==1){
-		modifPWL(d, solrelax);
-		p.time_limit_ordo = timeBoucle/2+timeRabRelax;
-		solOrdo = ordo_cplex(d,p,tpsOrdo,statusOrdo);
-		initPWD(dinit,d);
-		boucle = p.nb_iter_max_boucle - 1;
-	} 
-	else{
-		p.time_limit_ordo = timeBoucle/2;
-		solOrdo = ordo_cplex(d,p,tpsOrdo,statusOrdo);
-		boucle = p.nb_iter_max_boucle ;
-	}
-	//cout << "solOrdo : "<<solOrdo<< endl;
-	tpsTotOrdo += tpsOrdo;
-	timeRab = p.time_limit_ordo - tpsOrdo;
-	p.time_limit_lotsizingent = timeBoucle/2 + timeRab;
-	solLS = lotsizentCPX(d,p,rt,tpsLS,borneinftemp,statusLS);
-	//cout << "solLS : "<<solLS<< endl;
-	//for(int i=0; i<rt.size(); ++i) cout << rt[i] << " ";
-	//cout << endl;
-	timeRab = p.time_limit_lotsizingcont - tpsLS;
-	tpsTotLS += tpsLS;
-	++cptBoucle;
-	--boucle;
-	while((solOrdo != solLS)&&(boucle>0)){
-	//while((!conv)&&(boucle>0)){
-	//while(boucle>0){
-		modifPWL(d, rt);
-		p.time_limit_ordo = timeBoucle/2 + timeRab;
-		solOrdo = ordo_cplex(d,p,tpsOrdo,statusOrdo);
-		//cout << "solOrdo : "<<solOrdo<< endl;
-		timeRab = p.time_limit_ordo - tpsOrdo;
-		tpsTotOrdo += tpsOrdo;
-		//cout << "solOrdo : "<<solOrdo<<endl;
-		initPWD(dinit,d);
-		p.time_limit_lotsizingent = timeBoucle/2 + timeRab;
-		solLS = lotsizentCPX(d,p,rt,tpsLS,borneinftemp,statusLS);
-		//cout << "solLS : "<<solLS<< endl;
-		timeRab = p.time_limit_lotsizingcont - tpsLS;
-		tpsTotLS += tpsLS;
-		//cout << "sol plne ls : " << solLotSizPLNE << endl;
-		
-		//solOrdoTemp = solOrdo;
-		//}
-		--boucle;
-		++cptBoucle;
-	}
-	end_time = chrono::steady_clock::now();
-	tpsBouclePLNE = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
-	solPLNE = solOrdo;
-
-	cout << "BOUCLE PLNE  tpsBoucle=" << tpsBouclePLNE << " tpsOrdo="<<tpsTotOrdo<<" tpsLS="<<tpsTotLS<<" bornesup=" << solPLNE<<" nbBoucle="<<cptBoucle;
-	if (solOrdo==solLS) cout << " arret=CONV" << endl;
-	else cout << " arret=MAXITER" << endl;
-
-	d = dinit;
-	tpsTotOrdo = 0.0;
-	tpsTotLS = 0.0;
 	cptBoucle = 0;*/
 
+	bool solOrdoOk = false;
+	// BOUCLE ORDO_GENCOL + LOTSIZING DYNAMIQUE
+	start_time = chrono::steady_clock::now();
+	solOrdo = genColNoStock(d,p,tpsOrdo,demande);
+	tpsTotOrdo += tpsOrdo;
+	cout << "solordo : " << solOrdo << endl;
+	if(solOrdo != -1){
+		solOrdoOk = true;
+		solLS = lotsizdyn(d,p,rt,tpsLS,demande);
+		cout << "solLS : " << solLS << endl;
+		tpsTotLS += tpsLS;
+		++cptBoucle;
+	}
+	while((solOrdo != solLS) && (tpsTotOrdo < 7200) && (solOrdoOk)){
+		modifPWL(d, rt);
+		solOrdo = genColNoStock(d,p,tpsOrdo,demande);
+		cout << "solordo : " << solOrdo << endl;
+		tpsTotOrdo += tpsOrdo;
+		if(solOrdo == -1) solOrdoOk = false;
+		else{
+			initPWD(dinit,d);
+			solLS = lotsizdyn(d,p,rt,tpsLS,demande);
+			cout << "solLS : " << solLS << endl;
+			tpsTotLS += tpsLS;
+			++cptBoucle;
+		}
+	}
+	end_time = chrono::steady_clock::now();
+	tpsBoucleDyn = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
+	cout << "solOrdo/LS : " << solLS << endl;
 
 	// BOUCLE ORDO + LOTSIZING DYNAMIQUE
-	auto start_time = chrono::steady_clock::now();
+	/*auto start_time = chrono::steady_clock::now();
 	/*if(p.boucle_relaxation==1){
 		modifPWL(d, solrelax);
 		p.time_limit_ordo = timeBoucle/2+timeRabRelax;
@@ -248,7 +218,7 @@ int main(int argc, char* argv[]){
 		initPWD(dinit,d);
 		boucle = p.nb_iter_max_boucle - 1;
 	} 
-	else{*/
+	else{* /
 		p.time_limit_ordo = 300;
 		solOrdo = ordo_cplex(d,p,tpsOrdo,statusOrdo);
 		//boucle = p.nb_iter_max_boucle ;
@@ -296,6 +266,7 @@ int main(int argc, char* argv[]){
 	//else cout << " arret=MAXITER" << endl;
 
 	//cout << endl << endl;
+	*/
 	return 0;
 }
 

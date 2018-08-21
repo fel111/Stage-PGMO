@@ -319,7 +319,7 @@ float modele_entier_compact(data d,float& tps){
 
 
 
-	// xt + st - st-1 - sum_j sum_k Djk*yjkt - sum_k d.Dk*zkt = 0
+	// xt + st - st-1 - sum_j sum_k Dj*yjkt - sum_k d.Dk*zkt = 0
 	/*vector<SCIP_CONS *> cons_equil;
 	SCIP_CONS * c;
 	cons_equil.push_back(c);
@@ -328,7 +328,7 @@ float modele_entier_compact(data d,float& tps){
 	SCIPaddCoefLinear(scip, cons_equil[0], st[0],1);		
 	for(int j=0; j<d.cardJ; ++j){
 		for(int k=0; k<d.cardM; ++k){
-			SCIPaddCoefLinear(scip, cons_equil[0], y_jkt[j][k][0],-d.Djk[j][k]);
+			SCIPaddCoefLinear(scip, cons_equil[0], y_jkt[j][k][0],-d.Dj[j][k]);
 		}
 	}
 	for(int k=0; k<d.cardM; ++k){
@@ -344,7 +344,7 @@ float modele_entier_compact(data d,float& tps){
 		SCIPaddCoefLinear(scip, cons_equil[t], st[t-1],-1);		
 		for(int j=0; j<d.cardJ; ++j){
 			for(int k=0; k<d.cardM; ++k){
-				SCIPaddCoefLinear(scip, cons_equil[t], y_jkt[j][k][t],-d.Djk[j][k]);
+				SCIPaddCoefLinear(scip, cons_equil[t], y_jkt[j][k][t],-d.Dj[j][k]);
 			}
 		}
 		for(int k=0; k<d.cardM; ++k){
@@ -353,7 +353,7 @@ float modele_entier_compact(data d,float& tps){
 		SCIPaddCons(scip, cons_equil[t]);
 	}*/
 
-	// st+1 - st - xt + sum_j sum_k Djk*yjkt + sum_k d.Dk*zkt = 0
+	// st+1 - st - xt + sum_j sum_k Dj*yjkt + sum_k d.Dk*zkt = 0
 	for(int t=0; t<d.cardT; ++t){
 		SCIP_CONS * c;
 		SCIPcreateConsLinear(scip, &c, ("cons_equil"+to_string(t)).c_str(), 0, 0, 0, 0, 0, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE);  
@@ -362,7 +362,7 @@ float modele_entier_compact(data d,float& tps){
 		SCIPaddCoefLinear(scip, c, st[t+1],1);		
 		for(int j=0; j<d.cardJ; ++j){
 			for(int k=0; k<d.cardM; ++k){
-				SCIPaddCoefLinear(scip, c, y_jkt[j][k][t],d.Djk[j][k]);
+				SCIPaddCoefLinear(scip, c, y_jkt[j][k][t],d.Dj[j][k]);
 			}
 		}
 		for(int k=0; k<d.cardM; ++k){

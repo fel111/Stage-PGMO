@@ -259,16 +259,16 @@ float lotsizdyn(data const& d, int choix){//vector< vector<float> > f_ki,vector<
 
 
 
-float lotsizdyn(data const& d, param const& p, vector<float> & var, float &tps){//vector< vector<float> > f_ki,vector< vector<float> > g_ki){//vector<int> q0){
+float lotsizdyn(data const& d, param const& p, vector<float> & var, float &tps,const vector<float> &demande){//vector< vector<float> > f_ki,vector< vector<float> > g_ki){//vector<int> q0){
 	//debut timer
 	
 		
 
 
-	vector<int> dt = dtToInt(d,p.choix_dt_ls);
+	vector<int> dt = dtToInt(d,demande);
 	int batMax;
-    if(p.choix_dt_ls == 2) batMax = d.Q*100;
-    else batMax = d.Q;
+    //if(p.choix_dt_ls == 2) batMax = d.Q*100;
+    batMax = d.Q;
 	
 	auto start_time = chrono::steady_clock::now();
 	/*for(int i=0; i<d.cardT; ++i){
@@ -460,7 +460,7 @@ float lotsizdyn(data const& d, param const& p, vector<float> & var, float &tps){
 		auto end_time = chrono::steady_clock::now();
 		tps = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
 
-		if(p.choix_dt_ls != 2){
+		//if(p.choix_dt_ls != 2){
 			rt[0] = stock[0] - d.s0;
 			//cout << "rt" << endl;
 			//cout << rt[0] << endl;
@@ -468,7 +468,7 @@ float lotsizdyn(data const& d, param const& p, vector<float> & var, float &tps){
 				rt[t] = stock[t] - stock[t-1];
 				//cout << rt[t] << endl;
 			}
-		}
+		/*}
 		else{
 			rt[0] = (stock[0] - d.s0)/100;
 			//cout << "rt" << endl;
@@ -477,7 +477,7 @@ float lotsizdyn(data const& d, param const& p, vector<float> & var, float &tps){
 				rt[t] = (stock[t] - stock[t-1])/100;
 				//cout << rt[t] << endl;
 			}
-		}
+		}*/
 
 		/*for(int i=0;i<d.cardT;++i){
 			cout << "demande, production, stock" << i << " : " << dt[i] << " " << xt[i] << " "<<stock[i] << endl;

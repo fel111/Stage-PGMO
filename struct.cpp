@@ -28,16 +28,14 @@ void modifPWL(data &d, vector<float> const& rt){
 	}
 }
 
-vector<int> dtToInt(data const& d, int choix){
+vector<int> dtToInt(data const& d,const vector<float> &demande){
+	//cout << "cardT : " << d.cardT << endl;
 	vector<int> dt (d.cardT, 0);
 	for(int i=0; i<d.cardT; ++i){
-		//cout << SCIPgetSolVal(scip,sol,xt[i]) << ", ";
-		//prod.push_back(static_cast<int>(ceil(SCIPgetSolVal(scip,sol,xt[i]))));
-		if(choix==1) dt[i] = static_cast<int>(ceil(d.dt[i]));
-		if(choix==2) dt[i] = static_cast<int>(d.dt[i]*100);
+		//cout << "dtToInt demande : " << demande[i] << endl;
+		dt[i] = static_cast<int>(ceil(demande[i]));
 	}
 	return dt;
-
 }
 
 float roundd(double var, int nbdec)

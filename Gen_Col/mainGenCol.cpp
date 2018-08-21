@@ -34,12 +34,12 @@ void firstSol(structGenCol & sGC){
             if((sGC.d.rj[i]<=t) && (t<sGC.d.rj[i]+sGC.d.pj[i])){
                 taskList.push_back(i);
                 if(taskList.size() == 1){
-                    l.energyDemand = sGC.d.Djk[i][0];
+                    l.energyDemand = sGC.d.Dj[i];
                     l.deadLine = sGC.d.dj[i];
                     l.releaseTime = sGC.d.rj[i];
                 }
                 else{
-                    l.energyDemand += sGC.d.Djk[i][0];
+                    l.energyDemand += sGC.d.Dj[i];
                     if(l.deadLine > sGC.d.dj[i]) l.deadLine = sGC.d.dj[i];
                     if(l.releaseTime < sGC.d.rj[i]) l.releaseTime = sGC.d.rj[i];
                 }

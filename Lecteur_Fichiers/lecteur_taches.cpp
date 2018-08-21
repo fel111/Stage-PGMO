@@ -12,7 +12,7 @@
 using namespace std;
 
 
-void lecteur_taches(string file, data &d, bool fenetre){ //bool precise si l'on souhaite fenetre de temps ou non
+/*void lecteur_taches(string file, data &d, bool fenetre){ //bool precise si l'on souhaite fenetre de temps ou non
 
 	ifstream fichier(file, ios::in); //ouverture du fichier
 	if(fichier){  // si l'ouverture fonctionne
@@ -21,7 +21,7 @@ void lecteur_taches(string file, data &d, bool fenetre){ //bool precise si l'on 
         int duree, releasedate, duedate;
         int cardJ = d.cardJ;
         vector<vector<float> > cjr;
-        vector<vector<float> > Djk;
+        vector<vector<float> > Dj;
         vector<int> pj, rj, dj;
 		while((getline(fichier,ligne))&&(cardJ>0)){ // tant que l'on peut lire une ligne
 			istringstream iss (ligne);
@@ -31,7 +31,7 @@ void lecteur_taches(string file, data &d, bool fenetre){ //bool precise si l'on 
             ress.push_back(ram);
             cjr.push_back(ress);
 			vector<float> cons (d.cardM,conso);
-            Djk.push_back(cons);
+            Dj.push_back(cons);
             pj.push_back(duree);
             if(fenetre){
                 rj.push_back(releasedate);
@@ -43,7 +43,7 @@ void lecteur_taches(string file, data &d, bool fenetre){ //bool precise si l'on 
             }
             --cardJ;
 		}
-		d.Djk = Djk;
+		d.Dj = Dj;
         d.cjr = cjr;
         d.pj = pj;
         d.rj = rj;
@@ -53,7 +53,7 @@ void lecteur_taches(string file, data &d, bool fenetre){ //bool precise si l'on 
 	else{
 		cout << "erreur lecture fichier taches" << endl;
 	}
-}
+}*/
 
 
 void lecteur_taches_EnergSchedInst(string file, data &d){ //bool precise si l'on souhaite fenetre de temps ou non
@@ -64,31 +64,33 @@ void lecteur_taches_EnergSchedInst(string file, data &d){ //bool precise si l'on
         float conso;
         float consoTot = 0.0;
         int duree, releasedate, duedate, cardJ;
-        int releaseMin; bool init=false;
+        int releaseMin; 
+        bool init=false;
         int cardT = 0;     
-        vector<vector<float> > Djk;
+        //vector<vector<float> > Dj;
         vector<int> pj, rj, dj;
+        vector<float> Dj; // conso
         getline(fichier,ligne);
         istringstream iss1 (ligne);
         iss1 >> cardJ;
         int cpt=0;
-        vector<vector<float> > cjr (cardJ, vector<float> (2,1.0));
+        //vector<vector<float> > cjr (cardJ, vector<float> (2,1.0));
 		while((getline(fichier,ligne))&&(cpt<cardJ)){ // tant que l'on peut lire une ligne
 			istringstream iss2 (ligne);
 			iss2 >> conso >> duree >> releasedate >> duedate;
             if(duedate > cardT) cardT = duedate;
             if(!init){ releaseMin = releasedate; init = true; }
             else if(releasedate < releaseMin) releaseMin = releasedate;
-			vector<float> cons (d.cardM,conso);
-            Djk.push_back(cons);
+			//vector<float> cons (d.cardM,conso);
+            Dj.push_back(conso);
             consoTot += conso;
             pj.push_back(duree);
             rj.push_back(releasedate);
             dj.push_back(duedate);
             ++cpt;
 		}
-		d.Djk = Djk;
-        d.cjr = cjr;
+		d.Dj = Dj;
+        //d.cjr = cjr;
         d.pj = pj;
         d.rj = rj;
         d.dj = dj;

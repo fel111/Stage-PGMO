@@ -47,7 +47,7 @@ bool verifSol(structGenCol const& sGC){
 double verifCoutReduit(structGenCol const& sGC, vector<int> ui, int k, int t){
     double cr = 0.0;
     for(int i=0; i<ui.size(); ++i){
-        if(SCIPisEQ(sGC.scip, ui[i], 1.0)) cr += (sGC.beta_i[i] - sGC.alpha_it[i][t-sGC.d.rj[i]] + sGC.d.Djk[i][0]*(sGC.delta_t[t] + sGC.phi_t[t]));
+        if(SCIPisEQ(sGC.scip, ui[i], 1.0)) cr += (sGC.beta_i[i] - sGC.alpha_it[i][t-sGC.d.rj[i]] + sGC.d.Dj[i]*(sGC.delta_t[t] + sGC.phi_t[t]));
     }
     cr -= (sGC.d.valbpt[0][k] + sGC.gamma_pt[k/2][t] + sGC.d.bpt[0][k]*sGC.delta_t[t]);
     return -cr;
@@ -56,7 +56,7 @@ double verifCoutReduit(structGenCol const& sGC, vector<int> ui, int k, int t){
 double verifCoutReduit(structGenCol const& sGC, IloNumArray ui, int k, int t){
     double cr = 0.0;
     for(int i=0; i<ui.getSize(); ++i){
-        if(SCIPisEQ(sGC.scip, ui[i], 1.0)) cr += (sGC.beta_i[i] - sGC.alpha_it[i][t-sGC.d.rj[i]] + sGC.d.Djk[i][0]*(sGC.delta_t[t] + sGC.phi_t[t]));
+        if(SCIPisEQ(sGC.scip, ui[i], 1.0)) cr += (sGC.beta_i[i] - sGC.alpha_it[i][t-sGC.d.rj[i]] + sGC.d.Dj[i]*(sGC.delta_t[t] + sGC.phi_t[t]));
     }
     cr -= (sGC.d.valbpt[0][k] + sGC.gamma_pt[k/2][t] + sGC.d.bpt[0][k]*sGC.delta_t[t]);
     return -cr;
@@ -88,12 +88,12 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray valUi,IloNumA
 		if( SCIPisEQ(sGC.scip, valUi[i], 1.0) ){
             taskList.push_back(i);
             if(taskList.size() == 1){
-                l.energyDemand = sGC.d.Djk[i][0];
+                l.energyDemand = sGC.d.Dj[i];
                 l.deadLine = sGC.d.dj[i];
                 l.releaseTime = sGC.d.rj[i];
             }
             else{
-                l.energyDemand += sGC.d.Djk[i][0];
+                l.energyDemand += sGC.d.Dj[i];
                 if(l.deadLine > sGC.d.dj[i]) l.deadLine = sGC.d.dj[i];
                 if(l.releaseTime < sGC.d.rj[i]) l.releaseTime = sGC.d.rj[i];
             }
@@ -285,13 +285,13 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
         for(int i=0; i<sGC.d.cardJ;++i){
 			//cout << i << "    " << sGC.d.rj[i] << " <= " << timedd<<" && "<< timedd<<" < " <<sGC.d.dj[i]<<endl;
             if((sGC.d.rj[i]<=timedd)&&(timedd<sGC.d.dj[i])){
-                sum_i1 += sGC.d.Djk[i][0]*u_i[i]; //sum bi ui
+                sum_i1 += sGC.d.Dj[i]*u_i[i]; //sum bi ui
                 //???
                 //cout << "alpha : "<<sGC.alpha_it[i] << endl;
                 //cout << "time" << timedd << endl;
                 sum_i2 += u_i[i] * (sGC.beta_i[i] //sum_i obj
                     - sGC.alpha_it[i][timedd-sGC.d.rj[i]] 
-                    + sGC.d.Djk[i][0] 
+                    + sGC.d.Dj[i] 
                         * (sGC.delta_t[timedd]
                            + sGC.phi_t[timedd]));
             }
@@ -519,13 +519,13 @@ SCIP_RESULT Pr_farkas(structGenCol &sGC){
         for(int i=0; i<sGC.d.cardJ;++i){
 			//cout << i << "    " << sGC.d.rj[i] << " <= " << timedd<<" && "<< timedd<<" < " <<sGC.d.dj[i]<<endl;
             if((sGC.d.rj[i]<=timedd)&&(timedd<sGC.d.dj[i])){
-                sum_i1 += sGC.d.Djk[i][0]*u_i[i]; //sum bi ui
+                sum_i1 += sGC.d.Dj[i]*u_i[i]; //sum bi ui
                 //???
                 //cout << "alpha : "<<sGC.alpha_it[i] << endl;
                 //cout << "time" << timedd << endl;
                 sum_i2 += u_i[i] * (sGC.farkas2_i[i] //sum_i obj
                     - sGC.farkas1_it[i][timedd-sGC.d.rj[i]] 
-                    + sGC.d.Djk[i][0] 
+                    + sGC.d.Dj[i] 
                         * (sGC.farkas8_t[timedd]
                            + sGC.farkas9_t[timedd]));
             }

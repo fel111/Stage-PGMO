@@ -340,7 +340,7 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 			}
 		}
 		for(int i=0; i<sGC.d.cardJ; ++i){
-			if((sGC.d.rj[i]<=t) && (t<sGC.d.dj[i])) SCIPaddCoefLinear(sGC.scip, c, sGC.varX_it[i][t],-sGC.d.Djk[i][0]);
+			if((sGC.d.rj[i]<=t) && (t<sGC.d.dj[i])) SCIPaddCoefLinear(sGC.scip, c, sGC.varX_it[i][t],-sGC.d.Dj[i]);
 		}
 		SCIPaddCons(sGC.scip, c);
 		cons_9.push_back(c);

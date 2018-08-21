@@ -63,7 +63,7 @@ OBJ= Gen_Col_noStock/mainGenCol.o \
 	struct.o \
 	Gen_Col_noStock/pricer.o \
 	Gen_Col_noStock/struct_gencol.o \
-	Ordo_compact/ordo_cplex.o
+	Ordo_compact/ordo_cplex2.o
 
 
 
@@ -125,7 +125,7 @@ clean :
 	rm struct.o;
 	rm Gen_Col_noStock/pricer.o;
 	rm Gen_Col_noStock/struct_gencol.o;
-	rm Ordo_compact/ordo_cplex.o;
+	rm Ordo_compact/ordo_cplex2.o;
 
 #find . -name \*.o -type f -delete 
  
