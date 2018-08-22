@@ -59,7 +59,7 @@ FLAGS= -W -Wall -DIL_STD -std=c++11 -g
 #FLAGS= -g -W -Wall -DIL_STD 
 
 
-OBJ= Gen_Col_noStock/mainGenCol.o \
+OBJ= Gen_Col_noStock/genColNoStock.o \
 	Lecteur_Fichiers/lecteur_taches.o \
 	Lecteur_Fichiers/lecteur_param.o \
 	struct.o \
@@ -71,7 +71,7 @@ OBJ= Gen_Col_noStock/mainGenCol.o \
 
 # Liste des objets que l'on va obtenir, et qu'il faudra linker.
 # pour exe
-EXEC_NAME1 = mainGenColNoStock
+EXEC_NAME1 = genColNoStock
 OBJ1= $(OBJ)
 
 # pour exe
@@ -120,7 +120,7 @@ $(EXEC_NAME1) : $(OBJ1)
 # Taper 'make clean' provoque l'effacement de tous les .o, et des *~ laiss�s 
 # par emacs. Il n'y a pas de d�pendence pour cette cible.
 clean : 
-	rm Gen_Col_noStock/mainGenCol.o Lecteur_Fichiers/lecteur_taches.o;
+	rm Gen_Col_noStock/genColNoStock.o Lecteur_Fichiers/lecteur_taches.o;
 	rm Lecteur_Fichiers/lecteur_param.o;
 	rm struct.o;
 	rm Gen_Col_noStock/pricer.o;

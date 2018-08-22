@@ -10,16 +10,16 @@
 #include "../struct.h"
 //#include "lotsizcontcom.h"
 #include <ilcplex/ilocplex.h>
-#include "ordo_cplex.h"
+#include "ordo_cplex2.h"
 
 ILOSTLBEGIN
 
 
-float ordo_cplex(data &d,param const& p, float &tps, string &status){
+float ordo_cplex(data &d,param const& p, float &tps, string &status, float &gap){
 	IloEnv env;
     IloModel model(env);
     IloCplex cplex(model);
-    if (p.aff_log_compact_cplex==0) cplex.setOut(env.getNullStream());
+    if (p.aff_log_compact==0) cplex.setOut(env.getNullStream());
     cplex.setParam(IloCplex::Threads,p.nb_threads_cplex);
     cplex.setParam(IloCplex::TiLim,p.time_limit_ordo);
 
@@ -66,7 +66,7 @@ float ordo_cplex(data &d,param const& p, float &tps, string &status){
 	for(int t=0; t<d.cardT; ++t){
 		IloExpr SumDem(env);
 		for(int j=0; j<d.cardJ; ++j){
-			SumDem += y_jt[j][t]*d.Dj[i];
+			SumDem += y_jt[j][t]*d.Dj[j];
 		}
 		if(d.bpt[t][0] > 0){
 			IloNumArray pente(env, d.nb_bp[t]+1);
@@ -176,7 +176,7 @@ if(p.taches_avec_fenetre_temps == 1){
 
 	float sol;
 	if(cplex.getStatus() == IloAlgorithm::Feasible){
-		status = "Feasible";
+		status = "feasible";
 		vector<float> prod;
 		//cout << "demande : ";	
 		for(int t=0; t<d.cardT; ++t){
@@ -186,16 +186,17 @@ if(p.taches_avec_fenetre_temps == 1){
 			//prod.push_back(roundd(SCIPgetSolVal(scip,sol,xt[i])));
 			//prod.push_back(roundd(cplex.getValue(xt[i]),5));
 			for(int j=0; j<d.cardJ; ++j){
-				dem += cplex.getValue(y_jt[j][t])*d.Dj[i];
+				dem += cplex.getValue(y_jt[j][t])*d.Dj[j];
 			}
 			prod.push_back(dem);
 			//cout << prod[i] << " ";
 		}
 		d.dt = prod;
 		sol = cplex.getObjValue();
+		gap = cplex.getMIPRelativeGap();
 	}
 	else if(cplex.getStatus() == IloAlgorithm::Optimal){
-		status = "Optimal";
+		status = "optimal";
 		vector<float> prod;
 		/*//cout << "demande : ";	
 		//for(int i=0; i<d.cardT; ++i){
@@ -225,14 +226,15 @@ if(p.taches_avec_fenetre_temps == 1){
 			//prod.push_back(roundd(SCIPgetSolVal(scip,sol,xt[i])));
 			//prod.push_back(roundd(cplex.getValue(xt[i]),5));
 			for(int j=0; j<d.cardJ; ++j){
-				dem += cplex.getValue(y_jt[j][t])*d.Dj[i];
+				dem += cplex.getValue(y_jt[j][t])*d.Dj[j];
 			}
 			prod.push_back(dem);
 			//cout << prod[i] << " ";
 		}
 		d.dt = prod;
 		sol = cplex.getObjValue();
-		cout << "nb noeuds cplex : " << cplex.getNnodes() << endl;
+		gap = cplex.getMIPRelativeGap();
+		//cout << "nb noeuds cplex : " << cplex.getNnodes() << endl;
 	}
 	else{
 		status = "Unknown";

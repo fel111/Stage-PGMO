@@ -63,6 +63,7 @@ struct structGenCol{
     SCIP_SOL * sol;
 
     structGenCol(const data & dat, const param & par) : d(dat), p(par) {}
+    structGenCol(){}
 
 };
 

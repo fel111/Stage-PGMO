@@ -16,8 +16,8 @@
 #include "../Lecteur_Fichiers/lecteur_param.h"
 #include "pricer.h"
 #include "../Modele_compact/modele_entier_cplex.h"
-#include "../Ordo_compact/ordo_cplex2.h"
-#include "genColNoStock.h"
+#include "../Ordo_compact/ordo_cplex.h"
+//#include "genColNoStock.h"
 
 using namespace std;
 float infini = numeric_limits<float>::max();
@@ -36,7 +36,7 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 	SCIP_CALL( SCIPchgRealParam(sGC.scip,SCIPgetParam(sGC.scip,"limits/time"),sGC.p.time_limit_ordo) );
 	//SCIP_CALL( SCIPsetIntParam(sGC.scip, "presolving/maxrounds", 0));
 	//SCIP_CALL( SCIPchgRealParam(sGC.scip,SCIPgetParam(sGC.scip,"numerics/epsilon"),0.0001) );
-    //SCIP_CALL( SCIPchgIntParam(sGC.scip,SCIPgetParam(sGC.scip,"lp/colagelimit"),-1) ); // permet d'empecher aging (marche pas)
+    SCIP_CALL( SCIPchgIntParam(sGC.scip,SCIPgetParam(sGC.scip,"lp/threads"),1) ); // permet d'empecher aging (marche pas)
 	//SCIP_CALL( SCIPchgLongintParam(sGC.scip,SCIPgetParam(sGC.scip,"limits/totalnodes"),1) );
 	//SCIP_CALL( SCIPchgStringParam(sGC.scip,SCIPgetParam(sGC.scip,"visual/vbcfilename"),"vbcfileNoStock.vbc") );
 	//SCIP_CALL( SCIPchgBoolParam(sGC.scip,SCIPgetParam(sGC.scip,"visual/dispsols"),TRUE) );
@@ -189,7 +189,7 @@ float firstSol(structGenCol & sGC){
 }
 
 
-/*int initData(structGenCol & sGC){
+int initData(structGenCol & sGC, string nb){
     data d;
     param p;
 
@@ -197,19 +197,19 @@ float firstSol(structGenCol & sGC){
 	d.s0 = 0;
 	d.cardM = 1;
     string param = "param_boucle_ordo_ls.txt";
-    string instance = "inst_1";
+    //string instance = "inst_100";
 	if(lecteur_param("Param/"+param,p,d) == 0) return 0;
-	d.Q = 20;
+	//d.Q = 20;
 	//p.qmax = 20;
 	//p.qmin = 0;
 	//p.qinit = 0;
 	
-	lecteur_taches_EnergSchedInst("Donnees/dataSchedulingInstances_newname/"+instance,d);
+	lecteur_taches_EnergSchedInst("Donnees/dataSchedulingInstances_newname/inst_"+nb,d);
 
     for(int i=0;i<d.cardT;++i){
         
 		/*vector<float> temp_bpt = {0.0,4.0,4.0,8.0,8.0,100.0,100.0,infini};
-		vector<float> temp_valbpt = {0.0,4.0,4.0,6.0,6.0,190.0};* /
+		vector<float> temp_valbpt = {0.0,4.0,4.0,6.0,6.0,190.0};*/
 		vector<float> temp_pente = {1.0,0.5,2.0,1.5};
 
 		vector<float> temp_bpt = {0.0,4.0,8.0,100.0,infini};
@@ -221,10 +221,6 @@ float firstSol(structGenCol & sGC){
 		d.bpt.push_back(temp_bpt);
 		d.valbpt.push_back(temp_valbpt);
 		d.nb_bp.push_back(4);
-
-        //initialisation L_t
-        vector<int> lt_temp;
-        sGC.L_t.push_back(lt_temp);
 	}
 	//vector<vector<float> > ress;
 	//for(int i=0;i<d.cardM;++i){
@@ -245,10 +241,10 @@ float firstSol(structGenCol & sGC){
     //initialisatin P_0
     //addP_0(sGC);
 
-}*/
+}
 
 
-float genColNoStock(const data & d,const param & p,float &tps,vector<float> & demande){
+float genColNoStock(const data & d,const param & p,float &tps,vector<float> & demande, float &gap, string &statut){
     structGenCol sGC(d,p);
     //initialisation L_t
     for(int t=0; t<sGC.d.cardT; ++t){
@@ -393,6 +389,9 @@ float genColNoStock(const data & d,const param & p,float &tps,vector<float> & de
     }*/
     float sol = -1.0;
     if (status == SCIP_OKAY){
+        if(SCIPgetStatus(sGC.scip) == SCIP_STATUS_OPTIMAL) statut = "optimal";
+        if(SCIPgetStatus(sGC.scip) == SCIP_STATUS_TIMELIMIT) statut = "feasible";
+        gap = SCIPgetGap(sGC.scip);
         sol = SCIPgetSolOrigObj(sGC.scip,sGC.sol);
         vector<float> prod;
         for(int t=0; t<sGC.d.cardT; ++t){
@@ -414,22 +413,23 @@ float genColNoStock(const data & d,const param & p,float &tps,vector<float> & de
 
 
 
-/*int main(){
-    float tps;
-    float binf;
+int main(int argc, char* argv[]){
+    string nb = argv[1];
+    float tpsGenCol;
+    float solGenCol;
     vector<float> temp;
-    string statut;
+    float gapGenCol;
+    string statutGenCol;
     structGenCol sGC;
-    ColGen_Scip(sGC);
+    initData(sGC,nb);
+    solGenCol = genColNoStock(sGC.d,sGC.p,tpsGenCol,temp,gapGenCol,statutGenCol);
+    cout << solGenCol << " " << tpsGenCol << " " << statutGenCol << " " << gapGenCol << " // GENCOL : solution, temps, statut, gap" << endl;
 
-    //modifPwlCplex(sGC);
-    float ftemp;
-    string stemp;
-    float solOrdoCPX = ordo_cplex(sGC.d,sGC.p,tps,stemp);
-    cout << "sol compact : " << solOrdoCPX << endl;
-    cout << "temps compact : " << tps << endl;
-    //float solRelax = relaxation_modele_entier_cplex(sGC.d,temp,sGC.p,tps,binf,statut);
+    float tpsComp, solComp, gapComp;
+    string statutComp;
+    solComp = ordo_cplex(sGC.d,sGC.p,tpsComp,statutComp,gapComp);
+    cout << solComp << " " << tpsComp << " " << statutComp << " " << gapComp << " // COMPACT : solution, temps, statut, gap" << endl;
 
 
     return 0;
-}*/
+}
