@@ -15,13 +15,23 @@
 ILOSTLBEGIN
 
 
-float ordo_cplex(data &d,param const& p, float &tps, string &status, float &gap){
+float ordo_cplex(data const& d,param const& p, float &tps, vector<float> &demande,string &status, float &gap){
 	IloEnv env;
     IloModel model(env);
     IloCplex cplex(model);
     if (p.aff_log_compact==0) cplex.setOut(env.getNullStream());
     cplex.setParam(IloCplex::Threads,p.nb_threads_cplex);
     cplex.setParam(IloCplex::TiLim,p.time_limit_ordo);
+
+	// affichage fonction pwl
+    /*for(int t=0; t<d.cardT; ++t){
+        cout << "bpt, valbpt " << t << endl;
+        for(int i=0; i<d.nb_bp[t]; ++i){
+            cout << d.bpt[t][i] << " ";
+            cout << d.valbpt[t][i] << " ";
+        }
+        cout << endl;
+    }*/
 
 
 	//VARIABLES
@@ -68,7 +78,16 @@ float ordo_cplex(data &d,param const& p, float &tps, string &status, float &gap)
 		for(int j=0; j<d.cardJ; ++j){
 			SumDem += y_jt[j][t]*d.Dj[j];
 		}
-		if(d.bpt[t][0] > 0){
+		IloNumArray bpt(env, d.nb_bp[t]-1);
+        for(int i=0; i<(d.nb_bp[t]-1);++i){
+            bpt[i] = d.bpt[t][i+1];
+        }
+
+        IloNumArray pente(env, d.nb_bp[t]);
+        for(int i=0; i<d.nb_bp[t];++i){
+            pente[i] = d.pente[t][i];
+        }
+		/*if(d.bpt[t][0] > 0){
 			IloNumArray pente(env, d.nb_bp[t]+1);
 			IloNumArray bpt(env, d.nb_bp[t]);
 			pente[0] = 0.0;
@@ -87,7 +106,8 @@ float ordo_cplex(data &d,param const& p, float &tps, string &status, float &gap)
 				if(j<d.nb_bp[t]-1) bpt[j] = d.bpt[t][j+1];
     		}
 			model.add(ct[t] == IloPiecewiseLinear(SumDem,bpt,pente,d.bpt[t][0], d.valbpt[t][0]));
-		}
+		}*/
+		model.add(ct[t] == IloPiecewiseLinear(SumDem,bpt,pente,d.bpt[t][0], 0));
 	}
 
     IloExpr obj(env);
@@ -189,9 +209,9 @@ if(p.taches_avec_fenetre_temps == 1){
 				dem += cplex.getValue(y_jt[j][t])*d.Dj[j];
 			}
 			prod.push_back(dem);
-			//cout << prod[i] << " ";
+			//cout << "cplex : demande " << prod[t] << endl;
 		}
-		d.dt = prod;
+		demande = prod;
 		sol = cplex.getObjValue();
 		gap = cplex.getMIPRelativeGap();
 	}
@@ -229,9 +249,10 @@ if(p.taches_avec_fenetre_temps == 1){
 				dem += cplex.getValue(y_jt[j][t])*d.Dj[j];
 			}
 			prod.push_back(dem);
+			//cout << "cplex : demande " << prod[t] << endl;
 			//cout << prod[i] << " ";
 		}
-		d.dt = prod;
+		demande = prod;
 		sol = cplex.getObjValue();
 		gap = cplex.getMIPRelativeGap();
 		//cout << "nb noeuds cplex : " << cplex.getNnodes() << endl;

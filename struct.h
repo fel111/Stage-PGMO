@@ -50,6 +50,7 @@ struct param{
 	int type_cap = 2; //1 si la capacite est >= 0, 2 si elle est comprise entre [0, 1] (par ex 0,2 = 20%)  
 	float val_cap = 0.1; //par defaut, la capacite de la batterie vaut 10% de la demande totale en energie
 	//float qmin;
+	int fct_pwl_continue = 1; // 1 si continue, 2 si discontinue
 	//float qmax;
 	//float qinit;
 };

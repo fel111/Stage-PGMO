@@ -7,6 +7,6 @@ using namespace std;
 
 SCIP_RETCODE Load_Original_Model(structGenCol & sGC);
 float firstSol(structGenCol &sGC);
-float genColNoStock(const data &d, const param &p,float &tps, vector<float> & demande);
+float genColNoStock(data & d,param & p,float &tps,vector<float> & demande, float &gap, string &statut);
 
 #endif

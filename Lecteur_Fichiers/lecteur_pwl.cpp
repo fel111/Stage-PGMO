@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 #include <limits>
-#include "struct.h"
+#include "../struct.h"
 #include "lecteur_pwl.h"
 //#include <algorithm>
 //#include <chrono>

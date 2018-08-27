@@ -5,7 +5,7 @@
 #include "../struct.h"
 //using namespace std;
 
-float ordo_cplex(data &d,param const& p, float &tps, string &status, float &gap);
+float ordo_cplex(data const& d,param const& p, float &tps, vector<float> &demande,string &status, float &gap);
 
 
 #endif

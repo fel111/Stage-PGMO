@@ -26,8 +26,8 @@ struct structGenCol{
     float tpsPM= 0.0;
     float tpsPricer=0.0;
 
-    data d;
-    param p;
+    data *d;
+    param *p;
     SCIP *scip;
     int nbcolgenerated=0;
     int cptPricer=0;
@@ -62,7 +62,7 @@ struct structGenCol{
 
     SCIP_SOL * sol;
 
-    structGenCol(const data & dat, const param & par) : d(dat), p(par) {}
+    structGenCol(data& dat, param& par) : d(&dat), p(&par) {}
     structGenCol(){}
 
 };

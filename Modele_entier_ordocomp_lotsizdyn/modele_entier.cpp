@@ -10,19 +10,19 @@
 //#include <deque>
 //#include "scip/scip.h"
 //#include "scip/scipdefplugins.h"
-#include "struct.h"
+#include "../struct.h"
 //#include "Ordo_compact/ordo_comp.h"
-//#include "Ordo_compact/ordo_cplex.h"
-#include "Lot_Sizing/Lot_Sizing_Dynamique/lotsizdyn2.h"
+#include "../Ordo_compact/ordo_cplex.h"
+#include "../Lot_Sizing/Lot_Sizing_Dynamique/lotsizdyn2.h"
 //#include "Lot_Sizing/Lot_Sizing_Compact/lotsizentCPX.h"
 //#include "Lot_Sizing/Lot_Sizing_Compact/lotsizcontcom.h"
 //#include "Lot_Sizing/Lot_Sizing_Compact/lotsizcontCPX.h"
 //#include "Modele_compact/compact.h"
-#include "Modele_compact/modele_entier_cplex.h"
-#include "Lecteur_Fichiers/lecteur_taches.h"
-#include "Lecteur_Fichiers/lecteur_pwl.h"
-#include "Lecteur_Fichiers/lecteur_param.h"
-#include "Gen_Col_noStock/genColNoStock.h"
+#include "../Modele_compact/modele_entier_cplex.h"
+#include "../Lecteur_Fichiers/lecteur_taches.h"
+#include "../Lecteur_Fichiers/lecteur_pwl.h"
+#include "../Lecteur_Fichiers/lecteur_param.h"
+#include "../Gen_Col_noStock/genColNoStock.h"
 //#include <ilcplex/cplex.h>
 //#define SCIP_DEBUG
 using namespace std;
@@ -97,12 +97,12 @@ int main(int argc, char* argv[]){
 
 	//cout << "instance="<<instance<<" parametre="<<parametre<<" nbPeriodes="<<d.cardT<<" nbTaches="<<d.cardJ<<" nbMachines="<<d.cardM<<" borneBatterie="<<d.Q<<" ratioDemandeTot/Capacite="<<d.Q/d.consoTot<<" limiteNbBoucles=-1 limiteTpsOrdo=300 limiteThreads="<<p.nb_threads_cplex<<endl;
 	// MODELE COMPACT CPLEX
-	auto start_time = chrono::steady_clock::now();
-	solComp = modele_entier_cplex(d,p,tpsComp,borneinfComp,statusComp);
-	auto end_time = chrono::steady_clock::now();
-	tpsComp = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
+	//auto start_time = chrono::steady_clock::now();
+	//solComp = modele_entier_cplex(d,p,tpsComp,borneinfComp,statusComp);
+	//auto end_time = chrono::steady_clock::now();
+	//tpsComp = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
 
-	cout << "COMPACT tps=" << tpsComp << " statut=" << statusComp << " bornesup=" << solComp  << " borneinf=" << borneinfComp << endl;
+	//cout << "COMPACT tps=" << tpsComp << " statut=" << statusComp << " bornesup=" << solComp  << " borneinf=" << borneinfComp << endl;
 
 	
 	/*if(p.boucle_relaxation==1){
@@ -177,12 +177,13 @@ int main(int argc, char* argv[]){
 	tpsTotOrdo = 0.0;
 	tpsTotLS = 0.0;
 	cptBoucle = 0;*/
-
+	float _delete;
 	bool solOrdoOk = false;
 	// BOUCLE ORDO_GENCOL + LOTSIZING DYNAMIQUE
-	start_time = chrono::steady_clock::now();
-	solOrdo = genColNoStock(d,p,tpsOrdo,demande);
+	auto start_time = chrono::steady_clock::now();
+	solOrdo = genColNoStock(d,p,tpsOrdo,demande,_delete,statusOrdo);
 	tpsTotOrdo += tpsOrdo;
+	cout << "solordocplex : " << ordo_cplex(d,p,tpsBoucleMip,demande,statusComp,tpsBoucleDyn)<<endl;
 	cout << "solordo : " << solOrdo << endl;
 	if(solOrdo != -1){
 		solOrdoOk = true;
@@ -193,7 +194,8 @@ int main(int argc, char* argv[]){
 	}
 	while((solOrdo != solLS) && (tpsTotOrdo < 7200) && (solOrdoOk)){
 		modifPWL(d, rt);
-		solOrdo = genColNoStock(d,p,tpsOrdo,demande);
+		solOrdo = genColNoStock(d,p,tpsOrdo,demande,_delete,statusOrdo);
+		cout << "solordocplex : " << ordo_cplex(d,p,tpsBoucleMip,demande,statusComp,tpsBoucleDyn)<<endl;
 		cout << "solordo : " << solOrdo << endl;
 		tpsTotOrdo += tpsOrdo;
 		if(solOrdo == -1) solOrdoOk = false;
@@ -205,7 +207,7 @@ int main(int argc, char* argv[]){
 			++cptBoucle;
 		}
 	}
-	end_time = chrono::steady_clock::now();
+	auto end_time = chrono::steady_clock::now();
 	tpsBoucleDyn = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
 	cout << "solOrdo/LS : " << solLS << endl;
 

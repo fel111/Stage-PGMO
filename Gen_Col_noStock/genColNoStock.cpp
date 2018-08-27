@@ -32,11 +32,11 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
     
     /* Load plugin */
     SCIP_CALL( SCIPincludeDefaultPlugins(sGC.scip) );
-    if(sGC.p.aff_log_ordo == 0) SCIPsetMessagehdlr(sGC.scip,NULL);
-	SCIP_CALL( SCIPchgRealParam(sGC.scip,SCIPgetParam(sGC.scip,"limits/time"),sGC.p.time_limit_ordo) );
-	//SCIP_CALL( SCIPsetIntParam(sGC.scip, "presolving/maxrounds", 0));
+    if(sGC.p->aff_log_ordo == 0) SCIPsetMessagehdlr(sGC.scip,NULL);
+	SCIP_CALL( SCIPchgRealParam(sGC.scip,SCIPgetParam(sGC.scip,"limits/time"),sGC.p->time_limit_ordo) );
+	SCIP_CALL( SCIPsetIntParam(sGC.scip, "presolving/maxrounds", 0));
 	//SCIP_CALL( SCIPchgRealParam(sGC.scip,SCIPgetParam(sGC.scip,"numerics/epsilon"),0.0001) );
-    SCIP_CALL( SCIPchgIntParam(sGC.scip,SCIPgetParam(sGC.scip,"lp/threads"),1) ); // permet d'empecher aging (marche pas)
+    SCIP_CALL( SCIPchgIntParam(sGC.scip,SCIPgetParam(sGC.scip,"lp/threads"),1) );
 	//SCIP_CALL( SCIPchgLongintParam(sGC.scip,SCIPgetParam(sGC.scip,"limits/totalnodes"),1) );
 	//SCIP_CALL( SCIPchgStringParam(sGC.scip,SCIPgetParam(sGC.scip,"visual/vbcfilename"),"vbcfileNoStock.vbc") );
 	//SCIP_CALL( SCIPchgBoolParam(sGC.scip,SCIPgetParam(sGC.scip,"visual/dispsols"),TRUE) );
@@ -52,9 +52,9 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
     
     // variables x_it
 	vector<vector<SCIP_VAR *> > x_it;
-	for(int i=0; i<sGC.d.cardJ; ++i){
-		vector<SCIP_VAR *> v (sGC.d.cardT,NULL);
-		for(int t=sGC.d.rj[i]; t<sGC.d.dj[i]; ++t){
+	for(int i=0; i<sGC.d->cardJ; ++i){
+		vector<SCIP_VAR *> v (sGC.d->cardT,NULL);
+		for(int t=sGC.d->rj[i]; t<sGC.d->dj[i]; ++t){
 			SCIP_VAR * var;
 			SCIPcreateVarBasic(sGC.scip, &var, ("x_it"+to_string(i)+','+to_string(t)).c_str(), 0, 1, 0.0, SCIP_VARTYPE_BINARY);
 			SCIPaddVar(sGC.scip,var);
@@ -67,11 +67,11 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
     // variables y_lt
 	vector<vector<SCIP_VAR *> >  y_lt;
 	for(int l=0; l<sGC.L.size(); ++l){
-		vector<SCIP_VAR *> v (sGC.d.cardT, NULL);
+		vector<SCIP_VAR *> v (sGC.d->cardT, NULL);
 		y_lt.push_back(v);
 		for(int t=sGC.L[l].releaseTime; t<sGC.L[l].deadLine; ++t){
 			SCIP_VAR * varr;
-			SCIPcreateVarBasic(sGC.scip, &varr, ("y_lt"+to_string(l)+','+to_string(t)).c_str(), 0.0, SCIPinfinity(sGC.scip), sGC.L[l].cost, SCIP_VARTYPE_CONTINUOUS);
+			SCIPcreateVarBasic(sGC.scip, &varr, ("y_lt"+to_string(l)+','+to_string(t)).c_str(), 0.0, SCIPinfinity(sGC.scip), p_t(t,sGC.L[l].energyDemand,sGC), SCIP_VARTYPE_CONTINUOUS);
 			SCIPaddVar(sGC.scip,varr);
 			y_lt[l][t] = varr;
 		}
@@ -83,12 +83,12 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 	// Add constraints
     
 	
-	// x_it - sum_l a_il y_lkt = 0
+	// x_it - sum_l a_il y_lt = 0
 	vector<vector<SCIP_CONS *> > cons_1;
-	for(int i=0; i<sGC.d.cardJ; ++i){
+	for(int i=0; i<sGC.d->cardJ; ++i){
 		vector<SCIP_CONS *> c;
 		cons_1.push_back(c);
-		for(int t=sGC.d.rj[i]; t<sGC.d.dj[i]; ++t){
+		for(int t=sGC.d->rj[i]; t<sGC.d->dj[i]; ++t){
 			SCIP_CONS * ct;
 			SCIPcreateConsLinear(sGC.scip, &ct, ("cons_1,"+to_string(i)+","+to_string(t)).c_str(), 0, 0, 0, 0, 0, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE);  
 			SCIPaddCoefLinear(sGC.scip, ct, sGC.varX_it[i][t],1);		
@@ -98,16 +98,16 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 			SCIP_CALL(SCIPaddCons(sGC.scip, ct));
 			cons_1[i].push_back(ct);
 		}
-		vector<double> vd (sGC.d.dj[i]-sGC.d.rj[i],0.0);
+		vector<double> vd (sGC.d->dj[i]-sGC.d->rj[i],0.0);
 		sGC.w_it.push_back(vd);
 	}
 	sGC.cons_1 = cons_1;
 
 	// sum_t sum_l a_il y_lt >= pi
 	vector<SCIP_CONS *> cons_2;
-	for(int i=0; i<sGC.d.cardJ; ++i){
+	for(int i=0; i<sGC.d->cardJ; ++i){
 		SCIP_CONS * c;
-		SCIPcreateConsLinear(sGC.scip, &c, ("cons_2,"+to_string(i)).c_str(), 0, 0, 0, sGC.d.pj[i], SCIPinfinity(sGC.scip), TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE);  
+		SCIPcreateConsLinear(sGC.scip, &c, ("cons_2,"+to_string(i)).c_str(), 0, 0, 0, sGC.d->pj[i], SCIPinfinity(sGC.scip), TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE);  
 		
 		for(int l=0; l<sGC.L.size(); ++l){
 			for(int t=sGC.L[l].releaseTime; t<sGC.L[l].deadLine; ++t){
@@ -119,14 +119,14 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 		SCIPaddCons(sGC.scip, c);
 		cons_2.push_back(c);
 	}
-	vector<double> vdj (sGC.d.cardJ,0.0);
+	vector<double> vdj (sGC.d->cardJ,0.0);
 	sGC.u_i = vdj;
 	sGC.cons_2 = cons_2;
 	//cout<<"cons_2 ok"<<endl;
 
 	// sum_l -ylt >= -1
 	vector<SCIP_CONS *> cons_3;
-	for(int t=0; t<sGC.d.cardT; ++t){
+	for(int t=0; t<sGC.d->cardT; ++t){
 		SCIP_CONS * ct;
 		SCIPcreateConsLinear(sGC.scip, &ct, ("cons_3,"+to_string(t)).c_str(), 0, 0, 0, -1, SCIPinfinity(sGC.scip), TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE);  	
 		for(const auto& l : sGC.L_t[t]){
@@ -136,7 +136,7 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 		cons_3.push_back(ct);
 	}
 	sGC.cons_3 = cons_3;
-	vector<double> vdt (sGC.d.cardT,0.0);
+	vector<double> vdt (sGC.d->cardT,0.0);
 	sGC.v_t = vdt; 
 	//cout<<"cons_3 ok"<<endl;
 
@@ -147,49 +147,50 @@ SCIP_RETCODE Load_Original_Model(structGenCol & sGC)
 
 float firstSol(structGenCol & sGC){
     
-    int cptId = 0;
+    //int cptId = 0;
     float upperbound = 0.0;
     
-    for(int t=sGC.d.releaseDateMin; t<sGC.d.cardT; ++t){
+    for(int t=sGC.d->releaseDateMin; t<sGC.d->cardT; ++t){
         vector<int> taskList;
         feasibleSet l;
-        for(int i=0; i<sGC.d.cardJ; ++i){
-            if((sGC.d.rj[i]<=t) && (t<sGC.d.rj[i]+sGC.d.pj[i])){
+        for(int i=0; i<sGC.d->cardJ; ++i){
+            if((sGC.d->rj[i]<=t) && (t<sGC.d->rj[i]+sGC.d->pj[i])){
                 taskList.push_back(i);
                 if(taskList.size() == 1){
-                    l.energyDemand = sGC.d.Dj[i];
-                    l.deadLine = sGC.d.dj[i];
-                    l.releaseTime = sGC.d.rj[i];
+                    l.energyDemand = sGC.d->Dj[i];
+                    l.deadLine = sGC.d->dj[i];
+                    l.releaseTime = sGC.d->rj[i];
                 }
                 else{
-                    l.energyDemand += sGC.d.Dj[i];
-                    if(l.deadLine > sGC.d.dj[i]) l.deadLine = sGC.d.dj[i];
-                    if(l.releaseTime < sGC.d.rj[i]) l.releaseTime = sGC.d.rj[i];
+                    l.energyDemand += sGC.d->Dj[i];
+                    if(l.deadLine > sGC.d->dj[i]) l.deadLine = sGC.d->dj[i];
+                    if(l.releaseTime < sGC.d->rj[i]) l.releaseTime = sGC.d->rj[i];
                 }
             }
         }
         if(taskList.size() > 0){
-            l.id = cptId;
+            //l.id = cptId;
             //l.timeGen = t; 
             l.tasksList = taskList;
             if(checkSet(l,sGC)==-1){
-                l.cost = p_t(t,l.energyDemand,sGC);
+                //l.cost = p_t(t,l.energyDemand,sGC);
                 //cout << "l, cout : " << l.id <<"  "<<l.cost << endl;
+                l.id = sGC.L.size();
                 sGC.L.push_back(l);
                 sGC.cardL = sGC.L.size();
                 //addSetK_l(l,sGC);
                 addA_il(l,sGC);
                 addL_t(l,sGC);
-                cptId++;
+                //cptId++;
             }//else cout << "set deja present " << l.id << endl;
-            upperbound += l.cost;
+            upperbound += p_t(t,l.energyDemand,sGC);
         }
 	}
     return upperbound;
 }
 
 
-int initData(structGenCol & sGC, string nb){
+/*int initData(structGenCol & sGC, string nb){
     data d;
     param p;
 
@@ -209,7 +210,7 @@ int initData(structGenCol & sGC, string nb){
     for(int i=0;i<d.cardT;++i){
         
 		/*vector<float> temp_bpt = {0.0,4.0,4.0,8.0,8.0,100.0,100.0,infini};
-		vector<float> temp_valbpt = {0.0,4.0,4.0,6.0,6.0,190.0};*/
+		vector<float> temp_valbpt = {0.0,4.0,4.0,6.0,6.0,190.0};* /
 		vector<float> temp_pente = {1.0,0.5,2.0,1.5};
 
 		vector<float> temp_bpt = {0.0,4.0,8.0,100.0,infini};
@@ -241,21 +242,31 @@ int initData(structGenCol & sGC, string nb){
     //initialisatin P_0
     //addP_0(sGC);
 
-}
+}*/
 
 
-float genColNoStock(const data & d,const param & p,float &tps,vector<float> & demande, float &gap, string &statut){
+float genColNoStock(data & d,param & p,float &tps,vector<float> & demande, float &gap, string &statut){
     structGenCol sGC(d,p);
     //initialisation L_t
-    for(int t=0; t<sGC.d.cardT; ++t){
+    for(int t=0; t<sGC.d->cardT; ++t){
         vector<int> lt_temp;
         sGC.L_t.push_back(lt_temp);
     }
     //initialisation a_il
-    for(int j=0; j<sGC.d.cardJ; ++j){
+    for(int j=0; j<sGC.d->cardJ; ++j){
         vector<int> ailtemp;
         sGC.a_il.push_back(ailtemp);
     }
+
+    // affichage fonction pwl
+    /*for(int t=0; t<d.cardT; ++t){
+        cout << "bpt, valbpt " << t << endl;
+        for(int i=0; i<d.nb_bp[t]; ++i){
+            cout << d.bpt[t][i] << " ";
+            cout << d.valbpt[t][i] << " ";
+        }
+        cout << endl;
+    }*/
 
 	int tmp;
     SCIP_RETCODE status;
@@ -301,8 +312,8 @@ float genColNoStock(const data & d,const param & p,float &tps,vector<float> & de
 
     
     //cout << "obj : "<< SCIPgetSolOrigObj(sGC.scip,sGC.sol) << endl;
-    /*for(int j=0; j<sGC.d.cardJ; ++j){
-        for(int t=sGC.d.rj[j]; t<sGC.d.dj[j]; ++t){
+    /*for(int j=0; j<sGC.d->cardJ; ++j){
+        for(int t=sGC.d->rj[j]; t<sGC.d->dj[j]; ++t){
             if(SCIPgetSolVal(sGC.scip,sGC.sol,sGC.varX_it[j][t]) >= 0.9) cout <<"tache "<<j<<" réalisée au temps "<<t<<endl;
         }
     }*/
@@ -345,8 +356,8 @@ float genColNoStock(const data & d,const param & p,float &tps,vector<float> & de
 		}
 	}
     cout << "---------" << endl;
-    for(int k=0; k<sGC.d.nb_bp[0]; ++k){
-		for(int t=0; t<sGC.d.cardT; ++t){
+    for(int k=0; k<sGC.d->nb_bp[0]; ++k){
+		for(int t=0; t<sGC.d->cardT; ++t){
             if(SCIPgetSolVal(sGC.scip, sGC.sol,sGC.varY0_kt[k][t])>0) cout << "y0,"<<k<<","<<t<<" = "<<SCIPgetSolVal(sGC.scip, sGC.sol,sGC.varY0_kt[k][t])<<endl;
         }
     }*/
@@ -371,11 +382,11 @@ float genColNoStock(const data & d,const param & p,float &tps,vector<float> & de
 
     // release variables
     /*int fois = 0;
-    for(int i=0; i<sGC.d.cardJ; ++i){
-        for(int t=0; t<sGC.d.cardT; ++t){
-            if((sGC.d.rj[i]<=t)&&(t<sGC.d.dj[i])){
+    for(int i=0; i<sGC.d->cardJ; ++i){
+        for(int t=0; t<sGC.d->cardT; ++t){
+            if((sGC.d->rj[i]<=t)&&(t<sGC.d->dj[i])){
                 SCIPreleaseVar(sGC.scip,&sGC.varX_it[i][t]);
-                SCIPreleaseCons(sGC.scip,&sGC.cons_1[i][t-sGC.d.rj[i]]);
+                SCIPreleaseCons(sGC.scip,&sGC.cons_1[i][t-sGC.d->rj[i]]);
             }
             if(fois==0) SCIPreleaseCons(sGC.scip,&sGC.cons_3[t]);
         }
@@ -387,33 +398,33 @@ float genColNoStock(const data & d,const param & p,float &tps,vector<float> & de
             if(sGC.varY_lt[l][t] != NULL) SCIPreleaseVar(sGC.scip,&sGC.varY_lt[l][t]);
         }
     }*/
-    float sol = -1.0;
+    float obj = -1.0;
     if (status == SCIP_OKAY){
         if(SCIPgetStatus(sGC.scip) == SCIP_STATUS_OPTIMAL) statut = "optimal";
         if(SCIPgetStatus(sGC.scip) == SCIP_STATUS_TIMELIMIT) statut = "feasible";
         gap = SCIPgetGap(sGC.scip);
-        sol = SCIPgetSolOrigObj(sGC.scip,sGC.sol);
+        obj = SCIPgetSolOrigObj(sGC.scip,sGC.sol);
         vector<float> prod;
-        for(int t=0; t<sGC.d.cardT; ++t){
+        for(int t=0; t<sGC.d->cardT; ++t){
             float dem=0.0;
-            for(int j=0; j<sGC.d.cardJ; ++j){
+            for(int j=0; j<sGC.d->cardJ; ++j){
                 if(sGC.varX_it[j][t] != NULL){
-                    if(SCIPgetSolVal(sGC.scip,sGC.sol,sGC.varX_it[j][t]) >= 0.9) dem += sGC.d.Dj[j];
+                    if(SCIPgetSolVal(sGC.scip,sGC.sol,sGC.varX_it[j][t]) >= 0.9) dem += sGC.d->Dj[j];
                 }
             }
-            //cout << "dem : " << dem << endl;
             prod.push_back(dem);
+            //cout << "gencol : demande " << prod[t] << endl;
         }
         demande = prod;
     }
     SCIP_CALL ( SCIPfree(&sGC.scip) );
-    return sol;
+    return obj;
 }
 
 
 
 
-int main(int argc, char* argv[]){
+/*int main(int argc, char* argv[]){
     string nb = argv[1];
     float tpsGenCol;
     float solGenCol;
@@ -432,4 +443,4 @@ int main(int argc, char* argv[]){
 
 
     return 0;
-}
+}*/

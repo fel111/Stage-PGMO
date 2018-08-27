@@ -23,22 +23,22 @@ using namespace std;
 #define PRICER_DELAY           FALSE     /* only call pricer if all problem variables have non-negative reduced costs */
 // pricer_delay mis à false -> notre pricer est appele si le pricer de scip n'a pas trouve de colonnes
 bool verifSol(structGenCol const& sGC){
-    for(int j=0; j<sGC.d.cardJ; ++j){
+    for(int j=0; j<sGC.d->cardJ; ++j){
         int debut=0;
         double duree=0.0;
         int fin;
         //while(SCIPisEQ(sGC.scip,SCIPgetSolVal(sGC.scip,sGC.sol,sGC.varX_it[j][debut]),0)){ ++debut; }
         while(sGC.varX_it[j][debut] == NULL){ ++debut; }
-        if(debut<sGC.d.rj[j]){ cout<<"tache "<<j<<" debut "<<debut<<"<"<<sGC.d.rj[j]<<endl; return false; }
-        for(int k=debut; k<sGC.d.cardT; ++k){
+        if(debut<sGC.d->rj[j]){ cout<<"tache "<<j<<" debut "<<debut<<"<"<<sGC.d->rj[j]<<endl; return false; }
+        for(int k=debut; k<sGC.d->cardT; ++k){
             if(sGC.varX_it[j][k] != NULL){
                 if(SCIPisEQ(sGC.scip,SCIPgetSolVal(sGC.scip,sGC.sol,sGC.varX_it[j][k]),1)) fin = k;
                 duree += SCIPgetSolVal(sGC.scip,sGC.sol,sGC.varX_it[j][k]);
             }
             //cout << "duree "<<duree<<endl;
         }
-        if(fin>=sGC.d.dj[j]){ cout<<"fin depassée pour tache "<<j<<endl; return false; }
-        if(SCIPisLT(sGC.scip,duree,sGC.d.pj[j])){ cout<<"tache "<<j<<"  duree "<<duree<<"<"<<sGC.d.pj[j]<<endl; return false; }
+        if(fin>=sGC.d->dj[j]){ cout<<"fin depassée pour tache "<<j<<endl; return false; }
+        if(SCIPisLT(sGC.scip,duree,sGC.d->pj[j])){ cout<<"tache "<<j<<"  duree "<<duree<<"<"<<sGC.d->pj[j]<<endl; return false; }
     }
     return true;
 }
@@ -48,8 +48,8 @@ double verifCoutReduit(structGenCol const& sGC, IloNumArray ui, int t){
     float sumi = 0.0;
     for(int i=0; i<ui.getSize(); ++i){
         if(SCIPisEQ(sGC.scip, ui[i], 1.0)){
-            cr += (sGC.u_i[i] - sGC.w_it[i][t-sGC.d.rj[i]]);
-            sumi += sGC.d.Dj[i];
+            cr += (sGC.u_i[i] - sGC.w_it[i][t-sGC.d->rj[i]]);
+            sumi += sGC.d->Dj[i];
         }
     }
     cr += -sGC.v_t[t] - p_t(t,sumi,sGC);
@@ -60,8 +60,8 @@ double verifCoutReduit(structGenCol const& sGC, vector<int> ui, int t){
     double cr = 0.0;
     float sumi = 0.0;
     for(auto const& i : ui){
-        cr += (sGC.u_i[i] - sGC.w_it[i][t-sGC.d.rj[i]]);
-        sumi += sGC.d.Dj[i];
+        cr += (sGC.u_i[i] - sGC.w_it[i][t-sGC.d->rj[i]]);
+        sumi += sGC.d->Dj[i];
     }
     cr += -sGC.v_t[t] - p_t(t,sumi,sGC);
     return -cr;
@@ -87,33 +87,35 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray const& valUi,
     bool stop=false;
     
 	// Creation de la nouvelle colonne
-	for(int i = 0 ; i < sGC.d.cardJ ; i++){
+	for(int i = 0 ; i < sGC.d->cardJ ; i++){
 		//cout << "tache i=" << i << " valX="<< valUi[i] << endl;
-		if( SCIPisEQ(sGC.scip, valUi[i], 1.0) ){
+		//if( SCIPisEQ(sGC.scip, valUi[i], 1.0) ){
+        if( valUi[i] > 0.5){
             //cout << "ok" << endl;
             taskList.push_back(i);
             if(taskList.size() == 1){
-                l.energyDemand = sGC.d.Dj[i];
-                l.deadLine = sGC.d.dj[i];
-                l.releaseTime = sGC.d.rj[i];
+                l.energyDemand = sGC.d->Dj[i];
+                l.deadLine = sGC.d->dj[i];
+                l.releaseTime = sGC.d->rj[i];
             }
             else{
-                l.energyDemand += sGC.d.Dj[i];
-                if(l.deadLine > sGC.d.dj[i]) l.deadLine = sGC.d.dj[i];
-                if(l.releaseTime < sGC.d.rj[i]) l.releaseTime = sGC.d.rj[i];
+                l.energyDemand += sGC.d->Dj[i];
+                if(l.deadLine > sGC.d->dj[i]) l.deadLine = sGC.d->dj[i];
+                if(l.releaseTime < sGC.d->rj[i]) l.releaseTime = sGC.d->rj[i];
             }
         }
     }
 
     if(taskList.size() > 0){
-        l.id = sGC.L.size();
+        //l.id = sGC.L.size();
         l.tasksList = taskList;
-        l.cost = p_t(timedd,l.energyDemand,sGC);
+        //l.cost = p_t(timedd,l.energyDemand,sGC);
         //cout << "l, cout : " << l.id <<"  "<<l.cost << endl;
         int testPres = checkSet(l,sGC);
         int id;
         bool createOk = false;
         if(testPres == -1){
+            l.id = sGC.L.size();
             sGC.L.push_back(l);
             sGC.cardL = sGC.L.size();
             addA_il(l,sGC);
@@ -133,14 +135,14 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray const& valUi,
             string name = "y_lt"+to_string(id)+","+to_string(timedd);
             //cout <<"ajout variable "+name<<endl;
             SCIP_VAR * var;
-            SCIPcreateVarBasic(sGC.scip, &var, name.c_str() ,0,SCIPinfinity(sGC.scip),sGC.L[id].cost,SCIP_VARTYPE_CONTINUOUS);
+            SCIPcreateVarBasic(sGC.scip, &var, name.c_str() ,0,SCIPinfinity(sGC.scip),p_t(timedd,l.energyDemand,sGC),SCIP_VARTYPE_CONTINUOUS);
             for(const auto& j : taskList){
                 //Mise a jour cons1
-                //cout<<"j : "<<j<<" timedd : "<<sGC.timedd<<" rj : "<<sGC.d.rj[j] << " dj : "endl;
-                //SCIPprintCons(sGC.scip,sGC.cons_1[j][sGC.time-sGC.d.rj[j]],NULL);
-                SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_1[j][timedd-sGC.d.rj[j]],var,-1));
-                //valduales.push_back(SCIPgetDualsolLinear(sGC.scip,sGC.cons_1[j][timedd-sGC.d.rj[j]]));
-                //valdualesrecup.push_back(sGC.w_it[j][timedd-sGC.d.rj[j]]);
+                //cout<<"j : "<<j<<" timedd : "<<sGC.timedd<<" rj : "<<sGC.d->rj[j] << " dj : "endl;
+                //SCIPprintCons(sGC.scip,sGC.cons_1[j][sGC.time-sGC.d->rj[j]],NULL);
+                SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_1[j][timedd-sGC.d->rj[j]],var,-1));
+                //valduales.push_back(SCIPgetDualsolLinear(sGC.scip,sGC.cons_1[j][timedd-sGC.d->rj[j]]));
+                //valdualesrecup.push_back(sGC.w_it[j][timedd-sGC.d->rj[j]]);
                 //coefduales.push_back(-1);
                 // Mise a jour cons2
                 SCIP_CALL(status = SCIPaddCoefLinear(sGC.scip,sGC.cons_2[j],var,1));
@@ -162,7 +164,7 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray const& valUi,
             }*/
             //assert(SCIPisEQ(sGC.scip,objvalue,SCIPgetVarRedcost(sGC.scip,var)));
             if(testPres==-1){
-                vector<SCIP_VAR*> tab (sGC.d.cardT, NULL);
+                vector<SCIP_VAR*> tab (sGC.d->cardT, NULL);
                 tab[timedd] = var;
                 sGC.varY_lt.push_back(tab);
             }
@@ -193,14 +195,14 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
     bool stop = false;
     SCIP_RESULT status = SCIP_SUCCESS;
 	SCIP_RETCODE status1 = SCIP_ERROR;
-    int decal; // 1 -> d.bpt[i][0] > 0   , 2 -> sinon
+    //int decal; // 1 -> d.bpt[i][0] > 0   , 2 -> sinon
     
-    while((timedd<sGC.d.cardT)&&(!stop)){
+    while((timedd<sGC.d->cardT)&&(!stop)){
 
         IloEnv env;
         IloModel model(env);
         IloCplex cplex(model);
-        if(sGC.p.aff_log_ordo == 0) cplex.setOut(env.getNullStream());
+        if(sGC.p->aff_log_ordo == 0) cplex.setOut(env.getNullStream());
         cplex.setParam(IloCplex::Threads,1);
 
         //donnees pwl
@@ -229,28 +231,28 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
                 //model.add(ct[i] == IloPiecewiseLinear(xt[i],bpt,pente,d.bpt[i][0], d.valbpt[i][0]));
             }
 	    }*/
-        IloNumArray bpt(env, sGC.d.nb_bp[timedd]-1);
-        for(int i=0; i<(sGC.d.nb_bp[timedd]-1);++i){
-            bpt[i] = sGC.d.bpt[timedd][i+1];
+        IloNumArray bpt(env, sGC.d->nb_bp[timedd]-1);
+        for(int i=0; i<(sGC.d->nb_bp[timedd]-1);++i){
+            bpt[i] = sGC.d->bpt[timedd][i+1];
         }
 
-        IloNumArray pente(env, sGC.d.nb_bp[timedd]);
-        for(int i=0; i<sGC.d.nb_bp[timedd];++i){
-            pente[i] = sGC.d.pente[timedd][i];
+        IloNumArray pente(env, sGC.d->nb_bp[timedd]);
+        for(int i=0; i<sGC.d->nb_bp[timedd];++i){
+            pente[i] = sGC.d->pente[timedd][i];
         }
 
         //ajout variables u_i
-        IloNumVarArray alpha_i (env,sGC.d.cardJ,0.0,1.0,ILOBOOL);
+        IloNumVarArray alpha_i (env,sGC.d->cardJ,0.0,1.0,ILOBOOL);
         
         IloNumArray valAlphai(env);
 
         //contrainte sum_i bi*ui - sum_k o_k2(pk+1)*vk <= qmax
         IloExpr sum_i1(env);
         IloExpr sum_i2(env);
-        for(int i=0; i<sGC.d.cardJ;++i){
-            if((sGC.d.rj[i]<=timedd)&&(timedd<sGC.d.dj[i])){
-                sum_i1 += alpha_i[i] * (sGC.u_i[i] - sGC.w_it[i][timedd-sGC.d.rj[i]]);
-                sum_i2 += alpha_i[i] * sGC.d.Dj[i];
+        for(int i=0; i<sGC.d->cardJ;++i){
+            if((sGC.d->rj[i]<=timedd)&&(timedd<sGC.d->dj[i])){
+                sum_i1 += alpha_i[i] * (sGC.u_i[i] - sGC.w_it[i][timedd-sGC.d->rj[i]]);
+                sum_i2 += alpha_i[i] * sGC.d->Dj[i];
             }
             else model.add(alpha_i[i] <= 0);
         }
@@ -258,7 +260,7 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
 
 
         IloExpr obj(env);
-        obj = sum_i1 - sGC.v_t[timedd] - IloPiecewiseLinear(sum_i2,bpt,pente,sGC.d.bpt[timedd][0],0.0);
+        obj = sum_i1 - sGC.v_t[timedd] - IloPiecewiseLinear(sum_i2,bpt,pente,sGC.d->bpt[timedd][0],0.0);
         //if(decal==1) obj = sum_i1 - sGC.v_t[timedd] - IloPiecewiseLinear(sum_i2,bpt,pente,0.0,0.0);
         //else obj = sum_i1 - sGC.v_t[timedd] - IloPiecewiseLinear(sum_i2,bpt,pented.bpt[i][0], d.valbpt[i][0]);
         model.add(IloMaximize(env, obj));
@@ -322,7 +324,7 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
                 timedd++;
                 //assert(pbdata.time - inittime >= 0);
                 //cpteur = cpteur + (pbdata.time - inittime);
-                if(sGC.p.ensemble_multiple==0) stop = true;
+                if(sGC.p->ensemble_multiple==0) stop = true;
             }else
             {   
                 //cout << "Cout reduit non négatif au temps "<<timedd<< endl;
@@ -370,11 +372,11 @@ SCIP_DECL_PRICERREDCOST(pricerRedcost)
     //cout << " nb pricer vars : "<< SCIPgetNPricevarsFound(scip) << "   nbcolgen :" << pbdata->nbcolgenerated << endl;
 	// --------------------------------------   recuperation des variables duales
     int fois = 0;
-    for(int i=0; i<pbdata->d.cardJ; ++i){
+    for(int i=0; i<pbdata->d->cardJ; ++i){
         pbdata->u_i[i] = SCIPgetDualsolLinear(scip,pbdata->cons_2[i]);
-		for(int t=0; t<pbdata->d.cardT; ++t){
-            if((pbdata->d.rj[i]<=t)&&(t<pbdata->d.dj[i])){
-                pbdata->w_it[i][t-pbdata->d.rj[i]] = SCIPgetDualsolLinear(scip,pbdata->cons_1[i][t-pbdata->d.rj[i]]);
+		for(int t=0; t<pbdata->d->cardT; ++t){
+            if((pbdata->d->rj[i]<=t)&&(t<pbdata->d->dj[i])){
+                pbdata->w_it[i][t-pbdata->d->rj[i]] = SCIPgetDualsolLinear(scip,pbdata->cons_1[i][t-pbdata->d->rj[i]]);
             }
             if(fois==0){
                 pbdata->v_t[t] = SCIPgetDualsolLinear(scip,pbdata->cons_3[t]);
@@ -386,7 +388,7 @@ SCIP_DECL_PRICERREDCOST(pricerRedcost)
 	int aff = 1;
 	if(aff==1){
 		cout<<"lowerbound = "<<*lowerbound<<endl;
-		for(int i = 0 ; i < pbdata->d.cardJ;i++)
+		for(int i = 0 ; i < pbdata->d->cardJ;i++)
 			cout << pbdata->beta_i[i] <<" ";
 		cout << endl;
 		for(int i = 0 ; i < duration;i++)
@@ -444,8 +446,8 @@ SCIP_DECL_PRICERINITSOL(pricerInitsolSP)
         }
 	}
 
-	for(int i=0; i<pbdata->d.cardJ; i++){
-		for(int t = pbdata->d.rj[i] ; t < pbdata->d.dj[i] ; t++){
+	for(int i=0; i<pbdata->d->cardJ; i++){
+		for(int t = pbdata->d->rj[i] ; t < pbdata->d->dj[i] ; t++){
 			SCIPgetTransformedVar(scip, pbdata->varX_it[i][t],&(pbdata->varX_it[i][t]));
 			//assert(pbdata->tabVarXit.at(i).at(j-pbdata->instance.getTasksList().at(i).getReleaseTime()) != NULL);
 		}
@@ -455,12 +457,12 @@ SCIP_DECL_PRICERINITSOL(pricerInitsolSP)
 	//int duration = pbdata->instance.getDeadLine()-pbdata->instance.getReleaseTime();
 	int fois = 0;
 
-	for(int i=0; i<pbdata->d.cardJ; ++i){
+	for(int i=0; i<pbdata->d->cardJ; ++i){
         SCIPgetTransformedCons(scip,pbdata->cons_2[i],&(pbdata->cons_2[i]));
         
-		for(int t=0; t<pbdata->d.cardT; ++t){
-            if((pbdata->d.rj[i]<=t)&&(t<pbdata->d.dj[i])){
-                SCIPgetTransformedCons(scip,pbdata->cons_1[i][t-pbdata->d.rj[i]],&(pbdata->cons_1[i][t-pbdata->d.rj[i]]));
+		for(int t=0; t<pbdata->d->cardT; ++t){
+            if((pbdata->d->rj[i]<=t)&&(t<pbdata->d->dj[i])){
+                SCIPgetTransformedCons(scip,pbdata->cons_1[i][t-pbdata->d->rj[i]],&(pbdata->cons_1[i][t-pbdata->d->rj[i]]));
                 //assert(pbdata->tabConsNbSets[j] != NULL);
             }
             if(fois==0){
