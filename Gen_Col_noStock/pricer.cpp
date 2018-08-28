@@ -90,7 +90,7 @@ SCIP_RETCODE addObjectColumnInModel (structGenCol &sGC,IloNumArray const& valUi,
 	for(int i = 0 ; i < sGC.d->cardJ ; i++){
 		//cout << "tache i=" << i << " valX="<< valUi[i] << endl;
 		//if( SCIPisEQ(sGC.scip, valUi[i], 1.0) ){
-        if( valUi[i] > 0.5){
+        if( valUi[i] > 0.9){
             //cout << "ok" << endl;
             taskList.push_back(i);
             if(taskList.size() == 1){
@@ -260,11 +260,13 @@ SCIP_RESULT Pr_SP1(structGenCol &sGC){
 
 
         IloExpr obj(env);
-        obj = sum_i1 - sGC.v_t[timedd] - IloPiecewiseLinear(sum_i2,bpt,pente,sGC.d->bpt[timedd][0],0.0);
+        obj = sum_i1 - sGC.v_t[timedd] - IloPiecewiseLinear(sum_i2,bpt,pente,sGC.d->bpt[timedd][0],sGC.d->valbpt[timedd][0]);
         //if(decal==1) obj = sum_i1 - sGC.v_t[timedd] - IloPiecewiseLinear(sum_i2,bpt,pente,0.0,0.0);
         //else obj = sum_i1 - sGC.v_t[timedd] - IloPiecewiseLinear(sum_i2,bpt,pented.bpt[i][0], d.valbpt[i][0]);
         model.add(IloMaximize(env, obj));
         obj.end();
+        sum_i1.end();
+        sum_i2.end();
         
 			
         // cout << "after model creation to delete" << endl;

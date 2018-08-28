@@ -54,6 +54,8 @@ int main(int argc, char* argv[]){
 	lecteur_pwl("Donnees/pwl/"+instance_pwl,d);
 
 	initCap(d,p);
+
+	cout << "capacite : " << d.Q << endl;
 	//lecteur_taches_EnergSchedInst("../Donnees/dataSchedulingInstances/inst60-1_25-0_1-3_2-1.dat",d);
 
 	//cout << "cardT : " << d.cardT << endl;
@@ -82,123 +84,57 @@ int main(int argc, char* argv[]){
 	//lecteur_pwd("../Donnees/pwd_20_4_2000_4",d);
 	
 	data dinit = d;
-	float solOrdo, solLS, solComp, solMip, solPLNE, solDyn, tpsBoucleMip, tpsBouclePLNE, tpsBoucleDyn, tpsComp, tpsRelax, tpsLS, borneinfComp,borneinfRelax,borneinftemp;
+	float solOrdoCPLEX,solOrdoGenCol, solLS, solComp, solMip, solPLNE, solDyn, tpsBoucleMip, tpsBouclePLNE, tpsBoucleDyn, tpsComp, tpsRelax, tpsLS, borneinfComp,borneinfRelax,borneinftemp;
 	string statusComp, statusRelax, statusOrdo, statusLS;
-	vector<float> rt, demande;
+	vector<float> rt, demande,inut;
 	int boucle;
 	vector<float> solrelax;
-	float tpsOrdo;
+	float tpsOrdoCPLEX, tpsOrdoGenCol;
 	float tpsTotOrdo = 0.0;
 	float tpsTotLS = 0.0;
 	//float timeBoucle = p.time_limit_compact / p.nb_iter_max_boucle;
 	float timeRab = 0.0;
 	float timeRabRelax = 0.0;
 	int cptBoucle = 0;
-
+	float solOrdo = 0.0;
 	//cout << "instance="<<instance<<" parametre="<<parametre<<" nbPeriodes="<<d.cardT<<" nbTaches="<<d.cardJ<<" nbMachines="<<d.cardM<<" borneBatterie="<<d.Q<<" ratioDemandeTot/Capacite="<<d.Q/d.consoTot<<" limiteNbBoucles=-1 limiteTpsOrdo=300 limiteThreads="<<p.nb_threads_cplex<<endl;
 	// MODELE COMPACT CPLEX
-	//auto start_time = chrono::steady_clock::now();
-	//solComp = modele_entier_cplex(d,p,tpsComp,borneinfComp,statusComp);
-	//auto end_time = chrono::steady_clock::now();
-	//tpsComp = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
-
-	//cout << "COMPACT tps=" << tpsComp << " statut=" << statusComp << " bornesup=" << solComp  << " borneinf=" << borneinfComp << endl;
-
-	
-	/*if(p.boucle_relaxation==1){
-		p.time_limit_relax = timeBoucle;
-		//start_time = chrono::steady_clock::now();
-		float borneSupRelax = relaxation_modele_entier_cplex(d,solrelax,p,tpsRelax, borneinfRelax,statusRelax);
-		//end_time = chrono::steady_clock::now();
-		//tpsRelax = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
-		cout << "INIT=relax tps= "<<tpsRelax<<" statut="<<statusRelax<<" bornesup="<<borneSupRelax<<" borneinf="<<borneinfRelax<<endl;;
-		timeRabRelax = timeBoucle-tpsRelax;
-	}
-	else{
-		cout << "INIT=none"<<endl;
-	}*/
-
-	/*for(int i=0; i<d.cardT;++i){
-		cout << "relax["<<i<<"] = "<<solrelax[i] <<endl;
-	}*/
-
-
-	// BOUCLE ORDO + LOTSIZING PL (PWD)
 	/*auto start_time = chrono::steady_clock::now();
-	if(p.boucle_relaxation==1){
-		p.time_limit_ordo = timeBoucle/2+timeRabRelax;
-		modifPWL(d, solrelax);
-		solOrdo = ordo_cplex(d,p,tpsOrdo,statusOrdo);
-		
-		initPWD(dinit,d);
-		boucle = p.nb_iter_max_boucle - 1;
-	} 
-	else{
-		p.time_limit_ordo = timeBoucle/2;
-		solOrdo = ordo_cplex(d,p,tpsOrdo,statusOrdo);
-		boucle = p.nb_iter_max_boucle ;
-	}
-	//cout << "solOrdo : "<<solOrdo<< endl;
-	tpsTotOrdo += tpsOrdo;
-	timeRab = p.time_limit_ordo - tpsOrdo;
-	p.time_limit_lotsizingcont = timeBoucle/2 + timeRab;
-	solLS = lotsizcontCPX(d, p, rt, tpsLS,borneinftemp,statusLS);
-	//cout << "solLS : "<<solLS<< endl;
-	timeRab = p.time_limit_lotsizingcont - tpsLS;
-	tpsTotLS += tpsLS;
-	++cptBoucle;
-	--boucle;
-	while((solOrdo != solLS)&&(boucle>0)){
-		modifPWL(d, rt);
-		p.time_limit_ordo = timeBoucle/2 + timeRab;
-		solOrdo = ordo_cplex(d,p,tpsOrdo,statusOrdo);
-		//cout << "solOrdo : "<<solOrdo<< endl;
-		timeRab = p.time_limit_ordo - tpsOrdo;
-		tpsTotOrdo += tpsOrdo;
-		//cout << "solOrdo : "<<solOrdo<<endl;
-		initPWD(dinit,d);
-		p.time_limit_lotsizingcont = timeBoucle/2 + timeRab;
-		solLS = lotsizcontCPX(d, p, rt, tpsLS,borneinftemp,statusLS);
-		//cout << "solLS : "<<solLS<< endl;
-		timeRab = p.time_limit_lotsizingcont - tpsLS;
-		tpsTotLS += tpsLS;
-		//cout << "solLS : "<<solLotSizMip<<endl;
-		--boucle;
-		++cptBoucle;
-	}
+	solComp = modele_entier_cplex(d,p,tpsComp,borneinfComp,statusComp);
 	auto end_time = chrono::steady_clock::now();
-	tpsBoucleMip = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
-	solMip = solLS;
+	tpsComp = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
 
-	cout << "BOUCLE PL (PWD)  tpsBoucle=" << tpsBoucleMip << " tpsOrdo="<<tpsTotOrdo<<" tpsLS="<<tpsTotLS<<" bornesup=" << solMip <<" nbBoucle="<<cptBoucle;
-	if (solOrdo==solLS) cout << " arret=CONV" << endl;
-	else cout << " arret=MAXITER" << endl;
-	d = dinit;
-	tpsTotOrdo = 0.0;
-	tpsTotLS = 0.0;
-	cptBoucle = 0;*/
+	cout << "COMPACT tps=" << tpsComp << " statut=" << statusComp << " bornesup=" << solComp  << " borneinf=" << borneinfComp << endl;
+*/
+	
+
 	float _delete;
 	bool solOrdoOk = false;
 	// BOUCLE ORDO_GENCOL + LOTSIZING DYNAMIQUE
-	auto start_time = chrono::steady_clock::now();
-	solOrdo = genColNoStock(d,p,tpsOrdo,demande,_delete,statusOrdo);
-	tpsTotOrdo += tpsOrdo;
-	cout << "solordocplex : " << ordo_cplex(d,p,tpsBoucleMip,demande,statusComp,tpsBoucleDyn)<<endl;
-	cout << "solordo : " << solOrdo << endl;
-	if(solOrdo != -1){
+	//start_time = chrono::steady_clock::now();
+	solOrdoGenCol = genColNoStock(d,p,tpsOrdoGenCol,demande,_delete,statusOrdo);
+	cout << "solordoGenCol : " << solOrdoGenCol << "temps ordoGenCol : " << tpsOrdoGenCol <<endl;	
+	solOrdoCPLEX = ordo_cplex(d,p,tpsOrdoCPLEX,inut,statusComp,_delete);
+	
+	cout << "solordoCplex : " << solOrdoCPLEX << "temps ordoCplex : " << tpsOrdoCPLEX <<endl;
+	
+	tpsTotOrdo += tpsOrdoGenCol;
+	//cout << "solordo : " << solOrdo << endl;
+	if(solOrdoGenCol != -1){
 		solOrdoOk = true;
 		solLS = lotsizdyn(d,p,rt,tpsLS,demande);
 		cout << "solLS : " << solLS << endl;
 		tpsTotLS += tpsLS;
 		++cptBoucle;
 	}
-	while((solOrdo != solLS) && (tpsTotOrdo < 7200) && (solOrdoOk)){
+	while((solOrdoGenCol != solLS) && (tpsTotOrdo < 7200) && (solOrdoOk)){
 		modifPWL(d, rt);
-		solOrdo = genColNoStock(d,p,tpsOrdo,demande,_delete,statusOrdo);
-		cout << "solordocplex : " << ordo_cplex(d,p,tpsBoucleMip,demande,statusComp,tpsBoucleDyn)<<endl;
-		cout << "solordo : " << solOrdo << endl;
-		tpsTotOrdo += tpsOrdo;
-		if(solOrdo == -1) solOrdoOk = false;
+		solOrdoCPLEX = ordo_cplex(d,p,tpsOrdoCPLEX,inut,statusComp,_delete);
+		solOrdoGenCol = genColNoStock(d,p,tpsOrdoGenCol,demande,_delete,statusOrdo);
+		cout << "solordoCplex : " << solOrdoCPLEX << "temps ordoCplex : " << tpsOrdoCPLEX <<endl;
+		cout << "solordoGenCol : " << solOrdoGenCol << "temps ordoGenCol : " << tpsOrdoGenCol <<endl;	
+		tpsTotOrdo += tpsOrdoGenCol;
+		if(solOrdoGenCol == -1) solOrdoOk = false;
 		else{
 			initPWD(dinit,d);
 			solLS = lotsizdyn(d,p,rt,tpsLS,demande);
@@ -207,8 +143,8 @@ int main(int argc, char* argv[]){
 			++cptBoucle;
 		}
 	}
-	auto end_time = chrono::steady_clock::now();
-	tpsBoucleDyn = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
+	//end_time = chrono::steady_clock::now();
+	//tpsBoucleDyn = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count()/1000000.0;
 	cout << "solOrdo/LS : " << solLS << endl;
 
 	// BOUCLE ORDO + LOTSIZING DYNAMIQUE

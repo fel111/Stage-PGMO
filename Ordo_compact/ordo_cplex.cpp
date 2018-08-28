@@ -10,7 +10,7 @@
 #include "../struct.h"
 //#include "lotsizcontcom.h"
 #include <ilcplex/ilocplex.h>
-#include "ordo_cplex2.h"
+#include "ordo_cplex.h"
 
 ILOSTLBEGIN
 
@@ -72,48 +72,7 @@ float ordo_cplex(data const& d,param const& p, float &tps, vector<float> &demand
 
 	// CONTRAINTES
 
-	//contraintes cout
-	for(int t=0; t<d.cardT; ++t){
-		IloExpr SumDem(env);
-		for(int j=0; j<d.cardJ; ++j){
-			SumDem += y_jt[j][t]*d.Dj[j];
-		}
-		IloNumArray bpt(env, d.nb_bp[t]-1);
-        for(int i=0; i<(d.nb_bp[t]-1);++i){
-            bpt[i] = d.bpt[t][i+1];
-        }
-
-        IloNumArray pente(env, d.nb_bp[t]);
-        for(int i=0; i<d.nb_bp[t];++i){
-            pente[i] = d.pente[t][i];
-        }
-		/*if(d.bpt[t][0] > 0){
-			IloNumArray pente(env, d.nb_bp[t]+1);
-			IloNumArray bpt(env, d.nb_bp[t]);
-			pente[0] = 0.0;
-			bpt[0] = d.bpt[t][0];
-			for(int j=1; j<d.nb_bp[t]+1;++j){
-        		pente[j] = d.pente[t][j-1];
-				if (j<d.nb_bp[t]) bpt[j] = d.bpt[t][j];
-    		}
-			model.add(ct[t] == IloPiecewiseLinear(SumDem,bpt,pente,0, 0));
-		}
-		else{
-			IloNumArray pente(env, d.nb_bp[t]);
-			IloNumArray bpt(env, d.nb_bp[t]-1);
-			for(int j=0; j<d.nb_bp[t];++j){
-       			pente[j] = d.pente[t][j];
-				if(j<d.nb_bp[t]-1) bpt[j] = d.bpt[t][j+1];
-    		}
-			model.add(ct[t] == IloPiecewiseLinear(SumDem,bpt,pente,d.bpt[t][0], d.valbpt[t][0]));
-		}*/
-		model.add(ct[t] == IloPiecewiseLinear(SumDem,bpt,pente,d.bpt[t][0], 0));
-	}
-
-    IloExpr obj(env);
-    obj = IloSum(ct);
-    model.add(IloMinimize(env, obj));
-    obj.end();
+	
 /*
 	// sum y_jkt <= 1
 	for(int j=0; j<d.cardJ; ++j){
@@ -135,6 +94,7 @@ float ordo_cplex(data const& d,param const& p, float &tps, vector<float> &demand
 			sumy2 += y_jt[j][t];
 		}		
 		model.add(sumy2 >= d.pj[j]);
+		sumy2.end();
 	}
 if(p.taches_avec_fenetre_temps == 1){
 	// contrainte respect fenetre temps
@@ -148,8 +108,56 @@ if(p.taches_avec_fenetre_temps == 1){
 			s2 += y_jt[j][t];
 		}			
 		model.add(s1 + s2 == 0);
+		s1.end();
+		s2.end();
 	}
 }
+
+	//contraintes cout
+	for(int t=0; t<d.cardT; ++t){
+		IloExpr SumDem(env);
+		for(int j=0; j<d.cardJ; ++j){
+			SumDem += y_jt[j][t]*d.Dj[j];
+		}
+		IloNumArray bpt(env, d.nb_bp[t]-1);
+        for(int i=0; i<(d.nb_bp[t]-1);++i){
+            bpt[i] = d.bpt[t][i+1];
+			//cout << "bpt["<<i<<"] = " << d.bpt[t][i+1] <<endl;
+        }
+
+        IloNumArray pente(env, d.nb_bp[t]);
+        for(int i=0; i<d.nb_bp[t];++i){
+            pente[i] = d.pente[t][i];
+			//cout << "pente["<<i<<"] = " << d.pente[t][i] <<endl;
+        }
+		/*if(d.bpt[t][0] > 0){
+			IloNumArray pente(env, d.nb_bp[t]+1);
+			IloNumArray bpt(env, d.nb_bp[t]);
+			pente[0] = 0.0;
+			bpt[0] = d.bpt[t][0];
+			for(int j=1; j<d.nb_bp[t]+1;++j){
+        		pente[j] = d.pente[t][j-1];
+				if (j<d.nb_bp[t]) bpt[j] = d.bpt[t][j];
+    		}
+			model.add(ct[t] == IloPiecewiseLinear(SumDem,bpt,pente,0, 0));
+		}
+		else{
+			IloNumArray pente(env, d.nb_bp[t]);
+			IloNumArray bpt(env, d.nb_bp[t]-1);
+			for(int j=0; j<d.nb_bp[t];++j){
+       			pente[j] = d.pente[t][j];
+				if(j<d.nb_bp[t]-1) bpt[j] = d.bpt[t][j+1];
+    		}
+			model.add(ct[t] == IloPiecewiseLinear(SumDem,bpt,pente,d.bpt[t][0], d.valbpt[t][0]));
+		}*/
+		model.add(ct[t] == IloPiecewiseLinear(SumDem,bpt,pente,d.bpt[t][0], d.valbpt[t][0]));
+		SumDem.end();
+	}
+
+    IloExpr obj(env);
+    obj = IloSum(ct);
+    model.add(IloMinimize(env, obj));
+    obj.end();
 /*
 	// sum_j cjr*yjkt <= Ckr
 	for(int k=0; k<d.cardM; ++k){
@@ -206,7 +214,7 @@ if(p.taches_avec_fenetre_temps == 1){
 			//prod.push_back(roundd(SCIPgetSolVal(scip,sol,xt[i])));
 			//prod.push_back(roundd(cplex.getValue(xt[i]),5));
 			for(int j=0; j<d.cardJ; ++j){
-				dem += cplex.getValue(y_jt[j][t])*d.Dj[j];
+				if(cplex.getValue(y_jt[j][t]) > 0.9) dem += d.Dj[j];
 			}
 			prod.push_back(dem);
 			//cout << "cplex : demande " << prod[t] << endl;
@@ -218,7 +226,7 @@ if(p.taches_avec_fenetre_temps == 1){
 	else if(cplex.getStatus() == IloAlgorithm::Optimal){
 		status = "optimal";
 		vector<float> prod;
-		/*//cout << "demande : ";	
+		//cout << "demande : ";	
 		//for(int i=0; i<d.cardT; ++i){
 			//cout << SCIPgetSolVal(scip,sol,xt[i]) << ", ";
 			//prod.push_back(static_cast<int>(ceil(SCIPgetSolVal(scip,sol,xt[i]))));
@@ -227,30 +235,28 @@ if(p.taches_avec_fenetre_temps == 1){
 			//  prod.push_back(cplex.getValue(xt[i]));
 			//cout << prod[i] << " ";
 			//cout << "------------ CPLEX SOL ----------"<<endl;
-			for(int t=0; t<d.cardT; ++t){
+			/*for(int t=0; t<d.cardT; ++t){
 				//if(cplex.getValue(xt[t])> 0) cout << "xt" << t << ": " <<cplex.getValue(xt[t]) << endl;
 				//if(cplex.getValue(ct[t]) > 0) cout << "ct" << t << ": " <<cplex.getValue(ct[t]) << endl;
 				//if(cplex.getValue(st[t]) > 0 ) cout << "st" << t << ": " <<cplex.getValue(st[t]) << endl;
-				for(int k=0; k<d.cardM; ++k){
 					//if(cplex.getValue(z_kt[k][t]) > 0.5) cout << "zkt" << k << t << ": " <<cplex.getValue(z_kt[k][t]) << endl;
 					for(int j=0; j<d.cardJ; ++j){
-						if(cplex.getValue(y_jkt[j][k][t]) > 0.9) cout << "yjkt" << j << k<<t << ": " <<cplex.getValue(y_jkt[j][k][t]) << endl;
+						if(cplex.getValue(y_jt[j][t]) > 0.9) cout << "temps " << t << " : " << j << endl;
 					}
-				}
-			}
-		//} */
+			}*/
+		//} 
 		for(int t=0; t<d.cardT; ++t){
 			float dem=0.0;
-			//cout << SCIPgetSolVal(scip,sol,xt[i]) << ", ";
+
 			//prod.push_back(static_cast<int>(ceil(SCIPgetSolVal(scip,sol,xt[i]))));
 			//prod.push_back(roundd(SCIPgetSolVal(scip,sol,xt[i])));
 			//prod.push_back(roundd(cplex.getValue(xt[i]),5));
 			for(int j=0; j<d.cardJ; ++j){
-				dem += cplex.getValue(y_jt[j][t])*d.Dj[j];
+				if(cplex.getValue(y_jt[j][t]) > 0.9) dem += d.Dj[j];
 			}
 			prod.push_back(dem);
 			//cout << "cplex : demande " << prod[t] << endl;
-			//cout << prod[i] << " ";
+			//cout << "ct : " << cplex.getValue(ct[t]) << endl;
 		}
 		demande = prod;
 		sol = cplex.getObjValue();

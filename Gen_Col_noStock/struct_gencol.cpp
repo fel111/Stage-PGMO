@@ -114,6 +114,12 @@ void addA_il(feasibleSet const& l, structGenCol & sGC){
     }
 }
 
+/*void addA_il(feasibleSet const& l, structGenCol & sGC){
+	for(const auto& task : l.tasksList){
+		sGC.a_il[task].push_back(l.id);
+	}
+}*/
+
 void addL_t(feasibleSet const& l, structGenCol & sGC){
 	for(int t=0; t<sGC.d->cardT; ++t){
 		if((l.releaseTime<=t)&&(t<l.deadLine)) sGC.L_t[t].push_back(l.id);
@@ -142,10 +148,10 @@ void modifPwlCplex(structGenCol & sGC){ // a rendre generique selon les pwl
 
 float p_t(int t, float x, structGenCol const& sGC){
 	//cout << "x: "<<x<<endl;	
-	if (x<=sGC.d->bpt[t][0]) return 0.0;	
+	if (x<sGC.d->bpt[t][0]) return 0.0;	
 	for (int i=0; i<sGC.d->nb_bp[t]; ++i){
 		//cout<<bpt[t][i]<<"<"<<x<<"<="<<bpt[t][i+1]<<endl;
-		if((sGC.d->bpt[t][i]<x)&&(x<=sGC.d->bpt[t][i+1])){
+		if((sGC.d->bpt[t][i]<=x)&&(x<sGC.d->bpt[t][i+1])){
 			//cout << bpt[t][i] << endl;
 			//cout << "valreel" <<  pente[t][i]*x+valbpt[t][i]<<endl;
 			return sGC.d->pente[t][i]*(x-sGC.d->bpt[t][i])+sGC.d->valbpt[t][i];

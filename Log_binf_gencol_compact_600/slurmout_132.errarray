@@ -1,0 +1,3 @@
+slurmstepd: error: Job 972691 exceeded memory limit (5290720 > 3584000), being killed
+slurmstepd: error: Exceeded job memory limit
+slurmstepd: error: *** JOB 972691 ON giordano.10g CANCELLED AT 2018-08-24T17:27:54 ***
